@@ -1,0 +1,23 @@
+.table-container {
+    max-height: 895px; /* Adjust the maximum height for vertical scrolling */
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+  table, td, th {
+    border:2px solid black;
+    border-collapse: collapse;
+    }
+
+  ::ng-deep .table thead th, .table tbody td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 10px; /* Adjust the maximum height for individual cells */
+    vertical-align: middle;
+  }
+
+ 
