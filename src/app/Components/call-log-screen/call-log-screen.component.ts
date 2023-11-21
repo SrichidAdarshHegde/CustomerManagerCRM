@@ -99,7 +99,7 @@ export class CallLogScreenComponent {
   getRequests() {
     this.masterSv.getRequests().subscribe((response: any) => {
       const mappedRequests: { label: string; value: any }[] = response.map((requests: any) => ({
-        label: requests.requestsName + '-' + requests.priority,
+        label: requests.requestsName,
         value: requests.requestsId,
       }));
       this.requestslist = mappedRequests.sort((a: { label: string }, b: { label: string }) =>
@@ -247,7 +247,7 @@ export class CallLogScreenComponent {
   }
 
   saveRequest(){
-if(this.machineNumber == null || this.machineNumber == ""){
+if(this.selectedMachine == null || this.selectedMachine == ""){
   alert('Machine Number is required');
 }else if(this.selectedrequest == null || this.selectedrequest == ""){
   alert('Please select request type');
@@ -257,7 +257,7 @@ if(this.machineNumber == null || this.machineNumber == ""){
 // }
 else {
     const frmData = new FormData();
-    frmData.append("MachineNumber", this.machineNumber);
+    frmData.append("MachineNumber", this.selectedMachine);
       frmData.append("CustomerId", this.custID);
       frmData.append("CustomerName", this.companyName);
       frmData.append("TokenNo",this.MachineNo);
