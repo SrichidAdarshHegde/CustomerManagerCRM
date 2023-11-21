@@ -95,7 +95,7 @@ export class WorkFrontComponent implements OnInit
       this.formattedDate = '';
     }
     this.getZone();
-    this.getWorkfrontrequest(); // Initialize the worklist when the component is loaded
+    //this.getWorkfrontrequest(); // Initialize the worklist when the component is loaded
   }
 
   getZone() {
@@ -116,13 +116,27 @@ export class WorkFrontComponent implements OnInit
       .subscribe((response: any) => {
         this.worklist = response;
         this.sortWorklist(); // Sort the worklist after changing the data
+
         if (this.worklist.length != 0) {
           this.exporting = true;
         } else {
           alert('No Requests Found For Selected Zone!!!');
         }
+        for (var i = 0; i < this.worklist.length; i++) {
+          if (this.worklist[i].priority === "T0" || this.worklist[i].priority === "T1" || this.worklist[i].priority === "T2"|| this.worklist[i].priority === "T3"|| this.worklist[i].priority === "T4"|| this.worklist[i].priority === "T5"|| this.worklist[i].priority === "T6") {
+            this.otherWorklist.push(this.worklist[i]);
+          } else if (this.worklist[i].priority === "F4" || this.worklist[i].priority === "F5"|| this.worklist[i].priority === "F6" ) {
+            this.workpriority45.push(this.worklist[i]);
+            console.log(this.workpriority45)
+          } else {
+            this.workpriority.push(this.worklist[i]);
+          }
+        }
       });
       this.zoneSelected = true;
+      console.log(this.otherWorklist)
+      console.log(this.workpriority45)
+      console.log(this.workpriority)
   }
   
   GetZoneName() {
@@ -150,26 +164,30 @@ export class WorkFrontComponent implements OnInit
   }
 
   
-  getWorkfrontrequest() {
-    this.regSv.getWorkfrontrequest().subscribe((response: any) => {
-      this.worklist = response;
-      this.sortWorklist();
+  // getWorkfrontrequest() {
+  //   this.regSv.getWorkfrontrequest().subscribe((response: any) => {
+  //     this.worklist = response;
+  //     this.sortWorklist();
   
    
-      this.workpriority45 = [];
+  //     this.workpriority45 = [];
   
-      for (var i = 0; i < this.worklist.length; i++) {
-        if (this.worklist[i].requestFor === "T0" || this.worklist[i].requestFor === "T1" || this.worklist[i].requestFor === "T2"|| this.worklist[i].requestFor === "T3"|| this.worklist[i].requestFor === "T4"|| this.worklist[i].requestFor === "T5"|| this.worklist[i].requestFor === "T6") {
-          this.otherWorklist.push(this.worklist[i]);
-        } else if (this.worklist[i].requestFor === "F4" || this.worklist[i].requestFor === "F5"|| this.worklist[i].requestFor === "F6" ) {
-          this.workpriority45.push(this.worklist[i]);
-          console.log(this.workpriority45)
-        } else {
-          this.workpriority.push(this.worklist[i]);
-        }
-      }
-    });
-  }
+  //     for (var i = 0; i < this.worklist.length; i++) {
+  //       if (this.worklist[i].requestFor === "T0" || this.worklist[i].requestFor === "T1" || this.worklist[i].requestFor === "T2"|| this.worklist[i].requestFor === "T3"|| this.worklist[i].requestFor === "T4"|| this.worklist[i].requestFor === "T5"|| this.worklist[i].requestFor === "T6") {
+  //         this.otherWorklist.push(this.worklist[i]);
+  //       } else if (this.worklist[i].requestFor === "F4" || this.worklist[i].requestFor === "F5"|| this.worklist[i].requestFor === "F6" ) {
+  //         this.workpriority45.push(this.worklist[i]);
+  //         console.log(this.workpriority45)
+  //       } else {
+  //         this.workpriority.push(this.worklist[i]);
+  //       }
+  //     }
+  //     console.log(this.otherWorklist)
+  //     console.log(this.workpriority45)
+  //     console.log(this.workpriority)
+
+  //   });
+  // }
   
 
   exportTableToExcel(): void {
