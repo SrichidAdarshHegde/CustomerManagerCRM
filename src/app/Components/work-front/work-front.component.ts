@@ -105,6 +105,9 @@ export class WorkFrontComponent implements OnInit
   }
 
   onSelectZone(data: any) {
+    this.otherWorklist = []
+    this.workpriority45 = []
+    this.workpriority = []
     this.exporting = false;
     this.selectedZone = data.target.value;
   
