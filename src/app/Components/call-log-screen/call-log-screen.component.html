@@ -17,7 +17,8 @@
             <tr>
                 <td colspan="2">Machine SNo:</td>
                 <td colspan="2"><input class="form-control" type="text" id="machineNumber" name="machineNumber"
-                    placeholder="Enter Machine No" (change)="onChangeMachineNumber()" [(ngModel)]="selectedMachine" required>
+                        placeholder="Enter Machine No" (change)="onChangeMachineNumber()" [(ngModel)]="selectedMachine"
+                        required>
                 </td>
             </tr>
         </table>
@@ -38,7 +39,7 @@
                     <tr>
                         <td>Call Attended by:</td>
                         <td style="text-align: right;">
-                           <b>{{userName}}</b>
+                            <b>{{userName}}</b>
                         </td>
                     </tr>
                 </table>
@@ -102,17 +103,17 @@
                         <td colspan="3">M/c in location</td>
                     </tr>
                     <tr>
-                  <tr *ngFor="let machine of machineList" (click)="onRowClick(machine.machineNumber)">
-                  
-                    <td>
-                        {{ machine.machineNumber }}
-                      </td>
-                  </tr>
-                
-                </table>
-    </div><br><br>
+                    <tr *ngFor="let machine of machineList" (click)="onRowClick(machine.machineNumber)">
 
-    </div>
+                        <td>
+                            {{ machine.machineNumber }}
+                        </td>
+                    </tr>
+
+                </table>
+            </div><br><br>
+
+        </div>
     </div>
 
     <div class="col-md-4">
@@ -120,37 +121,48 @@
             <div class="col-md-12">
                 <table class="table table-bordered table-with-bold-lines">
                     <tr>
-                        <td colspan="3"><p *ngIf="companyName == null">Company Name</p>
-                            <p *ngIf="companyName != null"><b>{{companyName}}</b></p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><p *ngIf="companyName == null">Add 1</p>
-                            <p *ngIf="companyName != null"><b> {{addressOne}}</b></p>                          
+                        <td colspan="3">
+                            <p *ngIf="companyName == null">Company Name</p>
+                            <p *ngIf="companyName != null"><b>{{companyName}}</b></p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3"><p *ngIf="companyName == null">Add 2</p>
+                        <td colspan="3">
+                            <p *ngIf="companyName == null">Add 1</p>
+                            <p *ngIf="companyName != null"><b> {{addressOne}}</b></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p *ngIf="companyName == null">Add 2</p>
                             <p *ngIf="companyName != null"><b>{{addressTwo}}</b></p>
-                    
+
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3"><p *ngIf="companyName == null">Add 3</p>
+                        <td colspan="3">
+                            <p *ngIf="companyName == null">Add 3</p>
                             <p *ngIf="companyName != null"><b>{{addressThree}}</b></p>
-                            
+
                         </td>
                     </tr>
                     <tr>
-                        <td><p *ngIf="companyName == null">City name</p>
-                            <p *ngIf="companyName != null"><b>{{city}}</b></p></td>
-                        <td><p *ngIf="companyName == null">State</p>
-                            <p *ngIf="companyName != null"><b>{{state}}</b></p></td>
-                        <td><p *ngIf="companyName == null">Pin</p>
-                            <p *ngIf="companyName != null"><b>{{pincode}}</b></p></td>
+                        <td>
+                            <p *ngIf="companyName == null">City name</p>
+                            <p *ngIf="companyName != null"><b>{{city}}</b></p>
+                        </td>
+                        <td>
+                            <p *ngIf="companyName == null">State</p>
+                            <p *ngIf="companyName != null"><b>{{state}}</b></p>
+                        </td>
+                        <td>
+                            <p *ngIf="companyName == null">Pin</p>
+                            <p *ngIf="companyName != null"><b>{{pincode}}</b></p>
+                        </td>
                     </tr>
                 </table>
             </div>
-       
+
         </div>
     </div>
     <div class="col-md-4">
@@ -190,7 +202,7 @@
             </tr>
         </table>
     </div>
-    
+
 </div>
 
 <div class="col-md-12 row">
@@ -207,13 +219,14 @@
 
                         <tr>
 
-                            <td>      
+                            <td>
                                 <label for="unit">Request For:</label>
-                                <ng-select [items]="requestslist" name="requests" [(ngModel)]="selectedrequest" [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
+                                <ng-select [items]="requestslist" name="requests" [(ngModel)]="selectedrequest"
+                                    [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
                                 </ng-select>
-                     
+
                             </td>
-                           
+
                         </tr>
                     </table>
                 </div>
@@ -225,10 +238,10 @@
                 <div class="col-md-4">
                     <h4>Resolution</h4>
                     <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100" rows="6"></textarea>
-    
+
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="col-md-2">
