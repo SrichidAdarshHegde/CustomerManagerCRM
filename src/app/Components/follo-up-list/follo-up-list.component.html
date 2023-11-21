@@ -73,7 +73,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let abd of FollowUpList | paginate: { itemsPerPage: 5, currentPage: p };let i = index" style="border-width:1px; border-color:black;font-size:20px;">
+                <tr *ngFor="let abd of FollowUpList | paginate: { itemsPerPage: 10, currentPage: p };let i = index" style="border-width:1px; border-color:black;font-size:20px;">
                     <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">{{ 5 * (p - 1) +
                         (i+1)}}</td> -->
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:14px;">
