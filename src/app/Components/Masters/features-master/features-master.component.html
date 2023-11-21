@@ -32,8 +32,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let features of featureslist | paginate: { itemsPerPage: 5, currentPage: p } ; let i = index">
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{5 * (p-1)+(i+1)}}</td>
+                <tr *ngFor="let features of featureslist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 * (p-1)+(i+1)}}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{features.featuresName}}</td>
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{features.createdOn | date}}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{features.createdBy}}</td>
