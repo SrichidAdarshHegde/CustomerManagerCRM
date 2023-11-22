@@ -47,7 +47,7 @@
                         <p *ngIf="!request.isDone" style="color: red;"><b>Not Done</b></p>
                     </td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{request.createdBy}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{request.createdOn}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{request.createdOn | date }}</td>
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;"><button class="btn btn-primary form-control" (click)="interact(request)">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </button></td>
