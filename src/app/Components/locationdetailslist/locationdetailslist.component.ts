@@ -6,6 +6,7 @@ import { ElementRef, ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,7 +40,9 @@ export class LocationdetailslistComponent {
   clusterList:any;
   masterSv: any;
   clusterlist: any;
-  constructor(private regSv: RegistrationService){
+  constructor(private regSv: RegistrationService, 
+    private route : Router
+    ){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
@@ -100,7 +103,9 @@ export class LocationdetailslistComponent {
       }
     });
  }
-
+ newEntry(){
+  this.route.navigate(['/locationDetails']);
+}
  
 
   onSelectCompany(data: any){
