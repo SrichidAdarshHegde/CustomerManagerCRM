@@ -46,6 +46,17 @@ export class TravelBudgetComponent {
   userId: any;
   uniqueTravelID: any;
   budgetList: any;
+  addedTime: any;
+
+  removeColon: any;
+  totaltime: any;
+  document: any;
+  totalMinutes:any;
+  totalTime:any;
+  totalHours:any;
+  timetaken: any=[];
+  displayCalculatedTime: any;
+
   constructor(private regSv: RegistrationService, private router:ActivatedRoute, private route:Router) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
@@ -67,14 +78,94 @@ export class TravelBudgetComponent {
     this.getTravelId();
     this.getTravelBudgetbyTravelId();
   }
-
-  getTravelBudgetbyTravelId(){
+  getTravelBudgetbyTravelId() {
     this.regSv.GetTravelBudgetbyTravelId(this.TravelId).subscribe((response: any) => {
       this.budgetList = response;
-      console.log(this.budgetList);
-    });
-  }
 
+      for (let i = 0; i < this.budgetList.length; i++) {
+        if (i > 0) {
+          if (this.budgetList[i].estTimeForJob == null) {
+            const converttodatetime = new Date(this.budgetList[i].estTravelTime);
+            const startTimeHours = converttodatetime.getHours();
+            const startTimeMin = converttodatetime.getMinutes();
+  
+            const converttodatetime1 = new Date(this.budgetList[i - 1].schdETD);
+            const endTimeHours = converttodatetime1.getHours();
+            const endTimeMin = converttodatetime1.getMinutes();
+            const addedHours = startTimeHours + endTimeHours;
+            const addedMinutes = startTimeMin + endTimeMin;
+  
+            this.addedTime = new Date();
+            this.addedTime.setHours(addedHours, addedMinutes);
+            console.log(this.addedTime);
+            this.budgetList[i].schdETD = this.addedTime;
+          } else if (this.budgetList[i].estTravelTime == null) {
+            const converttodatetime = new Date(this.budgetList[i].estTimeForJob);
+            const startTimeHours = converttodatetime.getHours();
+            const startTimeMin = converttodatetime.getMinutes();
+  
+            const converttodatetime1 = new Date(this.budgetList[i - 1].schdETD);
+            const endTimeHours = converttodatetime1.getHours();
+            const endTimeMin = converttodatetime1.getMinutes();
+            const addedHours = startTimeHours + endTimeHours;
+            const addedMinutes = startTimeMin + endTimeMin;
+  
+            this.addedTime = new Date();
+            this.addedTime.setHours(addedHours, addedMinutes);
+            console.log(this.addedTime);
+            this.budgetList[i].schdETD = this.addedTime;
+          }
+        }
+      }
+
+
+
+
+
+
+//       const timeValues = this.budgetList.map((row: { schdETD: any; }) => row.schdETD);
+
+// // Convert time values to Date objects for easier manipulation
+// const dateObjects = timeValues.map((time: any) => new Date(`1970-01-01T${time}:00Z`));
+
+// // Calculate the time difference between the first and last items
+// const timeDifference = dateObjects[dateObjects.length - 1] - dateObjects[0];
+
+// // Convert the time difference to hours and minutes
+// const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+// const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+// this.totalTime = hours+":"+minutes
+
+
+
+
+
+
+
+      const converttodatetime1 = new Date(this.budgetList[0].schdETD); 
+      const startHour = converttodatetime1.getHours();
+      const startMinute = converttodatetime1.getMinutes();
+      const endHour = this.budgetList[this.budgetList.length - 1].schdETD.getHours();
+      const endMinute = this.budgetList[this.budgetList.length - 1].schdETD.getMinutes();
+  
+      const totalMinutes = endMinute - startMinute;
+      const totalHours = endHour - startHour;
+  
+      const totalTime = new Date();
+      totalTime.setHours(totalHours, totalMinutes);
+      //console.log(totalTime);
+      this.timetaken.push(totalTime);
+      console.log(this.timetaken);
+      this.displayCalculatedTime = this.timetaken[0];
+      return totalTime.toString();
+
+    });
+
+  
+   
+  }
+  
+  
   goToTripSheet(){
     this.route.navigate(['/tripsheet']);
   }
@@ -215,3 +306,7 @@ export class TravelBudgetComponent {
     downloadLink.click();
   }
 }
+function diff(s1: any, string: any, s2: any, string1: any) {
+  throw new Error('Function not implemented.');
+}
+

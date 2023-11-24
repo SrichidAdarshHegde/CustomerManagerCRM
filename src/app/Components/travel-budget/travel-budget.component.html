@@ -42,11 +42,12 @@
       <th>Est. Travel Time</th>
       <th>Est. Time for Job</th>
       <th>Schd ETD</th>
+
       <th>Actual Time</th>
       <!-- <th>Travel ID</th> -->
-      <th></th>      
+      <th></th> 
     </tr>
-    
+       
     <tr>
         <td></td>
         <td><input class="form-control" type="text" id="machineNumber" name="machineNumber"
@@ -61,14 +62,18 @@
             <td><input [(ngModel)]="interDist" type="text" class="form-control" placeholder="Enter"></td>
             <td><input [(ngModel)]="cummDist" type="text" class="form-control" placeholder="Enter"></td>
             <td><input [(ngModel)]="actualODORead" type="text" class="form-control" placeholder="Enter"></td>
-            <td><input [(ngModel)]="travelTime" type="text" class="form-control" placeholder="Enter"></td>
-            <td><input [(ngModel)]="timeForJob" type="text" class="form-control" placeholder="Enter"></td>
-            <td><input [(ngModel)]="schd" type="text" class="form-control" placeholder="Enter"></td>
-            <td><input [(ngModel)]="actualTime" type="text" class="form-control" placeholder="Enter"></td>
+            <td><input [(ngModel)]="travelTime" type="time" class="form-control" placeholder="Enter"></td>
+            <td><input [(ngModel)]="timeForJob" type="time" class="form-control" placeholder="Enter"></td>
+            <td><input [(ngModel)]="schd" type="time" class="form-control" placeholder="Enter"></td>
+            
+            <td><input [(ngModel)]="actualTime" type="time" class="form-control" placeholder="Enter"></td>
+
+           
+            
             <!-- <td><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="TravelId"
               class="form-control" readonly></td> -->
 <td><button class="btn btn-primary" (click)="save()">Save Data</button></td>
-    </tr>
+    </tr> 
     <tr *ngFor="let row of budgetList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
       <td>{{10 * (p-1)+(i+1)}}</td>
       <td>{{row.machineNumber}}</td>
@@ -78,13 +83,27 @@
           <td>{{row.estInterDistance}}</td>
           <td>{{row.estCompanyDistance}}</td>
           <td>{{row.actualODOReading}}</td>
-          <td>{{row.estTravelTime}}</td>
-          <td>{{row.estTimeForJob}}</td>
-          <td>{{row.schdETD}}</td>
-          <td>{{row.actualTime}}</td>
+          <td>{{row.estTravelTime|date: 'HH:mm'}}</td>
+          <td>{{row.estTimeForJob|date: 'HH:mm'}}</td>
+          <td>{{row.schdETD|date: 'HH:mm'}}</td>
+       
+       
+       
+          <td>{{row.actualTime|date: 'HH:mm'}}</td>
           <td>{{10 * (p-1)+(i+1)}}</td>
+
+         
 <td></td>
     </tr>
+    <tr>
+      <td colspan="10" style="text-align: right;"> 
+          <span class="text-center">Total time</span> 
+      </td>
+      <td colspan="4">{{displayCalculatedTime|date:'HH:mm'}}</td>
+  </tr>
+
+<!-- ... (existing HTML code) ... -->
+
     <tr>
       <td colspan="3" rowspan="3"></td>
     
@@ -93,7 +112,7 @@
       
     </tr>
     <tr>
-      <th>Budget CNG reqd</th>
+      <th>Budget CNG read</th>
       <td><input type="text" class="form-control" placeholder="Enter"></td>
       <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" (click)="save()">Save</button></td> -->
     </tr>
@@ -103,6 +122,7 @@
       
     </tr>
 
+    <div id="output"></div>
 </table>
 <!-- <pagination-controls (pageChange)="p = $event" class="custom-pagination" style="float: right"></pagination-controls> -->
 </div></div>
