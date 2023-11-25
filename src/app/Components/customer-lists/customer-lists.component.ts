@@ -44,6 +44,7 @@ export class CustomerListsComponent {
   customerId:any;
   httpService: any;
   deleteResponseMessage:any;
+
 constructor(    
   private regSv : RegistrationService,private route : Router
   ){}
@@ -142,5 +143,21 @@ ngOnInit(): void {
             window.location.reload();
           }
         });
+    
+      }
+
+      
+  editCustomerdetails(data:any){
+    this.editcustomerID=data.customerID;
+    if(this.editcustomerID!=null){
+      this.route.navigate(['/editcustomer',this.editcustomerID]);
+      
+    }
+    else{
+      alert("Something went wrong")
+    }     
+  
       }
 }
+
+
