@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 import * as XLSX from 'xlsx';
-
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { ElementRef, ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -41,7 +41,9 @@ export class CustomerListsComponent {
   editcountry:any;
   contactDetails: any;
   selectedPerticularCustomer: any;
-
+  customerId:any;
+  httpService: any;
+  deleteResponseMessage:any;
 constructor(    
   private regSv : RegistrationService,private route : Router
   ){}
@@ -70,17 +72,7 @@ ngOnInit(): void {
   });
 }
 
-  deleteCustomer(customerID: any) {
-    this.regSv.deleteCustomer(customerID).subscribe((response: any) => {
-      if (response == 'success') {
-        alert('Customer Deleted');
-        window.location.reload();
-      } else {
-        alert('Somthing Went Wrong!!');
-        window.location.reload();
-      }
-    });
-  }
+ 
   addMachine(customerId:any){}
 
   editCustomer(data:any){
@@ -128,5 +120,27 @@ ngOnInit(): void {
         downloadLink.click();
       }
     
-}
+      deleteCustomer(customerID: any) {
+        this.regSv.deleteCustomer(customerID).subscribe((response: any) => {
+          if (response == 'success') {
+            alert('Customer Deleted');
+            window.location.reload();
+          } else {
+            alert('Somthing Went Wrong!!');
+            window.location.reload();
+          }
+        });
+      }
 
+      deleteCustomerdetails(customerID: any) {
+        this.regSv.deleteCustomerdetails(customerID.id).subscribe((response: any) => {
+          if (response == 'success') {
+            alert('Customer details Deleted');
+            window.location.reload();
+          } else {
+            alert('Somthing Went Wrong!!');
+            window.location.reload();
+          }
+        });
+      }
+}
