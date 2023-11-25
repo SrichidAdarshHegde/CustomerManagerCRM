@@ -36,23 +36,23 @@ ngOnInit(): void {
 
 getTravelBudget() {
   this.regSv.GetTravelBudgetbyUser(this.userId).subscribe((response: any) => {
-    this.tripList = this.getUniqueTravelIds(response);
+    this.tripList = response;
     console.log(this.tripList);
   });
 }
 
-getUniqueTravelIds(tripList: any[]): any[] {
-  const uniqueTravelIds = new Set();
-  const uniqueTripList = tripList.filter((trip) => {
-    if (!uniqueTravelIds.has(trip.travelId)) {
-      uniqueTravelIds.add(trip.travelId);
-      return true;
-    }
-    return false;
-  });
+// getUniqueTravelIds(tripList: any[]): any[] {
+//   const uniqueTravelIds = new Set();
+//   const uniqueTripList = tripList.filter((trip) => {
+//     if (!uniqueTravelIds.has(trip.travelId)) {
+//       uniqueTravelIds.add(trip.travelId);
+//       return true;
+//     }
+//     return false;
+//   });
 
-  return uniqueTripList;
-}
+//   return uniqueTripList;
+// }
 
 openTravelBudget(data:any){
   this.editTripId = data.travelId;
