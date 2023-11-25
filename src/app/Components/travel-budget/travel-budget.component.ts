@@ -42,7 +42,7 @@ export class TravelBudgetComponent {
   TripId: any;
   userId: any;
   uniqueTravelID: any;
-  budgetList: any;
+  budgetList: any=[];
   addedTime: any;
   removeColon: any;
   totaltime: any;
