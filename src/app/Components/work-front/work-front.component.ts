@@ -18,6 +18,9 @@ import html2canvas from 'html2canvas';
 export class WorkFrontComponent implements OnInit
  {
   @ViewChild('table', { static: false }) table!: ElementRef;
+  @ViewChild('table1', { static: false }) table1!: ElementRef;
+  @ViewChild('table2', { static: false }) table2!: ElementRef;
+
   userName: any;
   roleId: any;
   IsLoggedIn: any;
@@ -165,8 +168,32 @@ export class WorkFrontComponent implements OnInit
       doc.save('table_data.pdf');
     });
   }
+  exportTableToPDF1(): void {
+    const doc = new jspdf.jsPDF();
+    const table = this.table1.nativeElement;
 
-  
+    html2canvas(table).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      doc.save('table_data.pdf');
+    });
+  }
+  exportTableToPDF2(): void {
+    const doc = new jspdf.jsPDF();
+    const table = this.table2.nativeElement;
+
+    html2canvas(table).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      doc.save('table_data.pdf');
+    });
+  }
   // getWorkfrontrequest() {
   //   this.regSv.getWorkfrontrequest().subscribe((response: any) => {
   //     this.worklist = response;
@@ -205,7 +232,30 @@ export class WorkFrontComponent implements OnInit
     });
     this.saveAsExcelFile(excelBuffer, 'WorkFront' + this.formattedDate);
   }
+  exportTableToExcel1(): void {
+    const element = document.getElementById('tableId1');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
+    const excelBuffer: any = XLSX.write(wb, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    this.saveAsExcelFile(excelBuffer, 'WorkFront' + this.formattedDate);
+  }
+   exportTableToExcel2(): void {
+    const element = document.getElementById('tableId2');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    const excelBuffer: any = XLSX.write(wb, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    this.saveAsExcelFile(excelBuffer, 'WorkFront' + this.formattedDate);
+  }
   private saveAsExcelFile(buffer: any, fileName: string): void {
     const data: Blob = new Blob([buffer], {
       type:

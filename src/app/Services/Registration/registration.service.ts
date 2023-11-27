@@ -156,6 +156,10 @@ export class RegistrationService {
   getPendingrequest(){
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequests')
   }
+  
+  GetPendingRequestsfordashboard(){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequestsfordashboard')
+  }
 
   getWorkfrontrequest(){
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequestsforWorkFront')

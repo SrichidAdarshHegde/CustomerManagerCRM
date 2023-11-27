@@ -24,7 +24,7 @@ export class DashBoardComponent {
     });
   }
   getPendingrequest() {
-    this.regSv.getPendingrequest().subscribe((response: any) => {
+    this.regSv.GetPendingRequestsfordashboard().subscribe((response: any) => {
       this.pendingrequestlist = response;
       this.noofpendingrequest = this.pendingrequestlist.length
       console.log(this.noofpendingrequest);
