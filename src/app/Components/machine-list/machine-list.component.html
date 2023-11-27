@@ -19,32 +19,65 @@
         <table #table id ="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
             <thead>
                 <tr style="border-width:1px; border-color:black;font-size:15px;">
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">SlNo.</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Machine Number</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Model</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Customer</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Created By</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Created On</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Edit</th>
-                    <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Delete</th>
+                    <th style="border: 1px solid black;text-align: center;">SlNo.</th>
+                    <th style="border: 1px solid black;text-align: center;">Machine Number</th>
+                    <th style="border: 1px solid black;text-align: center;">Model</th>
+                    <th style="border: 1px solid black;text-align: center;">Customer Name</th>
+                    <th style="border: 1px solid black;text-align: center;">Unit</th>
+                    <th style="border: 1px solid black;text-align: center;">Address One</th>
+                    <th style="border: 1px solid black;text-align: center;">Address Two</th>
+                    <th style="border: 1px solid black;text-align: center;">Address Three</th>
+                    <th style="border: 1px solid black;text-align: center;">City</th>
+                    <th style="border: 1px solid black;text-align: center;">State</th>
+                    <th style="border: 1px solid black;text-align: center;">Pin</th>
+                    <th style="border: 1px solid black;text-align: center;">GSTIN</th>
+                    <th style="border: 1px solid black;text-align: center;">Clustor</th>
+                    <th style="border: 1px solid black;text-align: center;">Route No</th>
+                    <th style="border: 1px solid black;text-align: center;">Region</th>
+                    <th style="border: 1px solid black;text-align: center;">Zone</th>
+                    <th style="border: 1px solid black;text-align: center;">Created By</th>
+                    <th style="border: 1px solid black;text-align: center;">Created On</th>
+                    <th style="border: 1px solid black;text-align: center;">Edit</th>
+                    <th style="border: 1px solid black;text-align: center;">Delete</th>
 
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let machine of machineList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 * (p-1)+(i+1)}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{machine.machineNumber}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.modelName}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.customerName}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.createdBy}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{machine.createdOn | date}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#myModalUpdate" (click)="EditMachine(machine)">Edit</button>
-                    </td>
-                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                        <button class="btn btn-danger" (click)="deleteMachine(machine)">Delete</button>
-                    </td>
-                </tr>
+                <tr *ngFor="let item of combinedList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                    <td style="border: 1px solid black;">{{10 * (p-1)+(i+1)}}</td>
+                  
+                    <!-- Customer Details -->
+                    <ng-container *ngIf="item.unit">
+                      <td style="border: 1px solid black;">{{item.unit}}</td>
+                      <td style="border: 1px solid black;">{{item.addressOne}}</td>
+                      <td style="border: 1px solid black;">{{item.addressTwo}}</td>
+                      <td style="border: 1px solid black;">{{item.addressThree}}</td>
+                      <td style="border: 1px solid black;">{{item.city}}</td>
+                      <td style="border: 1px solid black;">{{item.state}}</td>
+                      <td style="border: 1px solid black;text-align: right;">{{item.pincode}}</td>
+                      <td style="border: 1px solid black;">{{item.gstin}}</td>
+                      <td style="border: 1px solid black;">{{item.cluster}}</td>
+                      <td style="border: 1px solid black;">{{item.routeNumber}}</td>
+                      <td style="border: 1px solid black;">{{item.region}}</td>
+                      <td style="border: 1px solid black;">{{item.zone}}</td>
+                    </ng-container>
+                  
+                    <!-- Machine Details -->
+                    <ng-container *ngIf="item.machineNumber">
+                      <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{item.machineNumber}}</td>
+                      <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{item.modelName}}</td>
+                      <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{item.customerName}}</td>
+                      <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{item.createdBy}}</td>
+                      <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{item.createdOn | date}}</td>
+                      <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalUpdate" (click)="EditItem(item)">Edit</button>
+                      </td>
+                      <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                        <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+                      </td>
+                    </ng-container>
+                  </tr>
+                  
             </tbody>
         </table>
         <br>
