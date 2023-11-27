@@ -111,7 +111,7 @@ export class CallLogScreenComponent {
   }
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
-      this.tableLength = result.length; // Assuming result is an array or collection
+      this.tableLength = result.length + 1; // Assuming result is an array or collection
       this.MachineNo = this.generateMachineNo(this.tableLength);
     })
   }
