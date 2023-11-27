@@ -182,7 +182,7 @@ export class CallLogScreenComponent {
     })
   }
   onSelectCompany(data: any){
-    this.customerID = data.customerID;
+    this.customerID = data.companyName;
     // this.regSv
     // .getPerticularCustomer(this.customerID)
     //   .subscribe((response: any) => {
