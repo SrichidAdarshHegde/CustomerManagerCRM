@@ -6,6 +6,9 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class RegistrationService {
+  
+
+ 
   constructor(private http: HttpClient, private globalurl: AppGlobals) {}
   //User Registartion
   userRegister(userRegData: any) {
@@ -65,11 +68,35 @@ export class RegistrationService {
   getCustomerDetails(id:any){
     return this.http.get(this.globalurl.weburl + "CustomerRegistration/GetParticularCustomer/"+id);
   }
+
+  //Edit and delete Contact Details
+  deleteContactDeatils(id:any){
+    return this.http.get(
+      this.globalurl.weburl + 'MachineRegistration/DeleteContactDetails/' + id
+    );
+  }
+
+  updateContactDetails(data:any){
+    return this.http.post(
+      this.globalurl.weburl + 'MachineRegistration/UpdateContactDetails',
+      data
+    );
+  }
+
+
   deleteCustomer(customerid: any) {
     return this.http.get(
       this.globalurl.weburl + 'CustomerRegistration/DeleteCustomerData/' + customerid
     );
   }
+
+
+  deleteCustomerdetails(customerid:any){
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/DeleteCustomerdetails/' + customerid); 
+  }
+
+
+
   deleteMachine(data: any) {
     return this.http.post(
       this.globalurl.weburl + 'MachineRegistration/DeleteMachineData/' , data
@@ -227,4 +254,5 @@ export class RegistrationService {
 
   }
 
+  
 }

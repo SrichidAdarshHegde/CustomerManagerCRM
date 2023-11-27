@@ -35,7 +35,7 @@
                 <tr *ngFor="let route of routelist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 * (p-1)+(i+1)}}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{route.routeName}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{route.createdOn}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{route.createdOn | date }}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{route.createdBy}}</td>
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
                         <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalUpdate" (click)="editRoute(route)">Edit</button>

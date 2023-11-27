@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class LocationdetailsComponent {
   customerID: any;
   companyName: any;
   MachineNumber: any;
-  route: any;
+ 
   hotelType: any;
   CutomerName:any;
   besthotels: any;
@@ -46,7 +47,7 @@ export class LocationdetailsComponent {
     private regSv: RegistrationService,
 
     private httpService: HttpClient,
-
+    private route : Router
   ) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
@@ -146,7 +147,7 @@ export class LocationdetailsComponent {
   this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/LocationDetails/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Saved Successfully");
-           window.location.reload();
+              this.route.navigate(['/locationDetailslist'])
             }else{
               alert("Somthing Went Wrong!!")
               window.location.reload()

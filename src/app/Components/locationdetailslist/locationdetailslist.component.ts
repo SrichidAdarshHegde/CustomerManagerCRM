@@ -6,6 +6,7 @@ import { ElementRef, ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,7 +40,11 @@ export class LocationdetailslistComponent {
   clusterList:any;
   masterSv: any;
   clusterlist: any;
-  constructor(private regSv: RegistrationService){
+  customerID: any;
+  clusterID: any;
+  constructor(private regSv: RegistrationService, 
+    private route : Router
+    ){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
@@ -100,15 +105,18 @@ export class LocationdetailslistComponent {
       }
     });
  }
-
+ newEntry(){
+  this.route.navigate(['/locationDetails']);
+}
  
 
   onSelectCompany(data: any){
   
-    this.selectedCustomer = data.customerID;
-    this.regSv.getPerticularCustomerdetails(this.selectedCustomer).subscribe((response: any) => {
+    this.customerID = data.customerID;
+    this.regSv.getPerticularCustomerdetails(this.customerID).subscribe((response: any) => {
        
         this.locationlist = response;
+        // this.selectedCustomer= this.locationlist.customerName;
         console.log(this.locationlist);
         if(this.locationlist.length!=0){
           this.exporting=true;
@@ -124,15 +132,15 @@ export class LocationdetailslistComponent {
   
   onSelectCluster(data:any)
   {
-    this.selectedCluster = data.clusterId;
-    this.regSv.getClusterdetails(this.selectedCluster).subscribe((response:any)=>{
+    this.clusterID = data.clusterId;
+    this.regSv.getClusterdetails(this.clusterID).subscribe((response:any)=>{
       this.locationlist = response;
       console.log(this.locationlist)
       if(this.locationlist.length!=0){
         this.exporting=true;
       }
       else {
-        alert("No Details Found For Selected Customer!!!")
+        alert("No Details Found For Selected Cluster!!!")
       }
 
     });
