@@ -247,13 +247,12 @@
                 </div>
            <br>
             <div *ngIf="EditContact" class="col-md-12 row"><br>
-               
-                <div class="col-md-2"><p>Name: <input class="form-control" type="text" id="contactName" name="contactName" [(ngModel)]="contactName"></p></div>
                 <div class="col-md-2"><p>Salutation: <input class="form-control" type="text" id="salutation" name="salutation" [(ngModel)]="salutation"></p></div>
+                <div class="col-md-2"><p>Name: <input class="form-control" type="text" id="contactName" name="contactName" [(ngModel)]="contactName"></p></div>
                 <div class="col-md-2"><p>Designation: <input class="form-control" type="text" id="designation" name="designation" [(ngModel)]="designation"></p></div>
                 <div class="col-md-3"><p>Email: <input class="form-control" type="text" id="email" name="email" [(ngModel)]="email"></p></div>
                 <div class="col-md-2"><p>Mobile: <input class="form-control" type="text" id="mobile" name="mobile" [(ngModel)]="mobile"></p></div>
-                <div class="col-md-1"><button class="btn btn-primary" (click)="UpdateContactDetails()">Update</button></div>
+                <div class="col-md-1">&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" (click)="UpdateContactDetails()">Update</button></div>
             </div>
         </div>
             <div class="modal-footer">
