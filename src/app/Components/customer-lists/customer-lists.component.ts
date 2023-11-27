@@ -84,6 +84,7 @@ ngOnInit(): void {
     this.regSv.getCustomerContactDetails(this.selectedPerticularCustomer).subscribe((result: any) => {
       this.contactDetails = result;
       console.log(this.contactDetails);
+      this.EditContact = false;
   });
 }
 

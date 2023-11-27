@@ -97,13 +97,13 @@
     </div>
     <div class="col-md-1">
         <div class="flex-column align-items-center">
-            <div class="col-md-12">
-                <table class="table table-bordered table-with-bold-lines">
+            <div class="col-md-12" style="overflow: auto; height: 340px;">
+                <table class="table table-bordered table-with-bold-lines;" >
                     <tr>
                         <td colspan="3">M/c in location</td>
                     </tr>
                     <tr>
-                    <tr *ngFor="let machine of machineList" style="cursor: pointer;" (click)="onRowClick(machine.machineNumber)">
+                    <tr  *ngFor="let machine of machineList" style="cursor: pointer;" (click)="onRowClick(machine.machineNumber)">
 
                         <td class="hover-text">
                             {{ machine.machineNumber }}
