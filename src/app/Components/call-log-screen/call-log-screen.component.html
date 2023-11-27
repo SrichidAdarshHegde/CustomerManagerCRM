@@ -103,7 +103,7 @@
                         <td colspan="3">M/c in location</td>
                     </tr>
                     <tr>
-                    <tr *ngFor="let machine of machineList" (click)="onRowClick(machine.machineNumber)">
+                    <tr *ngFor="let machine of machineList" style="cursor: pointer;" (click)="onRowClick(machine.machineNumber)">
 
                         <td class="hover-text">
                             {{ machine.machineNumber }}
