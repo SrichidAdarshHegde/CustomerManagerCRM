@@ -111,7 +111,7 @@ export class CallLogScreenComponent {
   }
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
-      this.tableLength = result.length; // Assuming result is an array or collection
+      this.tableLength = result.length + 1; // Assuming result is an array or collection
       this.MachineNo = this.generateMachineNo(this.tableLength);
     })
   }
@@ -273,7 +273,7 @@ else {
       frmData.append("Remarks", this.foult);
      
       frmData.append("CreatedBy", this.userName);
-  this.httpService.post('http://localhost:44303/api/RequestAndInteractions/PostSaveRequestForm/',frmData).subscribe((data:any) => {
+  this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/RequestAndInteractions/PostSaveRequestForm/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Request Saved");
               this.route.navigate(['/dashboard'])
