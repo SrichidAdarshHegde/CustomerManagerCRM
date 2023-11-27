@@ -1,4 +1,3 @@
-
 <div>&nbsp;</div>
 <div class="container">
     <h2 class="text-center">Registered Machines List</h2>
@@ -8,21 +7,24 @@
     <div class="col-md-2"></div>
     <div class="col-md-3">
         <label for="companyName">Select Customer Name:</label>
-        <ng-select [items]="customerList" [bindLabel]="'companyName'" name="selectedCustomer" [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
+        <ng-select [items]="customerList" [bindLabel]="'companyName'" name="selectedCustomer"
+            [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
             <ng-option value="" disabled>Select Customer</ng-option>
         </ng-select>
     </div>
-    
+
 </div><br>
 <div class="col-md-12">
     <div class="table-responsive">
-        <table #table id ="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
+        <table #table id="tableId" class="table table-bordered"
+            style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
             <thead>
                 <tr style="border-width:1px; border-color:black;font-size:15px;">
                     <th style="border: 1px solid black;text-align: center;">SlNo.</th>
                     <th style="border: 1px solid black;text-align: center;">Machine Number</th>
                     <th style="border: 1px solid black;text-align: center;">Model</th>
                     <th style="border: 1px solid black;text-align: center;">Customer Name</th>
+
                     <th style="border: 1px solid black;text-align: center;">Unit</th>
                     <th style="border: 1px solid black;text-align: center;">Address One</th>
                     <th style="border: 1px solid black;text-align: center;">Address Two</th>
@@ -40,119 +42,127 @@
                     <th style="border: 1px solid black;text-align: center;">Edit</th>
                     <th style="border: 1px solid black;text-align: center;">Delete</th>
 
+
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of combinedList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                    <td style="border: 1px solid black;">{{10 * (p-1)+(i+1)}}</td>
-                  
-                    <!-- Customer Details -->
-                    <ng-container *ngIf="item.unit">
-                      <td style="border: 1px solid black;">{{item.unit}}</td>
-                      <td style="border: 1px solid black;">{{item.addressOne}}</td>
-                      <td style="border: 1px solid black;">{{item.addressTwo}}</td>
-                      <td style="border: 1px solid black;">{{item.addressThree}}</td>
-                      <td style="border: 1px solid black;">{{item.city}}</td>
-                      <td style="border: 1px solid black;">{{item.state}}</td>
-                      <td style="border: 1px solid black;text-align: right;">{{item.pincode}}</td>
-                      <td style="border: 1px solid black;">{{item.gstin}}</td>
-                      <td style="border: 1px solid black;">{{item.cluster}}</td>
-                      <td style="border: 1px solid black;">{{item.routeNumber}}</td>
-                      <td style="border: 1px solid black;">{{item.region}}</td>
-                      <td style="border: 1px solid black;">{{item.zone}}</td>
-                    </ng-container>
-                  
-                    <!-- Machine Details -->
-                    <ng-container *ngIf="item.machineNumber">
-                      <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{item.machineNumber}}</td>
-                      <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{item.modelName}}</td>
-                      <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{item.customerName}}</td>
-                      <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{item.createdBy}}</td>
-                      <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{item.createdOn | date}}</td>
-                      <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                        <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalUpdate" (click)="EditItem(item)">Edit</button>
-                      </td>
-                      <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                        <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
-                      </td>
-                    </ng-container>
-                  </tr>
-                  
+                <tr
+                    *ngFor="let machine of machineList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 *
+                        (p-1)+(i+1)}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
+                        {{machine.machineNumber}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
+                        {{machine.modelName}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
+                        {{machine.customerName}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+
+
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
+                        {{machine.createdBy}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
+                        {{machine.createdOn | date}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalUpdate"
+                            (click)="EditMachine(machine)">Edit</button>
+                    </td>
+                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                        <button class="btn btn-danger" (click)="deleteMachine(machine)">Delete</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <br>
         <div style="text-align: center;" *ngIf="exporting">
-            <button style="margin: 0 auto;" class="btn btn-info" (click)="exportTableToExcel()">Export to Excel &nbsp;&nbsp;<i class="far fa-file-excel"></i></button>
-            <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF()">Export to PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>    </div>
+            <button style="margin: 0 auto;" class="btn btn-info" (click)="exportTableToExcel()">Export to Excel
+                &nbsp;&nbsp;<i class="far fa-file-excel"></i></button>
+            <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF()">Export to
+                PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
+        </div>
     </div>
     <br /><br />
     <div>&nbsp;</div>
-   
-<pagination-controls (pageChange)="p = $event" class="custom-pagination"   style="float: right"></pagination-controls>
 
-<br><br><br><br><br>
-    
+    <pagination-controls (pageChange)="p = $event" class="custom-pagination" style="float: right"></pagination-controls>
+
+    <br><br><br><br><br>
+
 </div>
 
 <div class="container">
-   
+
     <!-- Modal -->
     <div class="modal fade" id="myModalUpdate" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-           
-            <h4 class="modal-title custom-title" >Edit Machine Details</h4>
-          </div>
-          <div class="modal-body">
-            <div class="col-md-12 row">
-                <div class="form-horizontal container">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title custom-title">Edit Machine Details</h4>
+                </div>
+                <div class="modal-body">
                     <div class="col-md-12 row">
-                        <label class="col-md-4" style="color:black;padding-top: 13px">Machine Number:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="viewmachinenumber" name="viewmachinenumber"
-                                [(ngModel)]="viewmachinenumber" />
+                        <div class="form-horizontal container">
+                            <div class="col-md-12 row">
+                                <label class="col-md-4" style="color:black;padding-top: 13px">Machine Number:</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="viewmachinenumber"
+                                        name="viewmachinenumber" [(ngModel)]="viewmachinenumber" />
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="col-md-12 row">
+                                <label class="col-md-4" style="color:black;padding-top: 13px">Model :</label>
+                                <div class="col-md-8">
+                                    <label for="companyName">Select Model:</label>
+                                    <select (change)="onSelectModel($event)" class="form-control">
+                                        <option value="">Select Model</option>
+                                        <option *ngFor="let model of modellist" value={{model.modelId}}
+                                            [selected]="model.modelId === viewmodel">
+                                            {{model.modelName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div><br />
+
+                            <div class="col-md-12 row">
+                                <label class="col-md-4" style="color:black;padding-top: 13px">Customer :</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="viewcustomer" name="viewcustomer"
+                                        [(ngModel)]="viewcustomer" />
+                                </div>
+                            </div><br />
+
+
+
+
                         </div>
                     </div>
-                    <br />
-    
-                    <div class="col-md-12 row">
-                        <label class="col-md-4" style="color:black;padding-top: 13px">Model :</label>
-                        <div class="col-md-8">
-                            <label for="companyName">Select Model:</label>
-                            <select (change)="onSelectModel($event)" class="form-control">
-                                <option value="">Select Model</option>
-                                <option *ngFor="let model of modellist" value={{model.modelId}} [selected]="model.modelId === viewmodel">
-                                  {{model.modelName}}
-                                </option>
-                            </select>
-                        </div>
-                    </div><br />
-    
-                    <div class="col-md-12 row">
-                        <label class="col-md-4" style="color:black;padding-top: 13px">Customer :</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="viewcustomer"
-                                name="viewcustomer" [(ngModel)]="viewcustomer"  />
-                        </div>
-                    </div><br />
-                    
-                   
-                   
-    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                        style="background-color: rgb(141, 132, 7);color: white;">Close</button>
+
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        style="background-color: rgb(27, 9, 129);" (click)="UpdateMachine()">Update Machine</button>
                 </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: rgb(141, 132, 7);color: white;">Close</button>
 
-            <button type="button" class="btn btn-success" data-dismiss="modal" style="background-color: rgb(27, 9, 129);"  (click)="UpdateMachine()">Update Machine</button>
-          </div>
         </div>
-        
-      </div>
     </div>
-    
-  </div>
+
+</div>
