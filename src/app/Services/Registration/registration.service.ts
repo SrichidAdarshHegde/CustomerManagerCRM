@@ -65,6 +65,22 @@ export class RegistrationService {
   getCustomerDetails(id:any){
     return this.http.get(this.globalurl.weburl + "CustomerRegistration/GetParticularCustomer/"+id);
   }
+
+  //Edit and delete Contact Details
+  deleteContactDeatils(id:any){
+    return this.http.get(
+      this.globalurl.weburl + 'MachineRegistration/DeleteContactDetails/' + id
+    );
+  }
+
+  updateContactDetails(data:any){
+    return this.http.post(
+      this.globalurl.weburl + 'MachineRegistration/UpdateContactDetails',
+      data
+    );
+  }
+
+
   deleteCustomer(customerid: any) {
     return this.http.get(
       this.globalurl.weburl + 'CustomerRegistration/DeleteCustomerData/' + customerid

@@ -41,10 +41,27 @@ export class CustomerListsComponent {
   editcountry:any;
   contactDetails: any;
   selectedPerticularCustomer: any;
+contactName: any;
+salute: any;
+designation: any;
+email: any;
+mobile: any;
+EditContact: boolean = false;
+  salutation: any;
+  contactId: any;
+  userName: any;
+  roleId: any;
+  IsLoggedIn: any;
 
 constructor(    
   private regSv : RegistrationService,private route : Router
-  ){}
+  ){
+    if (localStorage.getItem('IsLoggedIn') == 'true'){
+      this.userName = localStorage.getItem('UserName');
+      this.roleId = localStorage.getItem('Role');
+      this.IsLoggedIn = true;
+    }
+  }
 
 ngOnInit(): void {
   this.getCustomer();
@@ -127,6 +144,47 @@ ngOnInit(): void {
         downloadLink.download = fileName + '.xlsx';
         downloadLink.click();
       }
+  editContactDetails(data: any) {
+    this.contactId = data.id;
+    this.contactName = data.contactName;
+    this.salutation = data.salute;
+    this.designation = data.designation;
+    this.email = data.email;
+    this.mobile = data.mobile;
+    this.EditContact = true;
+  }
+  UpdateContactDetails(){
+    var contactDetails = {
+      Id:this.contactId,
+      ContactName : this.contactName,
+      Salute : this.salutation,
+      Designation : this.designation,
+      Email : this.email,
+      Mobile : this.mobile,
+      CreatedBy : this.userName
+    }
+    this.regSv.updateContactDetails(contactDetails).subscribe((response:any)=>{
+      if(response == "success"){
+        alert("Contact Updated")
+        window.location.reload()
+      }else{
+        alert("Somthing Went Wrong!!")
+        window.location.reload()
+      }
+    })
+  }
+
+      deleteContactDeatils(id:any){
+        this.regSv.deleteContactDeatils(id).subscribe((response:any)=>{
+          if(response == "success"){
+            alert("Contact Deleted")
+            window.location.reload()
+          }else{
+            alert("Somthing Went Wrong!!")
+            window.location.reload()
+          }
+        })
+          }
     
 }
 
