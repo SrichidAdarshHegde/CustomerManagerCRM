@@ -61,6 +61,10 @@ export class WorkFrontComponent implements OnInit
   attendtypelist: any;
   usersList: any;
   workpriority45: any[] = [];
+  tokenID: any;
+  tableLength: any;
+  generateMachineNo: any;
+  MachineNo: any;
 
 
   constructor(
@@ -80,6 +84,7 @@ export class WorkFrontComponent implements OnInit
     this.getrequest();
     this.getAttendType();
     this.getUsers();
+   
     const date = new Date();
     this.currentDate = new Date();
     const formattedDate = this.datePipe.transform(
@@ -285,6 +290,9 @@ export class WorkFrontComponent implements OnInit
       console.log(this.attendtypelist)
     })
   }
+
+  
+
   getUsers() {
     this.regSv.getUsers().subscribe((response: any) => {
       this.usersList = response;
@@ -309,6 +317,7 @@ export class WorkFrontComponent implements OnInit
   Done(abd:any){
     this.isClicked = true
     this.companyName = abd.companyName
+this.tokenID=abd.tokenID
     this.customerID = abd.customerID
     this.isDone = abd.isDone
     this.machineNumber = abd.machineNumber
@@ -325,7 +334,7 @@ export class WorkFrontComponent implements OnInit
     var interactionData = {
       CutomerId : this.customerID,
       CutomerName : this.companyName,
-  
+      tokenID: this.tokenID,
       //MachineId : this.ma
       MachineNumber : this.machineNumber,
       ModelId : this.modelId,
