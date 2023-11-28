@@ -10,10 +10,12 @@ export class SearchPipe implements PipeTransform {
 
     searchText = searchText.toLowerCase();
 
-    return items.filter(item => {
-      // Adjust the property based on your data structure
-      return item.companyName.toLowerCase().includes(searchText);
-    });
+    return items.filter(item => 
+     (item.companyName && item.companyName.toLowerCase().includes(searchText)) ||
+       (item.customerName && item.customerName.toLowerCase().includes(searchText)) 
+      
+    );
   }
+  
 
 }

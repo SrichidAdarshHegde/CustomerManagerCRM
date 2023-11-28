@@ -142,6 +142,9 @@ export class RegistrationService {
   getPerticularMachine(id:any){
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetPerticularMachines/'+id)
   }
+  GetMachineCustomerDetails(){
+    return this.http.get(this.globalurl.weburl+'MachineRegistration/GetMachineCustomerDetails')
+  }
   getCustomerFollowup(id:any){
     return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomer/'+id)
   }
