@@ -198,22 +198,9 @@ ngOnInit(): void {
             alert('Somthing Went Wrong!!');
             window.location.reload();
           }
-        });
-    
+        });    
       }
 
-      
-  editCustomerdetails(data:any){
-    this.editcustomerID=data.customerID;
-    if(this.editcustomerID!=null){
-      this.route.navigate(['/editcustomer',this.editcustomerID]);
-      
-    }
-    else{
-      alert("Something went wrong")
-    }     
-  
-      }
 }
 
 
