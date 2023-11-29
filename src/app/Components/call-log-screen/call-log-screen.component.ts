@@ -96,19 +96,33 @@ export class CallLogScreenComponent {
   //  });
   // }
 
-  getRequests() {
-    this.masterSv.getRequests().subscribe((response: any) => {
-      const mappedRequests: { label: string; value: any }[] = response.map((requests: any) => ({
-        label: requests.requestsName,
-        value: requests.requestsId,
-      }));
-      this.requestslist = mappedRequests.sort((a: { label: string }, b: { label: string }) =>
-        a.label.localeCompare(b.label)
-      );
+  // getRequests() {
+  //   this.masterSv.getRequests().subscribe((response: any) => {
+  //     console.log(response);
+  //     const mappedRequests: { label: string; value: any }[] = response.map((requests: any) => ({
+  //       label: requests.requestsName,
+  //       value: requests.requestsId,
+  //     }));
+  //     this.requestslist = mappedRequests.sort((a: { label: string }, b: { label: string }) =>
+  //       a.label.localeCompare(b.label)
+  //     );
   
-      console.log(this.requestslist);
-    });
-  }
+  //     console.log(this.requestslist);
+  //   });
+  // }
+
+  getRequests() {
+  this.masterSv.getRequests().subscribe((response: any) => {
+    const combinedList = response;
+
+    const teleSupportList = combinedList.filter((item: any) => item.priority.startsWith('T'));
+    const fieldVisitList = combinedList.filter((item: any) => item.priority.startsWith('F'));
+
+    console.log('teleSupportList : ', teleSupportList);
+    console.log('fieldVisitList : ', fieldVisitList);
+  });
+}
+
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
       this.tableLength = result.length + 1; // Assuming result is an array or collection
@@ -247,9 +261,10 @@ export class CallLogScreenComponent {
   }
 
   saveRequest(){
-if(this.selectedMachine == null || this.selectedMachine == ""){
-  alert('Machine Number is required');
-}else if(this.selectedrequest == null || this.selectedrequest == ""){
+// if(this.selectedMachine == null || this.selectedMachine == ""){
+//   alert('Machine Number is required');
+// }else 
+if(this.selectedrequest == null || this.selectedrequest == ""){
   alert('Please select request type');
  }
  //else if(this.selectedsands == null || this.selectedsands == ""){
