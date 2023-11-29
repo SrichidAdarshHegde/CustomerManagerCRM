@@ -220,14 +220,17 @@
                         <tr>
 
                             <td>
-                                <label for="unit">Request For:</label>
-                                <ng-select [items]="requestslist" name="requests" [(ngModel)]="selectedrequest"
+                                <label for="unit">Tele Support:</label>
+                                <ng-select [items]="teleSupportList" name="requestsName" [(ngModel)]="selectedTeleSupport"
                                     [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
                                 </ng-select>
 
                             </td>
                             <td>
-                                
+                                <label for="unit">Field Visit</label>
+                                <ng-select [items]="fieldVisitList" name="requestsName" [(ngModel)]="selectedFieldVisit"
+                                    [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
+                                </ng-select>
                             </td>
 
                         </tr>

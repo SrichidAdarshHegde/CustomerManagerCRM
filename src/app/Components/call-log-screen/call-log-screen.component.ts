@@ -64,6 +64,10 @@ export class CallLogScreenComponent {
   invoicePerticular: any;
   machineList: any;
   perticularMachineData: any;
+teleSupportList: any=[];
+fieldVisitList: any=[];
+selectedTeleSupport: any;
+selectedFieldVisit: any;
  
   constructor(private regSv: RegistrationService ,
      private masterSv: MasterService , private httpService: HttpClient,
@@ -115,11 +119,11 @@ export class CallLogScreenComponent {
   this.masterSv.getRequests().subscribe((response: any) => {
     const combinedList = response;
 
-    const teleSupportList = combinedList.filter((item: any) => item.priority.startsWith('T'));
-    const fieldVisitList = combinedList.filter((item: any) => item.priority.startsWith('F'));
+    this.teleSupportList = combinedList.filter((item: any) => item.priority.startsWith('T'));
+    this.fieldVisitList = combinedList.filter((item: any) => item.priority.startsWith('F'));
 
-    console.log('teleSupportList : ', teleSupportList);
-    console.log('fieldVisitList : ', fieldVisitList);
+    console.log('teleSupportList : ', this.teleSupportList);
+    console.log('fieldVisitList : ', this.fieldVisitList);
   });
 }
 
