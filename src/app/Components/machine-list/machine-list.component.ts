@@ -37,7 +37,7 @@ searchText: any;
 
   }
   ngOnInit(): void {
-    this.getAllMachine();
+    // this.getAllMachine();
     this.getCustomer();
     this.getModel();
     this.getMachineCustomerDetails();
@@ -54,15 +54,15 @@ searchText: any;
       console.log(this.modellist);
     });
   }
-  getAllMachine() {
-    this.regSv.GetAllMachines().subscribe((response: any) => {
-      this.machineList = response;
-      console.log(this.machineList);
-      if (this.machineList.length != 0) {
-        this.exporting = true;
-      }
-    });
-  }
+  // getAllMachine() {
+  //   this.regSv.GetAllMachines().subscribe((response: any) => {
+  //     this.machineList = response;
+  //     console.log(this.machineList);
+  //     if (this.machineList.length != 0) {
+  //       this.exporting = true;
+  //     }
+  //   });
+  // }
 
   getMachineCustomerDetails(){
     this.regSv.GetMachineCustomerDetails().subscribe((response: any) => {
@@ -82,7 +82,7 @@ searchText: any;
     this.regSv
       .getPerticularMachine(this.customerID)
       .subscribe((response: any) => {
-        this.machineList = response
+        this.machineCustomerList = response
       });
   }
 

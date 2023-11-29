@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'search'
+  name: 'search',
+  pure: false,
 })
 export class SearchPipe implements PipeTransform {
   transform(items: any[], searchText: string): any[] {
@@ -12,7 +13,7 @@ export class SearchPipe implements PipeTransform {
 
     return items.filter(item => 
      (item.companyName && item.companyName.toLowerCase().includes(searchText)) ||
-       (item.customerName && item.customerName.toLowerCase().includes(searchText)) 
+       (item.machineNumber && item.machineNumber.toString().toLowerCase().includes(searchText)) 
       
     );
   }
