@@ -32,7 +32,7 @@ export class MachineListComponent implements OnInit {
   contactDetails: any;
   CustomerId: any;
   machineCustomerList: any;
-searchText: any;
+  searchText: any;
   constructor(private regSv: RegistrationService, private masterSv: MasterService,) {
 
   }
@@ -64,17 +64,17 @@ searchText: any;
   //   });
   // }
 
-  getMachineCustomerDetails(){
+  getMachineCustomerDetails() {
     this.regSv.GetMachineCustomerDetails().subscribe((response: any) => {
       this.machineCustomerList = response;
       console.log(this.machineCustomerList);
-      if(this.machineCustomerList.length!=0){
-        this.exporting=true;
+      if (this.machineCustomerList.length != 0) {
+        this.exporting = true;
       }
     });
   }
 
- 
+
 
 
   onSelectCompany(data: any) {
