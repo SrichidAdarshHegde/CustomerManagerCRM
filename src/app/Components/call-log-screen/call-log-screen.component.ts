@@ -68,6 +68,11 @@ teleSupportList: any=[];
 fieldVisitList: any=[];
 selectedTeleSupport: any;
 selectedFieldVisit: any;
+  combinedList: any;
+  teleSupportRequests: any;
+  teleSupportrequestslist: any = [];
+  fieldVisitRequests: any;
+  fieldVisitRequestslist: any = [];
  
   constructor(private regSv: RegistrationService ,
      private masterSv: MasterService , private httpService: HttpClient,
@@ -117,13 +122,27 @@ selectedFieldVisit: any;
 
   getRequests() {
   this.masterSv.getRequests().subscribe((response: any) => {
-    const combinedList = response;
+    this.combinedList = response;
 
-    this.teleSupportList = combinedList.filter((item: any) => item.priority.startsWith('T'));
-    this.fieldVisitList = combinedList.filter((item: any) => item.priority.startsWith('F'));
-
-    console.log('teleSupportList : ', this.teleSupportList);
-    console.log('fieldVisitList : ', this.fieldVisitList);
+    this.teleSupportRequests = this.combinedList.filter((item: any) => item.priority.startsWith('T'));
+    const mappedTeleSupportRequests: { label: string; value: any }[] = this.teleSupportRequests.map((requests: any) => ({
+      label: requests.requestsName,
+      value: requests.requestsId,
+    }));
+    this.teleSupportrequestslist = mappedTeleSupportRequests.sort((a: { label: string }, b: { label: string }) =>
+        a.label.localeCompare(b.label)
+      );
+      //fieldVisit Requests Lists
+    this.fieldVisitRequests = this.combinedList.filter((item: any) => item.priority.startsWith('F'));
+    const mappedFieldRequests: { label: string; value: any }[] = this.fieldVisitRequests.map((requests: any) => ({
+      label: requests.requestsName,
+      value: requests.requestsId,
+    }));
+    this.fieldVisitRequestslist = mappedFieldRequests.sort((a: { label: string }, b: { label: string }) =>
+        a.label.localeCompare(b.label)
+      );
+    console.log(this.teleSupportrequestslist);
+    console.log(this.fieldVisitRequestslist);
   });
 }
 

@@ -221,14 +221,14 @@
 
                             <td>
                                 <label for="unit">Tele Support:</label>
-                                <ng-select [items]="teleSupportList" name="requestsName" [(ngModel)]="selectedTeleSupport"
+                                <ng-select [items]="teleSupportrequestslist" name="requestsName" [(ngModel)]="selectedrequest"
                                     [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
                                 </ng-select>
 
                             </td>
                             <td>
-                                <label for="unit">Field Visit</label>
-                                <ng-select [items]="fieldVisitList" name="requestsName" [(ngModel)]="selectedFieldVisit"
+                                <label for="unit">Field Visit:</label>
+                                <ng-select [items]="fieldVisitRequestslist" name="requestsName" [(ngModel)]="selectedrequest"
                                     [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
                                 </ng-select>
                             </td>
