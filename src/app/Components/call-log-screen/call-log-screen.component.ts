@@ -73,7 +73,8 @@ export class CallLogScreenComponent {
   teleSupportrequestslist: any = [];
   fieldVisitRequests: any;
   fieldVisitRequestslist: any = [];
-  selectedrequestone: any;
+  selectedrequestt: any;
+  selectedrequestf: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -333,8 +334,14 @@ export class CallLogScreenComponent {
     }
   }
   onSelectRequest() {
+    if(this.selectedrequestt != null){
+      this.selectedrequest = this.selectedrequestt;
+    }else{
+      this.selectedrequest = this.selectedrequestf;
+    }
     console.log(this.selectedrequest);
-  } onSelectsands() {
+  } 
+  onSelectsands() {
     console.log(this.selectedsands);
   }
 
