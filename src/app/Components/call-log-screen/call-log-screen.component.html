@@ -98,12 +98,13 @@
     <div class="col-md-1">
         <div class="flex-column align-items-center">
             <div class="col-md-12" style="overflow: auto; height: 340px;">
-                <table class="table table-bordered table-with-bold-lines;" >
+                <table class="table table-bordered table-with-bold-lines;">
                     <tr>
                         <td colspan="3">M/c in location</td>
                     </tr>
                     <tr>
-                    <tr  *ngFor="let machine of machineList" style="cursor: pointer;" (click)="onRowClick(machine.machineNumber)">
+                    <tr *ngFor="let machine of machineList" style="cursor: pointer;"
+                        (click)="onRowClick(machine.machineNumber)">
 
                         <td class="hover-text">
                             {{ machine.machineNumber }}
@@ -210,7 +211,7 @@
     <div class="col-md-10">
         <div class="flex-column align-items-center">
             <div class="col-md-12 row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <br><br>
                     <table class="table table-bordered table-with-bold-lines">
                         <tr>
@@ -221,15 +222,17 @@
 
                             <td>
                                 <label for="unit">Tele Support:</label>
-                                <ng-select [items]="teleSupportrequestslist" name="requestsName" [(ngModel)]="selectedrequest"
-                                    [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
+                                <ng-select [items]="teleSupportrequestslist" name="requestsName"
+                                    [(ngModel)]="selectedrequest" [multiple]="true" placeholder="Select Options"
+                                    (change)="onSelectRequest()">
                                 </ng-select>
 
                             </td>
                             <td>
                                 <label for="unit">Field Visit:</label>
-                                <ng-select [items]="fieldVisitRequestslist" name="requestsName" [(ngModel)]="selectedrequest"
-                                    [multiple]="true" placeholder="Select Options" (change)="onSelectRequest()">
+                                <ng-select [items]="fieldVisitRequestslist" name="requestsName"
+                                    [(ngModel)]="selectedrequest" [multiple]="true" placeholder="Select Options"
+                                    (change)="onSelectRequest()">
                                 </ng-select>
                             </td>
 
@@ -241,7 +244,7 @@
                     <textarea [(ngModel)]="foult" class="form-control table-with-bold-lines" name="text" rows="6"
                         cols="100"></textarea>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h4>Resolution</h4>
                     <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100" rows="6"></textarea>
 
