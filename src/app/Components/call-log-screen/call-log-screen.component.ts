@@ -222,44 +222,7 @@ export class CallLogScreenComponent {
     })
   }
   onSelectCompany(data: any) {
-    this.customerID = data.companyName;
-    // this.regSv
-    // .getPerticularCustomer(this.customerID)
-    //   .subscribe((response: any) => {
-    //     if (response!= null) {
-    //       this.perticularCustomerData = response;
-    //       this.companyName = this.perticularCustomerData[0].companyName;
-    //       this.custID=this.perticularCustomerData[0].customerId;
-    //       this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
-    //       console.log(this.perticularCustomerData[0].customerId);  
-    //       this.GetMachineInLocation();
-
-    //       this.unit = this.perticularCustomerData[0].unit;
-    //       this.addressOne = this.perticularCustomerData[0].addressOne;
-
-    //       this.addressThree = this.perticularCustomerData[0].addressThree;
-    //       this.city = this.perticularCustomerData[0].city;
-    //       this.pincode = this.perticularCustomerData[0].pincode;
-    //       this.state = this.perticularCustomerData[0].state;
-    //       this.country = this.perticularCustomerData[0].country;
-    //       this.gstin = this.perticularCustomerData[0].gstin;
-    //       this.cluster = this.perticularCustomerData[0].cluster;
-    //       this.routeNo = this.perticularCustomerData[0].routeNumber;
-    //       this.region = this.perticularCustomerData[0].region;
-    //       this.zone = this.perticularCustomerData[0].zone;
-    //       this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
-    //       this.workingStart = this.perticularCustomerData[0].workingStart;
-    //       this.workingEnd = this.perticularCustomerData[0].workingEnd;
-    //       this.warrantyFrom = this.perticularCustomerData[0].warrantyFrom;
-    //       this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
-    //       this.features = this.perticularCustomerData[0].features;
-    //       this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
-    //       this.securityFormalities =
-    //         this.perticularCustomerData[0].securityFormalities;
-    //     } else {
-    //       alert("No Requests Found For Selected Customer!!!")
-    //     }
-    //   });
+    this.customerID = data.companyName;  
     this.regSv.getMachineInLocation(this.customerID)
       .subscribe((response: any) => {
         if (response == null) {
@@ -280,6 +243,67 @@ export class CallLogScreenComponent {
           }
         }
       });
+      if(this.perticularMachineData == null || this.perticularMachineData == ""){
+        this.regSv
+        .getPerticularCustomer(this.customerID)
+          .subscribe((response: any) => {
+            if (response!= null) {
+              this.perticularCustomerData = response;
+              this.companyName = this.perticularCustomerData[0].companyName;
+              this.custID=this.perticularCustomerData[0].customerID;
+              // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
+              // console.log(this.perticularCustomerData[0].customerId);  
+              console.log(this.perticularCustomerData[0].customerID);
+              console.log(this.perticularCustomerData);
+              this.unit = this.perticularCustomerData[0].unit;
+              this.addressOne = this.perticularCustomerData[0].addressOne;
+    
+              this.addressThree = this.perticularCustomerData[0].addressThree;
+              this.city = this.perticularCustomerData[0].city;
+              this.pincode = this.perticularCustomerData[0].pincode;
+              this.state = this.perticularCustomerData[0].state;
+              this.country = this.perticularCustomerData[0].country;
+              this.gstin = this.perticularCustomerData[0].gstin;
+              this.cluster = this.perticularCustomerData[0].cluster;
+              this.routeNo = this.perticularCustomerData[0].routeNumber;
+              this.region = this.perticularCustomerData[0].region;
+              this.zone = this.perticularCustomerData[0].zone;
+              this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
+              this.workingStart = this.perticularCustomerData[0].workingStart;
+              this.workingEnd = this.perticularCustomerData[0].workingEnd;
+              this.warrantyFrom = this.perticularCustomerData[0].warrantyFrom;
+              this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
+              this.features = this.perticularCustomerData[0].features;
+              this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
+              this.securityFormalities =
+                this.perticularCustomerData[0].securityFormalities;
+            } else {
+              alert("Something went wrong!!!")
+            }
+          });
+      }else{
+        this.regSv.getMachineInLocation(this.customerID)
+        .subscribe((response: any) => {
+          if (response == null) {
+            alert("No Machine Found!!!");
+          } else {
+            this.perticularMachineData = response;
+            console.log(this.perticularMachineData);
+  
+            // Clear existing machineList and then populate with new data
+            this.machineList = [];
+  
+            // Loop through the machines and populate the machineList
+            for (const machine of this.perticularMachineData) {
+              this.machineList.push({
+                machineNumber: machine.machineNumber,
+                machineInLocation: machine.machineInLocation
+              });
+            }
+          }
+        });
+      }
+
   }
 
   GetMachineInLocation() {
@@ -312,7 +336,7 @@ export class CallLogScreenComponent {
       frmData.append("SandS", JSON.stringify(this.selectedsands));
 
       frmData.append("Remarks", this.foult);
-
+      frmData.append("Resolution", this.Resolution);
       frmData.append("CreatedBy", this.userName);
       this.httpService.post('http://localhost:44303/api/RequestAndInteractions/PostSaveRequestForm/', frmData).subscribe((data: any) => {
         if (data == "success") {
