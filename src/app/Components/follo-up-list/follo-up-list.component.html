@@ -14,13 +14,31 @@
             </option>
         </select>
     </div> -->
-    <div class="col-md-4">
+   <div class="col-md-12 row">
+    <!-- First row -->
+    <div class="col-md-3">
         <label for="companyName">Select Customer Name:</label>
         <ng-select [items]="customerList" [bindLabel]="'companyName'" name="customerName" [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
             <ng-option value="" disabled>Select Customer</ng-option>
-        </ng-select>
+        </ng-select><br>
     </div>
     <div class="col-md-4"></div>
+
+    <!-- Second row -->
+    <div class="col-md-1">
+        From Date :
+        <input type="date" [(ngModel)]="fromDate" class="form-control" />
+    </div>
+    <div class="col-md-1">
+        To Date :
+        <input type="date" [(ngModel)]="toDate" class="form-control" />
+    </div>
+    <div class="col-md-1">
+        <br />
+        <button class="btn btn-primary form-control" (click)="GetDatewiserequestfollowup()">
+            <span class="glyphicon glyphicon-share-alt">&nbsp;</span>OK
+        </button>
+    </div>
 </div><br>
 
 <div class="container">
@@ -69,6 +87,9 @@
 
                     <th style="border-width:1px; border-color:rgb(248, 244, 244);color:  rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
                         Make FollowUp </th>
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color:  rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
+                          FollowUp date</th>
+    
 
                 </tr>
             </thead>
@@ -87,6 +108,7 @@
 
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:14px;">
                         {{abd.dueAmount}}</td>
+                        
                     <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
                         {{abd.isPaid}}</td> -->
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
@@ -94,7 +116,8 @@
                         <button *ngIf="!abd.isPaid" class="btn btn-danger">Pending</button></td>
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
                         <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup" (click)="MakeFollowUp(abd)">Make Follow-Up</button></td>
-
+                        <td style="border-width:1px; border-color:black;text-align: right;font-size:14px;">
+                            {{abd.createdOn |date}}</td> 
                 </tr>
             </tbody>
         </table>

@@ -6,6 +6,10 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class RegistrationService {
+  getDatewiserequestfollowup: any;
+  GetDatewiserequestinvoice: any;
+ 
+  
   
 
  
@@ -24,6 +28,8 @@ export class RegistrationService {
       userRegData
     );
   }
+
+
   getUsers() {
     return this.http.get(this.globalurl.weburl + 'Registration/GetAllUsers');
   }
@@ -253,6 +259,19 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/Getparticularcustomerdetails/'+data); 
 
   }
-
-  
+  getDatewiserequest(id:any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequest/'+id)
+    
+  }
+  getDatewiserequestinvoice(id:any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestinvoice/'+id)
+    
+  }
+  getDatewiserequestInteraction(id:any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestInetraction/'+id)
+    
+}
+getDatewiserequestfollowupDate(id:any){
+  return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestfollowupDate/'+id)
+}
 }

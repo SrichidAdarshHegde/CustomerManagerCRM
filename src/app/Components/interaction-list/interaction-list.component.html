@@ -1,6 +1,25 @@
 <div>
     &nbsp;</div>
 <h2 *ngIf="!compInteractions" style="text-align: center;">Pending List For Interactions</h2>
+
+
+<div class="col-md-12 row">
+    <div class="col-md-1">
+        From Date :
+        <input type="date" [(ngModel)]="fromDate" class="form-control" />
+    </div>
+    <div class="col-md-1">
+        To Date :
+        <input type="date" [(ngModel)]="toDate" class="form-control" />
+    </div>
+    <div class="col-md-1">
+        <br />
+        <button class="btn btn-primary form-control" (click)="getDatewiserequestInteraction()">
+            <span class="glyphicon glyphicon-share-alt">&nbsp;</span>OK
+        </button>
+    </div>
+</div>
+
 <div class="col-md-12 row">
     <div class="col-md-10 row">
     </div>
