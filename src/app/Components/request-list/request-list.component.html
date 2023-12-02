@@ -1,31 +1,45 @@
 
+
+
 <div>&nbsp;</div>
 <h2 style="text-align: center;">Request List</h2>
 <div>&nbsp;</div>
 
-
 <div class="col-md-12 row">
+    <div class="col-md-1">
+        From Date :
+        <input type="date" [(ngModel)]="fromDate" class="form-control" />
+    </div>
+    <div class="col-md-1">
+        To Date :
+        <input type="date" [(ngModel)]="toDate" class="form-control" />
+    </div>
+    <div class="col-md-1">
+        <br />
+        <button class="btn btn-primary form-control" (click)="GetDatewiserequest()">
+            <span class="glyphicon glyphicon-share-alt">&nbsp;</span>OK
+        </button>
+    </div>
+
     <div class="col-md-2"></div>
-    <div class="col-md-4">
+
+    <div class="col-md-2">
         <label for="unit">Machine Number:</label>
         <input class="form-control" type="text" id="machineNumber" name="machineNumber" (change)="onChangeMachineNumber()" [(ngModel)]="machineNumber" required>
     </div>
+
     <div class="col-md-2"></div>
-    <!-- <div class="col-md-4">
-        <label for="companyName">Select Company Name:</label>
-        <select (change)="onSelectCompany($event)" class="form-control">
-            <option value="">Select Customer</option>
-            <option *ngFor="let customer of customerList" value={{customer.customerID}} >
-              {{customer.companyName}}
-            </option>
-        </select>
-    </div> -->
-    <div class="col-md-4">
+
+    <div class="col-md-2">
         <label for="companyName">Select Customer Name:</label>
         <ng-select [items]="customerList" [bindLabel]="'companyName'" [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
             <ng-option value="" disabled>Select Customer</ng-option>
         </ng-select>
     </div>
+
+
+
+
 </div><br>
 <div *ngIf="allrequest" class="col-md-12 row">
     <div class="col-md-1"></div>
@@ -36,7 +50,7 @@
                 <thead>
 
                     <tr style="border-width:1px; border-color:black;font-size:15px;">
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">SlNo.</th>
+                        <th style="border-width:1px; border-color:rgb(253, 253, 253);color: antiquewhite;background-color: black;text-align: center;">SlNo.</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">Customer Name</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">Machine Number</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">Model</th>
