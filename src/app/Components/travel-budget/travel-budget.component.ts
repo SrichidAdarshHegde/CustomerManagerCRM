@@ -55,14 +55,27 @@ export class TravelBudgetComponent {
   timeForJob: any;
   estTravelTime: any;
   estTimeForJob: any;
-
- 
   disableEstTimeForJob = false;
   disableEstTravelTime = false;
   inputClicked= false;
   showestTravelTimeInputs: boolean = true;
   showestTimeInputs: boolean = true;
-
+  rupees: any;
+  person: any;
+  estInterDistance:number = 0;
+  estCompanyDistance:number = 0;
+  additionResult:number = 0;
+  travel: number = 0;
+  cngread: number = 0;
+  totalAmount: number = 0;
+  budgetListdist: any=[];
+  onEstInterDistanceChange:any;
+  item:any;
+ 
+  totalEstInterDistance: number = 0;
+  totalEstCompanyDistance: number = 0;
+  lastEstCompanyDistance: number = 0;
+  totalDistance: any;
   
   constructor(private regSv: RegistrationService, private router: ActivatedRoute, private route: Router) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
@@ -84,10 +97,26 @@ export class TravelBudgetComponent {
   ngOnInit(): void {
     this.getCustomer();
     this.getTravelId();
-    this.getTravelBudgetbyTravelId();
+    this.getTravelBudgetbyTravelIdTime();
+    this.GetTravelBudgetbyDistance();
   }
 
-  getTravelBudgetbyTravelId() {
+  calculateTotals() {
+    this.totalEstInterDistance = this.budgetListdist.reduce((total: any, item: { estInterDistance: any; }) => total + item.estInterDistance, 0);
+    
+    if (this.budgetListdist.length > 0) {
+      this.lastEstCompanyDistance = this.budgetListdist[this.budgetListdist.length - 1].estCompanyDistance;
+    } else {
+      this.lastEstCompanyDistance = 0;
+    }
+  }
+
+  
+  updateTotalAmount() {
+    this.totalAmount = Number(this.travel) + Number(this.cng);
+  }
+
+  getTravelBudgetbyTravelIdTime() {
     this.regSv.GetTravelBudgetbyTravelId(this.TravelId).subscribe((response: any) => {
       this.budgetList = response;
 
@@ -142,8 +171,51 @@ export class TravelBudgetComponent {
       console.log(this.timetaken);
       this.displayCalculatedTime = this.timetaken[0];
       return totalTime.toString();
+
+
+      
+
+     
+
+
+
+
+
     });
   }
+
+  GetTravelBudgetbyDistance() {
+    this.regSv.GetTravelBudgetbyDistance(this.TravelId).subscribe((response: any) => {
+      this.budgetListdist = response;
+  
+      for (let i = 0; i < this.budgetListdist.length; i++) {
+        this.budgetListdist[i].estCompanyDistance = parseInt(this.budgetListdist[i].estInterDistance, 10);
+  
+        if (i > 0) {
+          this.budgetListdist[i].estCompanyDistance += parseInt(this.budgetListdist[i - 1].estCompanyDistance, 10);
+        }
+      }
+  
+      console.log(this.budgetListdist);
+  
+      // Update total distance after processing the budgetListdist
+      this.updateTotalDistance();
+    });
+  }
+  
+  updateTotalDistance() {
+    // Calculate the total distance based on the last item in budgetListdist
+    if (this.budgetListdist.length > 0) {
+      this.totalDistance = this.budgetListdist[this.budgetListdist.length - 1].estCompanyDistance;
+    } else {
+      this.totalDistance = 0;
+    }
+  }
+  
+  
+  
+ 
+
   estTravelTimeInputs(){
 if(this.estTravelTime  != null){
   this.showestTravelTimeInputs = true
@@ -182,6 +254,22 @@ if(this.estTimeForJob != null){
     const paddedTableLength = tableLength.toString().padStart(3, '0');
     return paddedTableLength;
   }
+
+
+
+
+//    calculateTotal() {
+//     // Get values from input fields
+//     const travelKms = parseFloat(this.document.getElementById('travelKms').value) || 0;
+//     const cngBudget = parseFloat(this.document.getElementById('cngBudget').value) || 0;
+//     const amountBudget = parseFloat(this.document.getElementById('amountBudget').value) || 0;
+
+//     // Calculate total cost
+//     const totalCost = travelKms + cngBudget + amountBudget;
+
+//     // Display the total cost
+//     this.document.getElementById('totalCost').innerText = `Total Cost: $${totalCost.toFixed(2)}`;
+// }
 
   onChangeMachineNumber() {
     this.regSv.getMachineFromMachineNumber(this.machineNumber).subscribe((response: any) => {
@@ -253,6 +341,10 @@ if(this.estTimeForJob != null){
       
     }
   }
+
+
+
+
   exportTableToPDF(): void {
     const doc = new jspdf.jsPDF();
     const table = this.table.nativeElement;
