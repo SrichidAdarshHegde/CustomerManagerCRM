@@ -133,7 +133,7 @@
         </tr>
     
 
-        
+
       
     
 
@@ -159,24 +159,25 @@
 
       <!-- ... (existing HTML code) ... -->
 
+
       <tr>
         <td colspan="3" rowspan="3"></td>
 
         <th>Budget Travel Kms</th>
-        <td><input type="text" class="form-control" placeholder="Enter"></td>
+        <td><input type="text" class="form-control"  [(ngModel)]="totalDistance /  mileage"></td>
         <td colspan="4" rowspan="3"></td>
         <td colspan="3"><h4 style="text-align: center;">Food Expense</h4></td>
       </tr>
       <tr>
         <th>Budget CNG read</th>
-        <td><input type="text" class="form-control" placeholder="Enter"></td>
+        <td><input type="text" class="form-control" [(ngModel)]="totalDistance /  mileage *cng "></td>
         <th>Rs./Person</th>
         <th>No. of Persons</th>
         <th>Total</th>
       </tr>
       <tr>
         <th>Budget Amount reqd</th>
-        <td><input type="text" class="form-control" placeholder="Enter"></td>
+        <td><input type="text" class="form-control" [(ngModel)]="totalDistance /  mileage *cng + rupees * person"  ></td>
         <td><input type="number" class="form-control" placeholder="Enter" [(ngModel)]="rupees"></td>
         <td><input type="number" class="form-control" placeholder="Enter" [(ngModel)]="person"></td>
         <td><input type="number" class="form-control" [(ngModel)]="rupees * person"></td>
