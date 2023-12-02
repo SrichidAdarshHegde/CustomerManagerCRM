@@ -245,7 +245,7 @@ export class CallLogScreenComponent {
       });
       if(this.perticularMachineData == null || this.perticularMachineData == ""){
         this.regSv
-        .getPerticularCustomer(this.customerID)
+        .getPerticularCust(this.customerID)
           .subscribe((response: any) => {
             if (response!= null) {
               this.perticularCustomerData = response;
