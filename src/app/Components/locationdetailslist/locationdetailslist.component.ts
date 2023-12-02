@@ -78,7 +78,7 @@ export class LocationdetailslistComponent {
       }
        
       else {
-        alert("No Requests Found For this Machine Number!!!")
+        alert("No Details Found For this Machine Number!!!")
       }
     });
   }
@@ -101,7 +101,7 @@ export class LocationdetailslistComponent {
       }
        
       else {
-        alert("No Requests Found For this Machine Number!!!")
+        alert("No Details Found For this Machine Number!!!")
       }
     });
  }
@@ -123,7 +123,7 @@ export class LocationdetailslistComponent {
         }
          
    else {
-          alert("No Requests Found For Selected Customer!!!")
+          alert("No Details Found For Selected Customer!!!")
         }
       });
   }
