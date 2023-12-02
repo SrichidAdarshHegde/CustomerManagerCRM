@@ -15,9 +15,15 @@
 
 </div><br>
 <div class="col-md-12">
-    <div class="table-responsive">
+    <div class="table-container">
+        <div class="row"><div class="col-md-1"></div>
+    <div class="col-md-3">
+        <input class="form-control" type="text" id="searchInput" placeholder="Search by Machine Number" [(ngModel)]="searchText">
+    </div></div> <br>
         <table #table id="tableId" class="table table-bordered"
-            style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
+            style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; border-collapse: collapse; 
+            margin-left: auto; width: 90%;
+            margin-right: auto;">
             <thead>
                 <tr style="border-width:1px; border-color:black;font-size:15px;">
                     <th style="border: 1px solid black;text-align: center;">SlNo.</th>
@@ -47,8 +53,8 @@
             </thead>
             <tbody>
                 <tr
-                    *ngFor="let machine of machineList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 *
+                    *ngFor="let machine of machineCustomerList | search: searchText; let i = index">
+                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{
                         (p-1)+(i+1)}}</td>
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                         {{machine.machineNumber}}</td>
@@ -56,18 +62,18 @@
                         {{machine.modelName}}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
                         {{machine.customerName}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;"></td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.unit}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.addressOne}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.addressTwo}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.addressThree}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.city}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.state}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.pincode}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.gstin}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.cluster}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.routeNumber}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.region}}</td>
+                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.zone}}</td>
 
 
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">

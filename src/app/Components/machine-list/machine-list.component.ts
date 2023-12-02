@@ -12,32 +12,35 @@ import html2canvas from 'html2canvas';
   templateUrl: './machine-list.component.html',
   styleUrls: ['./machine-list.component.css']
 })
-export class MachineListComponent implements OnInit{
+export class MachineListComponent implements OnInit {
   @ViewChild('table', { static: false }) table!: ElementRef;
-  exporting:boolean=false;
-  machineList: any;
+  exporting: boolean = false;
+  machineList: any = [];
   p: number = 1;
   selectedCustomer: any;
   customerList: any;
-  modellist:any;
-  viewmachinenumber:any;
-  viewmodel:any;
-  viewcustomer:any;
-  machineID:any;
+  modellist: any;
+  viewmachinenumber: any;
+  viewmodel: any;
+  viewcustomer: any;
+  machineID: any;
   customerID: any;
-  EditItem:any;
-  deleteItem:any;
-  combinedList: any[] = [];
+  EditItem: any;
+  deleteItem: any;
   GetAllMachines: any;
   selectedPerticularCustomer: any;
   contactDetails: any;
-  constructor(private regSv:RegistrationService,  private masterSv: MasterService,){
+  CustomerId: any;
+  machineCustomerList: any;
+  searchText: any;
+  constructor(private regSv: RegistrationService, private masterSv: MasterService,) {
 
   }
   ngOnInit(): void {
-    this.getAllMachine();
+    // this.getAllMachine();
     this.getCustomer();
     this.getModel();
+    this.getMachineCustomerDetails();
   }
   getCustomer() {
     this.regSv.getCustomer().subscribe((response: any) => {
@@ -51,18 +54,25 @@ export class MachineListComponent implements OnInit{
       console.log(this.modellist);
     });
   }
-  getAllMachine() {
-    this.regSv.GetAllMachines().subscribe((response: any) => {
-      this.machineList = response;
-      console.log(this.machineList);
-      if(this.machineList.length!=0){
-        this.exporting=true;
+  // getAllMachine() {
+  //   this.regSv.GetAllMachines().subscribe((response: any) => {
+  //     this.machineList = response;
+  //     console.log(this.machineList);
+  //     if (this.machineList.length != 0) {
+  //       this.exporting = true;
+  //     }
+  //   });
+  // }
+
+  getMachineCustomerDetails() {
+    this.regSv.GetMachineCustomerDetails().subscribe((response: any) => {
+      this.machineCustomerList = response;
+      console.log(this.machineCustomerList);
+      if (this.machineCustomerList.length != 0) {
+        this.exporting = true;
       }
     });
   }
-
-  
-
 
 
 
@@ -72,39 +82,32 @@ export class MachineListComponent implements OnInit{
     this.regSv
       .getPerticularMachine(this.customerID)
       .subscribe((response: any) => {
-        this.machineList = response
-       
+        this.machineCustomerList = response
       });
   }
 
-  
-
-
-
-  EditMachine(data:any)
-  {
-    this.machineID=data.id;
-    this.viewmachinenumber=data.machineNumber;
-    this.viewmodel=data.modelId;
-    this.viewcustomer=data.customerName
-    ;
+  EditMachine(data: any) {
+    this.machineID = data.id;
+    this.viewmachinenumber = data.machineNumber;
+    this.viewmodel = data.modelId;
+    this.viewcustomer = data.customerName;
 
   }
   onSelectModel(data: any) {
     this.viewmodel = data.target.value;
   }
-  
+
   deleteMachine(data: any) {
 
     var MachineData = {
-      Id:data.machineID,
-      CustomerId:data.customerId,
+      Id: data.machineID,
+      CustomerId: data.customerId,
       MachineNumber: data.machineNumber,
       ModelId: data.modelId,
       CustomerName: data.customerName,
-      FeatureDetailsID:data.featureDetailsID,
-      ContactDataID:data.contactDataID
-     
+      FeatureDetailsID: data.featureDetailsID,
+      ContactDataID: data.contactDataID
+
     }
     this.regSv.deleteMachine(MachineData).subscribe((response: any) => {
       if (response == 'success') {
@@ -116,13 +119,13 @@ export class MachineListComponent implements OnInit{
       }
     });
   }
-  UpdateMachine(){
+  UpdateMachine() {
     var MachineData = {
-      Id:this.machineID,
+      Id: this.machineID,
       MachineNumber: this.viewmachinenumber,
       ModelId: this.viewmodel,
       CustomerName: this.viewcustomer,
-     
+
     }
     this.regSv.updateMachineRegistration(MachineData).subscribe((response: any) => {
       if (response == "success") {
@@ -151,15 +154,15 @@ export class MachineListComponent implements OnInit{
   }
   exportTableToExcel(): void {
     const element = document.getElementById('tableId'); // Replace 'tableId' with the actual ID of your HTML table
-  
+
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-  
+
     const excelBuffer: any = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, 'machinelist_data');
   }
-  
+
   private saveAsExcelFile(buffer: any, fileName: string): void {
     const data: Blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
     const downloadLink = document.createElement('a');
