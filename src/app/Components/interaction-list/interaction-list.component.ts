@@ -48,6 +48,9 @@ export class InteractionListComponent {
   Datewiserequest: string="";
   fromDate: string="";
   toDate: string="";
+  contact:any;
+  request:any;
+  contactData:any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private route : Router){
       if (localStorage.getItem('IsLoggedIn') == 'true'){

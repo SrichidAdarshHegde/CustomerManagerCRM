@@ -11,23 +11,8 @@
     <h2 class="text-center">Invoice List</h2>
 </div><br>
 
-<div class="col-md-12 row">
-    <div class="col-md-1">
-        From Date :
-        <input type="date" [(ngModel)]="fromDate" class="form-control" />
-    </div>
-    <div class="col-md-1">
-        To Date :
-        <input type="date" [(ngModel)]="toDate" class="form-control" />
-    </div>
-    <div class="col-md-1">
-        <br />
-        <button class="btn btn-primary form-control" (click)="GetDatewiserequestinvoice()">
-            <span class="glyphicon glyphicon-share-alt">&nbsp;</span>OK
-        </button>
-    </div>
 
-    <!-- Use offset to align to the right -->
+<div class="row">
     <div class="col-md-2 offset-md-4">
         <label for="companyName">Select Customer Name:</label>
         <ng-select [items]="customerList" [bindLabel]="'companyName'" name="selectedCustomer" [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
@@ -39,8 +24,8 @@
         <label for="machineNumber">Machine Number:</label>
         <input class="form-control" type="text" id="machineNumber" name="machineNumber" (change)="onChangeMachineNumber()" [(ngModel)]="machineNumber" required>
     </div>
-</div><br>
-
+</div>
+<br>
 
     <div class="col-md-2"></div>
     <!-- <div class="col-md-4">

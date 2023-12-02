@@ -255,10 +255,5 @@ this.CustumerInvoiceDetails=true;
     downloadLink.download = fileName + '.xlsx';
     downloadLink.click();
   }
-  GetDatewiserequestinvoice() {
-    this.Datewiserequest = this.fromDate + ',' + this.toDate;
-    this.regSv.GetDatewiserequestinvoice(this.Datewiserequest).subscribe((response: any) => {
-      this.invoiceperticularlist = response;
-    });
-  }
+ 
 }
