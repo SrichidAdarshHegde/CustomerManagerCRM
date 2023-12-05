@@ -46,6 +46,11 @@ export class FolloUpListComponent implements OnInit {
   Pending:boolean=false;
   Completed:boolean=false;
   customerID: any;
+  Datewiserequest: string="";
+  fromDate: string='';
+  toDate: string="";
+  requestlist: any;
+  followup: any;
   constructor(private regSv: RegistrationService, private masterSv: MasterService, private datePipe: DatePipe) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
@@ -324,4 +329,10 @@ if ( this.selectedCustomer != undefined) {
     this.saveAsExcelFile(excelBuffer, 'folow-up');
   }
  
+  GetDatewiserequestfollowup() {
+    this.Datewiserequest = this.fromDate + ',' + this.toDate;
+    this.regSv.getDatewiserequestfollowupDate(this.Datewiserequest).subscribe((response: any) => {
+      this.followup = response;
+    });
+  }
 }

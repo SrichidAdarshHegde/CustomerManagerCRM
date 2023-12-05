@@ -14,7 +14,7 @@ import html2canvas from 'html2canvas';
 export class RequestListComponent implements OnInit{
   @ViewChild('table', { static: false }) table!: ElementRef;
   exporting:boolean=false;
-  requestlist: any;
+  requestlist: any =[];
   allrequest:boolean=true;
   p: number = 1;
   userName:any;
@@ -28,6 +28,20 @@ export class RequestListComponent implements OnInit{
   perticularCustomerRequestsData:any;
   customerList:any;
   selectedCustomerid: any;
+  fromDate: string | number | Date = ''; // Providing an empty string as an initializer
+  toDate: string | number | Date = '';
+  
+  items: any[] = []; // Initialize with an empty array
+
+ filteredItems: any= [];
+  datePipe: any;
+  allrequests: any;
+  updateddate: string="";
+  accsv: any;
+
+  Datewiserequest: string="";
+
+  
   constructor(private regSv: RegistrationService){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
@@ -39,6 +53,7 @@ export class RequestListComponent implements OnInit{
   ngOnInit(): void {
     this.getrequest();
     this.getCustomer();
+    this.GetDatewiserequest();
     
   }
 
@@ -127,7 +142,10 @@ export class RequestListComponent implements OnInit{
     downloadLink.download = fileName + '.xlsx';
     downloadLink.click();
   }
+  GetDatewiserequest() {
+    this.Datewiserequest = this.fromDate + ',' + this.toDate;
+    this.regSv.getDatewiserequest(this.Datewiserequest).subscribe((response: any) => {
+      this.requestlist = response;
+    });
   }
-  
-  
-
+}

@@ -67,6 +67,10 @@ export class InvoiceListComponent implements OnInit {
   viewcreatedby: any;
   viewcreatedon: any;
   custID:any;
+  fromDate: string | number | Date = ''; // Providing an empty string as an initializer
+  toDate: string | number | Date = '';
+  Datewiserequest: string="";
+  invoiceperticularlist: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private modalService: NgbModal) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
@@ -251,4 +255,5 @@ this.CustumerInvoiceDetails=true;
     downloadLink.download = fileName + '.xlsx';
     downloadLink.click();
   }
+ 
 }

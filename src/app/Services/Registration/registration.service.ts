@@ -6,6 +6,10 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class RegistrationService {
+  getDatewiserequestfollowup: any;
+  GetDatewiserequestinvoice: any;
+ 
+  
   
 
  
@@ -24,6 +28,8 @@ export class RegistrationService {
       userRegData
     );
   }
+
+
   getUsers() {
     return this.http.get(this.globalurl.weburl + 'Registration/GetAllUsers');
   }
@@ -105,6 +111,9 @@ export class RegistrationService {
   getPerticularCustomer(data : any){
     return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCustomer/'+ data)
   }
+  getPerticularCust(data : any){
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCust/'+ data)
+  }
 
   getMachineInLocation(id:any){
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetMachineInLocation/'+id)
@@ -141,6 +150,9 @@ export class RegistrationService {
   }
   getPerticularMachine(id:any){
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetPerticularMachines/'+id)
+  }
+  GetMachineCustomerDetails(){
+    return this.http.get(this.globalurl.weburl+'MachineRegistration/GetMachineCustomerDetails')
   }
   getCustomerFollowup(id:any){
     return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomer/'+id)
@@ -229,7 +241,13 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/'+ travelId);
 
   }
+  
 
+  
+  GetTravelBudgetbyDistance(travelId:any){
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/'+ travelId);
+
+  }
   //location details List
 
   getAlldetails(id:any){
@@ -253,6 +271,19 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/Getparticularcustomerdetails/'+data); 
 
   }
-
-  
+  getDatewiserequest(id:any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequest/'+id)
+    
+  }
+  getDatewiserequestinvoice(id:any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestinvoice/'+id)
+    
+  }
+  getDatewiserequestInteraction(id:any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestInetraction/'+id)
+    
+}
+getDatewiserequestfollowupDate(id:any){
+  return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestfollowupDate/'+id)
+}
 }

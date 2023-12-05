@@ -45,6 +45,12 @@ export class InteractionListComponent {
   interactlist: any=[];
   currentDate: Date | undefined;
   formattedDateInteraction:string='';
+  Datewiserequest: string="";
+  fromDate: string="";
+  toDate: string="";
+  contact:any;
+  request:any;
+  contactData:any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private route : Router){
       if (localStorage.getItem('IsLoggedIn') == 'true'){
@@ -184,5 +190,11 @@ export class InteractionListComponent {
       this.exporting=true;
       console.log(this.interactlist)
     })
+  }
+  getDatewiserequestInteraction() {
+    this.Datewiserequest = this.fromDate + ',' + this.toDate;
+    this.regSv.getDatewiserequestInteraction(this.Datewiserequest).subscribe((response: any) => {
+      this.requestlist = response;
+    });
   }
 }
