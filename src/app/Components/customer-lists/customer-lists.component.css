@@ -1,5 +1,5 @@
 .table-container {
-    max-height: 600px; /* Adjust the maximum height for vertical scrolling */
+    max-height: 675px; /* Adjust the maximum height for vertical scrolling */
     overflow-y: auto;
     overflow-x: auto;
   }
