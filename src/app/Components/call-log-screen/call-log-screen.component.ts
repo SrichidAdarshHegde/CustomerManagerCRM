@@ -75,6 +75,8 @@ export class CallLogScreenComponent {
   fieldVisitRequestslist: any = [];
   selectedrequestt: any;
   selectedrequestf: any;
+  contactDetails: any;
+  customerTicketList: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -168,9 +170,10 @@ export class CallLogScreenComponent {
     // Ensure tableLength is a single digit (0-9)
     if (tableLength < 0) {
       tableLength = 0;
-    } else if (tableLength > 9) {
-      tableLength = 9;
+    } else{
+      
     }
+    
     // Create a 5-digit number with the last digit as tableLength
     const paddedTableLength = tableLength.toString().padStart(4, '0');
     return paddedTableLength;
@@ -238,7 +241,8 @@ export class CallLogScreenComponent {
           for (const machine of this.perticularMachineData) {
             this.machineList.push({
               machineNumber: machine.machineNumber,
-              machineInLocation: machine.machineInLocation
+              machineInLocation: machine.machineInLocation,
+              modelName:machine.modelName
             });
           }
         }
@@ -253,11 +257,12 @@ export class CallLogScreenComponent {
               this.custID=this.perticularCustomerData[0].customerID;
               // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
               // console.log(this.perticularCustomerData[0].customerId);  
+              this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerID);
+              this.getCustomerTickets(this.perticularCustomerData[0].customerID);
               console.log(this.perticularCustomerData[0].customerID);
               console.log(this.perticularCustomerData);
               this.unit = this.perticularCustomerData[0].unit;
               this.addressOne = this.perticularCustomerData[0].addressOne;
-    
               this.addressThree = this.perticularCustomerData[0].addressThree;
               this.city = this.perticularCustomerData[0].city;
               this.pincode = this.perticularCustomerData[0].pincode;
@@ -297,17 +302,16 @@ export class CallLogScreenComponent {
             for (const machine of this.perticularMachineData) {
               this.machineList.push({
                 machineNumber: machine.machineNumber,
-                machineInLocation: machine.machineInLocation
+                machineInLocation: machine.machineInLocation,
+                modelName:machine.modelName
               });
             }
           }
         });
       }
-
   }
-
-  GetMachineInLocation() {
-
+  clear(){
+    window.location.reload();
   }
 
   saveRequest() {
@@ -378,6 +382,20 @@ export class CallLogScreenComponent {
 
       });
   }
+
+  getPerticularCustomerContactDetails(id:any){   
+    this.regSv.getCustomerContactDetails(id).subscribe((result: any) => {
+      this.contactDetails = result;
+      console.log(this.contactDetails);
+  });
+}
+
+getCustomerTickets(id:any){
+  this.regSv.getCustomerTickets(id).subscribe((res:any)=>{
+    this.customerTicketList= res;
+    console.log(this.customerTicketList);
+    });
+}
   getCustomer() {
     this.regSv.getCustomer().subscribe((response: any) => {
       this.customerList = response;

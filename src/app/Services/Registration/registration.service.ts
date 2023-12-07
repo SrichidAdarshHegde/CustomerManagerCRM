@@ -141,6 +141,9 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/'+id);
   }
 
+  getCustomerTickets(id:any){
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerTickets/'+id);
+  }
 
   postMachineRegistration(machineData : any){
     return this.http.post(this.globalurl.weburl + 'MachineRegistration/PostMachineRegistration', machineData)

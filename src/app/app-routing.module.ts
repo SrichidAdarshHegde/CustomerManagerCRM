@@ -81,7 +81,7 @@ const routes: Routes = [
   {path : 'tripsheet', component: TripSheetComponent},
   {path : 'locationDetails', component: LocationdetailsComponent},
   {path : 'locationDetailslist', component: LocationdetailslistComponent},
-
+  {path : 'test', component: TestComponent},
 
   {
     path:'editcustomer/:id',
