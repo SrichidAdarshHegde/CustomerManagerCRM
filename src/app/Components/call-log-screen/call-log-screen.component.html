@@ -76,7 +76,7 @@
                     <th>Inv Value</th>
                 </tr>
                 <tr
-                    *ngFor="let machine of perticularMachineData ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index">
+                    *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index">
                     <td>{{(i+1)}}</td>
                     <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
                     <td>{{tickets.tokenNo}}</td>

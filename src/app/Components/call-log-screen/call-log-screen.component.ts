@@ -195,6 +195,8 @@ export class CallLogScreenComponent {
         this.custID = this.perticularCustomerData[0].customerId;
         this.companyName = this.perticularCustomerData[0].companyName;
         this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
+        this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerId);
+        this.getCustomerTickets(this.perticularCustomerData[0].customerId);
         console.log(this.perticularCustomerData[0].customerId);
         this.unit = this.perticularCustomerData[0].unit;
         this.addressOne = this.perticularCustomerData[0].addressOne;
@@ -231,12 +233,14 @@ export class CallLogScreenComponent {
         if (response == null) {
           alert("No Machine Found!!!");
         } else {
+          this.perticularMachineData = [];
           this.perticularMachineData = response;
           console.log(this.perticularMachineData);
 
           // Clear existing machineList and then populate with new data
           this.machineList = [];
 
+           
           // Loop through the machines and populate the machineList
           for (const machine of this.perticularMachineData) {
             this.machineList.push({
@@ -247,7 +251,7 @@ export class CallLogScreenComponent {
           }
         }
       });
-      if(this.perticularMachineData == null || this.perticularMachineData == ""){
+      if(this.perticularMachineData.length == 0 ){
         this.regSv
         .getPerticularCust(this.customerID)
           .subscribe((response: any) => {
@@ -286,7 +290,9 @@ export class CallLogScreenComponent {
               alert("Something went wrong!!!")
             }
           });
-      }else{
+      }
+      
+      else{
         this.regSv.getMachineInLocation(this.customerID)
         .subscribe((response: any) => {
           if (response == null) {
