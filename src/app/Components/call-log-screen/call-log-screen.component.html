@@ -200,13 +200,13 @@
                 </tr>
                 <tr *ngFor="let tickets of customerTicketList; let i = index">
                     <td>{{(i+1)}}</td>
+                    <td>{{tickets.createdOn | date}}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{tickets.createdBy}}</td>
                     <td>{{tickets.remarks}}</td>
                     <td>{{tickets.resolution}}</td>
                     <td></td>
@@ -257,12 +257,11 @@
         </div>
         <div class="col-md-2">
             <div class="flex-column align-items-center"><br>
-                <div class="col-md-12">
-                    <button class="btn btn-primary" style="height: 90px;width: 130px;" (click)="clear()">Done - clear
+                <div class="col-md-12"><br>
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
                     </button>
                     <br><br>
-                    <button class="btn btn-primary" style="height: 90px;width: 100px;" (click)="saveRequest()">Ticket to
-                        W/F</button><br>
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
                     
                 </div><br><br>
             </div>
