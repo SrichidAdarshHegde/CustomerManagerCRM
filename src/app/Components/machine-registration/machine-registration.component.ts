@@ -240,7 +240,6 @@ this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvo
        // frmData.append(`Features[${index}].value`, feature.value);
       });
       
-
       frmData.append("InvoiceNumber", this.invoiceNumber);
       frmData.append("InvoiceDate", this.invoicedate);
       frmData.append("InvoiceAmount", this.invoiceamount);

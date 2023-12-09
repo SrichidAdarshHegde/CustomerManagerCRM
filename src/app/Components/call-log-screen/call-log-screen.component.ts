@@ -80,11 +80,11 @@ export class CallLogScreenComponent {
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
-      if (localStorage.getItem('IsLoggedIn') == 'true') {
-        this.userName = localStorage.getItem('UserName');
-        this.roleId = localStorage.getItem('Role');
-        this.IsLoggedIn = true;
-      }
+    if (localStorage.getItem('IsLoggedIn') == 'true') {
+      this.userName = localStorage.getItem('UserName');
+      this.roleId = localStorage.getItem('Role');
+      this.IsLoggedIn = true;
+    }
   }
   ngOnInit(): void {
     this.getCustomer();
@@ -170,10 +170,10 @@ export class CallLogScreenComponent {
     // Ensure tableLength is a single digit (0-9)
     if (tableLength < 0) {
       tableLength = 0;
-    } else{
-      
+    } else {
+
     }
-    
+
     // Create a 5-digit number with the last digit as tableLength
     const paddedTableLength = tableLength.toString().padStart(4, '0');
     return paddedTableLength;
@@ -227,7 +227,7 @@ export class CallLogScreenComponent {
     })
   }
   onSelectCompany(data: any) {
-    this.customerID = data.companyName;  
+    this.customerID = data.companyName;
     this.regSv.getMachineInLocation(this.customerID)
       .subscribe((response: any) => {
         if (response == null) {
@@ -239,84 +239,83 @@ export class CallLogScreenComponent {
 
           // Clear existing machineList and then populate with new data
           this.machineList = [];
-
-           
           // Loop through the machines and populate the machineList
           for (const machine of this.perticularMachineData) {
             this.machineList.push({
               machineNumber: machine.machineNumber,
               machineInLocation: machine.machineInLocation,
-              modelName:machine.modelName
+              modelName: machine.modelName
             });
           }
         }
       });
-      if(this.perticularMachineData.length == 0 ){
-        this.regSv
+    if (this.perticularMachineData.length == 0) {
+      this.regSv
         .getPerticularCust(this.customerID)
-          .subscribe((response: any) => {
-            if (response!= null) {
-              this.perticularCustomerData = response;
-              this.companyName = this.perticularCustomerData[0].companyName;
-              this.custID=this.perticularCustomerData[0].customerID;
-              // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
-              // console.log(this.perticularCustomerData[0].customerId);  
-              this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerID);
-              this.getCustomerTickets(this.perticularCustomerData[0].customerID);
-              console.log(this.perticularCustomerData[0].customerID);
-              console.log(this.perticularCustomerData);
-              this.unit = this.perticularCustomerData[0].unit;
-              this.addressOne = this.perticularCustomerData[0].addressOne;
-              this.addressThree = this.perticularCustomerData[0].addressThree;
-              this.city = this.perticularCustomerData[0].city;
-              this.pincode = this.perticularCustomerData[0].pincode;
-              this.state = this.perticularCustomerData[0].state;
-              this.country = this.perticularCustomerData[0].country;
-              this.gstin = this.perticularCustomerData[0].gstin;
-              this.cluster = this.perticularCustomerData[0].cluster;
-              this.routeNo = this.perticularCustomerData[0].routeNumber;
-              this.region = this.perticularCustomerData[0].region;
-              this.zone = this.perticularCustomerData[0].zone;
-              this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
-              this.workingStart = this.perticularCustomerData[0].workingStart;
-              this.workingEnd = this.perticularCustomerData[0].workingEnd;
-              this.warrantyFrom = this.perticularCustomerData[0].warrantyFrom;
-              this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
-              this.features = this.perticularCustomerData[0].features;
-              this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
-              this.securityFormalities =
-                this.perticularCustomerData[0].securityFormalities;
-            } else {
-              alert("Something went wrong!!!")
-            }
-          });
-      }
-      
-      else{
-        this.regSv.getMachineInLocation(this.customerID)
+        .subscribe((response: any) => {
+          if (response != null) {
+            this.perticularCustomerData = response;
+            this.companyName = this.perticularCustomerData[0].companyName;
+            this.custID = this.perticularCustomerData[0].customerID;
+            // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
+            // console.log(this.perticularCustomerData[0].customerId);  
+            this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerID);
+            this.getCustomerTickets(this.perticularCustomerData[0].customerID);
+            console.log(this.perticularCustomerData[0].customerID);
+            console.log(this.perticularCustomerData);
+            this.unit = this.perticularCustomerData[0].unit;
+            this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressThree = this.perticularCustomerData[0].addressThree;
+            this.city = this.perticularCustomerData[0].city;
+            this.pincode = this.perticularCustomerData[0].pincode;
+            this.state = this.perticularCustomerData[0].state;
+            this.country = this.perticularCustomerData[0].country;
+            this.gstin = this.perticularCustomerData[0].gstin;
+            this.cluster = this.perticularCustomerData[0].cluster;
+            this.routeNo = this.perticularCustomerData[0].routeNumber;
+            this.region = this.perticularCustomerData[0].region;
+            this.zone = this.perticularCustomerData[0].zone;
+            this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
+            this.workingStart = this.perticularCustomerData[0].workingStart;
+            this.workingEnd = this.perticularCustomerData[0].workingEnd;
+            this.warrantyFrom = this.perticularCustomerData[0].warrantyFrom;
+            this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
+            this.features = this.perticularCustomerData[0].features;
+            this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
+            this.securityFormalities =
+              this.perticularCustomerData[0].securityFormalities;
+          } else {
+            alert("Something went wrong!!!")
+          }
+        });
+    }
+
+    else {
+      this.regSv.getMachineInLocation(this.customerID)
         .subscribe((response: any) => {
           if (response == null) {
             alert("No Machine Found!!!");
           } else {
             this.perticularMachineData = response;
             console.log(this.perticularMachineData);
-  
+
             // Clear existing machineList and then populate with new data
             this.machineList = [];
-  
+
             // Loop through the machines and populate the machineList
             for (const machine of this.perticularMachineData) {
               this.machineList.push({
                 machineNumber: machine.machineNumber,
                 machineInLocation: machine.machineInLocation,
-                modelName:machine.modelName
+                modelName: machine.modelName
               });
             }
           }
         });
-      }
+    }
   }
-  clear(){
+
+  clear() {
     window.location.reload();
   }
 
@@ -368,13 +367,13 @@ export class CallLogScreenComponent {
     }
   }
   onSelectRequest() {
-    if(this.selectedrequestt != null){
+    if (this.selectedrequestt != null) {
       this.selectedrequest = this.selectedrequestt;
-    }else{
+    } else {
       this.selectedrequest = this.selectedrequestf;
     }
     console.log(this.selectedrequest);
-  } 
+  }
   onSelectsands() {
     console.log(this.selectedsands);
   }
@@ -389,19 +388,19 @@ export class CallLogScreenComponent {
       });
   }
 
-  getPerticularCustomerContactDetails(id:any){   
+  getPerticularCustomerContactDetails(id: any) {
     this.regSv.getCustomerContactDetails(id).subscribe((result: any) => {
       this.contactDetails = result;
       console.log(this.contactDetails);
-  });
-}
-
-getCustomerTickets(id:any){
-  this.regSv.getCustomerTickets(id).subscribe((res:any)=>{
-    this.customerTicketList= res;
-    console.log(this.customerTicketList);
     });
-}
+  }
+
+  getCustomerTickets(id: any) {
+    this.regSv.getCustomerTickets(id).subscribe((res: any) => {
+      this.customerTicketList = res;
+      console.log(this.customerTicketList);
+    });
+  }
   getCustomer() {
     this.regSv.getCustomer().subscribe((response: any) => {
       this.customerList = response;
