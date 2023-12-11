@@ -249,7 +249,7 @@ export class CallLogScreenComponent {
           }
         }
       });
-    if (this.perticularMachineData.length == 0) {
+    if (this.perticularMachineData != 0) {
       this.regSv
         .getPerticularCust(this.customerID)
         .subscribe((response: any) => {
@@ -260,7 +260,7 @@ export class CallLogScreenComponent {
             // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
             // console.log(this.perticularCustomerData[0].customerId);  
             this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerID);
-            this.getCustomerTickets(this.perticularCustomerData[0].customerID);
+            // this.getCustomerTickets(this.perticularCustomerData[0].customerID);
             console.log(this.perticularCustomerData[0].customerID);
             console.log(this.perticularCustomerData);
             this.unit = this.perticularCustomerData[0].unit;
@@ -407,5 +407,4 @@ export class CallLogScreenComponent {
       console.log(this.customerList);
     });
   }
-
 }
