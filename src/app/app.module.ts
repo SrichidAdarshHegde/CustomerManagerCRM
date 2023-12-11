@@ -58,6 +58,11 @@ import { TripSheetComponent } from './Components/trip-sheet/trip-sheet.component
 import { LocationdetailsComponent } from './Components/locationdetails/locationdetails.component';
 import { LocationdetailslistComponent } from './Components/locationdetailslist/locationdetailslist.component';
 import { SearchPipe } from './search.pipe';
+import { DocumentmanagerComponent } from './Components/document manager/documentmanager/documentmanager.component';
+import { DocumentTypeMasterComponent } from './Components/Masters/document-type-master/document-type-master.component';
+import { ModeofTransportMasterComponent } from './Components/Masters/modeof-transport-master/modeof-transport-master.component';
+import { TemplateComponent } from './Components/Masters/DocumentTemplate/template.component';
+import { DocumentMailTemplateComponent } from './Components/Masters/document-mail-template/document-mail-template.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +111,12 @@ import { SearchPipe } from './search.pipe';
     LocationdetailsComponent,
     LocationdetailslistComponent,
     SearchPipe,
+    DocumentmanagerComponent,
 
+    DocumentTypeMasterComponent,
+      ModeofTransportMasterComponent,
+      TemplateComponent,
+      DocumentMailTemplateComponent,
     
 
   ],
