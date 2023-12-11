@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, interval, map, startWith } from 'rxjs';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
@@ -77,6 +78,13 @@ export class CallLogScreenComponent {
   selectedrequestf: any;
   contactDetails: any;
   customerTicketList: any;
+  mobile: any;
+  selectedModel: any;
+  email: any;
+  designation: any;
+  contactname: any;
+  salute: any;
+machineSelected: boolean = false;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -86,12 +94,16 @@ export class CallLogScreenComponent {
       this.IsLoggedIn = true;
     }
   }
+  public systemTime: Observable<Date>;
   ngOnInit(): void {
     this.getCustomer();
     this.getTokenNo();
     this.getRequests();
     this.getSands();
-
+    this.systemTime = interval(1000).pipe(
+      startWith(0),
+      map(() => new Date())
+    );
     // this.getAttendedBybyid(this.customerID);
   }
   public value = new Date();
@@ -284,10 +296,12 @@ export class CallLogScreenComponent {
             this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
             this.securityFormalities =
               this.perticularCustomerData[0].securityFormalities;
+             
           } else {
             alert("Something went wrong!!!")
           }
         });
+        this.machineSelected = true;
     }
 
     else {
@@ -406,5 +420,26 @@ export class CallLogScreenComponent {
       this.customerList = response;
       console.log(this.customerList);
     });
+  }
+  addContactDetails() {
+      var contactdata = {
+        Salute: this.salute,
+        ContactName: this.contactname,
+        Designation: this.designation,
+        Email: this.email,
+        Mobile: this.mobile,
+        MachineId: this.selectedMachine,
+        MachineNumber: this.selectedMachine,
+        CustomerId: this.custID,
+        CreatedBy: this.userName,
+     
+      };
+      this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
+        if (response != null) {
+          alert('Contact added successfully!');
+        } else {
+          alert('Something Went Wrong!!!');
+        }
+      });
   }
 }
