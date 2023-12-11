@@ -90,6 +90,8 @@ const routes: Routes = [
 {path:'ModeofTransport',component:ModeofTransportMasterComponent},
 {path:'Template',component:TemplateComponent},
 {path:'DocumentMailTemplate',component:DocumentMailTemplateComponent},
+  
+  {path : 'test', component: TestComponent},
 
   {
     path:'editcustomer/:id',

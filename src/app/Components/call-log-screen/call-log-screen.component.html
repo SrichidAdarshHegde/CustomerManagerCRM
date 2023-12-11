@@ -1,270 +1,271 @@
-<br><br>
-<div class="container"></div>
-<div class="col-md-12 row">
-    <div class="col-md-3">
-        <table class="table table-bordered table-with-bold-lines">
-            <tr>
-                <td>Date:</td>
-                <td style="text-align: right;"><b>{{value | date}}</b></td>
-                <td>Time:</td>
-                <td style="text-align: right;"><b>{{value | date: 'HH:mm'}}</b></td>
-            </tr>
-            <tr>
-                <td colspan="2">Ticket No:</td>
-                <td colspan="2"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="MachineNo"
-                        class="form-control" readonly></td>
-            </tr>
-            <tr>
-                <td colspan="2">Machine SNo:</td>
-                <td colspan="2"><input class="form-control" type="text" id="machineNumber" name="machineNumber"
-                        placeholder="Enter Machine No" (change)="onChangeMachineNumber()" [(ngModel)]="selectedMachine"
-                        required>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-        <div class="flex-column align-items-center">
-            <div class="col-md-12">
-                <table class="table table-bordered table-with-bold-lines">
-                    <tr>
-                        <td style="text-align: center;">
-                            <h2>CALL LOG SCREEN</h2>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-4">
-                <table class="table table-bordered table-with-bold-lines">
-                    <tr>
-                        <td>Call Attended by:</td>
-                        <td style="text-align: right;">
-                            <b>{{userName}}</b>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+<div>
+    <div class="container"></div>
+    <h2 style="text-align: center;"><strong>CALL TICKET SCREEN</strong></h2><br>
+    <div class="col-md-12 row">
+        <div class="col-md-4">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td colspan="4"><ng-select [items]="customerList" [bindLabel]="'companyName'"
+                            [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
+                            <ng-option value="" disabled>Select Customer</ng-option>
+                        </ng-select></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p *ngIf="companyName == null">Add 1</p>
+                        <p *ngIf="companyName != null"><b> {{addressOne}}</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p *ngIf="companyName == null">Add 2</p>
+                        <p *ngIf="companyName != null"><b>{{addressTwo}}</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p *ngIf="companyName == null">Add 3</p>
+                        <p *ngIf="companyName != null"><b>{{addressThree}}</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>City name</p>
+                    </td>
+                    <td>
+                        <p><b>{{city}}</b></p>
+                    </td>
+                    <td>
+                        <p>Pin</p>
+                    </td>
+                    <td>
+                        <p><b>{{pincode}}</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>State</p>
+                    </td>
+                    <td>
+                        <p><b>{{state}}</b></p>
+                    </td>
+                    <td>Zone</td>
+                    <td><b>{{zone}}</b></td>
+                </tr>
+                <tr>
+                    <td>Cluster</td>
+                    <td><b>{{cluster}}</b></td>
+                    <td>Route</td>
+                    <td><b>{{routeNo}}</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-8" style="overflow: auto; height: 340px;">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr style="text-align: center;">
+                    <th>SNo</th>
+                    <th>Select</th>
+                    <th>Ticket No.</th>
+                    <th>M/c no</th>
+                    <th>Model</th>
+                    <th>Status</th>
+                    <th>Start Dt</th>
+                    <th>End Dt</th>
+                    <th>Inv No</th>
+                    <th>Inv Dt</th>
+                    <th>Inv Value</th>
+                </tr>
+                <tr
+                    *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
+                    <td>{{tickets.tokenNo}}</td>
+                    <td>
+                        {{machine.machineNumber}}
+                    </td>
+                    <td>{{machine.modelName}}</td>
+                    <td>{{invoicePerticular}}</td>
+                    <td>{{warrantyFrom | date}}</td>
+                    <td>{{warrantyTill | date}}</td>
+                    <td>{{abc.invoiceNumber}}</td>
+                    <td>{{abc.createdOn | date}}</td>
+                    <td>{{abc.invoiceAmount}}</td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div class="col-md-3">
-        <h4>Select Company</h4>
-        <table class="table table-bordered table-with-bold-lines">
-            <tr>
-                <td><ng-select [items]="customerList" [bindLabel]="'companyName'" [(ngModel)]="selectedCustomer"
-                        (change)="onSelectCompany($event)">
-                        <ng-option value="" disabled>Select Customer</ng-option>
-                    </ng-select></td>
-            </tr>
-        </table>
+    <div class="col-md-12 row">
+        <div class="col-md-3">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td>GST</td>
+                    <td colspan="3"><b>{{gstin}}</b></td>
+                </tr>
+                <tr>
+                    <td>Weekly Off</td>
+                    <td colspan="2"><b>{{weeklyOff}}</b></td>
+                </tr>
+                <tr>
+                    <td>Working Hrs</td>
+                    <td><b>{{workingStart}}</b></td>
+                    <td><b>{{workingEnd}}</b></td>
+                </tr>
+                <tr>
+                    <td>Security Req</td>
+                    <td colspan="2"><b>{{securityFormalities}}</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6" style="overflow: auto;">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td style="text-align: center;" colspan="6">
+                        <h4>Contact Persons</h4>
+                    </td>
+                </tr>
+                <tr style="text-align: center;">
+                    <th>SNo</th>
+                    <th>Salute</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Designation</th>
+                </tr>
+                <tr *ngFor="let details of contactDetails; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{details.salute}}</td>
+                    <td>{{details.contactName}}</td>
+                    <td>{{details.mobile}}</td>
+                    <td>{{details.email}}</td>
+                    <td>{{details.designation}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-1">
+            <br><button class="btn btn-primary">Save Contact</button>
+        </div>
     </div>
-
-</div>
-<div class="col-md-12 row">
-    <div class="col-md-3">
-        <div class="flex-column align-items-center">
-            <br>
-            <div class="col-md-12">
-                <div style="height: 350px; overflow: auto;">
-                    <table class="table table-bordered table-with-bold-lines">
-                        <tr>
-                            <td>Contract type</td>
-                            <td><b>{{invoicePerticular}}</b></td>
-
-                            <td>Start</td>
-                            <td><b>{{warrantyFrom | date}}</b></td>
-
-                            <td>End</td>
-                            <td><b>{{warrantyTill | date}}</b></td>
-                        </tr>
-
-                        <tr>
-                            <th>Invoice Ref</th>
-                            <th>Invoice Date</th>
-                            <th>Invoice Value</th>
-                        </tr>
-                        <tr *ngFor="let abc of perticularCustomerInvoiceData">
-                            <td>{{abc.invoiceNumber}}</td>
-                            <td>{{abc.createdOn | date}}</td>
-                            <td>{{abc.invoiceAmount}}</td>
-
-                        </tr>
-
-
-                    </table>
+</div><br>
+<div style="background-color: rgb(249, 249, 249); padding: 15px">
+    <div class="col-md-12 row">
+        <div class="col-md-4">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td>Date:</td>
+                    <td style="text-align: center;"><b>{{value | date}}</b></td>
+                    <td>Time:</td>
+                    <td style="text-align: center;"><b>{{value | date: 'HH:mm'}}</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td>Ticket No.</td>
+                    <td><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="MachineNo"
+                            class="form-control" readonly></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td>Login</td>
+                    <td style="text-align: right;">
+                        <b>{{userName}}</b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="col-md-12 row">
+        <div class="col-md-11" style="overflow: auto; height: 340px;">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr style="text-align: center;">
+                    <th>S No</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Log by</th>
+                    <td></td>
+                    <th>Cust Call From</th>
+                    <th>Called back by</th>
+                    <th>Fault/Issue</th>
+                    <th>Resolution</th>
+                    <th>Entered Priority</th>
+                </tr>
+                <tr *ngFor="let tickets of customerTicketList; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{tickets.createdOn | date}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{tickets.createdBy}}</td>
+                    <td>{{tickets.remarks}}</td>
+                    <td>{{tickets.resolution}}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12 row">
+        <div class="col-md-10">
+            <div class="flex-column align-items-center">
+                <div class="col-md-12 row">
+                    <div class="col-md-5">
+                        <br><br>
+                        <table class="table table-bordered table-with-bold-lines">
+                            <tr>
+                                <th colspan="2">Call Entry - Priority</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="unit">Tele Support:</label>
+                                    <ng-select [items]="teleSupportrequestslist" name="requestsName"
+                                        [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
+                                        (change)="onSelectRequest()">
+                                    </ng-select>
+                                </td>
+                                <td>
+                                    <label for="unit">Field Visit:</label>
+                                    <ng-select [items]="fieldVisitRequestslist" name="requestsName"
+                                        [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
+                                        (change)="onSelectRequest()">
+                                    </ng-select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Fault</h4>
+                        <textarea [(ngModel)]="foult" class="form-control table-with-bold-lines" name="text" rows="6"
+                            cols="100"></textarea>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Resolution</h4>
+                        <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100"
+                            rows="6"></textarea>
+                    </div>
                 </div>
-            </div><br>
-        </div>
-    </div>
-    <div class="col-md-1">
-        <div class="flex-column align-items-center">
-            <div class="col-md-12" style="overflow: auto; height: 340px;">
-                <table class="table table-bordered table-with-bold-lines;">
-                    <tr>
-                        <td colspan="3">M/c in location</td>
-                    </tr>
-                    <tr>
-                    <tr *ngFor="let machine of machineList" style="cursor: pointer;"
-                        (click)="onRowClick(machine.machineNumber)">
-
-                        <td class="hover-text">
-                            {{ machine.machineNumber }}
-                        </td>
-                    </tr>
-
-                </table>
-            </div><br><br>
-
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="flex-column align-items-center">
-            <div class="col-md-12">
-                <table class="table table-bordered table-with-bold-lines">
-                    <tr>
-                        <td colspan="3">
-                            <p *ngIf="companyName == null">Company Name</p>
-                            <p *ngIf="companyName != null"><b>{{companyName}}</b></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <p *ngIf="companyName == null">Add 1</p>
-                            <p *ngIf="companyName != null"><b> {{addressOne}}</b></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <p *ngIf="companyName == null">Add 2</p>
-                            <p *ngIf="companyName != null"><b>{{addressTwo}}</b></p>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <p *ngIf="companyName == null">Add 3</p>
-                            <p *ngIf="companyName != null"><b>{{addressThree}}</b></p>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p *ngIf="companyName == null">City name</p>
-                            <p *ngIf="companyName != null"><b>{{city}}</b></p>
-                        </td>
-                        <td>
-                            <p *ngIf="companyName == null">State</p>
-                            <p *ngIf="companyName != null"><b>{{state}}</b></p>
-                        </td>
-                        <td>
-                            <p *ngIf="companyName == null">Pin</p>
-                            <p *ngIf="companyName != null"><b>{{pincode}}</b></p>
-                        </td>
-                    </tr>
-                </table>
             </div>
-
         </div>
-    </div>
-    <div class="col-md-4">
-        <table class="table table-bordered table-with-bold-lines">
-            <tr>
-                <td>GST</td>
-                <td colspan="3"><b>{{gstin}}</b></td>
-            </tr>
-            <tr>
-                <td>Zone</td>
-                <td><b>{{zone}}</b></td>
-                <td>Region</td>
-                <td><b>{{region}}</b></td>
-            </tr>
-
-
-            <tr>
-                <td>Route</td>
-                <td><b>{{routeNo}}</b></td>
-                <td>Cluster</td>
-                <td><b>{{cluster}}</b></td>
-            </tr>
-        </table>
-        <br>
-        <table class="table table-bordered table-with-bold-lines">
-            <tr>
-                <td>Weekly Off</td>
-                <td><b>{{weeklyOff}}</b></td>
-                <td>Security</td>
-                <td><b>{{securityFormalities}}</b></td>
-            </tr>
-            <tr>
-                <td>Working Start</td>
-                <td><b>{{workingStart}}</b></td>
-                <td>Working End</td>
-                <td><b>{{workingEnd}}</b></td>
-            </tr>
-        </table>
-    </div>
-
-</div>
-
-<div class="col-md-12 row">
-
-    <div class="col-md-10">
-        <div class="flex-column align-items-center">
-            <div class="col-md-12 row">
-                <div class="col-md-5">
+        <div class="col-md-2">
+            <div class="flex-column align-items-center"><br>
+                <div class="col-md-12"><br>
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
+                    </button>
                     <br><br>
-                    <table class="table table-bordered table-with-bold-lines">
-                        <tr>
-                            <th colspan="2">Call Entry - Priority</th>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <label for="unit">Tele Support:</label>
-                                <ng-select [items]="teleSupportrequestslist" name="requestsName"
-                                    [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
-                                    (change)="onSelectRequest()">
-                                </ng-select>
-
-                            </td>
-                            <td>
-                                <label for="unit">Field Visit:</label>
-                                <ng-select [items]="fieldVisitRequestslist" name="requestsName"
-                                    [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
-                                    (change)="onSelectRequest()">
-                                </ng-select>
-                            </td>
-
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-4">
-                    <h4>Fault</h4>
-                    <textarea [(ngModel)]="foult" class="form-control table-with-bold-lines" name="text" rows="6"
-                        cols="100"></textarea>
-                </div>
-                <div class="col-md-3">
-                    <h4>Resolution</h4>
-                    <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100" rows="6"></textarea>
-
-                </div>
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To
+                        Workfront</button><br>
+                </div><br><br>
             </div>
-
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="flex-column align-items-center"><br><br>
-            <div class="col-md-12">
-                <br>
-                <button class="btn btn-primary" style="height: 90px;width: 100px;" (click)="saveRequest()">Ticket to
-                    W/F</button>
-            </div><br><br>
-            <!-- <div class="col-md-12">
-                <button class="btn btn-primary" style="height: 90px;width: 100px;">Ticket Closed</button>
-            </div> -->
         </div>
     </div>
 </div>
-
-<br><br><br><br><br>
+<br><br><br>
