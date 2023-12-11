@@ -65,14 +65,8 @@
         <td><input [(ngModel)]="interDist" type="text" class="form-control" placeholder="Enter"></td>
         <td><input [(ngModel)]="cummDist" type="text" class="form-control" placeholder="Enter"></td>
         <td><input [(ngModel)]="actualODORead" type="text" class="form-control" placeholder="Enter"></td>
-        
-        <td>
-          <p *ngIf="showestTravelTimeInputs"><input type="time" [(ngModel)]="estTravelTime"  (change)="estTravelTimeInputs()" /></p>
-        </td>
-        <td>
-          <p *ngIf="showestTimeInputs"><input type="time" [(ngModel)]="estTimeForJob" (change)="estTimeInputs()" /></p>
-        </td>
-
+        <td><input [(ngModel)]="travelTime" type="time" class="form-control" placeholder="Enter"></td>
+        <td><input [(ngModel)]="timeForJob" type="time" class="form-control" placeholder="Enter"></td>
         <td><input [(ngModel)]="schd" type="time" class="form-control" placeholder="Enter"></td>
         <td><input [(ngModel)]="actualTime" type="time" class="form-control" placeholder="Enter"></td>
         <!-- <td><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="TravelId"
@@ -93,7 +87,6 @@
         <td>{{row.estTimeForJob|date: 'HH:mm'}}</td>
         <td>{{row.schdETD|date: 'HH:mm'}}</td>
         <td>{{row.actualTime|date: 'HH:mm'}}</td>
-        <td></td>
       </tr>
       <tr>
         <td colspan="10" style="text-align: right;">
