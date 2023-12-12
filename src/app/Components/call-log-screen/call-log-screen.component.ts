@@ -171,17 +171,16 @@ machineSelected: boolean = false;
     })
   }
  
-  generateMachineNo(tableLength: number): string {
-    // Ensure tableLength is a single digit (0-9)
-    if (tableLength < 0) {
-      tableLength = 0;
-    } else {
-      tableLength = tableLength;
-    }
-    // Create a 5-digit number with the last digit as tableLength
-    const paddedTableLength = tableLength.toString().padStart(4, '0');
-    return paddedTableLength;
-  }
+  // generateMachineNo(tableLength: number): string {
+  //   if (tableLength < 0) {
+  //     tableLength = 0;
+  //   } else {
+  //     tableLength = tableLength;
+  //   }
+  //   // Create a 5-digit number with the last digit as tableLength
+  //   const paddedTableLength = tableLength.toString().padStart(4, '0');
+  //   return paddedTableLength;
+  // }
 
   getSands() {
     this.masterSv.getSands().subscribe((response: any) => {
