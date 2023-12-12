@@ -140,10 +140,36 @@
                     <td>{{details.email}}</td>
                     <td>{{details.designation}}</td>
                 </tr>
+                
             </table>
+            <div class="col-md-12 row" *ngIf="machineSelected">
+                <div class="col-md-2">
+                    <label for="machineNumber"><strong>Salute:</strong></label>
+                    <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="machineNumber"><strong>Contact Name:</strong></label>
+                    <input class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="address1"><strong>Designation:</strong></label>
+                    <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="address1"><strong>Email:</strong></label>
+                    <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="address1"><strong>Mobile:</strong></label>
+                    <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
+                </div>
+                <!-- <div class="col-md-1">
+                    <br> <button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Add</button>
+                </div> -->
+            </div>
         </div>
-        <div class="col-md-1">
-            <br><button class="btn btn-primary">Save Contact</button>
+        <div class="col-md-1"><br><br><br><br>
+            <br><button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Save Contact</button>
         </div>
     </div>
 </div><br>
@@ -155,7 +181,7 @@
                     <td>Date:</td>
                     <td style="text-align: center;"><b>{{value | date}}</b></td>
                     <td>Time:</td>
-                    <td style="text-align: center;"><b>{{value | date: 'HH:mm'}}</b></td>
+                    <td style="text-align: center;"><b>{{ systemTime | async | date: 'HH:mm:ss' }}</b></td>
                 </tr>
             </table>
         </div>
@@ -183,7 +209,7 @@
         <div class="col-md-1"></div>
     </div>
     <div class="col-md-12 row">
-        <div class="col-md-11" style="overflow: auto; height: 340px;">
+        <div class="col-md-11" style="overflow: auto; height: 300px;">
             <table class="table table-bordered table-with-bold-lines">
                 <tr style="text-align: center;">
                     <th>S No</th>
@@ -261,8 +287,8 @@
                     <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
                     </button>
                     <br><br>
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
-                    
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To
+                        Workfront</button><br>
                 </div><br><br>
             </div>
         </div>

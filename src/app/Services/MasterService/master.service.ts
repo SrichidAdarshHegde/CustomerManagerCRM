@@ -6,11 +6,6 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class MasterService {
-
-  
-
-
- 
   constructor(private http: HttpClient, private globalUrl: AppGlobals) {}
   // Role master
   getRole() {
@@ -119,11 +114,11 @@ export class MasterService {
 
   //Template Master
 
-  getTemplate(){
+  getTemplates(){
     return this.http.get(this.globalUrl.weburl + 'Template/GetAllTemplate');
   }
 
-  saveTemplate(data: any) {
+  saveTemplates(data: any) {
     return this.http.post(this.globalUrl.weburl + 'Template/PostSaveTemplate', data );
   }
 
@@ -131,7 +126,7 @@ export class MasterService {
     return this.http.post(this.globalUrl.weburl + 'Template/PostSaveUpdateTemplate',data );
   }
 
-  deleteTemplate(roleid: any) {
+  deleteTemplates(roleid: any) {
     return this.http.get( this.globalUrl.weburl + 'Template/DeleteTemplateData/' + roleid );
   }
 
@@ -363,6 +358,105 @@ deleteMail(roleid: any) {
       this.globalUrl.weburl + 'AttendType/DeleteAttendTypeData/' + roleid
     );
   }
+//document Type
+getDocumentType() {
+  return this.http.get(this.globalUrl.weburl + 'DocumentType/GetDocumentType');
+}
+
+saveDocumentType(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentType/PostsaveDocumentType',
+    data
+  );
+}
 
 
+UpdateDocumentType(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentType/PostSaveUpdateDocumentType',
+    data
+  );
+}
+deleteDocumentType(roleid: number) {
+  return this.http.get(
+    this.globalUrl.weburl + 'DocumentType/deleteDocumentTypeData/' + roleid
+  );
+}
+// service.ts
+
+
+getModeofTransport() {
+  return this.http.get(this.globalUrl.weburl + 'ModeofTransport/GetModeofTransport');
+}
+
+saveModeofTransport(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'ModeofTransport/PostsaveModeofTransport',
+    data
+  );
+}
+
+UpdateModeofTransport(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'ModeofTransport/PostSaveUpdateModeofTransport',
+    data
+  );
+}
+
+deleteModeofTransport(roleid: number) {
+  return this.http.get(
+    this.globalUrl.weburl + 'ModeofTransport/deleteModeofTransport/' + roleid
+  );
+}
+
+// service.ts
+
+
+getTemplate() {
+  return this.http.get(this.globalUrl.weburl + 'DocumentTemplate/getTemplate');
+}
+
+saveTemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentTemplate/PostsaveTemplate',
+    data
+  );
+}
+
+UpdateTemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentTemplate/PostSaveUpdateTemplate',
+    data
+  );
+}
+deleteTemplate(roleid: any) {
+  return this.http.get(
+
+    this.globalUrl.weburl + 'DocumentTemplate/deleteTemplate/' + roleid
+    );
+}
+//mail template
+getMailTemplate() {
+  return this.http.get(this.globalUrl.weburl + 'DocumentMailTemplate/getMailTemplate');
+}
+
+saveMailtemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentMailTemplate/PostsaveMailtemplate',
+    data
+  );
+}
+
+UpdateMailTemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentMailTemplate/PostUpdateMailTemplate',
+    data
+  );
+}
+deleteMailtemplate(roleid: any) {
+  return this.http.get(
+
+    this.globalUrl.weburl + 'DocumentMailTemplate/deleteMailtemplate/' + roleid
+    );
+}
 }

@@ -4,6 +4,7 @@ import { MasterService } from 'src/app/Services/MasterService/master.service';
 import * as jspdf from 'jspdf';
 import * as XLSX from 'xlsx';
 
+
 @Component({
   selector: 'app-brochure',
   templateUrl: './brochure.component.html',

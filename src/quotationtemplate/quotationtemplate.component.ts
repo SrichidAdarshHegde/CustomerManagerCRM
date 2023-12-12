@@ -35,7 +35,7 @@ export class QuotationtemplateComponent {
     this.getTemplate()
   }
   getTemplate(){
-    this.masterSv.getTemplate().subscribe((response:any)=>{
+    this.masterSv.getTemplates().subscribe((response:any)=>{
       this.templatelist = response;
       console.log(this.templatelist)
       if(this.templatelist.length!=0){
@@ -48,7 +48,7 @@ export class QuotationtemplateComponent {
       TemplateName : this.templatename,
       CreatedBy : this.userName
     }
-    this.masterSv.saveTemplate(faultsData).subscribe((response:any)=>{
+    this.masterSv.saveTemplates(faultsData).subscribe((response:any)=>{
       if(response == "success"){
         alert("Template Saved")
         window.location.reload()
@@ -59,7 +59,7 @@ export class QuotationtemplateComponent {
     })
   }
   deletetemplate(id:any){
-this.masterSv.deleteTemplate(id).subscribe((response:any)=>{
+this.masterSv.deleteTemplates(id).subscribe((response:any)=>{
   if(response == "success"){
     alert("Template Deleted")
     window.location.reload()

@@ -98,7 +98,7 @@ export class TravelBudgetComponent {
     this.getCustomer();
     this.getTravelId();
     this.getTravelBudgetbyTravelIdTime();
-    this.GetTravelBudgetbyDistance();
+   this.GetTravelBudgetbyDistance();
   }
 
   calculateTotals() {
@@ -137,7 +137,8 @@ export class TravelBudgetComponent {
             this.addedTime.setHours(addedHours, addedMinutes);
             console.log(this.addedTime);
             this.budgetList[i].schdETD = this.addedTime;
-          } else if (this.budgetList[i].estTravelTime == null) {
+          }
+           else if (this.budgetList[i].estTravelTime == null) {
             const converttodatetime = new Date(this.budgetList[i].estTimeForJob);
             const startTimeHours = converttodatetime.getHours();
             const startTimeMin = converttodatetime.getMinutes();
@@ -152,6 +153,7 @@ export class TravelBudgetComponent {
             this.addedTime.setHours(addedHours, addedMinutes);
             console.log(this.addedTime);
             this.budgetList[i].schdETD = this.addedTime;
+            this.budgetList[i].estCompanyDistance = parseInt(this.budgetList[i - 1].estCompanyDistance) + parseInt(this.budgetList[i].estCompanyDistance)
           }
         }
       }
@@ -172,17 +174,9 @@ export class TravelBudgetComponent {
       this.displayCalculatedTime = this.timetaken[0];
       return totalTime.toString();
 
-
-      
-
-     
-
-
-
-
-
     });
   }
+
 
   GetTravelBudgetbyDistance() {
     this.regSv.GetTravelBudgetbyDistance(this.TravelId).subscribe((response: any) => {
@@ -212,9 +206,7 @@ export class TravelBudgetComponent {
     }
   }
   
-  
-  
- 
+
 
   estTravelTimeInputs(){
 if(this.estTravelTime  != null){
