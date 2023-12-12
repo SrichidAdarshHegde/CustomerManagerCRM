@@ -45,6 +45,10 @@ import { DocumentTypeMasterComponent } from './Components/Masters/document-type-
 import { ModeofTransportMasterComponent } from './Components/Masters/modeof-transport-master/modeof-transport-master.component';
 import { TemplateComponent } from './Components/Masters/DocumentTemplate/template.component';
 import { DocumentMailTemplateComponent } from './Components/Masters/document-mail-template/document-mail-template.component';
+import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.component';
+import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
+import { BrochureComponent } from 'src/brochure/brochure.component';
+import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
 
 const routes: Routes = [
   {path : '', component: HomeComponent},
@@ -85,7 +89,13 @@ const routes: Routes = [
   {path : 'travelBudget', component: TravelBudgetComponent},
   {path : 'tripsheet', component: TripSheetComponent},
   {path : 'locationDetails', component: LocationdetailsComponent},
-  {path : 'locationDetailslist', component: LocationdetailslistComponent},{path:'documentmanager',component:DocumentmanagerComponent},
+  {path : 'locationDetailslist', component: LocationdetailslistComponent},
+{path:'quotationmanager',component:QuotationmanagerComponent},
+{path:'quotationtemplate',component:QuotationtemplateComponent},
+{path:'brochure',component:BrochureComponent},
+{path:'mailquotationtemplate',component:MailquotationtemplateComponent},
+
+  {path:'documentmanager',component:DocumentmanagerComponent},
 {path:'DocumentType',component:DocumentTypeMasterComponent},
 {path:'ModeofTransport',component:ModeofTransportMasterComponent},
 {path:'Template',component:TemplateComponent},

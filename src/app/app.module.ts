@@ -49,7 +49,7 @@ import { TypeOfAttendMasterComponent } from './Components/Masters/type-of-attend
 import { SandsMasterComponent } from './Components/Masters/sands-master/sands-master.component';
 import { ZoneMasterComponent } from './Components/Masters/zone-master/zone-master.component';
 import { EditCustomerListsComponent } from './Components/edit-customer-lists/edit-customer-lists.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { CallLogScreenComponent } from './Components/call-log-screen/call-log-screen.component';
 import { TravelBudgetComponent } from './Components/travel-budget/travel-budget.component';
 import { FaultsComponent } from './Components/Masters/faults/faults.component';
@@ -63,6 +63,10 @@ import { DocumentTypeMasterComponent } from './Components/Masters/document-type-
 import { ModeofTransportMasterComponent } from './Components/Masters/modeof-transport-master/modeof-transport-master.component';
 import { TemplateComponent } from './Components/Masters/DocumentTemplate/template.component';
 import { DocumentMailTemplateComponent } from './Components/Masters/document-mail-template/document-mail-template.component';
+import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.component';
+import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
+import { BrochureComponent } from 'src/brochure/brochure.component';
+import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +115,10 @@ import { DocumentMailTemplateComponent } from './Components/Masters/document-mai
     LocationdetailsComponent,
     LocationdetailslistComponent,
     SearchPipe,
+    QuotationmanagerComponent,
+    MailquotationtemplateComponent,
+    BrochureComponent,
+    QuotationtemplateComponent,
     DocumentmanagerComponent,
 
     DocumentTypeMasterComponent,

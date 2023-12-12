@@ -81,7 +81,7 @@ export class TemplateComponent {
       doc.save('consumables_data.pdf');
     });
   }
-  exportTableToExcel(): void {
+   exportTableToExcel(): void {
     const element = document.getElementById('tableId'); // Replace 'tableId' with the actual ID of your HTML table
   
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -90,7 +90,7 @@ export class TemplateComponent {
   
     const excelBuffer: any = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, 'consumables_data');
-  }
+   }
   
   private saveAsExcelFile(buffer: any, fileName: string): void {
     const data: Blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
