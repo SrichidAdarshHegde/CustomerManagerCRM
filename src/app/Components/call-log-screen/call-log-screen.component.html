@@ -12,25 +12,25 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <p *ngIf="companyName == null">Add 1</p>
+                        <p *ngIf="companyName == null">Address 1</p>
                         <p *ngIf="companyName != null"><b> {{addressOne}}</b></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <p *ngIf="companyName == null">Add 2</p>
+                        <p *ngIf="companyName == null">Address 2</p>
                         <p *ngIf="companyName != null"><b>{{addressTwo}}</b></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <p *ngIf="companyName == null">Add 3</p>
+                        <p *ngIf="companyName == null">Address 3</p>
                         <p *ngIf="companyName != null"><b>{{addressThree}}</b></p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>City name</p>
+                        <p>City</p>
                     </td>
                     <td>
                         <p><b>{{city}}</b></p>
@@ -49,13 +49,19 @@
                     <td>
                         <p><b>{{state}}</b></p>
                     </td>
-                    <td>Zone</td>
+                    <td>
+                        <p>Zone</p>
+                    </td>
                     <td><b>{{zone}}</b></td>
                 </tr>
                 <tr>
-                    <td>Cluster</td>
+                    <td>
+                        <p>Cluster</p> 
+                    </td>
                     <td><b>{{cluster}}</b></td>
-                    <td>Route</td>
+                    <td>
+                        <p>Route</p> 
+                    </td>
                     <td><b>{{routeNo}}</b></td>
                 </tr>
             </table>
@@ -185,12 +191,12 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td>Ticket No.</td>
-                    <td><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="MachineNo"
+                    <td style="width: 60%;"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="MachineNo"
                             class="form-control" readonly></td>
                 </tr>
             </table>

@@ -277,6 +277,7 @@ machineSelected: boolean = false;
             console.log(this.perticularCustomerData);
             this.unit = this.perticularCustomerData[0].unit;
             this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressTwo = this.perticularCustomerData[0].addressTwo;
             this.addressThree = this.perticularCustomerData[0].addressThree;
             this.city = this.perticularCustomerData[0].city;
             this.pincode = this.perticularCustomerData[0].pincode;
