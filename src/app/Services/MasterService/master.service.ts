@@ -6,6 +6,11 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class MasterService {
+
+  
+
+
+ 
   constructor(private http: HttpClient, private globalUrl: AppGlobals) {}
   // Role master
   getRole() {
@@ -111,6 +116,60 @@ export class MasterService {
       this.globalUrl.weburl + 'Faults/DeleteFaultsData/' + roleid
     );
   }
+
+  //Template Master
+
+  getTemplate(){
+    return this.http.get(this.globalUrl.weburl + 'Template/GetAllTemplate');
+  }
+
+  saveTemplate(data: any) {
+    return this.http.post(this.globalUrl.weburl + 'Template/PostSaveTemplate', data );
+  }
+
+  updateTemplate(data: any) {
+    return this.http.post(this.globalUrl.weburl + 'Template/PostSaveUpdateTemplate',data );
+  }
+
+  deleteTemplate(roleid: any) {
+    return this.http.get( this.globalUrl.weburl + 'Template/DeleteTemplateData/' + roleid );
+  }
+
+//Brochure Master
+
+getBrochure(){
+  return this.http.get(this.globalUrl.weburl + 'Brochure/GetAllBrouchure');
+}
+saveBrochure(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Brochure/PostSaveBrouchure', data );
+}
+
+updateBrochure(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Brochure/PostSaveUpdateBrouchure',data );
+}
+
+ deleteBrochure(roleid: any) {
+  return this.http.get( this.globalUrl.weburl + 'Brochure/DeleteBrouchureData/' + roleid );
+}
+
+
+//Mail Template Master
+
+getMail(){
+  return this.http.get(this.globalUrl.weburl + 'Mailtemplate/GetAllMail');
+}
+saveMail(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Mailtemplate/PostSaveMail', data );
+}
+
+updateMail(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Mailtemplate/PostSaveUpdateMail',data );
+}
+
+deleteMail(roleid: any) {
+  return this.http.get( this.globalUrl.weburl + 'Mailtemplate/DeleteMailData/' + roleid );
+}
+
 
   // Consumables Master
   getConsumables() {
