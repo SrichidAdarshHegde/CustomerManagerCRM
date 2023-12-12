@@ -8,6 +8,7 @@ import { AppGlobals } from 'src/app/AppGlobals';
 export class RegistrationService {
   getDatewiserequestfollowup: any;
   GetDatewiserequestinvoice: any;
+  getCustomerContactDetailss: any;
  
   
   
