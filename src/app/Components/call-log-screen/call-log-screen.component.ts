@@ -85,6 +85,7 @@ export class CallLogScreenComponent {
   contactname: any;
   salute: any;
 machineSelected: boolean = false;
+  tokenNo: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -166,9 +167,21 @@ machineSelected: boolean = false;
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
       this.tableLength = result.length + 1; // Assuming result is an array or collection
-      this.MachineNo = this.generateMachineNo(this.tableLength);
+      this.tokenNo = this.tableLength.toString().padStart(4, '0');
     })
   }
+ 
+  // generateMachineNo(tableLength: number): string {
+  //   if (tableLength < 0) {
+  //     tableLength = 0;
+  //   } else {
+  //     tableLength = tableLength;
+  //   }
+  //   // Create a 5-digit number with the last digit as tableLength
+  //   const paddedTableLength = tableLength.toString().padStart(4, '0');
+  //   return paddedTableLength;
+  // }
+
   getSands() {
     this.masterSv.getSands().subscribe((response: any) => {
       this.sandslist = response.map((sands: any) => ({
@@ -177,18 +190,6 @@ machineSelected: boolean = false;
       }));
       console.log(this.sandslist);
     })
-  }
-  generateMachineNo(tableLength: number): string {
-    // Ensure tableLength is a single digit (0-9)
-    if (tableLength < 0) {
-      tableLength = 0;
-    } else {
-
-    }
-
-    // Create a 5-digit number with the last digit as tableLength
-    const paddedTableLength = tableLength.toString().padStart(4, '0');
-    return paddedTableLength;
   }
 
   onRowClick(machineNumber: string) {
@@ -277,6 +278,7 @@ machineSelected: boolean = false;
             console.log(this.perticularCustomerData);
             this.unit = this.perticularCustomerData[0].unit;
             this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressTwo = this.perticularCustomerData[0].addressTwo;
             this.addressThree = this.perticularCustomerData[0].addressThree;
             this.city = this.perticularCustomerData[0].city;
             this.pincode = this.perticularCustomerData[0].pincode;
