@@ -192,7 +192,7 @@ machineSelected: boolean = false;
     })
   }
 
-  onRowClick(machineNumber: string) {
+  onRowClick(machineNumber: any) {
     this.selectedMachine = machineNumber;
     console.log(this.selectedMachine);
     this.onChangeMachineNumber();
@@ -331,6 +331,13 @@ machineSelected: boolean = false;
     }
   }
 
+  getCustomerTickets(id: any) {
+    this.regSv.getCustomerTickets(id).subscribe((res: any) => {
+      this.customerTicketList = res;
+      console.log(this.customerTicketList);
+    });
+  }
+  
   clear() {
     window.location.reload();
   }
@@ -411,12 +418,7 @@ machineSelected: boolean = false;
     });
   }
 
-  getCustomerTickets(id: any) {
-    this.regSv.getCustomerTickets(id).subscribe((res: any) => {
-      this.customerTicketList = res;
-      console.log(this.customerTicketList);
-    });
-  }
+ 
   getCustomer() {
     this.regSv.getCustomer().subscribe((response: any) => {
       this.customerList = response;
