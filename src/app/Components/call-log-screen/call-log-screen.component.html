@@ -139,14 +139,13 @@
                     <th>Designation</th>
                 </tr>
                 <tr *ngFor="let details of contactDetails; let i = index">
-                    <td>{{(i+1)}}</td>
+                    <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
                     <td>{{details.salute}}</td>
                     <td>{{details.contactName}}</td>
                     <td>{{details.mobile}}</td>
                     <td>{{details.email}}</td>
                     <td>{{details.designation}}</td>
                 </tr>
-                
             </table>
             <div class="col-md-12 row" *ngIf="machineSelected">
                 <div class="col-md-2">

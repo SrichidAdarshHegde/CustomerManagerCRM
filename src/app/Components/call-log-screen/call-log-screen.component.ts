@@ -86,6 +86,7 @@ export class CallLogScreenComponent {
   salute: any;
 machineSelected: boolean = false;
   tokenNo: any;
+  contactId: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -190,6 +191,11 @@ machineSelected: boolean = false;
       }));
       console.log(this.sandslist);
     })
+  }
+  onClickRow(id :any){
+    this.contactId = id;
+    console.log(this.contactId);
+
   }
 
   onRowClick(machineNumber: any) {
@@ -436,7 +442,6 @@ machineSelected: boolean = false;
         MachineNumber: this.selectedMachine,
         CustomerId: this.custID,
         CreatedBy: this.userName,
-     
       };
       this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
         if (response != null) {
