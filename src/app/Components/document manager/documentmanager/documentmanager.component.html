@@ -1,61 +1,152 @@
-<div style="width: 1497px; height: 1009px; background: white; margin: 0 auto; position: relative;">
+<!-- <div style="width: 1497px; height: 1009px; background: white; margin: 0 auto; position: relative;"> -->
   <div style="width: 625.12px; height: 834.51px; left: 100.01px; top: 120.50px; position: absolute; background: white">
-    <div style="width: 109px; height: 23px; left: 7.25px; top: 14.49px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">COMPANY NAME</div>
-    <div style="width: 109px; height: 23px; left: 7.25px; top: 14.49px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">COMPANY NAME</div>
-    <input type="text" style="width: 436px; height: 29px; left: 119.99px; top: 5.55px; position: absolute; border-radius: 3px; border: 1px black solid">
-    <div style="width: 16px; height: 15px; left: 453px; top: 16.96px; position: absolute; opacity: 0.20; text-align: right; color: #1A1818; font-size: 12px; font-family: Inter; font-weight: 700; letter-spacing: 2.40px; word-wrap: break-word">^</div>
-    <div style="width: 109px; height: 26px; left: 118.01px; top: 44.91px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-    <div style="width: 28px; height: 1px; left: 0.18px; top: 30.74px; position: absolute; background: #D9D9D9"></div>
-    <div style="width: 112px; height: 26px; left: 262.95px; top: 45.70px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-    <div style="width: 33px; height: 57px; left: -2.76px; top: 21.48px; position: absolute; transform: rotate(-179.94deg); transform-origin: 0 0"></div>
-    <div style="width: 64px; height: 20px; left: 143.21px; top: 51.63px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">ADD NEW</div>
-    <div style="width: 63px; height: 21px; left: 287.95px; top: 49.72px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">RENAME</div>
-    <div style="left: 460.95px; top: 51.90px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">DELETE</div>
-    <div style="width: 102px; height: 14px; left: 483.22px; top: 797.29px; position: absolute; color: #FF1818; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Delete Contact</div>
-    <div style="left: 4.37px; top: 608.35px; position: absolute; color: black; font-size: 20px; font-family: Inter; font-weight: 500; word-wrap: break-word">Contacts</div>
-    <div style="width: 567px; height: 450px; left: 13.93px; top: 117.80px; position: absolute; border: 1px #DFD7D7 solid">
-      <div style="width: 378px; height: 29px; left: 108px; top: 6.96px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 76px; height: 18px; left: 28.02px; top: 18.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Address 1 </div>
-      <div style="width: 76px; height: 18px; left: 26.02px; top: 54.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Address 2 </div>
-      <div style="width: 77px; height: 18px; left: 29.02px; top: 90.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Address 3</div>
-      <div style="width: 45px; padding-top: 84px; padding-left: 74px; left: 303.02px; top: 262.03px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: center; display: inline-flex">
-        
+    <div class="col-md-12 row">
+      <div class="col-md-1"></div>
+      <div class="col-md-11" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-md-5">
+            <label for="companyName" style="margin-bottom: 10px;">Select Company Name:</label>
+          </div>
+          <div class="col-md-11">
+            <ng-select
+              [items]="customerList"
+              [bindLabel]="'companyName'"
+              name="selectedCustomer"
+              [(ngModel)]="selectedCustomer"
+              (change)="onSelectCompany($event)"
+              style="width: 100%;">
+              <ng-option value="" disabled>Select Customer</ng-option>
+            </ng-select>
+          </div>
+        </div>
       </div>
-      <div style="width: 378px; height: 29px; left: 108px; top: 47.96px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 378px; height: 29px; left: 108px; top: 85.96px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 72px; height: 18px; left: 64.02px; top: 132.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">City</div>
-      <div style="width: 171px; height: 29px; left: 108.02px; top: 124.03px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-     
-
-      <div style="width: 74px; height: 18px; left: 40.02px; top: 200.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Pincode</div>
-      <div style="width: 109px; height: 26px; left: 108.02px; top: 199.03px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 74px; height: 18px; left: 57.02px; top: 163.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">State</div>
-      <div style="width: 171px; height: 29px; left: 108.02px; top: 159.03px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 122px; height: 26px; left: 155.02px; top: 169.03px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">drop down</div>
-      <div style="left: 155.02px; top: 132.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Banglore</div>
-      <div style="width: 299px; height: 29px; left: 106.02px; top: 233.03px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 74px; height: 18px; left: 52.02px; top: 238.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Phone</div>
-      <div style="width: 109px; height: 26px; left: 108.02px; top: 274.03px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 109px; height: 26px; left: 108.02px; top: 307.03px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 113px; height: 26px; left: 292.02px; top: 274.03px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 113px; height: 26px; left: 292.02px; top: 307.03px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 74px; height: 18px; left: 47.02px; top: 278.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">CST NO</div>
-      <div style="width: 74px; height: 18px; left: 45.02px; top: 315.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word"> LST NO</div>
-      <div style="width: 72px; height: 18px; left: 233.02px; top: 278.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word"> TIN NO</div>
-      <div style="width: 74px; height: 18px; left: 233.02px; top: 311.03px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">ECC NO</div>
-      <div style="left: 301px; top: 408px; position: absolute; color: #B0AA16; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Add new </div>
-      <div style="left: 400px; top: 405px; position: absolute; color: #3D7D27; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">save</div>
-      <div style="width: 70px; height: 14px; left: 479px; top: 407px; position: absolute; color: #FF1818; font-size: 14px; font-family: Inter; font-weight: 500; word-wrap: break-word">Delete</div>
     </div>
-    <div style="width: 112px; height: 26px; left: 427.95px; top: 44.87px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-    <div style="width: 574px; height: 102px; left: 6.36px; top: 666.80px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-    <div style="width: 574px; height: 102px; left: 6.31px; top: 666.36px; position: absolute; border: 1px #797474 solid"></div>
-    <div style="left: 47.29px; top: 677.40px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">Name</div>
-    <div style="left: 293.30px; top: 673.65px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">Email</div>
-    <div style="left: 493.30px; top: 676.86px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">Phone</div>
+    
+      <br><br>
+      <div style="width: 580px; height: 430px; left: 13.93px; background-color: #eeeeee; top: 117.80px; position: absolute; border: 1px #DFD7D7 solid">
+        <div class="row">
+          <!-- Address 1 -->
+          <div class="col-md-3" style="margin-top: 10px;">
+           &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;    <label for="address1">Address 1</label>
+          </div>
+          <div class="col-md-7" style="margin-top: 10px;">
+              <input type="text" class="form-control" id="address1" name="addressOne" [(ngModel)]="addressOne" style="height: 29px;" required>
+          </div>
+      
+          <!-- Address 2 -->
+          <div class="col-md-3" style="margin-top: 10px;">
+            &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp; <label for="address2">Address 2</label>
+          </div>
+          <div class="col-md-7" style="margin-top: 10px;">
+              <input type="text" class="form-control" id="address2" name="addressTwo" [(ngModel)]="addressTwo" style="height: 29px;" required>
+          </div>
+      
+          <!-- Address 3 -->
+          <div class="col-md-3" style="margin-top: 10px;">
+            &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;<label for="address3">Address 3:</label>
+          </div>
+          <div class="col-md-7" style="margin-top: 10px;">
+              <input type="text" class="form-control" id="address3" name="addressThree" [(ngModel)]="addressThree" style="height: 29px;" required>
+          </div>
+      
+          <!-- City, State, Pincode -->
+          <div class="col-md-3" style="margin-top: 10px;">
+            &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   <label for="city">City:</label>
+          </div>
+          <div class="col-md-7" style="margin-top: 10px;">
+              <input class="form-control" type="text" id="city" name="city" [(ngModel)]="city" style="height: 29px;"required>
+          </div>
+      
+          <div class="col-md-3" style="margin-top: 10px;">
+            &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;  <label for="state">State:</label>
+          </div>
+          <div class="col-md-7" style="margin-top: 10px;">
+              <input class="form-control" type="text" id="state" name="state" [(ngModel)]="state" style="height: 29px;" required >
+          </div>
+      
+          <div class="col-md-3" style="margin-top: 10px;">
+            &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   <label for="pincode">Pincode:</label>
+          </div>
+          <div class="col-md-7" style="margin-top: 10px;">
+              <input class="form-control" type="number" id="pincode" name="pincode" [(ngModel)]="pincode" style="height: 29px;"required>
+     
+          </div>
+          <br><br>
+
+          <div class="row">
+            <div class="col-md-2 form-group text-right">
+                <label class="d-inline" for="cst">CST NO:</label>
+            </div>
+            <div class="col-md-3 form-group">
+                <input type="text" class="form-control" id="cst" placeholder="Enter CST NO" style="height: 29px;" required>
+            </div>
+        
+            <div class="col-md-2 form-group">
+                <label class="d-inline" for="lst">LST NO:</label>
+            </div>
+            <div class="col-md-3 form-group">
+                <input type="text" class="form-control" id="lst" placeholder="Enter LST NO" style="height: 29px;" required>
+            </div>
+        </div>
+        
+        <div class="row"> <div class="col-md-2 form-group text-right">
+                <label class="d-inline" for="tin">TIN NO:</label>
+            </div>
+            <div class="col-md-3 form-group">
+                <input type="text" class="form-control" id="tin" placeholder="Enter TIN NO" style="height: 29px;" required>
+            </div>
+        
+            <div class="col-md-2 form-group">
+                <label class="d-inline" for="ecc">ECC NO:</label>
+            </div>
+            <div class="col-md-3 form-group">
+                <input type="text" class="form-control" id="ecc" placeholder="Enter ECC NO" style="height: 29px;" required>
+            </div>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="col-md-12 text-center mt-3">
+            <!-- <button class="btn btn-primary mx-2">Add New</button> -->
+            <button class="btn btn-success mx-2" (click)="navigateCustomerRegistrationComponent()">New entry</button>
+
+                          
+            <!-- <button class="btn btn-danger mx-2">Delete</button> -->
+        </div>
+    </div>
+<br><br><br>
+
+<div class="col-md-14" style="overflow: auto; margin-top: 25px; display: flex; flex-direction: column; align-items: flex-start;">
+  <table class="table table-bordered table-with-bold-lines">
+    <tr>
+      <td style="text-align: center; background-color: #757d81; color: #070707;" colspan="6">
+        <h4>Contacts</h4>
+      </td>
+    </tr>
+    <tr style="text-align: center;">
+      <th>SNo</th>
+      <th>Salute</th>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Designation</th>
+    </tr>
+    <tr *ngFor="let details of contactDetails; let i = index">
+      <td>{{(i+1)}}</td>
+      <td>{{details.salute}}</td>
+      <td>{{details.contactName}}</td>
+      <td>{{details.mobile}}</td>
+      <td>{{details.email}}</td>
+      <td>{{details.designation}}</td>
+    </tr>
+  </table>
+ 
+</div>
+<div style="margin-top: 10px; align-self: flex-end;">
+<!-- //  //<button class="btn btn-danger mx-2">Delete</button> -->
+</div>
   </div>
   <div style="width: 373px; height: 22px; left: 674px; top: 9px; position: absolute; color: black; font-size: 32px; font-family: Inter; font-weight: 400; word-wrap: break-word">Document manager</div>
-  <div style="width: 775px; height: 842px; left: 797px; top: 120px; position: absolute; background: white">
+  <div style="width: 775px; height: 842px; left: 797px; top: 56px; position: absolute; background: white">
     <div style="width: 723px; height: 122px; left: 23px; top: 99px; position: absolute; background: #D9D9D9"></div>
     <div style="left: 41px; top: 122px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Mode OF Transport</div>
     <div style="width: 723px; height: 39px; left: 23px; top: 60px; position: absolute; background: #DCE3F3"></div>
