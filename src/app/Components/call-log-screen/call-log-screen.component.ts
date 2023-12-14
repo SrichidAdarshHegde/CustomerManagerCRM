@@ -192,11 +192,7 @@ machineSelected: boolean = false;
       console.log(this.sandslist);
     })
   }
-  onClickRow(id :any){
-    this.contactId = id;
-    console.log(this.contactId);
-
-  }
+ 
 
   onRowClick(machineNumber: any) {
     this.selectedMachine = machineNumber;
@@ -347,6 +343,10 @@ machineSelected: boolean = false;
   clear() {
     window.location.reload();
   }
+  onClickRow(id :any){
+    this.contactId = id;
+    console.log(this.contactId);
+  }
 
   saveRequest() {
     // if(this.selectedMachine == null || this.selectedMachine == ""){
@@ -363,7 +363,8 @@ machineSelected: boolean = false;
       frmData.append("MachineNumber", this.selectedMachine);
       frmData.append("CustomerId", this.custID);
       frmData.append("CustomerName", this.companyName);
-      frmData.append("TokenNo", this.MachineNo);
+      frmData.append("TokenNo", this.tokenNo);
+      frmData.append("ContactId", this.contactId);
 
       frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
 

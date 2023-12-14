@@ -123,7 +123,10 @@
             </table>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-6" style="overflow: auto;">
+        <div class="col-md-6">
+            <div class="flex-column align-items-center">
+                <div class="col-md-12 row">
+                    <div class="col-md-12" style="overflow: auto; height: 300px;">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td style="text-align: center;" colspan="6">
@@ -146,7 +149,7 @@
                     <td>{{details.email}}</td>
                     <td>{{details.designation}}</td>
                 </tr>
-            </table>
+            </table></div>
             <div class="col-md-12 row" *ngIf="machineSelected">
                 <div class="col-md-2">
                     <label for="machineNumber"><strong>Salute:</strong></label>
@@ -172,7 +175,8 @@
                     <br> <button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Add</button>
                 </div> -->
             </div>
-        </div>
+            </div>
+        </div></div>
         <div class="col-md-1"><br><br><br><br>
             <br><button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Save Contact</button>
         </div>
@@ -236,7 +240,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td>{{tickets.contactName}}</td>
                     <td>{{tickets.createdBy}}</td>
                     <td>{{tickets.remarks}}</td>
                     <td>{{tickets.resolution}}</td>
