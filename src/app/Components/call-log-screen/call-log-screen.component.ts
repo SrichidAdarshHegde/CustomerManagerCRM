@@ -84,7 +84,7 @@ export class CallLogScreenComponent {
   designation: any;
   contactname: any;
   salute: any;
-machineSelected: boolean = false;
+  machineSelected: boolean = false;
   tokenNo: any;
   contactId: any;
   constructor(private regSv: RegistrationService,
@@ -171,7 +171,7 @@ machineSelected: boolean = false;
       this.tokenNo = this.tableLength.toString().padStart(4, '0');
     })
   }
- 
+
   // generateMachineNo(tableLength: number): string {
   //   if (tableLength < 0) {
   //     tableLength = 0;
@@ -192,7 +192,7 @@ machineSelected: boolean = false;
       console.log(this.sandslist);
     })
   }
- 
+
 
   onRowClick(machineNumber: any) {
     this.selectedMachine = machineNumber;
@@ -241,6 +241,7 @@ machineSelected: boolean = false;
       console.log('Selected Machine Number:', this.selectedMachine);
     })
   }
+
   onSelectCompany(data: any) {
     this.customerID = data.companyName;
     this.regSv.getMachineInLocation(this.customerID)
@@ -300,14 +301,13 @@ machineSelected: boolean = false;
             this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
             this.securityFormalities =
               this.perticularCustomerData[0].securityFormalities;
-             
+
           } else {
             alert("Something went wrong!!!")
           }
         });
-        this.machineSelected = true;
+      this.machineSelected = true;
     }
-
     else {
       this.regSv.getMachineInLocation(this.customerID)
         .subscribe((response: any) => {
@@ -339,11 +339,11 @@ machineSelected: boolean = false;
       console.log(this.customerTicketList);
     });
   }
-  
+
   clear() {
     window.location.reload();
   }
-  onClickRow(id :any){
+  onClickRow(id: any) {
     this.contactId = id;
     console.log(this.contactId);
   }
@@ -414,7 +414,6 @@ machineSelected: boolean = false;
       .subscribe((response: any) => {
         this.perticularCustomerInvoiceData = response;
         console.log(this.perticularCustomerInvoiceData);
-
       });
   }
 
@@ -425,7 +424,6 @@ machineSelected: boolean = false;
     });
   }
 
- 
   getCustomer() {
     this.regSv.getCustomer().subscribe((response: any) => {
       this.customerList = response;
@@ -433,23 +431,23 @@ machineSelected: boolean = false;
     });
   }
   addContactDetails() {
-      var contactdata = {
-        Salute: this.salute,
-        ContactName: this.contactname,
-        Designation: this.designation,
-        Email: this.email,
-        Mobile: this.mobile,
-        MachineId: this.selectedMachine,
-        MachineNumber: this.selectedMachine,
-        CustomerId: this.custID,
-        CreatedBy: this.userName,
-      };
-      this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
-        if (response != null) {
-          alert('Contact added successfully!');
-        } else {
-          alert('Something Went Wrong!!!');
-        }
-      });
+    var contactdata = {
+      Salute: this.salute,
+      ContactName: this.contactname,
+      Designation: this.designation,
+      Email: this.email,
+      Mobile: this.mobile,
+      MachineId: this.selectedMachine,
+      MachineNumber: this.selectedMachine,
+      CustomerId: this.custID,
+      CreatedBy: this.userName,
+    };
+    this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
+      if (response != null) {
+        alert('Contact added successfully!');
+      } else {
+        alert('Something Went Wrong!!!');
+      }
+    });
   }
 }
