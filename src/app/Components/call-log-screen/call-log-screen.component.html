@@ -85,7 +85,7 @@
                     *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index">
                     <td>{{(i+1)}}</td>
                     <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
-                    <td>{{tickets.tokenNo}}</td>
+                    <td>{{tickets.tokenID}}</td>
                     <td>
                         {{machine.machineNumber}}
                     </td>
