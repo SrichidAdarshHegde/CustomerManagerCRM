@@ -347,17 +347,30 @@ export class CallLogScreenComponent {
     this.contactId = id;
     console.log(this.contactId);
   }
-
+  addContactDetails() {
+    var contactdata = {
+      Salute: this.salute,
+      ContactName: this.contactname,
+      Designation: this.designation,
+      Email: this.email,
+      Mobile: this.mobile,
+      MachineId: this.selectedMachine,
+      MachineNumber: this.selectedMachine,
+      CustomerId: this.custID,
+      CreatedBy: this.userName,
+    };
+    this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
+      if (response != null) {
+        alert('Contact added successfully!');
+      } else {
+        alert('Something Went Wrong!!!');
+      }
+    });
+  }
   saveRequest() {
-    // if(this.selectedMachine == null || this.selectedMachine == ""){
-    //   alert('Machine Number is required');
-    // }else 
     if (this.selectedrequest == null || this.selectedrequest == "") {
       alert('Please select request type');
     }
-    //else if(this.selectedsands == null || this.selectedsands == ""){
-    //   alert('Please select S and S');
-    // }
     else {
       const frmData = new FormData();
       frmData.append("MachineNumber", this.selectedMachine);
@@ -365,6 +378,11 @@ export class CallLogScreenComponent {
       frmData.append("CustomerName", this.companyName);
       frmData.append("TokenNo", this.tokenNo);
       frmData.append("ContactId", this.contactId);
+      frmData.append("Salute", this.salute);
+      frmData.append("ContactName", this.contactname);
+      frmData.append("Designation", this.designation);
+      frmData.append("Email", this.email);
+      frmData.append("Mobile", this.mobile);
 
       frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
 
@@ -430,24 +448,5 @@ export class CallLogScreenComponent {
       console.log(this.customerList);
     });
   }
-  addContactDetails() {
-    var contactdata = {
-      Salute: this.salute,
-      ContactName: this.contactname,
-      Designation: this.designation,
-      Email: this.email,
-      Mobile: this.mobile,
-      MachineId: this.selectedMachine,
-      MachineNumber: this.selectedMachine,
-      CustomerId: this.custID,
-      CreatedBy: this.userName,
-    };
-    this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
-      if (response != null) {
-        alert('Contact added successfully!');
-      } else {
-        alert('Something Went Wrong!!!');
-      }
-    });
-  }
+  
 }
