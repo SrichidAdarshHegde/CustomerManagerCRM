@@ -1,11 +1,11 @@
 <div>&nbsp;</div>
 <div class="container">
     <h2 class="text-center">Registered Machines List</h2>
-</div><br>
-
+</div>
+<br>
 <div class="col-md-12 row">
     <div class="col-md-2"></div>
-    <div class="col-md-3">
+    <div class="col-md-2">
         <label for="companyName">Select Customer Name:</label>
         <ng-select [items]="customerList" [bindLabel]="'companyName'" name="selectedCustomer"
             [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
@@ -13,82 +13,87 @@
         </ng-select>
     </div>
 
-</div><br>
-<div class="col-md-12">
+    <div class="col-md-2">
+        <label for="searchInput">Search by Machine Number:</label>
+        <input class="form-control" type="text" id="searchInput" placeholder="Search by Machine Number"
+            [(ngModel)]="searchText">
+    </div>
+</div>
+
+<br>
+<div class="col-md-12 row">
     <div class="table-container">
-        <div class="row"><div class="col-md-1"></div>
-    <div class="col-md-3">
-        <input class="form-control" type="text" id="searchInput" placeholder="Search by Machine Number" [(ngModel)]="searchText">
-    </div></div> <br>
-        <table #table id="tableId" class="table table-bordered"
-            style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; border-collapse: collapse; 
-            margin-left: auto; width: 90%;
-            margin-right: auto;">
-            <thead>
-                <tr style="border-width:1px; border-color:black;font-size:15px;">
-                    <th style="border: 1px solid black;text-align: center;">SlNo.</th>
-                    <th style="border: 1px solid black;text-align: center;">Machine Number</th>
-                    <th style="border: 1px solid black;text-align: center;">Model</th>
-                    <th style="border: 1px solid black;text-align: center;">Customer Name</th>
+        <br>
+        <table style=" width: 90%; border-collapse: collapse; 
+        margin-left: auto;
+        margin-right: auto;" #table id="tableId">
+            <tr>
+                <th style="border: 1px solid black;text-align: center;">SlNo.</th>
+                <th style="border: 1px solid black;text-align: center;">Machine Number</th>
+                <th style="border: 1px solid black;text-align: center;">Model</th>
+                <th style="border: 1px solid black;text-align: center;">Customer Name</th>
 
-                    <th style="border: 1px solid black;text-align: center;">Unit</th>
-                    <th style="border: 1px solid black;text-align: center;">Address One</th>
-                    <th style="border: 1px solid black;text-align: center;">Address Two</th>
-                    <th style="border: 1px solid black;text-align: center;">Address Three</th>
-                    <th style="border: 1px solid black;text-align: center;">City</th>
-                    <th style="border: 1px solid black;text-align: center;">State</th>
-                    <th style="border: 1px solid black;text-align: center;">Pin</th>
-                    <th style="border: 1px solid black;text-align: center;">GSTIN</th>
-                    <th style="border: 1px solid black;text-align: center;">Clustor</th>
-                    <th style="border: 1px solid black;text-align: center;">Route No</th>
-                    <th style="border: 1px solid black;text-align: center;">Region</th>
-                    <th style="border: 1px solid black;text-align: center;">Zone</th>
-                    <th style="border: 1px solid black;text-align: center;">Created By</th>
-                    <th style="border: 1px solid black;text-align: center;">Created On</th>
-                    <th style="border: 1px solid black;text-align: center;">Edit</th>
-                    <th style="border: 1px solid black;text-align: center;">Delete</th>
+                <th style="border: 1px solid black;text-align: center;">Unit</th>
+                <th style="border: 1px solid black;text-align: center;">Address One</th>
+                <th style="border: 1px solid black;text-align: center;">Address Two</th>
+                <th style="border: 1px solid black;text-align: center;">Address Three</th>
+                <th style="border: 1px solid black;text-align: center;">City</th>
+                <th style="border: 1px solid black;text-align: center;">State</th>
+                <th style="border: 1px solid black;text-align: center;">Pin</th>
+                <th style="border: 1px solid black;text-align: center;">GSTIN</th>
+                <th style="border: 1px solid black;text-align: center;">Clustor</th>
+                <th style="border: 1px solid black;text-align: center;">Route No</th>
+                <th style="border: 1px solid black;text-align: center;">Region</th>
+                <th style="border: 1px solid black;text-align: center;">Zone</th>
+                <th style="border: 1px solid black;text-align: center;">Created By</th>
+                <th style="border: 1px solid black;text-align: center;">Created On</th>
+                <th style="border: 1px solid black;text-align: center;">Edit</th>
+                <th style="border: 1px solid black;text-align: center;">Delete</th>
 
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr
-                    *ngFor="let machine of machineCustomerList | search: searchText; let i = index">
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{
-                        (p-1)+(i+1)}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
-                        {{machine.machineNumber}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
-                        {{machine.modelName}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
-                        {{machine.customerName}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.unit}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.addressOne}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.addressTwo}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.addressThree}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.city}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.state}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.pincode}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.gstin}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.cluster}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.routeNumber}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.region}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{machine.zone}}</td>
+            </tr>
+            <tr *ngFor="let machine of machineCustomerList | search: searchText; let i = index">
+                <td style="border-width:1px; border-color:black;text-align: right;">{{
+                    (p-1)+(i+1)}}</td>
+                <td style="border-width:1px; border-color:black;text-align: right;">
+                    {{machine.machineNumber}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">
+                    {{machine.modelName}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">
+                    {{machine.customerName}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.unit}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.addressOne}}
+                </td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.addressTwo}}
+                </td>
+                <td style="border-width:1px; border-color:black;text-align: left;">
+                    {{machine.addressThree}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.city}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.state}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.pincode}}
+                </td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.gstin}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.cluster}}
+                </td>
+                <td style="border-width:1px; border-color:black;text-align: left;">
+                    {{machine.routeNumber}}</td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.region}}
+                </td>
+                <td style="border-width:1px; border-color:black;text-align: left;">{{machine.zone}}</td>
 
 
-                    <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
-                        {{machine.createdBy}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
-                        {{machine.createdOn | date}}</td>
-                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                        <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalUpdate"
-                            (click)="EditMachine(machine)">Edit</button>
-                    </td>
-                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                        <button class="btn btn-danger" (click)="deleteMachine(machine)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
+                <td style="border-width:1px; border-color:black;text-align: left;">
+                    {{machine.createdBy}}</td>
+                <td style="border-width:1px; border-color:black;text-align: right;">
+                    {{machine.createdOn | date}}</td>
+                <td style="border-width:1px; border-color:black;text-align: center;">
+                    <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalUpdate"
+                        (click)="EditMachine(machine)">Edit</button>
+                </td>
+                <td style="border-width:1px; border-color:black;text-align: center;">
+                    <button class="btn btn-danger" (click)="deleteMachine(machine)">Delete</button>
+                </td>
+            </tr>
         </table>
         <br>
         <div style="text-align: center;" *ngIf="exporting">
@@ -105,70 +110,70 @@
 
     <br><br><br><br><br>
 
-</div>
 
-<div class="container">
+    <div class="container">
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModalUpdate" role="dialog">
-        <div class="modal-dialog">
+        <!-- Modal -->
+        <div class="modal fade" id="myModalUpdate" role="dialog">
+            <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
 
-                    <h4 class="modal-title custom-title">Edit Machine Details</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12 row">
-                        <div class="form-horizontal container">
-                            <div class="col-md-12 row">
-                                <label class="col-md-4" style="color:black;padding-top: 13px">Machine Number:</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="viewmachinenumber"
-                                        name="viewmachinenumber" [(ngModel)]="viewmachinenumber" />
+                        <h4 class="modal-title custom-title">Edit Machine Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12 row">
+                            <div class="form-horizontal container">
+                                <div class="col-md-12 row">
+                                    <label class="col-md-4" style="color:black;padding-top: 13px">Machine
+                                        Number:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="viewmachinenumber"
+                                            name="viewmachinenumber" [(ngModel)]="viewmachinenumber" />
+                                    </div>
                                 </div>
+                                <br />
+
+                                <div class="col-md-12 row">
+                                    <label class="col-md-4" style="color:black;padding-top: 13px">Model :</label>
+                                    <div class="col-md-8">
+                                        <label for="companyName">Select Model:</label>
+                                        <select (change)="onSelectModel($event)" class="form-control">
+                                            <option value="">Select Model</option>
+                                            <option *ngFor="let model of modellist" value={{model.modelId}}
+                                                [selected]="model.modelId === viewmodel">
+                                                {{model.modelName}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div><br />
+
+                                <div class="col-md-12 row">
+                                    <label class="col-md-4" style="color:black;padding-top: 13px">Customer :</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="viewcustomer" name="viewcustomer"
+                                            [(ngModel)]="viewcustomer" />
+                                    </div>
+                                </div><br />
+
+
+
+
                             </div>
-                            <br />
-
-                            <div class="col-md-12 row">
-                                <label class="col-md-4" style="color:black;padding-top: 13px">Model :</label>
-                                <div class="col-md-8">
-                                    <label for="companyName">Select Model:</label>
-                                    <select (change)="onSelectModel($event)" class="form-control">
-                                        <option value="">Select Model</option>
-                                        <option *ngFor="let model of modellist" value={{model.modelId}}
-                                            [selected]="model.modelId === viewmodel">
-                                            {{model.modelName}}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div><br />
-
-                            <div class="col-md-12 row">
-                                <label class="col-md-4" style="color:black;padding-top: 13px">Customer :</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="viewcustomer" name="viewcustomer"
-                                        [(ngModel)]="viewcustomer" />
-                                </div>
-                            </div><br />
-
-
-
-
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"
-                        style="background-color: rgb(141, 132, 7);color: white;">Close</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                            style="background-color: rgb(141, 132, 7);color: white;">Close</button>
 
-                    <button type="button" class="btn btn-success" data-dismiss="modal"
-                        style="background-color: rgb(27, 9, 129);" (click)="UpdateMachine()">Update Machine</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            style="background-color: rgb(27, 9, 129);" (click)="UpdateMachine()">Update Machine</button>
+                    </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
-</div>
+    </div>

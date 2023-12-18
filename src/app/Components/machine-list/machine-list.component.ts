@@ -100,8 +100,8 @@ export class MachineListComponent implements OnInit {
   deleteMachine(data: any) {
 
     var MachineData = {
-      Id: data.machineID,
-      CustomerId: data.customerId,
+      Id: data.id,
+      CustomerId: data.customerID,
       MachineNumber: data.machineNumber,
       ModelId: data.modelId,
       CustomerName: data.customerName,

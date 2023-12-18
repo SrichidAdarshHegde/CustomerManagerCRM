@@ -4,114 +4,13 @@
 </div><br>
 <div class="col-md-12 ">
     <div class="table-container">
-        <!-- <table #table id="tableId" class="table table-bordered ">
-            <thead>
-                <tr style="border-color:black;font-size:10px;"  class="table-row">
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        SlNo.</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Customer Name</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Unit</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Address One</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Address Two</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Address Three</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        City</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        State</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Pin</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        GSTIN</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Cluster</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Route Number</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Region</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Zone</th>
-                     <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Weekly Off</th> 
-                     <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Working Time</th>
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Security Formalities</th> 
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Created By</th> 
-                    <th>Add Machine</th> 
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Edit</th>
-
-                    <th
-                        style="border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
-                        Delete</th>
-                </tr>
-            </thead>
-    <tbody>
-    <tr  style="border-color:black;font-size:10px;max-height: min-content;" *ngFor="let customer of customerList ; let i = index" >
-      <td  class="rowheight" >{{ (p-1)+(i+1) }}</td>
-      <td data-toggle="modal" data-target="#exampleModal"  style="font-size:10px;"
-        (click)="getPerticularCustomerContactDetails(customer)">
-        <b style="cursor: pointer;">{{customer.companyName}}</b>
-      </td>
-      <td   style="font-size:10px;">{{customer.unit}}</td>
-      <td  style="font-size:10px;">{{customer.addressOne}}</td>
-      <td   style="font-size:10px;">{{customer.addressTwo}}</td>
-      <td  style="font-size:10px;" >{{customer.addressThree}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.city}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.state}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.pincode}}</td>
-       {{customer.country}} 
-      <td style="font-size:10px;height: 50%;">{{customer.gstin}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.cluster}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.routeNumber}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.region}}</td>
-      <td style="font-size:10px;height: 50%;">{{customer.zone}}</td>
-       <td style="font-size:10px;height: 50%;">{{customer.weeklyOff}}</td> 
-       <td style="font-size:10px;height: 50%;">{{customer.workingStart}} To {{customer.workingEnd}}</td> 
-       <td style="font-size:10px;height: 50%;">{{customer.securityFormalities}}</td> 
-      <td style="font-size:10px;height: 50%;">{{customer.createdBy}}</td> 
-       <td>
-          <button class="btn btn-primary" (click)="addMachine(customer.customerID)">Machine</button>
-      </td> 
-      <td>
-        <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdit"
-          (click)="editCustomer(customer)"></button>
-      </td>
-      <td>
-        <button class="btn btn-danger" (click)="deleteCustomer(customer.customerID)"></button>
-      </td>
-    </tr>
-  </tbody>
-        </table> -->
-<div class="row"><div class="col-md-1"></div>
-    <div class="col-md-3">
-        <input class="form-control" type="text" id="searchInput" placeholder="Search by Customer Name" [(ngModel)]="searchText">
-    </div></div> <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" id="searchInput" placeholder="Search by Customer Name"
+                    [(ngModel)]="searchText">
+            </div><div class="col-md-8"></div>
+        </div> <br>
         <table style="width:90%;border-collapse: collapse; 
         margin-left: auto;
         margin-right: auto;" #table id="tableId">
@@ -133,10 +32,12 @@
                 <th style="border: 1px solid black;text-align: center;">Edit</th>
                 <th style="border: 1px solid black;text-align: center;">Delete</th>
             </tr>
-            <tr style="border: 1px solid black;height: 25px;" *ngFor="let customer of customerList | search: searchText; let i = index">
+            <tr style="border: 1px solid black;height: 25px;"
+                *ngFor="let customer of customerList | search: searchText; let i = index">
                 <td style="border: 1px solid black;text-align: right;">{{(i+1)}}</td>
-                <td style="border: 1px solid black;" data-toggle="modal" data-target="#exampleModal" 
-                (click)="getPerticularCustomerContactDetails(customer)"><button class="btn btn-clear">{{customer.companyName}}</button></td>
+                <td style="border: 1px solid black;" data-toggle="modal" data-target="#exampleModal"
+                    (click)="getPerticularCustomerContactDetails(customer)"><button
+                        class="btn btn-clear">{{customer.companyName}}</button></td>
                 <td style="border: 1px solid black;">{{customer.unit}}</td>
                 <td style="border: 1px solid black;">{{customer.addressOne}}</td>
                 <td style="border: 1px solid black;">{{customer.addressTwo}}</td>
@@ -151,7 +52,8 @@
                 <td style="border: 1px solid black;">{{customer.zone}}</td>
                 <td style="border: 1px solid black;">
                     <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdit"
-                    (click)="editCustomer(customer)"></button></td>
+                        (click)="editCustomer(customer)"></button>
+                </td>
                 <td style="border: 1px solid black;">
                     <button class="btn btn-danger" (click)="deleteCustomer(customer.customerID)"></button>
                 </td>
@@ -209,7 +111,7 @@
                                 <th
                                     style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
                                     Edit</th>
-                                
+
                                 <th
                                     style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">
                                     Delete</th>
@@ -221,7 +123,7 @@
                                     {{(i+1)}}</td>
                                 <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
                                     {{details.salute}} {{details.contactName}}</td>
-                          
+
                                 <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
                                     {{details.designation}}</td>
                                 <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
@@ -233,7 +135,8 @@
                                         (click)="editContactDetails(details)">Edit</button>
                                 </td>
                                 <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                                    <button class="btn btn-danger" (click)="deleteContactDeatils(details.id)">Delete</button>
+                                    <button class="btn btn-danger"
+                                        (click)="deleteContactDeatils(details.id)">Delete</button>
                                 </td>
                                 <!-- <td>
                                  <button>
@@ -245,16 +148,32 @@
                     </table>
                     <!-- <pagination-controls (pageChange)="p = $event" style="float: right"></pagination-controls> -->
                 </div>
-           <br>
-            <div *ngIf="EditContact" class="col-md-12 row"><br>
-                <div class="col-md-2"><p>Salutation: <input class="form-control" type="text" id="salutation" name="salutation" [(ngModel)]="salutation"></p></div>
-                <div class="col-md-2"><p>Name: <input class="form-control" type="text" id="contactName" name="contactName" [(ngModel)]="contactName"></p></div>
-                <div class="col-md-2"><p>Designation: <input class="form-control" type="text" id="designation" name="designation" [(ngModel)]="designation"></p></div>
-                <div class="col-md-3"><p>Email: <input class="form-control" type="text" id="email" name="email" [(ngModel)]="email"></p></div>
-                <div class="col-md-2"><p>Mobile: <input class="form-control" type="text" id="mobile" name="mobile" [(ngModel)]="mobile"></p></div>
-                <div class="col-md-1">&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" (click)="UpdateContactDetails()">Update</button></div>
+                <br>
+                <div *ngIf="EditContact" class="col-md-12 row"><br>
+                    <div class="col-md-1">
+                        <p>Salute: <input class="form-control" type="text" id="salutation" name="salutation"
+                                [(ngModel)]="salutation"></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Name: <input class="form-control" type="text" id="contactName" name="contactName"
+                                [(ngModel)]="contactName"></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Designation: <input class="form-control" type="text" id="designation" name="designation"
+                                [(ngModel)]="designation"></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Email: <input class="form-control" type="text" id="email" name="email" [(ngModel)]="email">
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Mobile: <input class="form-control" type="text" id="mobile" name="mobile"
+                                [(ngModel)]="mobile"></p>
+                    </div>
+                    <div class="col-md-1">&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary"
+                            (click)="UpdateContactDetails()">Update</button></div>
+                </div>
             </div>
-        </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>

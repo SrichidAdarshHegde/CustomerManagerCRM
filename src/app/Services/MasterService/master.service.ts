@@ -112,6 +112,60 @@ export class MasterService {
     );
   }
 
+  //Template Master
+
+  getTemplates(){
+    return this.http.get(this.globalUrl.weburl + 'Template/GetAllTemplate');
+  }
+
+  saveTemplates(data: any) {
+    return this.http.post(this.globalUrl.weburl + 'Template/PostSaveTemplate', data );
+  }
+
+  updateTemplate(data: any) {
+    return this.http.post(this.globalUrl.weburl + 'Template/PostSaveUpdateTemplate',data );
+  }
+
+  deleteTemplates(roleid: any) {
+    return this.http.get( this.globalUrl.weburl + 'Template/DeleteTemplateData/' + roleid );
+  }
+
+//Brochure Master
+
+getBrochure(){
+  return this.http.get(this.globalUrl.weburl + 'Brochure/GetAllBrouchure');
+}
+saveBrochure(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Brochure/PostSaveBrouchure', data );
+}
+
+updateBrochure(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Brochure/PostSaveUpdateBrouchure',data );
+}
+
+ deleteBrochure(roleid: any) {
+  return this.http.get( this.globalUrl.weburl + 'Brochure/DeleteBrouchureData/' + roleid );
+}
+
+
+//Mail Template Master
+
+getMail(){
+  return this.http.get(this.globalUrl.weburl + 'Mailtemplate/GetAllMail');
+}
+saveMail(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Mailtemplate/PostSaveMail', data );
+}
+
+updateMail(data: any) {
+  return this.http.post(this.globalUrl.weburl + 'Mailtemplate/PostSaveUpdateMail',data );
+}
+
+deleteMail(roleid: any) {
+  return this.http.get( this.globalUrl.weburl + 'Mailtemplate/DeleteMailData/' + roleid );
+}
+
+
   // Consumables Master
   getConsumables() {
     return this.http.get(this.globalUrl.weburl + 'Consumables/GetAllConsumables');
@@ -304,6 +358,105 @@ export class MasterService {
       this.globalUrl.weburl + 'AttendType/DeleteAttendTypeData/' + roleid
     );
   }
+//document Type
+getDocumentType() {
+  return this.http.get(this.globalUrl.weburl + 'DocumentType/GetDocumentType');
+}
+
+saveDocumentType(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentType/PostsaveDocumentType',
+    data
+  );
+}
 
 
+UpdateDocumentType(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentType/PostSaveUpdateDocumentType',
+    data
+  );
+}
+deleteDocumentType(roleid: number) {
+  return this.http.get(
+    this.globalUrl.weburl + 'DocumentType/deleteDocumentTypeData/' + roleid
+  );
+}
+// service.ts
+
+
+getModeofTransport() {
+  return this.http.get(this.globalUrl.weburl + 'ModeofTransport/GetModeofTransport');
+}
+
+saveModeofTransport(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'ModeofTransport/PostsaveModeofTransport',
+    data
+  );
+}
+
+UpdateModeofTransport(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'ModeofTransport/PostSaveUpdateModeofTransport',
+    data
+  );
+}
+
+deleteModeofTransport(roleid: number) {
+  return this.http.get(
+    this.globalUrl.weburl + 'ModeofTransport/deleteModeofTransport/' + roleid
+  );
+}
+
+// service.ts
+
+
+getTemplate() {
+  return this.http.get(this.globalUrl.weburl + 'DocumentTemplate/getTemplate');
+}
+
+saveTemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentTemplate/PostsaveTemplate',
+    data
+  );
+}
+
+UpdateTemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentTemplate/PostSaveUpdateTemplate',
+    data
+  );
+}
+deleteTemplate(roleid: any) {
+  return this.http.get(
+
+    this.globalUrl.weburl + 'DocumentTemplate/deleteTemplate/' + roleid
+    );
+}
+//mail template
+getMailTemplate() {
+  return this.http.get(this.globalUrl.weburl + 'DocumentMailTemplate/getMailTemplate');
+}
+
+saveMailtemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentMailTemplate/PostsaveMailtemplate',
+    data
+  );
+}
+
+UpdateMailTemplate(data: any) {
+  return this.http.post(
+    this.globalUrl.weburl + 'DocumentMailTemplate/PostUpdateMailTemplate',
+    data
+  );
+}
+deleteMailtemplate(roleid: any) {
+  return this.http.get(
+
+    this.globalUrl.weburl + 'DocumentMailTemplate/deleteMailtemplate/' + roleid
+    );
+}
 }

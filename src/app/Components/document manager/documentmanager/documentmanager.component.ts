@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
 @Component({
-  selector: 'app-machine-registration',
-  templateUrl: './machine-registration.component.html',
-  styleUrls: ['./machine-registration.component.css'],
+  selector: 'app-documentmanager',
+  templateUrl: './documentmanager.component.html',
+  styleUrls: ['./documentmanager.component.css']
 })
-export class MachineRegistrationComponent implements OnInit {
+export class DocumentmanagerComponent {
   customerList: any;
   modellist: any;
   unit: any;
@@ -57,6 +57,21 @@ export class MachineRegistrationComponent implements OnInit {
   files2: any;
   docs: any;
   customerID: any;
+  perticularMachineData: any;
+  machineList: any[];
+  companyName: any;
+  custID: any;
+  getPerticularCustomerContactDetails: any[];
+  features: any;
+  invoicePerticular: any;
+  machineSelected: boolean;
+  selectedrequest: null;
+  selectedMachine: string | Blob;
+  MachineNo: string | Blob;
+  selectedsands: any;
+  Resolution: string | Blob;
+  foult: string | Blob;
+  contactDetails: any;
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
@@ -82,10 +97,7 @@ export class MachineRegistrationComponent implements OnInit {
     });
   }
   getFeatures() {
-    // this.masterSv.getFeatures().subscribe((response:any)=>{
-    //   this.featureslist = response;
-    //   console.log(this.featureslist)
-    // })
+    
     this.masterSv.getFeatures().subscribe((response: any) => {
       this.featureslist = response.map((feature: any) => ({
         label: feature.featuresName,
@@ -107,31 +119,92 @@ export class MachineRegistrationComponent implements OnInit {
     });
   }
   onSelectCompany(data: any) {
-    this.customerID = data.customerID;
-    this.regSv
-      .getPerticularCustomer(this.customerID)
+    this.customerID = data.companyName;
+    this.regSv.getMachineInLocation(this.customerID)
       .subscribe((response: any) => {
-        this.perticularCustomerData = response;
-        this.unit = this.perticularCustomerData[0].unit;
-        this.addressOne = this.perticularCustomerData[0].addressOne;
-        this.addressTwo = this.perticularCustomerData[0].addressTwo;
-        this.addressThree = this.perticularCustomerData[0].addressThree;
-        this.city = this.perticularCustomerData[0].city;
-        this.pincode = this.perticularCustomerData[0].pincode;
-        this.state = this.perticularCustomerData[0].state;
-        this.country = this.perticularCustomerData[0].country;
-        this.gstin = this.perticularCustomerData[0].gstin;
-        this.cluster = this.perticularCustomerData[0].cluster;
-        this.routeNo = this.perticularCustomerData[0].routeNumber;
-        this.region = this.perticularCustomerData[0].region;
-        this.zone = this.perticularCustomerData[0].zone;
-        this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
-        this.workingStart = this.perticularCustomerData[0].workingStart;
-        this.workingEnd = this.perticularCustomerData[0].workingEnd;
-        this.securityFormalities =
-          this.perticularCustomerData[0].securityFormalities;
+        if (response == null) {
+          alert("No Machine Found!!!");
+        } else {
+          this.perticularMachineData = [];
+          this.perticularMachineData = response;
+          console.log(this.perticularMachineData);
+          this.machineList = [];
+          for (const machine of this.perticularMachineData) {
+            this.machineList.push({
+              machineNumber: machine.machineNumber,
+              machineInLocation: machine.machineInLocation,
+              modelName: machine.modelName
+            });
+          }
+        }
       });
+    if (this.perticularMachineData != 0) {
+      this.regSv
+        .getPerticularCust(this.customerID)
+        .subscribe((response: any) => {
+          if (response != null) {
+            this.perticularCustomerData = response;
+            this.companyName = this.perticularCustomerData[0].companyName;
+            this.custID = this.perticularCustomerData[0].customerID;
+            this.getPerticularCustomerContactDetailss(this.perticularCustomerData[0].customerID);
+            console.log(this.perticularCustomerData[0].customerID);
+            console.log(this.perticularCustomerData);
+            this.unit = this.perticularCustomerData[0].unit;
+            this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressThree = this.perticularCustomerData[0].addressThree;
+            this.city = this.perticularCustomerData[0].city;
+            this.pincode = this.perticularCustomerData[0].pincode;
+            this.state = this.perticularCustomerData[0].state;
+            this.country = this.perticularCustomerData[0].country;
+            this.gstin = this.perticularCustomerData[0].gstin;
+            this.cluster = this.perticularCustomerData[0].cluster;
+            this.routeNo = this.perticularCustomerData[0].routeNumber;
+            this.region = this.perticularCustomerData[0].region;
+            this.zone = this.perticularCustomerData[0].zone;
+            this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
+            this.workingStart = this.perticularCustomerData[0].workingStart;
+            this.workingEnd = this.perticularCustomerData[0].workingEnd;
+            this.warrantyFrom = this.perticularCustomerData[0].warrantyFrom;
+            this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
+            this.features = this.perticularCustomerData[0].features;
+            this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
+            this.securityFormalities =
+              this.perticularCustomerData[0].securityFormalities;
+             
+          } else {
+            alert("Something went wrong!!!")
+          }
+        });
+        this.machineSelected = true;
+    }
+
+    else {
+      this.regSv.getMachineInLocation(this.customerID)
+        .subscribe((response: any) => {
+          if (response == null) {
+            alert("No Machine Found!!!");
+          } else {
+            this.perticularMachineData = response;
+            console.log(this.perticularMachineData);
+            this.machineList = [];
+
+            for (const machine of this.perticularMachineData) {
+              this.machineList.push({
+                machineNumber: machine.machineNumber,
+                machineInLocation: machine.machineInLocation,
+                modelName: machine.modelName
+              });
+            }
+          }
+        });
+    }
   }
+
+  clear() {
+    window.location.reload();
+  }
+
+ 
   onSelectModel(data: any) {
     this.selectedModel = data.target.value;
   }
@@ -139,9 +212,7 @@ export class MachineRegistrationComponent implements OnInit {
   onSelectInvoiceperticular(data: any) {
     this.selectedinvoiceperticular = data.target.value;
   }
-  // onSelectFeature(data: any) {
-  //   this.selectedFeatures = data.target.value;
-  // }
+  
   onSelectFeature(): void {
     console.log(this.selectedFeatures);
   }
@@ -176,31 +247,7 @@ export class MachineRegistrationComponent implements OnInit {
       alert('Please select Customer/ Enter Machine Number');
     }
   }
-//   OnselectFile(event:any) {
-//     if(this.machineNumber == null){
-//         alert("Please Enter The Machine Number")
-//     }else if(this.selectedCustomer == null){
-//         alert("Plase Select The Customer")
-//     }else if(this.invoiceNumber == null){
-//         alert("Plase Enter The Invoice Number")  
-//     }else{
-//       var fileslist2 = "";
-//       this.files2 = [].slice.call(event.target.files);
-//       fileslist2 = this.files2[0];
-//       this.docs = fileslist2;
-//       const frmData = new FormData();
-//       frmData.append("MachineNumber", this.machineNumber);
-//       frmData.append("CustomerId", this.selectedCustomer);
-//       frmData.append("CreatedBy", this.userName);
-//       frmData.append("InvoiceNumber", this.invoiceNumber);
-//       frmData.append("document", this.docs);
-//   this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
-//             {
-//               alert("Uploaded Successfully!!")
-//             }  
-//           })
-//     }
-// }
+
 onselectdoc(event: any) {
   var fileslist2 = "";
   this.files2 = [].slice.call(event.target.files);
@@ -217,13 +264,20 @@ uploadInvoice(){
     frmData.append("document", this.docs);
     frmData.append("InvoiceAmount",this.invoiceamount);
     frmData.append("DueAmount",this.dueamount);
-this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
+this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
           if(data == "success"){
             alert("Document Uploaded Successfully!!")
           }else{
             alert("Somthing Went Wrong!!")
           }  
         })
+}
+
+getPerticularCustomerContactDetailss(id: any) {
+  this.regSv.getCustomerContactDetailss(id).subscribe((result: any) => {
+    this.contactDetails = result;
+    console.log(this.contactDetails);
+  });
 }
   registerMachine() {
     const frmData = new FormData();
@@ -248,7 +302,7 @@ this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/Ma
       frmData.append("WarrantyFrom", this.warrantyFrom);
       frmData.append("WarrantyTill", this.warrantyTill);
       frmData.append("CreatedBy", this.userName);
-  this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/PostMachineRegistration/',frmData).subscribe((data:any) => {
+  this.httpService.post('http://localhost:44303/api/MachineRegistration/PostMachineRegistration/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Machine Registartion Successfull");
               this.route.navigate(['/machineLists'])
@@ -261,4 +315,10 @@ this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/Ma
 
 
   }
+
+  navigateCustomerRegistrationComponent() {
+    // Navigate to the '/mailquotationtemplate' route
+    this.route.navigate(['/newcustomerregistration']);
+}
+
 }
