@@ -348,6 +348,12 @@ export class CallLogScreenComponent {
     console.log(this.contactId);
   }
   addContactDetails() {
+    if (this.contactname == null || this.contactname == "") {
+      alert('Please enter Contact name');
+    }else if(this.mobile == null || this.mobile == ""){
+      alert('Please enter Mobile number');
+    }
+    else {
     var contactdata = {
       Salute: this.salute,
       ContactName: this.contactname,
@@ -367,9 +373,16 @@ export class CallLogScreenComponent {
       }
     });
   }
+  }
   saveRequest() {
     if (this.selectedrequest == null || this.selectedrequest == "") {
       alert('Please select request type');
+    }else if(this.contactId == null || this.contactId == ""){
+      alert('Please select Contact Person');
+    }else if(this.foult == null || this.foult == ""){
+      alert('Please enter Fault');
+    }else if(this.Resolution == null || this.Resolution == ""){
+      alert('Please enter Resolution');
     }
     else {
       const frmData = new FormData();
@@ -378,11 +391,11 @@ export class CallLogScreenComponent {
       frmData.append("CustomerName", this.companyName);
       frmData.append("TokenNo", this.tokenNo);
       frmData.append("ContactId", this.contactId);
-      frmData.append("Salute", this.salute);
-      frmData.append("ContactName", this.contactname);
-      frmData.append("Designation", this.designation);
-      frmData.append("Email", this.email);
-      frmData.append("Mobile", this.mobile);
+      // frmData.append("Salute", this.salute);
+      // frmData.append("ContactName", this.contactname);
+      // frmData.append("Designation", this.designation);
+      // frmData.append("Email", this.email);
+      // frmData.append("Mobile", this.mobile);
 
       frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
 
