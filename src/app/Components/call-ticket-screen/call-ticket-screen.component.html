@@ -141,7 +141,7 @@
                     <th>Email</th>
                     <th>Designation</th>
                 </tr>
-                <tr *ngFor="let details of contactDetails; let i = index">
+                <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
                     <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
                     <td>{{details.salute}}</td>
                     <td>{{details.contactName}}</td>

@@ -343,6 +343,9 @@ export class CallTicketScreenComponent {
   clear() {
     window.location.reload();
   }
+  isSelectedRow(id: any): boolean {
+    return this.contactId === id;
+}
   onClickRow(id: any) {
     this.contactId = id;
     console.log(this.contactId);
