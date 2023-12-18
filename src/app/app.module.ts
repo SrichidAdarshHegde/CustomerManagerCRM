@@ -67,6 +67,7 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
+import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtempl
       ModeofTransportMasterComponent,
       TemplateComponent,
       DocumentMailTemplateComponent,
+      CallTicketScreenComponent,
     
 
   ],

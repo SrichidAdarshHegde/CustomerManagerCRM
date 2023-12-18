@@ -49,6 +49,7 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
+import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 const routes: Routes = [
   {path : '', component: HomeComponent},
@@ -100,7 +101,8 @@ const routes: Routes = [
 {path:'ModeofTransport',component:ModeofTransportMasterComponent},
 {path:'Template',component:TemplateComponent},
 {path:'DocumentMailTemplate',component:DocumentMailTemplateComponent},
-  
+{path:'CallTicketScreen',component:CallTicketScreenComponent},
+
   {path : 'test', component: TestComponent},
 
   {
