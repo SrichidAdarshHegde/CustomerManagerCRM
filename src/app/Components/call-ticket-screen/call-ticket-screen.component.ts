@@ -167,7 +167,7 @@ export class CallTicketScreenComponent {
 
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
-      this.tableLength = result.length + 1; // Assuming result is an array or collection
+      this.tableLength = result.length + 1; 
       this.tokenNo = this.tableLength.toString().padStart(4, '0');
     })
   }
@@ -265,7 +265,7 @@ export class CallTicketScreenComponent {
           }
         }
       });
-    if (this.perticularMachineData != 0) {
+    // if (this.perticularMachineData != 0) {
       this.regSv
         .getPerticularCust(this.customerID)
         .subscribe((response: any) => {
@@ -307,30 +307,30 @@ export class CallTicketScreenComponent {
           }
         });
       this.machineSelected = true;
-    }
-    else {
-      this.regSv.getMachineInLocation(this.customerID)
-        .subscribe((response: any) => {
-          if (response == null) {
-            alert("No Machine Found!!!");
-          } else {
-            this.perticularMachineData = response;
-            console.log(this.perticularMachineData);
+    // }
+    // else {
+    //   this.regSv.getMachineInLocation(this.customerID)
+    //     .subscribe((response: any) => {
+    //       if (response == null) {
+    //         alert("No Machine Found!!!");
+    //       } else {
+    //         this.perticularMachineData = response;
+    //         console.log(this.perticularMachineData);
 
-            // Clear existing machineList and then populate with new data
-            this.machineList = [];
+    //         // Clear existing machineList and then populate with new data
+    //         this.machineList = [];
 
-            // Loop through the machines and populate the machineList
-            for (const machine of this.perticularMachineData) {
-              this.machineList.push({
-                machineNumber: machine.machineNumber,
-                machineInLocation: machine.machineInLocation,
-                modelName: machine.modelName
-              });
-            }
-          }
-        });
-    }
+    //         // Loop through the machines and populate the machineList
+    //         for (const machine of this.perticularMachineData) {
+    //           this.machineList.push({
+    //             machineNumber: machine.machineNumber,
+    //             machineInLocation: machine.machineInLocation,
+    //             modelName: machine.modelName
+    //           });
+    //         }
+    //       }
+    //     });
+    // }
   }
 
   getCustomerTickets(id: any) {
