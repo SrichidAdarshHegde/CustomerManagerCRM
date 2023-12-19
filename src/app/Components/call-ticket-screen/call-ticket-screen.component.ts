@@ -350,6 +350,14 @@ export class CallTicketScreenComponent {
     this.contactId = id;
     console.log(this.contactId);
   }
+
+  getPerticularCustomerContactDetails(id: any) {
+    this.regSv.getCustomerContactDetails(id).subscribe((result: any) => {
+      this.contactDetails = result;
+      console.log(this.contactDetails);
+    });
+  }
+
   addContactDetails() {
     if (this.contactname == null || this.contactname == "") {
       alert('Please enter Contact name');
@@ -371,6 +379,16 @@ export class CallTicketScreenComponent {
     this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
       if (response != null) {
         alert('Contact added successfully!');
+
+        this.regSv.getCustomerContactDetails(this.custID).subscribe((result: any) => {
+          this.contactDetails = result;
+          console.log(this.contactDetails);
+        });
+        this.salute = '';
+        this.contactname = '';
+        this.designation = '';
+        this.email = '';
+        this.mobile = '';
       } else {
         alert('Something Went Wrong!!!');
       }
@@ -451,13 +469,7 @@ export class CallTicketScreenComponent {
       });
   }
 
-  getPerticularCustomerContactDetails(id: any) {
-    this.regSv.getCustomerContactDetails(id).subscribe((result: any) => {
-      this.contactDetails = result;
-      console.log(this.contactDetails);
-    });
-  }
-
+ 
   getCustomer() {
     this.regSv.getCustomer().subscribe((response: any) => {
       this.customerList = response;
