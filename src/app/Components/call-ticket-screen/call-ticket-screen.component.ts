@@ -192,7 +192,9 @@ export class CallTicketScreenComponent {
       console.log(this.sandslist);
     })
   }
-
+  isRowSelected(id: any): boolean {
+    return this.selectedMachine === id;
+}
 
   onRowClick(machineNumber: any) {
     this.selectedMachine = machineNumber;

@@ -82,7 +82,7 @@
                     <th>Inv Value</th>
                 </tr>
                 <tr
-                    *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index">
+                    *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index" [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
                     <td>{{(i+1)}}</td>
                     <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
                     <td>{{tickets.tokenID}}</td>
