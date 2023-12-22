@@ -122,11 +122,12 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-6">
+        <div class="col-md-1">
+         </div>
+        <div class="col-md-7">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
-                    <div class="col-md-12" style="overflow: auto; height: 300px;">
+                    <div class="col-md-12" style="overflow: auto; height: 200px;">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td style="text-align: center;" colspan="6">
@@ -149,8 +150,9 @@
                     <td>{{details.email}}</td>
                     <td>{{details.designation}}</td>
                 </tr>
-            </table></div>
+            </table></div> 
             <div class="col-md-12 row" *ngIf="machineSelected">
+                <h3>Add Contact:</h3>&nbsp;
                 <div class="col-md-2">
                     <label for="machineNumber"><strong>Salute:</strong></label>
                     <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
@@ -163,11 +165,11 @@
                     <label for="address1"><strong>Designation:</strong></label>
                     <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" required>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="address1"><strong>Email:</strong></label>
                     <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="address1"><strong>Mobile:</strong></label>
                     <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
                 </div>
@@ -218,7 +220,7 @@
         <div class="col-md-1"></div>
     </div>
     <div class="col-md-12 row">
-        <div class="col-md-11" style="overflow: auto; height: 300px;">
+        <div class="col-md-11" style="overflow: auto; height: 150px;">
             <table class="table table-bordered table-with-bold-lines">
                 <tr style="text-align: center;">
                     <th>S No</th>

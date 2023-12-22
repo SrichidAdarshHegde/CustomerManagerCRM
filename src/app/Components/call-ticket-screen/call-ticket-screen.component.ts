@@ -84,7 +84,7 @@ export class CallTicketScreenComponent {
   designation: any;
   contactname: any;
   salute: any;
-  machineSelected: boolean = false;
+  machineSelected: boolean = true;
   tokenNo: any;
   contactId: any;
   constructor(private regSv: RegistrationService,
