@@ -1,10 +1,12 @@
 .table-with-bold-lines {
     border-collapse: collapse;
+   
   }
   
   .table-with-bold-lines th,
   .table-with-bold-lines td {
     border: 1px solid black; 
+    padding: 5px;
   }
   
   .table-with-bold-lines p {
