@@ -87,6 +87,7 @@ import { RapidI5april2021Component } from './Components/quatation templates/rapi
 
 
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
+import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 
 @NgModule({
   declarations: [
@@ -162,6 +163,7 @@ import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-
     RapidIAMCComponent,
     RapidI5april2021Component,
     CallTicketScreenComponent,
+    TravelSheetComponent,
 
 
 

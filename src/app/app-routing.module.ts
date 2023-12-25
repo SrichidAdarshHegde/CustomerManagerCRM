@@ -66,6 +66,7 @@ import { Quotation5030Component } from './Components/quatation templates/quotati
 import { Quotation5030z25jlxComponent } from './Components/quatation templates/quotation5030z25jlx/quotation5030z25jlx.component';
 import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/rapid-iamc.component';
 import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
+import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 
 const routes: Routes = [
 {path : '', component: HomeComponent},
@@ -104,6 +105,7 @@ const routes: Routes = [
 {path : 'callLogScreen', component: CallLogScreenComponent},
 {path : 'travelBudget/:id', component: TravelBudgetComponent}, 
 {path : 'travelBudget', component: TravelBudgetComponent},
+{path : 'TravelSheet', component: TravelSheetComponent},
 {path : 'tripsheet', component: TripSheetComponent},
 {path : 'locationDetails', component: LocationdetailsComponent},
 {path : 'locationDetailslist', component: LocationdetailslistComponent},

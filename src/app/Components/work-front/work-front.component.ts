@@ -65,14 +65,16 @@ export class WorkFrontComponent implements OnInit {
   tableLength: any;
   generateMachineNo: any;
   MachineNo: any;
-  sequence1: boolean[] = [];
-  sequence2: boolean[] = [];
-  currentSequenceNumber = 1;
-  checedLength: any = [];
-  checedLengthvalue: any;
+  //sequence1: boolean[] = [];
+ // sequence2: boolean[] = [];
+ // currentSequenceNumber = 1;
+  // checedLength: any = [];
+  // checedLengthvalue: any;
   sequence: boolean[];
-  selectedRows: any[] = []; 
-  checkedIndexes: number[] = [];
+ // checkedIndexes: number[] = [];
+  selectedRows: any[] = [];
+  selectedRows1: any[] = [];
+  sequenceTwo: boolean[];
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
@@ -86,6 +88,7 @@ export class WorkFrontComponent implements OnInit {
       this.IsLoggedIn = true;
     }
     this.sequence = new Array(this.workpriority.length).fill(false);
+    this.sequenceTwo = new Array(this.workpriority45.length).fill(false);
   }
 
   ngOnInit(): void {
@@ -120,26 +123,42 @@ export class WorkFrontComponent implements OnInit {
     });
   }
 
-  onCheckboxClick(request, index) {
-    this.sequence[index] = !this.sequence[index];
-    this.checkedIndexes = this.sequence.reduce((acc, isChecked, i) => {
-        if (isChecked) {
-            acc.push(i);
-        }
-        return acc;
-    }, []);
-    this.selectedRows = this.checkedIndexes.map((checkedIndex) => this.workpriority[checkedIndex]);
-}
+  onCheckboxClick(request: any) {
+    const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
+    
+    if (index !== -1) {
+      this.selectedRows.splice(index, 1);
+    } else {
+      this.selectedRows.push(request);
+    }
+    console.log(this.selectedRows);
+  }
 
+  onCheckboxClick1(request: any) {
+    const index = this.selectedRows1.findIndex(row1 => row1.tokenID === request.tokenID);
+    
+    if (index !== -1) {
+      this.selectedRows1.splice(index, 1);
+    } else {
+      this.selectedRows1.push(request);
+    }
+    console.log( this.selectedRows1);
+  }
+  
 generateTS() {
   if (this.selectedZone == null || this.selectedZone == "") {
     alert("Please select zone");
     return;
   }
-  console.log('Checkbox States - Table 1:', this.sequence1);
-  console.log('Checkbox States - Table 2:', this.sequence2);
+  this.route.navigate(['/TravelSheet'], { state: { selectedData: this.selectedRows } });
+}
 
-  this.currentSequenceNumber = 1;
+generateTStwo() {
+  if (this.selectedZone == null || this.selectedZone == "") {
+    alert("Please select zone");
+    return;
+  }
+  this.route.navigate(['/travelBudget'], { state: { selectedData: this.selectedRows1 } });
 }
 
 
