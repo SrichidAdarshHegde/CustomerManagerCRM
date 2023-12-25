@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx';
 import { ElementRef, ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-work-front',
@@ -15,8 +16,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./work-front.component.css'],
   providers: [DatePipe]
 })
-export class WorkFrontComponent implements OnInit
- {
+export class WorkFrontComponent implements OnInit {
   @ViewChild('table', { static: false }) table!: ElementRef;
   @ViewChild('table1', { static: false }) table1!: ElementRef;
   @ViewChild('table2', { static: false }) table2!: ElementRef;
@@ -39,12 +39,12 @@ export class WorkFrontComponent implements OnInit
   formattedDateRemarks: string = '';
   currentDatee: Date | undefined;
   priority0Worklist: any[] = [];
-  otherWorklist: any=[];
-  workpriority: any=[];
+  otherWorklist: any = [];
+  workpriority: any = [];
   zoneSelected: boolean = false;
   selectedAttendedBy: any;
   selectedAttendedHow: any;
-  isClicked: boolean= false;
+  isClicked: boolean = false;
   customerID: any;
   companyName: any;
   isDone: any;
@@ -65,26 +65,34 @@ export class WorkFrontComponent implements OnInit
   tableLength: any;
   generateMachineNo: any;
   MachineNo: any;
-
-
+  sequence1: boolean[] = [];
+  sequence2: boolean[] = [];
+  currentSequenceNumber = 1;
+  checedLength: any = [];
+  checedLengthvalue: any;
+  sequence: boolean[];
+  selectedRows: any[] = []; 
+  checkedIndexes: number[] = [];
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
     private route: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private zoneng: NgZone
   ) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
       this.IsLoggedIn = true;
     }
+    this.sequence = new Array(this.workpriority.length).fill(false);
   }
 
   ngOnInit(): void {
     this.getrequest();
     this.getAttendType();
     this.getUsers();
-   
+
     const date = new Date();
     this.currentDate = new Date();
     const formattedDate = this.datePipe.transform(
@@ -112,16 +120,39 @@ export class WorkFrontComponent implements OnInit
     });
   }
 
+  onCheckboxClick(request, index) {
+    this.sequence[index] = !this.sequence[index];
+    this.checkedIndexes = this.sequence.reduce((acc, isChecked, i) => {
+        if (isChecked) {
+            acc.push(i);
+        }
+        return acc;
+    }, []);
+    this.selectedRows = this.checkedIndexes.map((checkedIndex) => this.workpriority[checkedIndex]);
+}
+
+generateTS() {
+  if (this.selectedZone == null || this.selectedZone == "") {
+    alert("Please select zone");
+    return;
+  }
+  console.log('Checkbox States - Table 1:', this.sequence1);
+  console.log('Checkbox States - Table 2:', this.sequence2);
+
+  this.currentSequenceNumber = 1;
+}
+
+
   onSelectZone(data: any) {
     this.otherWorklist = []
     this.workpriority45 = []
     this.workpriority = []
     this.exporting = false;
     this.selectedZone = data.target.value;
-  
+
     // Set the zoneName variable based on the selectedZone
     this.GetZoneName();
-  
+
     this.regSv
       .getWorkfrontrequestzonewise(this.selectedZone)
       .subscribe((response: any) => {
@@ -134,22 +165,23 @@ export class WorkFrontComponent implements OnInit
           alert('No Requests Found For Selected Zone!!!');
         }
         for (var i = 0; i < this.worklist.length; i++) {
-          if (this.worklist[i].priority === "T0" || this.worklist[i].priority === "T1" || this.worklist[i].priority === "T2"|| this.worklist[i].priority === "T3"|| this.worklist[i].priority === "T4"|| this.worklist[i].priority === "T5"|| this.worklist[i].priority === "T6") {
+          if (this.worklist[i].priority === "T0" || this.worklist[i].priority === "T1" || this.worklist[i].priority === "T2" || this.worklist[i].priority === "T3" || this.worklist[i].priority === "T4" || this.worklist[i].priority === "T5" || this.worklist[i].priority === "T6") {
             this.otherWorklist.push(this.worklist[i]);
-          } else if (this.worklist[i].priority === "F4" || this.worklist[i].priority === "F5"|| this.worklist[i].priority === "F6" ) {
+          } else if (this.worklist[i].priority === "F4" || this.worklist[i].priority === "F5" || this.worklist[i].priority === "F6") {
             this.workpriority45.push(this.worklist[i]);
-            console.log(this.workpriority45)
+            // console.log(this.workpriority45)
           } else {
             this.workpriority.push(this.worklist[i]);
           }
         }
       });
-      this.zoneSelected = true;
-      console.log(this.otherWorklist)
-      console.log(this.workpriority45)
-      console.log(this.workpriority)
+    this.zoneSelected = true;
+    console.log(this.otherWorklist)
+    console.log(this.workpriority)
+    console.log(this.workpriority45)
+
   }
-  
+
   GetZoneName() {
     for (let i = 0; i < this.zonelist.length; i++) {
       if (this.selectedZone == this.zonelist[i].zoneId) {
@@ -203,10 +235,10 @@ export class WorkFrontComponent implements OnInit
   //   this.regSv.getWorkfrontrequest().subscribe((response: any) => {
   //     this.worklist = response;
   //     this.sortWorklist();
-  
-   
+
+
   //     this.workpriority45 = [];
-  
+
   //     for (var i = 0; i < this.worklist.length; i++) {
   //       if (this.worklist[i].requestFor === "T0" || this.worklist[i].requestFor === "T1" || this.worklist[i].requestFor === "T2"|| this.worklist[i].requestFor === "T3"|| this.worklist[i].requestFor === "T4"|| this.worklist[i].requestFor === "T5"|| this.worklist[i].requestFor === "T6") {
   //         this.otherWorklist.push(this.worklist[i]);
@@ -223,7 +255,7 @@ export class WorkFrontComponent implements OnInit
 
   //   });
   // }
-  
+
 
   exportTableToExcel(): void {
     const element = document.getElementById('tableId');
@@ -249,7 +281,7 @@ export class WorkFrontComponent implements OnInit
     });
     this.saveAsExcelFile(excelBuffer, 'WorkFront' + this.formattedDate);
   }
-   exportTableToExcel2(): void {
+  exportTableToExcel2(): void {
     const element = document.getElementById('tableId2');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
@@ -275,23 +307,23 @@ export class WorkFrontComponent implements OnInit
   sortWorklist() {
     this.worklist.sort((a: { routeId: number; priority: number; }, b: { routeId: number; priority: number; }) => {
       if (a.routeId !== b.routeId) {
-     
+
         return a.routeId - b.routeId;
       } else {
-       
+
         return a.priority - b.priority;
       }
     });
   }
-  
-  getAttendType(){
-    this.masterSv.getAttendType().subscribe((response:any)=>{
+
+  getAttendType() {
+    this.masterSv.getAttendType().subscribe((response: any) => {
       this.attendtypelist = response;
       console.log(this.attendtypelist)
     })
   }
 
-  
+
 
   getUsers() {
     this.regSv.getUsers().subscribe((response: any) => {
@@ -303,21 +335,21 @@ export class WorkFrontComponent implements OnInit
     this.regSv.getPendingrequest().subscribe((response: any) => {
       this.requestlist = response;
       console.log(this.requestlist);
-      if(this.requestlist.length!=0){
-        this.exporting=true;
+      if (this.requestlist.length != 0) {
+        this.exporting = true;
       }
     });
   }
-  onSelectAttendedBy(data:any){
+  onSelectAttendedBy(data: any) {
     this.selectedAttendedBy = data.target.value
   }
-  onSelectAttendedHow(data:any){
+  onSelectAttendedHow(data: any) {
     this.selectedAttendedHow = data.target.value
   }
-  Done(abd:any){
+  Done(abd: any) {
     this.isClicked = true
     this.companyName = abd.companyName
-this.tokenID=abd.tokenID
+    this.tokenID = abd.tokenID
     this.customerID = abd.customerID
     this.isDone = abd.isDone
     this.machineNumber = abd.machineNumber
@@ -330,42 +362,41 @@ this.tokenID=abd.tokenID
     this.requestId = abd.requestId
   }
 
-  savedoneDetails(){
+
+  savedoneDetails() {
     var interactionData = {
-      CutomerId : this.customerID,
-      CutomerName : this.companyName,
+      CutomerId: this.customerID,
+      CutomerName: this.companyName,
       tokenID: this.tokenID,
       //MachineId : this.ma
-      MachineNumber : this.machineNumber,
-      ModelId : this.modelId,
-      ModelName : this.modelName,
-      RegionId : this.regionId,
-      RegionName : this.region,
+      MachineNumber: this.machineNumber,
+      ModelId: this.modelId,
+      ModelName: this.modelName,
+      RegionId: this.regionId,
+      RegionName: this.region,
       //ZoneId : this.z
-      ZoneName : this.zone,
-      Remarks : this.remarks,
-      AttendedByUserId : this.selectedAttendedBy,
+      ZoneName: this.zone,
+      Remarks: this.remarks,
+      AttendedByUserId: this.selectedAttendedBy,
       //AttendedByUserName : this.selectedAttendedBy,
-      AttendedHowId : this.selectedAttendedHow,
+      AttendedHowId: this.selectedAttendedHow,
       //AttendedHowName : this.selectedAttendedHow,
-      CreatedBy : this.userName,
-      RequestId : this.requestId,
-      DateOfInteraction : this.dateofinteraction
+      CreatedBy: this.userName,
+      RequestId: this.requestId,
+      DateOfInteraction: this.dateofinteraction
     }
-    this.regSv.postSaveInteraction(interactionData).subscribe((response:any )=>
-      {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
+    this.regSv.postSaveInteraction(interactionData).subscribe((response: any) => {
+      if (response == "success") {
+        alert("Interacted Successfully")
+        window.location.reload()
+      }
+      else {
+        alert("Somthing Went Wrong!!")
+        window.location.reload()
+      }
+    })
+
+
   }
 
 }

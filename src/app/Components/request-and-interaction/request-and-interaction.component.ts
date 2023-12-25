@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
+
 @Component({
   selector: 'app-request-and-interaction',
   templateUrl: './request-and-interaction.component.html',

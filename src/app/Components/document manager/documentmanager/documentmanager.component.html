@@ -106,14 +106,13 @@
         
         <!-- Buttons -->
         <div class="col-md-12 text-center mt-3">
-            <!-- <button class="btn btn-primary mx-2">Add New</button> -->
+          
             <button class="btn btn-success mx-2" (click)="navigateCustomerRegistrationComponent()">New entry</button>
 
-                          
-            <!-- <button class="btn btn-danger mx-2">Delete</button> -->
+                   
         </div>
     </div>
-<br><br><br>
+<br>
 
 <div class="col-md-14" style="overflow: auto; margin-top: 25px; display: flex; flex-direction: column; align-items: flex-start;">
   <table class="table table-bordered table-with-bold-lines">
@@ -124,86 +123,186 @@
     </tr>
     <tr style="text-align: center;">
       <th>SNo</th>
-      <th>Salute</th>
+    
       <th>Name</th>
       <th>Mobile</th>
       <th>Email</th>
-      <th>Designation</th>
+     
     </tr>
     <tr *ngFor="let details of contactDetails; let i = index">
       <td>{{(i+1)}}</td>
-      <td>{{details.salute}}</td>
+   
       <td>{{details.contactName}}</td>
       <td>{{details.mobile}}</td>
       <td>{{details.email}}</td>
-      <td>{{details.designation}}</td>
+
     </tr>
   </table>
  
 </div>
-<div style="margin-top: 10px; align-self: flex-end;">
-<!-- //  //<button class="btn btn-danger mx-2">Delete</button> -->
+<div style="margin-top: 25px; align-self: flex-end;">
+  <!-- <button class="btn btn-danger mx-2">Delete</button> -->
 </div>
-  </div>
-  <div style="width: 373px; height: 22px; left: 674px; top: 9px; position: absolute; color: black; font-size: 32px; font-family: Inter; font-weight: 400; word-wrap: break-word">Document manager</div>
-  <div style="width: 775px; height: 842px; left: 797px; top: 56px; position: absolute; background: white">
-    <div style="width: 723px; height: 122px; left: 23px; top: 99px; position: absolute; background: #D9D9D9"></div>
-    <div style="left: 41px; top: 122px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Mode OF Transport</div>
-    <div style="width: 723px; height: 39px; left: 23px; top: 60px; position: absolute; background: #DCE3F3"></div>
-    <div style="width: 85px; left: 445px; top: 74px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">drop down</div>
-    <div style="left: 41px; top: 72px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Document Type</div>
-    <div style="left: 335px; top: 71px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Template</div>
-    <div style="width: 161px; height: 25px; left: 142px; top: 68px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-    <div style="width: 161px; height: 25px; left: 404px; top: 68px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-    <div style="width: 113px; height: 26px; left: 612px; top: 68px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-    <div style="left: 629px; top: 72px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Del doc type</div>
-    <div style="width: 366px; height: 26px; left: 172px; top: 122px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-    <div style="left: 158px; top: 73px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">drop down</div>
-    <div style="left: 294px; top: 125px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">drop down</div>
-    <div style="width: 751px; height: 279px; left: 16px; top: 254px; position: absolute">
-      <div style="left: 33px; top: 42px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">sl.no</div>
-      <div style="left: 97px; top: 42px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">R.no</div>
-      <div style="left: 207px; top: 42px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">Sender</div>
-      <div style="left: 377px; top: 45px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">Company name</div>
-      <div style="left: 587px; top: 43px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">Date</div>
-      <div style="width: 683px; height: 213px; left: 25px; top: 33px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 683px; height: 0px; left: 25px; top: 72px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 683px; height: 0px; left: 26px; top: 101px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 683px; height: 0px; left: 25px; top: 129px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 683px; height: 0px; left: 25px; top: 159px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 683px; height: 0px; left: 25px; top: 188px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 683px; height: 0px; left: 27px; top: 218px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 0px; height: 213px; left: 86px; top: 33px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 0px; height: 213px; left: 149px; top: 33px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 0px; height: 213px; left: 302px; top: 33px; position: absolute; border: 1px #797474 solid"></div>
-      <div style="width: 0px; height: 213px; left: 562px; top: 33px; position: absolute; border: 1px #797474 solid"></div>
-    </div>
-    <div style="width: 742px; height: 309px; left: 16px; top: 543px; position: absolute">
-      <div style="width: 112px; height: 26px; left: 37px; top: 21px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 112px; height: 26px; left: 161px; top: 21px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 112px; height: 26px; left: 281px; top: 20px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 131px; height: 23px; left: 579px; top: 22px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="left: 487px; top: 26px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">mail template</div>
-      <div style="left: 75px; top: 27px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">open</div>
-      <div style="left: 192px; top: 27px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">mail pdf</div>
-      <div style="left: 311px; top: 26px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">delete</div>
-      <div style="width: 701px; height: 172px; left: 12px; top: 99px; position: absolute; background: #ECECEC"></div>
-      <div style="left: 442px; top: 212px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">Open</div>
-      <div style="width: 10px; height: 12px; left: 632px; top: 55px; position: absolute; border: 1px black solid"></div>
-      <div style="left: 221px; top: 150px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">Ref</div>
-      <div style="left: 66px; top: 156px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Doc No</div>
-      <div style="width: 10px; height: 12px; left: 632px; top: 55px; position: absolute; border: 1px black solid"></div>
-      <div style="left: 645px; top: 53px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">attach  pdf</div>
-      <div style="left: 83px; top: 116px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">Date</div>
-      <div style="width: 125px; height: 24px; left: 126px; top: 112px; position: absolute; border-radius: 3px; border: 1px black solid"></div>
-      <div style="width: 81px; height: 26px; left: 126px; top: 147px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 60px; height: 26px; left: 253px; top: 147px; position: absolute; border-radius: 5px; border: 1px black solid"></div>
-      <div style="width: 217px; height: 42px; left: 167px; top: 197px; position: absolute; background: white">
-        <div style="width: 196px; height: 30px; left: 10px; top: 6px; position: absolute; background: #0D99FF; border-radius: 3px; border: 1px #0D99FF solid"></div>
-        <div style="left: 55px; top: 13px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">Generate  PDF</div>
+</div>
+<div style="width: 373px; height: 22px; left: 674px; top: 9px; position: absolute; color: black; font-size: 32px; font-family: Inter; font-weight: 400; word-wrap: break-word">Document manager</div>
+<div style="width: 775px; height: 842px; left: 797px; top: 50px; position: absolute; background: white">
+<br>
+<div style="width: 723px; height: 200px; left: 50px; top: 54px; position: absolute; background: white; border: 1px #DFD7D7 solid">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <label for="documentTypeDropdown" class="form-label">Document Type</label>
+        <select (change)="OnselectDocumentType($event)" id="documentTypeDropdown" class="form-control dropdownsize12 custom-dropdown">
+          <option value="">Select Document type</option>
+          <option *ngFor="let DocumentType of DocumentTypeList" [value]="DocumentType.documentID">
+            {{ DocumentType.documentName }}
+          </option>
+        </select>
       </div>
-      <div style="width: 10px; height: 12px; left: 422px; top: 214px; position: absolute; border: 1px black solid"></div>
-      <div style="left: 609px; top: 26px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">drop down</div>
+      <div class="col-md-4 offset-md-1">
+        <label for="templateDropdown" class="form-label">Template</label>
+        <select (change)="OnselectTemplate($event)" id="templateDropdown" class="form-control dropdownsize123 custom-dropdown">
+          <option value="">Select Template</option>
+          <option *ngFor="let do of TemplateList" [value]="do.documentID">
+            {{ do.templateName }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  
+  <br>
+    <div class="row mt-3">
+      <div class="col-md-3">
+        &nbsp;<label for="modeOfTransportDropdown" class="form-label">Mode of Transport</label>
+      </div>
+      <div class="col-md-7">
+        <select (change)="onSelectmodeoftransport($event)" id="modeOfTransportDropdown" class="form-control dropdownsize12">
+          <option value="">Select Mode of transport</option>
+          <option *ngFor="let ModeofTransport of ModeofTransportList" [value]="ModeofTransport.modeofTransportID">
+            {{ ModeofTransport.transportName }}
+          </option>
+        </select>
+      </div>
     </div>
   </div>
-</div>
+  
+<br><br><br><br>
+  <table>
+    <thead>
+      <tr>
+        <th>sl.no</th>
+        <th>R.no</th>
+        <th>Sender</th>
+        <th>Company name</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr> <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr> <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr> <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr> <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr> <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+
+
+  
+    <div style="width: 742px; height: 309px; left: 16px; top: 543px; position: absolute">
+
+      <div class="col">
+    
+        <select (change)="onselectemailtemplate($event)" class="form-control mail-template-dropdown">
+          <option value="">Select Mail Template</option>
+          <option *ngFor="let Mailtemplate of MailTemplateList" [value]="Mailtemplate.mailTemplateID">
+             {{ Mailtemplate.mailTemplateName }}
+          </option>
+       </select>
+       
+    </div>
+    
+    <div class="button-container">
+      <button class="btn btn-primary mx-2">open</button>
+      <button class="btn btn-success mx-2">mail pdf</button>
+      <button class="btn btn-danger mx-2">Delete</button>
+    </div>
+
+      <div class="container12">
+        <div style="left: 300px; top: 50px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">
+          <label for="status">Ref</label>
+          <input type="text" id="status" name="status">
+        </div>
+      
+        <div style="left: 66px; top: 50px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+          <label for="ref">Doc No</label>
+          <input type="text" id="ref" name="ref">
+        </div>
+        
+        <div style="left: 66px; top: 20px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">
+          <label for="docNo">Date</label>
+          <input type="text" id="docNo" name="docNo">
+        </div>
+      
+        
+      
+        <div class="position-absolute" style="left: 66px; top: 100px; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">
+          <button class="btn btn-primary" onclick="generateDocument()">Generate Document</button>
+        </div>
+    
+
+  

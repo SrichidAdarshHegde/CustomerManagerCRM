@@ -67,6 +67,26 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
+import { Quatation4020HTComponent } from './Components/quatation templates/quatation4020-ht/quatation4020-ht.component';
+import { Quotation2015Iv2015JLXComponent } from './Components/quatation templates/quotation2015-iv2015-jlx/quotation2015-iv2015-jlx.component';
+import { Quotation2015HTComponent } from './Components/quatation templates/quotation2015-ht/quotation2015-ht.component';
+import { Quotation2015Component } from './Components/quatation templates/quotation2015/quotation2015.component';
+import { Quotation2015z25Component } from './Components/quatation templates/quotation2015z25/quotation2015z25.component';
+
+import { Quotation4020Component } from './Components/quatation templates/quotation4020/quotation4020.component';
+import { Quotation4020indollorComponent } from './Components/quatation templates/quotation4020indollor/quotation4020indollor.component';
+import { Quotation4020z25Component } from './Components/quatation templates/quotation4020z25/quotation4020z25.component';
+import { Quotation4030Component } from './Components/quatation templates/quotation4030/quotation4030.component';
+import { Quotation4030z25Component } from './Components/quatation templates/quotation4030z25/quotation4030z25.component';
+import { Quotation4030indollorComponent } from './Components/quatation templates/quotation4030indollor/quotation4030indollor.component';
+import { Quotation5030Component } from './Components/quatation templates/quotation5030/quotation5030.component';
+import { Quotation5030z25jlxComponent } from './Components/quatation templates/quotation5030z25jlx/quotation5030z25jlx.component';
+import { QuotationforRapidITableComponent } from './Components/quatation templates/quotationfor-rapid-itable/quotationfor-rapid-itable.component';
+import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/rapid-iamc.component';
+import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
+
+
+import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 
 import { Rapid64Component } from './Components/QM TEMPLATES/rapid64/rapid64.component';
@@ -141,6 +161,7 @@ import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
     ModeofTransportMasterComponent,
     TemplateComponent,
     DocumentMailTemplateComponent,
+<<<<<<< HEAD
 
     Rapid64Component,
     Rapidi2015JLXComponent,
@@ -154,6 +175,25 @@ import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
     Q4020Component,
     Q4020HTComponent,
     QMComponent,
+=======
+    Quatation4020HTComponent,
+    Quotation2015HTComponent,
+    Quotation2015Component,
+    Quotation2015z25Component,
+
+    Quotation4020Component,
+    Quotation4020indollorComponent,
+    Quotation4020z25Component,
+    Quotation4030Component,
+    Quotation4030z25Component,
+    Quotation4030indollorComponent,
+    Quotation5030Component,
+    Quotation5030z25jlxComponent,
+    QuotationforRapidITableComponent,
+    RapidIAMCComponent,
+    RapidI5april2021Component,
+    CallTicketScreenComponent,
+>>>>>>> 18913de6b8d62350aa0aed6bbb316de120fefd9b
 
 
 
