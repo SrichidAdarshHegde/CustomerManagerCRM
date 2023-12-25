@@ -6,6 +6,8 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class MasterService {
+  getTemplatesByDocumentType: any;
+  
   constructor(private http: HttpClient, private globalUrl: AppGlobals) {}
   // Role master
   getRole() {
@@ -458,5 +460,9 @@ deleteMailtemplate(roleid: any) {
 
     this.globalUrl.weburl + 'DocumentMailTemplate/deleteMailtemplate/' + roleid
     );
+}
+
+getPerticularDocumentType(id:any) {
+  return this.http.get(this.globalUrl.weburl + 'DocumentType/GetPerticularDocumentType/'+ id);
 }
 }

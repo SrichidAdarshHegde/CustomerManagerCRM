@@ -51,61 +51,94 @@ import { BrochureComponent } from 'src/brochure/brochure.component';
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
+import { Quatation4020HTComponent } from './Components/quatation templates/quatation4020-ht/quatation4020-ht.component';
+import { Quotation2015Iv2015JLXComponent } from './Components/quatation templates/quotation2015-iv2015-jlx/quotation2015-iv2015-jlx.component';
+import { Quotation2015HTComponent } from './Components/quatation templates/quotation2015-ht/quotation2015-ht.component';
+import { Quotation2015Component } from './Components/quatation templates/quotation2015/quotation2015.component';
+import { Quotation2015z25Component } from './Components/quatation templates/quotation2015z25/quotation2015z25.component';
+import { Quotation4020Component } from './Components/quatation templates/quotation4020/quotation4020.component';
+import { Quotation4020indollorComponent } from './Components/quatation templates/quotation4020indollor/quotation4020indollor.component';
+import { Quotation4020z25Component } from './Components/quatation templates/quotation4020z25/quotation4020z25.component';
+import { Quotation4030z25Component } from './Components/quatation templates/quotation4030z25/quotation4030z25.component';
+import { Quotation4030Component } from './Components/quatation templates/quotation4030/quotation4030.component';
+import { Quotation4030indollorComponent } from './Components/quatation templates/quotation4030indollor/quotation4030indollor.component';
+import { Quotation5030Component } from './Components/quatation templates/quotation5030/quotation5030.component';
+import { Quotation5030z25jlxComponent } from './Components/quatation templates/quotation5030z25jlx/quotation5030z25jlx.component';
+import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/rapid-iamc.component';
+import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
+
 const routes: Routes = [
-  {path : '', component: HomeComponent},
-  {path : 'home', component: HomeComponent},
-  {path : 'login', component: LoginComponent},
-  {path : 'userRegistration', component:UserRegistrationComponent},
-  {path : 'workFront', component:WorkFrontComponent},
-  {path : 'roleMaster', component:RoleMasterComponent},
-  {path : 'dashboard', component:DashBoardComponent},
-  {path : 'newcustomerregistration', component:CustomerRegistrationComponent},
-  {path : 'newmachineregistaration', component:MachineRegistrationComponent},
-  {path : 'cityMaster', component: CityComponent},
-  {path : 'clusterMaster', component: ClusterComponent},
-  {path : 'countryMaster', component: CountryComponent},
-  {path : 'regionMaster', component: RegionComponent},
-  {path : 'routeNumberMaster', component: RouteNumberComponent},
-  {path : 'statemaster', component: StateComponent},
-  {path : 'zoneMaster', component: ZoneMasterComponent},
-  {path : 'faultsMaster', component: FaultsComponent},
-  {path : 'consumablesMaster', component: ConsumablesComponent},
-  {path : 'userList', component: UserListComponent},
-  {path : 'customerLists', component: CustomerListsComponent},
-  {path : 'modelMaster', component: ModelMasterComponent},
-  {path : 'featuresMaster', component: FeaturesMasterComponent},
-  {path : 'invoiceParticulars', component: InvoicePerticularComponent},
-  {path : 'machineLists', component: MachineListComponent},
-  {path : 'request&interaction', component: RequestAndInteractionComponent},
-  {path : 'invoice&followup', component: InvoiceAndFollowupComponent},
-  {path : 'requestsMasters', component: RequestsMasterComponent},
-  {path : 'requestList', component: RequestListComponent},
-  {path : 'follow-upList', component: FolloUpListComponent},
-  {path : 'interactionList', component: InteractionListComponent},
-  {path : 'invoiceList', component: InvoiceListComponent},
-  {path : 'attendTypeMaster', component: TypeOfAttendMasterComponent},
-  {path : 's&s', component: SandsMasterComponent},
-  {path : 'callLogScreen', component: CallLogScreenComponent},
-  {path : 'travelBudget/:id', component: TravelBudgetComponent}, 
-  {path : 'travelBudget', component: TravelBudgetComponent},
-  {path : 'tripsheet', component: TripSheetComponent},
-  {path : 'locationDetails', component: LocationdetailsComponent},
-  {path : 'locationDetailslist', component: LocationdetailslistComponent},
+{path : '', component: HomeComponent},
+{path : 'home', component: HomeComponent},
+{path : 'login', component: LoginComponent},
+{path : 'userRegistration', component:UserRegistrationComponent},
+{path : 'workFront', component:WorkFrontComponent},
+{path : 'roleMaster', component:RoleMasterComponent},
+{path : 'dashboard', component:DashBoardComponent},
+{path : 'newcustomerregistration', component:CustomerRegistrationComponent},
+{path : 'newmachineregistaration', component:MachineRegistrationComponent},
+{path : 'cityMaster', component: CityComponent},
+{path : 'clusterMaster', component: ClusterComponent},
+{path : 'countryMaster', component: CountryComponent},
+{path : 'regionMaster', component: RegionComponent},
+{path : 'routeNumberMaster', component: RouteNumberComponent},
+{path : 'statemaster', component: StateComponent},
+{path : 'zoneMaster', component: ZoneMasterComponent},
+{path : 'faultsMaster', component: FaultsComponent},
+{path : 'consumablesMaster', component: ConsumablesComponent},
+{path : 'userList', component: UserListComponent},
+{path : 'customerLists', component: CustomerListsComponent},
+{path : 'modelMaster', component: ModelMasterComponent},
+{path : 'featuresMaster', component: FeaturesMasterComponent},
+{path : 'invoiceParticulars', component: InvoicePerticularComponent},
+{path : 'machineLists', component: MachineListComponent},
+{path : 'request&interaction', component: RequestAndInteractionComponent},
+{path : 'invoice&followup', component: InvoiceAndFollowupComponent},
+{path : 'requestsMasters', component: RequestsMasterComponent},
+{path : 'requestList', component: RequestListComponent},
+{path : 'follow-upList', component: FolloUpListComponent},
+{path : 'interactionList', component: InteractionListComponent},
+{path : 'invoiceList', component: InvoiceListComponent},
+{path : 'attendTypeMaster', component: TypeOfAttendMasterComponent},
+{path : 's&s', component: SandsMasterComponent},
+{path : 'callLogScreen', component: CallLogScreenComponent},
+{path : 'travelBudget/:id', component: TravelBudgetComponent}, 
+{path : 'travelBudget', component: TravelBudgetComponent},
+{path : 'tripsheet', component: TripSheetComponent},
+{path : 'locationDetails', component: LocationdetailsComponent},
+{path : 'locationDetailslist', component: LocationdetailslistComponent},
 {path:'quotationmanager',component:QuotationmanagerComponent},
 {path:'quotationtemplate',component:QuotationtemplateComponent},
 {path:'brochure',component:BrochureComponent},
 {path:'mailquotationtemplate',component:MailquotationtemplateComponent},
-
-  {path:'documentmanager',component:DocumentmanagerComponent},
+{path:'documentmanager',component:DocumentmanagerComponent},
 {path:'DocumentType',component:DocumentTypeMasterComponent},
 {path:'ModeofTransport',component:ModeofTransportMasterComponent},
 {path:'Template',component:TemplateComponent},
 {path:'DocumentMailTemplate',component:DocumentMailTemplateComponent},
+{path:'quatation4020HT',component:Quatation4020HTComponent},
+{path:'quotation2015Iv2015JLX',component:Quotation2015Iv2015JLXComponent},
+{path:'quotation2015HT',component:Quotation2015HTComponent},
+{path:'quotation2015',component:Quotation2015Component},
+{path:'quotation2015z25',component:Quotation2015z25Component},
+{path:'quotation4020',component:Quotation4020Component},
+{path : 'test', component: TestComponent},
+{path:'quotaiontemplate',component:QuotationtemplateComponent},
+{path:'quotation4020indollor',component:Quotation4020indollorComponent},
+{path:'quotation4020z25',component:Quotation4020z25Component},
+{path:'quotation4030',component:Quotation4030Component},
+{path:'quotation4030indollor',component:Quotation4030indollorComponent},
+{path:'quotation4030z25',component:Quotation4030z25Component},
+{path:'quotation5030',component:Quotation5030Component},
+{path:'quotation5030z25jlx',component:Quotation5030z25jlxComponent},
+{path:'RapidIAMC',component:RapidIAMCComponent},
+{path:'rapidI5april2021',component:RapidI5april2021Component},
 {path:'CallTicketScreen',component:CallTicketScreenComponent},
 
   {path : 'test', component: TestComponent},
 
   {
+
     path:'editcustomer/:id',
     component:EditCustomerListsComponent
   },

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
+
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
 @Component({
@@ -55,7 +56,9 @@ export class DocumentmanagerComponent {
   selectedOptions: any = [];
   contactdetailslist: any = [];
   files2: any;
+  DocumentTypeList: any[] = [];
   docs: any;
+  TemplateName:any;
   customerID: any;
   perticularMachineData: any;
   machineList: any[];
@@ -72,6 +75,19 @@ export class DocumentmanagerComponent {
   Resolution: string | Blob;
   foult: string | Blob;
   contactDetails: any;
+  documentID: any;
+  spinner: any;
+  templateID: any;
+  TemplateList:any;
+  getPerticularDocumentType: any;
+  selectedmailtemplate: any;
+  MailTemplateList:any;
+  template:any;
+DocumentType: any;
+  documentTypeId: any;
+  selectedTemplate: any;
+  ModeofTransportList: any;
+  selectedmodeoftransport: any;
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
@@ -89,6 +105,10 @@ export class DocumentmanagerComponent {
     this.getModel();
     this.getFeatures();
     this.getInvoicePerticular();
+    this.getDocumentTypes();
+    this.getmailtemplate();
+    this.getTemplate();
+    this.getModeofTransport();
   }
   getInvoicePerticular() {
     this.masterSv.getInvoicePerticular().subscribe((response: any) => {
@@ -105,6 +125,32 @@ export class DocumentmanagerComponent {
       }));
       console.log(this.featureslist);
     });
+  }
+
+  getDocumentTypes() {
+    this.masterSv.getDocumentType().subscribe((data: any) => {
+      this.DocumentTypeList = data;
+      console.log(this.DocumentTypeList);
+    });
+  }
+  getTemplate() {
+    this.masterSv.getTemplate().subscribe((response: any) => {
+      this.TemplateList = response;
+      console.log(this.TemplateList);
+    });
+  }
+  getmailtemplate(){
+    this.masterSv.getMailTemplate().subscribe((response:any)=>{
+      this.MailTemplateList = response;
+      console.log(this.MailTemplateList)
+    })
+  }
+
+  getModeofTransport(){
+    this.masterSv.getModeofTransport().subscribe((response:any)=>{
+      this.ModeofTransportList = response;
+      console.log(this.ModeofTransportList)
+    })
   }
   getModel() {
     this.masterSv.getModel().subscribe((response: any) => {
@@ -151,6 +197,7 @@ export class DocumentmanagerComponent {
             console.log(this.perticularCustomerData);
             this.unit = this.perticularCustomerData[0].unit;
             this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressTwo = this.perticularCustomerData[0].addressTwo;
             this.addressThree = this.perticularCustomerData[0].addressThree;
             this.city = this.perticularCustomerData[0].city;
             this.pincode = this.perticularCustomerData[0].pincode;
@@ -207,6 +254,10 @@ export class DocumentmanagerComponent {
  
   onSelectModel(data: any) {
     this.selectedModel = data.target.value;
+  }
+   
+  onSelectmodeoftransport(data: any) {
+    this.selectedmodeoftransport = data.target.value;
   }
   
   onSelectInvoiceperticular(data: any) {
@@ -321,4 +372,35 @@ getPerticularCustomerContactDetailss(id: any) {
     this.route.navigate(['/newcustomerregistration']);
 }
 
+
+
+
+OnselectDocumentType(event: any) {
+  this.documentTypeId = event.target.value;
+  this.masterSv.getPerticularDocumentType(this.documentTypeId).subscribe((Data: any) => {
+    this.TemplateList = Data;
+    console.log(this.TemplateList);
+    
+  });
 }
+
+
+
+
+OnselectTemplate(event: any) {
+  this.selectedTemplate = event.target.value;
+  this.spinner.show();
+
+  setTimeout(() => {
+    this.spinner.hide();
+  }, 1000);
+}
+
+onselectemailtemplate(selectedValue: any) {
+  this.selectedmailtemplate = selectedValue;
+}
+
+}
+
+
+
