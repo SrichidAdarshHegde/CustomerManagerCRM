@@ -8,7 +8,8 @@ import { AppGlobals } from 'src/app/AppGlobals';
 export class RegistrationService {
   getDatewiserequestfollowup: any;
   GetDatewiserequestinvoice: any;
-  getCustomerContactDetailss: any;
+ 
+
  
   
   
@@ -142,6 +143,10 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/'+id);
   }
 
+  GetCustomerContactDetailsForQM(id:any){
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/getCustomerContactDetailsForQM/'+id);
+  }
+
   getCustomerTickets(id:any){
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerTickets/'+id);
   }
@@ -237,6 +242,10 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'TravelBudget/GetAllTravelBudget');
   }
 
+
+
+
+
   GetTravelBudgetbyUser(userid:any){
     return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyUser/'+ userid);
   }
@@ -252,6 +261,26 @@ export class RegistrationService {
     return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/'+ travelId);
 
   }
+
+//Quotationmanagertemplates
+
+GetRefNo(){
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetAllRefNo/');
+}
+
+getCustomerBillingAddress(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Getbillingaddress/'+ id);
+
+}
+
+
+
+postSavequotationtemplate(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
+}
+
   //location details List
 
   getAlldetails(id:any){

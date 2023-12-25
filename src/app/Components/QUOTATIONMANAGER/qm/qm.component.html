@@ -1,0 +1,354 @@
+<br><div class="container">
+    <h3 style="text-align: center;">Quotation Manager</h3>
+ 
+  </div>
+
+
+<div style="width: 625.12px; height: 834.51px; left: 100.01px; top: 120.50px; position: absolute; background: white">
+<div class="col-md-12 row">
+
+<div class="col-md-1"></div>
+<div class="col-md-11" style="margin-top: 20px;">
+
+<div class="row">
+  <div class="col-md-5">
+ 
+    <label for="companyName" style="margin-bottom: 10px;">Select Company Name:</label>
+   
+  </div>
+  <div class="col-md-11">
+    <ng-select
+      [items]="customerList"
+      [bindLabel]="'companyName'"
+      name="selectedCustomer"
+      [(ngModel)]="selectedCustomer"
+      (change)="onSelectCompany($event)"
+      style="width: 100%;">
+      <ng-option value="" disabled>Select Customer</ng-option>
+    </ng-select>
+  </div>
+</div>
+</div>
+</div>
+<br><br>
+<div style="width: 580px; height: 430px; left: 13.93px; background-color: #eeeeee; top: 117.80px; position: absolute; border: 1px #DFD7D7 solid">
+<div class="row">
+
+
+
+<!-- Address 1 -->
+<div class="col-md-3" style="margin-top: 10px;">
+ &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;    <label for="address1">Address 1</label>
+</div>
+<div class="col-md-7" style="margin-top: 10px;">
+    <input type="text" class="form-control" id="address1" name="addressOne" [(ngModel)]="addressOne" style="height: 29px;" required>
+</div>
+
+<!-- Address 2 -->
+<div class="col-md-3" style="margin-top: 10px;">
+  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp; <label for="address2">Address 2</label>
+</div>
+<div class="col-md-7" style="margin-top: 10px;">
+    <input type="text" class="form-control" id="address2" name="addressTwo" [(ngModel)]="addressTwo" style="height: 29px;" required>
+</div>
+
+<!-- Address 3 -->
+<div class="col-md-3" style="margin-top: 10px;">
+  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;<label for="address3">Address 3:</label>
+</div>
+<div class="col-md-7" style="margin-top: 10px;">
+    <input type="text" class="form-control" id="address3" name="addressThree" [(ngModel)]="addressThree" style="height: 29px;" required>
+</div>
+
+<!-- City, State, Pincode -->
+<div class="col-md-3" style="margin-top: 10px;">
+  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   <label for="city">City:</label>
+</div>
+<div class="col-md-7" style="margin-top: 10px;">
+    <input class="form-control" type="text" id="city" name="city" [(ngModel)]="city" style="height: 29px;"required>
+</div>
+
+<div class="col-md-3" style="margin-top: 10px;">
+  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;  <label for="state">State:</label>
+</div>
+
+  
+<div class="col-md-7" style="margin-top: 10px;">
+  <input class="form-control" type="text" id="city" name="city" [(ngModel)]="city" style="height: 29px;"required>
+</div>
+
+<div class="col-md-3" style="margin-top: 10px;">
+&nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;  <label for="state">Country:</label>
+</div>
+
+<div class="col-md-7" style="margin-top: 10px;">
+  <input class="form-control" type="text" id="country" name="country" [(ngModel)]="country" required>
+</div>
+
+<div class="col-md-3" style="margin-top: 10px;">
+  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   <label for="pincode">Pincode:</label>
+</div>
+<div class="col-md-7" style="margin-top: 10px;">
+    <input class="form-control" type="number" id="pincode" name="pincode" [(ngModel)]="pincode" style="height: 29px;"required>
+
+</div>
+
+
+
+
+<div class="col-md-14" style="overflow: auto; margin-top: 70px; width:98%; display: flex; flex-direction: column; align-items: flex-start;">
+  <table class="table table-bordered table-with-bold-lines">
+    <tr>
+      <td style="text-align: center; background-color: #757d81; color: #070707;" colspan="6">
+        <h4>Contacts</h4>
+      </td>
+    </tr>
+    <tr style="text-align: center;">
+      <th>SNo</th>
+      <th>Salute</th>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Designation</th>
+    </tr>
+    <tr *ngFor="let details of contactDetails; let i = index">
+      <td>{{(i+1)}}</td>
+      <td>{{details.salute}}</td>
+      <td>{{details.contactName}}</td>
+      <td>{{details.mobile}}</td>
+      <td>{{details.email}}</td>
+      <td>{{details.designation}}</td>
+    </tr>
+  </table>
+ 
+</div>
+
+
+
+<div style="width: 833px; height: 105px; left: 663.64px; top: 344.20px; position: absolute">
+  
+</div>
+
+<br>
+<br>
+
+<div style="width: 679px; height: 336px; left: 646.52px; top: 460.16px; position: absolute"> 
+   
+  <div style="width: 665px; height: 323px; left: 27px; top: 31.01px; position: absolute"></div>
+</div>
+</div>
+<div style="width: 1351px; height: 944px; left: 0px; top: 0px; position: absolute">
+<div style="width: 1351px; height: 925px; left: 0px; top: 0px; position: absolute">
+  <div style="width: 1351px; height: 917px; left: 0px; top: 0px; position: absolute">
+    
+  
+
+   
+    
+    <div style="width: 645px; height: 470px; left: 668px; top: -3px; position: absolute; background: white; border: 1px #DFD7D7 solid">
+<div class="row">
+<div class="col-md-4">
+  <label style="display: inline-block; margin-bottom: 5px;" for="date">Date:</label>
+  <input type="text" class="form-control" id="date" name="date">
+</div>
+<div class="col-md-4">
+  <label style="display: inline-block; margin-bottom: 5px;" for="refNo">Ref No:</label>
+  <input type="text" class="form-control" id="refNo" name="refNo">
+</div>
+<div class="col-md-4">
+  <label style="display: inline-block; margin-bottom: 5px;" for="sender">Sender:</label>
+  <input type="text" class="form-control" id="sender" name="sender">
+</div>
+</div>
+<br>
+
+<div class="row">
+<div class="col-md-8 d-flex align-items-center">
+<label style="display: inline-block; margin-bottom: 5px;" for="enquiry">Your Enquiry:</label>
+<input type="text" class="form-control" id="enquiry" name="enquiry" style="margin-left: 10px;">
+</div>
+<div class="col-md-4 d-flex align-items-center">
+<div class="form-check" style="margin-top: 0;">
+    <input class="form-check-input" type="checkbox" id="defaultCheckbox" name="defaultCheckbox">
+    <label class="form-check-label" for="defaultCheckbox">Default</label>
+</div>
+</div>
+</div>
+
+
+<br>
+
+
+
+<div class="row">
+<div class="col-md-8 d-flex align-items-center">
+<label style="margin-bottom: 5px;" for="person1">Person1:</label>
+<input type="text" class="form-control" id="person1" name="person1" style="margin-left: 10px;">
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-md-8 d-flex align-items-center">
+<label style="display: inline-block; margin-bottom: 5px;" for="person2">Person2:</label>
+<input type="text" class="form-control" id="person2" name="person2" style="margin-left: 10px;">
+</div>
+</div>
+
+<div class="row mt-2">
+<div class="col-md-8 d-flex justify-content-center">
+<div class="form-check" style="margin-top: 10px; display: inline-block; margin-right: 10px;">
+    <input class="form-check-input" type="checkbox" id="openCheckbox2" name="openCheckbox2">
+    <label class="form-check-label" for="openCheckbox2">Open</label>
+</div>
+<div class="form-check" style="margin-top: 10px; display: inline-block;">
+    <input class="form-check-input" type="checkbox" id="printCheckbox2" name="printCheckbox2">
+    <label class="form-check-label" for="printCheckbox2">Print</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="row">
+<div class="col-md-12">
+<div class="d-flex align-items-center">
+    <label style="margin-bottom: 5px; margin-right: 10px;" for="searchTemplate">Template:</label>
+    
+    <select (change)="onSelectTemplate($event)" class="form-control" style="width: 315px;">
+        <option value="">Select template</option>
+        <option *ngFor="let template of templatelist" value={{template.templateID}}>
+            {{template.templateName}}
+        </option>
+    </select>
+
+    
+    <button type="button" class="btn btn-primary" style="margin-left: 60px;" (click)="openTemplate()">Open Quotation Template</button>
+</div>
+</div>
+</div>
+<br>
+
+
+
+<div class="row mt-5">
+<div class="col-md-12">
+<button type="button" class="btn btn-success" style="width: 60%; height: 70px; margin-top: -80px;">Make Quotation</button>
+</div>
+</div>
+
+
+
+
+
+<div class="row mt-3">
+<div class="col-md-12 d-flex align-items-center">
+<div class="input-group" style="width: 150%;">
+    <div class="input-group-prepend">
+        <span class="input-group-text">SD_Shiva</span>
+    </div>
+    <div class="border" style="width: 200%; height: 38px; padding: 5px; margin-top: -38px;"></div>
+</div>
+<button type="button" class="btn btn-secondary ml-2">Add</button>
+<button type="button" class="btn btn-danger ml-2">Delete</button>
+</div>
+</div>
+<br>
+<div class="row mt-3 justify-content-end">
+<div class="col-md-8 d-flex align-items-center justify-content-end">
+<label for="filterByCompanyName" class="form-label text-end" style="display: inline-block; margin-bottom: 5px;">FilterByCompanyName: </label>
+<input type="text" class="form-control" id="filterByCompanyName" name="filterByCompanyName">
+</div>
+</div>
+
+
+<table>
+<thead>
+<tr>
+    <th>Ref No</th>
+    <th>Rev No</th>
+    <th>Sender</th>
+    <th> Company Name</th>
+    <th>Date</th>
+</tr>
+</thead>
+<tbody>
+<!-- Add your data rows here -->
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<!-- Add more rows as needed -->
+</tbody>
+</table>
+
+<div class="row mt-3">
+<div class="col-md-4">
+<button type="button" class="btn btn-primary">Open</button>
+</div>
+<div class="col-md-4 d-flex justify-content-center align-items-center">
+<label for="searchTemplate" style="margin-bottom: 0; margin-right: 10px;">Brochure:</label>
+<select (change)="onSelectBrochure($event)" class="form-control" style="width: 315px;">
+  <option value="">Select brochure</option>
+  <option *ngFor="let brochure of brochurelist" value={{brochure.brochureID}}>
+      {{brochure.brochureName}}
+  </option>
+</select>
+</div>
+
+</div>
+
+
+
+<div class="row mt-3">
+<div class="col-md-4">
+<button type="button" class="btn btn-warning">Revise</button>
+</div>
+<div class="col-md-4 d-flex justify-content-center align-items-center">
+<label for="searchTemplate" style="margin-bottom: 0; margin-right: 10px;">MailTemplate:</label>
+<select (change)="onSelectMail($event)" class="form-control" style="width: 315px;">
+  <option value="">Select Mail</option>
+  <option *ngFor="let mail of maillist" value={{mail.mailID}}>
+      {{mail.mailName}}
+  </option>
+</select>
+</div>
+<div class="col-md-4 d-flex justify-content-end">
+<button type="button" class="btn btn-success custom-email-button">Email It</button>
+</div>
+
+</div>
+
+
+
+ 
+
+
+
+

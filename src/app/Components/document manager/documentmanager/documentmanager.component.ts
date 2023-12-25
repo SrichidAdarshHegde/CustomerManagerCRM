@@ -146,7 +146,7 @@ export class DocumentmanagerComponent {
             this.perticularCustomerData = response;
             this.companyName = this.perticularCustomerData[0].companyName;
             this.custID = this.perticularCustomerData[0].customerID;
-            this.getPerticularCustomerContactDetailss(this.perticularCustomerData[0].customerID);
+            // this.getPerticularCustomerContactDetailss(this.perticularCustomerData[0].customerID);
             console.log(this.perticularCustomerData[0].customerID);
             console.log(this.perticularCustomerData);
             this.unit = this.perticularCustomerData[0].unit;
@@ -273,12 +273,12 @@ this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvo
         })
 }
 
-getPerticularCustomerContactDetailss(id: any) {
-  this.regSv.getCustomerContactDetailss(id).subscribe((result: any) => {
-    this.contactDetails = result;
-    console.log(this.contactDetails);
-  });
-}
+// getPerticularCustomerContactDetailss(id: any) {
+//   this.regSv.getCustomerContactDetailss(id).subscribe((result: any) => {
+//     this.contactDetails = result;
+//     console.log(this.contactDetails);
+//   });
+// }
   registerMachine() {
     const frmData = new FormData();
     frmData.append("MachineNumber", this.machineNumber);

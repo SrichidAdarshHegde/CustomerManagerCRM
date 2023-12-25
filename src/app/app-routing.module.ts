@@ -49,6 +49,21 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
+import { TestqmComponent } from 'src/testqm/testqm.component';
+import { Quotation4020Component } from './quotation4020/quotation4020.component';
+import { RapidITableComponent } from './rapid-i-table/rapid-i-table.component';
+import { Rapid64Component } from './Components/QM TEMPLATES/rapid64/rapid64.component';
+import { Rapidi2015JLXComponent } from './Components/QM TEMPLATES/rapidi2015-jlx/rapidi2015-jlx.component';
+import { RapidIsparesComponent } from './Components/QM TEMPLATES/rapid-ispares/rapid-ispares.component';
+import { RapiditrainingchargesComponent } from './Components/QM TEMPLATES/rapiditrainingcharges/rapiditrainingcharges.component';
+import { V20152axesComponent } from './Components/QM TEMPLATES/v20152axes/v20152axes.component';
+import { V4020Component } from './Components/QM TEMPLATES/v4020/v4020.component';
+import { Rapidi64CamACSCComponent } from './Components/QM TEMPLATES/rapidi64-cam-acsc/rapidi64-cam-acsc.component';
+import { V4030Component } from './Components/QM TEMPLATES/v4030/v4030.component';
+import { Q4020Component } from './Components/QM TEMPLATES/q4020/q4020.component';
+import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.component';
+import { RapidtableComponent } from './Components/QM TEMPLATES/rapidtable/rapidtable.component';
+import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
 
 const routes: Routes = [
   {path : '', component: HomeComponent},
@@ -90,7 +105,8 @@ const routes: Routes = [
   {path : 'tripsheet', component: TripSheetComponent},
   {path : 'locationDetails', component: LocationdetailsComponent},
   {path : 'locationDetailslist', component: LocationdetailslistComponent},
-{path:'quotationmanager',component:QuotationmanagerComponent},
+
+
 {path:'quotationtemplate',component:QuotationtemplateComponent},
 {path:'brochure',component:BrochureComponent},
 {path:'mailquotationtemplate',component:MailquotationtemplateComponent},
@@ -100,6 +116,30 @@ const routes: Routes = [
 {path:'ModeofTransport',component:ModeofTransportMasterComponent},
 {path:'Template',component:TemplateComponent},
 {path:'DocumentMailTemplate',component:DocumentMailTemplateComponent},
+
+
+
+{path:'rapid64' ,component:Rapid64Component},
+{path:'rapid64/:id' ,component:Rapid64Component},
+{path:'rapid2015' ,component:Rapidi2015JLXComponent},
+{path:'rapidispares' ,component:RapidIsparesComponent},
+{path:'rapidicharges' ,component:RapiditrainingchargesComponent},
+{path:'v20152axes' ,component:V20152axesComponent},
+
+{path:'v4020' ,component:V4020Component},
+{path:'Rapidi64CamACSCComponent' ,component:Rapidi64CamACSCComponent},
+{path:'V4030Component' ,component:V4030Component},
+{path:'Q4020' ,component:Q4020Component},
+{path:'Q4020HT' ,component:Q4020HTComponent},
+{path:'rapidtable' ,component:RapidtableComponent},
+{path:'QuotationManager',component:QMComponent},
+
+
+
+
+
+
+  
   
   {path : 'test', component: TestComponent},
 
@@ -111,6 +151,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+
 })
 export class AppRoutingModule { }

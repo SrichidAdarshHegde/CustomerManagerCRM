@@ -42,6 +42,7 @@ export class CustomerRegistrationComponent implements OnInit{
   zonelist:any;
   selectedZone:any;
   companyoldName: any;
+  billingAddress: any;
   constructor(private masterSv:MasterService,
     private locationService:LocationService,
     private regSv : RegistrationService,
@@ -122,6 +123,7 @@ this.selectedCountry = data.target.value
       AddressOne :this.addressOne,
       AddressTwo :this.addressTwo,
       AddressThree :this.addressThree,
+      BillingAddress:this.billingAddress,
       Pincode :this.pincode,
       City :this.city,
       State :this.state,
