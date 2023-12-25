@@ -105,7 +105,7 @@ export class TravelBudgetComponent {
     this.getCustomer();
     this.getTravelId();
     this.getTravelBudgetbyTravelIdTime();
-   this.GetTravelBudgetbyDistance();
+    this.GetTravelBudgetbyDistance();
   }
 
   calculateTotals() {
@@ -144,8 +144,7 @@ export class TravelBudgetComponent {
             this.addedTime.setHours(addedHours, addedMinutes);
             console.log(this.addedTime);
             this.budgetList[i].schdETD = this.addedTime;
-          }
-           else if (this.budgetList[i].estTravelTime == null) {
+          } else if (this.budgetList[i].estTravelTime == null) {
             const converttodatetime = new Date(this.budgetList[i].estTimeForJob);
             const startTimeHours = converttodatetime.getHours();
             const startTimeMin = converttodatetime.getMinutes();
@@ -160,7 +159,6 @@ export class TravelBudgetComponent {
             this.addedTime.setHours(addedHours, addedMinutes);
             console.log(this.addedTime);
             this.budgetList[i].schdETD = this.addedTime;
-            this.budgetList[i].estCompanyDistance = parseInt(this.budgetList[i - 1].estCompanyDistance) + parseInt(this.budgetList[i].estCompanyDistance)
           }
         }
       }
@@ -181,9 +179,17 @@ export class TravelBudgetComponent {
       this.displayCalculatedTime = this.timetaken[0];
       return totalTime.toString();
 
+
+      
+
+     
+
+
+
+
+
     });
   }
-
 
   GetTravelBudgetbyDistance() {
     this.regSv.GetTravelBudgetbyDistance(this.TravelId).subscribe((response: any) => {
@@ -213,7 +219,9 @@ export class TravelBudgetComponent {
     }
   }
   
-
+  
+  
+ 
 
   estTravelTimeInputs(){
 if(this.estTravelTime  != null){
@@ -239,20 +247,20 @@ if(this.estTimeForJob != null){
     this.regSv.GetTravelBudget().subscribe((result: any) => {
       if (this.TravelId == null || this.TravelId == '') {
         this.tableLength = result.length + 1; // Assuming result is an array or collection
-        this.TravelId = this.generateMachineNo(this.tableLength);
+        this.TravelId = this.tableLength.toString().padStart(3, '0');
       }
     });
   }
 
-  generateMachineNo(tableLength: number): string {
-    if (tableLength < 0) {
-      tableLength = 0;
-    } else if (tableLength > 9) {
-      tableLength = 9;
-    }
-    const paddedTableLength = tableLength.toString().padStart(3, '0');
-    return paddedTableLength;
-  }
+  // generateMachineNo(tableLength: number): string {
+  //   if (tableLength < 0) {
+  //     tableLength = 0;
+  //   } else if (tableLength > 9) {
+  //     tableLength = 9;
+  //   }
+  //   const paddedTableLength = tableLength.toString().padStart(3, '0');
+  //   return paddedTableLength;
+  // }
 
 
 

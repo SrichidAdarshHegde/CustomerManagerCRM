@@ -158,7 +158,7 @@ generateTStwo() {
     alert("Please select zone");
     return;
   }
-  this.route.navigate(['/travelBudget'], { state: { selectedData: this.selectedRows1 } });
+  this.route.navigate(['/TravelSheet'], { state: { selectedData: this.selectedRows1 } });
 }
 
 
