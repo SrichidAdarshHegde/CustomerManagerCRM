@@ -8,7 +8,7 @@ import { AppGlobals } from 'src/app/AppGlobals';
 export class RegistrationService {
   getDatewiserequestfollowup: any;
   GetDatewiserequestinvoice: any;
-  getCustomerContactDetailss: any;
+
  
   
   
@@ -289,5 +289,9 @@ export class RegistrationService {
 }
 getDatewiserequestfollowupDate(id:any){
   return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestfollowupDate/'+id)
+}
+
+getCustomerContactDetailss(id:any){
+  return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/'+id);
 }
 }
