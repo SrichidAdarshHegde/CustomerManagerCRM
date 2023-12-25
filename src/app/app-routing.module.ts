@@ -49,6 +49,7 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
+import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 import { Quatation4020HTComponent } from './Components/quatation templates/quatation4020-ht/quatation4020-ht.component';
 import { Quotation2015Iv2015JLXComponent } from './Components/quatation templates/quotation2015-iv2015-jlx/quotation2015-iv2015-jlx.component';
@@ -132,6 +133,10 @@ const routes: Routes = [
 {path:'quotation5030z25jlx',component:Quotation5030z25jlxComponent},
 {path:'RapidIAMC',component:RapidIAMCComponent},
 {path:'rapidI5april2021',component:RapidI5april2021Component},
+{path:'CallTicketScreen',component:CallTicketScreenComponent},
+
+  {path : 'test', component: TestComponent},
+
   {
 
     path:'editcustomer/:id',

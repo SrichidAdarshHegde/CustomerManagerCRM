@@ -72,6 +72,9 @@
                         <th
                             style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Done</th>
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                                Sequence
+                            </th>
                     </tr>
 
                     <tbody>
@@ -110,6 +113,9 @@
                                     (click)="Done(request)">Done
                                     <i class='fas fa-arrow-alt-circle-right'></i>
                                 </button>
+                            </td>
+                            <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                                <input type="text" [(ngModel)]="sequence" style="width: 50px;">
                             </td>
                         </tr>
 
@@ -184,6 +190,9 @@
                         <th
                             style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Done</th>
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                                Sequence
+                            </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -225,7 +234,9 @@
                                 <i class='fas fa-arrow-alt-circle-right'></i>
                             </button>
                         </td>
-
+                        <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                            <input type="text" [(ngModel)]="sequence" style="width: 50px;">
+                        </td>
                     </tr>
                 </tbody>
 
@@ -297,6 +308,9 @@
                     <th
                         style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                         Done</th>
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            Sequence
+                        </th>
                 </tr>
 
                 <tbody>
@@ -339,6 +353,9 @@
                                 (click)="Done(request)">Done
                                 <i class='fas fa-arrow-alt-circle-right'></i>
                             </button>
+                        </td>
+                        <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                            <input type="text" [(ngModel)]="sequence" style="width: 50px;">
                         </td>
                     </tr>
 

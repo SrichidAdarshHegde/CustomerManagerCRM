@@ -65,6 +65,7 @@ export class WorkFrontComponent implements OnInit
   tableLength: any;
   generateMachineNo: any;
   MachineNo: any;
+sequence: any;
 
 
   constructor(

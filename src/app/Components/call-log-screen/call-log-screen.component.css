@@ -6,13 +6,6 @@
 .table-with-bold-lines td {
   border: 1px solid black; 
 }
-
-.table-with-bold-lines p {
-  margin: 0; /* Remove default margin */
-  padding: 5px 10px; /* Adjust padding as needed */
-  line-height: 0.5; /* Adjust line height as needed */
-}
-
 .hover-text {
   background-color: #faefef; /* Initial background color */
   transition: background-color 0.3s ease; /* Add a smooth transition effect */

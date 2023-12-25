@@ -86,6 +86,7 @@ import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/
 import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
 
 
+import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 @NgModule({
   declarations: [
@@ -141,27 +142,28 @@ import { RapidI5april2021Component } from './Components/quatation templates/rapi
     DocumentmanagerComponent,
 
     DocumentTypeMasterComponent,
-      ModeofTransportMasterComponent,
-      TemplateComponent,
-      DocumentMailTemplateComponent,
-      Quatation4020HTComponent,
-      Quotation2015HTComponent,
-      Quotation2015Component,
-      Quotation2015z25Component,
-      
-      Quotation4020Component,
-              Quotation4020indollorComponent,
-              Quotation4020z25Component,
-              Quotation4030Component,
-              Quotation4030z25Component,
-              Quotation4030indollorComponent,
-              Quotation5030Component,
-              Quotation5030z25jlxComponent,
-              QuotationforRapidITableComponent,
-              RapidIAMCComponent,
-              RapidI5april2021Component,
-    
-   
+    ModeofTransportMasterComponent,
+    TemplateComponent,
+    DocumentMailTemplateComponent,
+    Quatation4020HTComponent,
+    Quotation2015HTComponent,
+    Quotation2015Component,
+    Quotation2015z25Component,
+
+    Quotation4020Component,
+    Quotation4020indollorComponent,
+    Quotation4020z25Component,
+    Quotation4030Component,
+    Quotation4030z25Component,
+    Quotation4030indollorComponent,
+    Quotation5030Component,
+    Quotation5030z25jlxComponent,
+    QuotationforRapidITableComponent,
+    RapidIAMCComponent,
+    RapidI5april2021Component,
+    CallTicketScreenComponent,
+
+
 
   ],
   imports: [
@@ -180,7 +182,7 @@ import { RapidI5april2021Component } from './Components/quatation templates/rapi
     NgSelectModule,
     FontAwesomeModule,
   ],
-  providers: [AppGlobals, NgbActiveModal,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AppGlobals, NgbActiveModal, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

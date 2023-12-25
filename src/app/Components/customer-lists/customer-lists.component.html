@@ -14,7 +14,7 @@
         <table style="width:90%;border-collapse: collapse; 
         margin-left: auto;
         margin-right: auto;" #table id="tableId">
-            <tr>
+            <tr class="sticky-header">
                 <th style="border: 1px solid black;text-align: center;">SNo.</th>
                 <th style="border: 1px solid black;text-align: center;">Customer Name</th>
                 <th style="border: 1px solid black;text-align: center;">Unit</th>
@@ -25,7 +25,7 @@
                 <th style="border: 1px solid black;text-align: center;">State</th>
                 <th style="border: 1px solid black;text-align: center;">Pin</th>
                 <th style="border: 1px solid black;text-align: center;">GSTIN</th>
-                <th style="border: 1px solid black;text-align: center;">Clustor</th>
+                <th style="border: 1px solid black;text-align: center;">Cluster</th>
                 <th style="border: 1px solid black;text-align: center;">Route No</th>
                 <!-- <th style="border: 1px solid black;text-align: center;">Region</th> -->
                 <th style="border: 1px solid black;text-align: center;">Zone</th>
@@ -35,7 +35,7 @@
             <tr style="border: 1px solid black;height: 25px;"
                 *ngFor="let customer of customerList | search: searchText; let i = index">
                 <td style="border: 1px solid black;text-align: right;">{{(i+1)}}</td>
-                <td style="border: 1px solid black;" data-toggle="modal" data-target="#exampleModal"
+                <td style="border: 1px solid black;text-align: left;" data-toggle="modal" data-target="#exampleModal"
                     (click)="getPerticularCustomerContactDetails(customer)"><button
                         class="btn btn-clear">{{customer.companyName}}</button></td>
                 <td style="border: 1px solid black;">{{customer.unit}}</td>
@@ -150,8 +150,8 @@
                 </div>
                 <br>
                 <div *ngIf="EditContact" class="col-md-12 row"><br>
-                    <div class="col-md-2">
-                        <p>Salutation: <input class="form-control" type="text" id="salutation" name="salutation"
+                    <div class="col-md-1">
+                        <p>Salute: <input class="form-control" type="text" id="salutation" name="salutation"
                                 [(ngModel)]="salutation"></p>
                     </div>
                     <div class="col-md-2">
@@ -162,7 +162,7 @@
                         <p>Designation: <input class="form-control" type="text" id="designation" name="designation"
                                 [(ngModel)]="designation"></p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p>Email: <input class="form-control" type="text" id="email" name="email" [(ngModel)]="email">
                         </p>
                     </div>
