@@ -98,6 +98,23 @@
                     <td>{{abc.invoiceAmount}}</td>
                 </tr>
             </table>
+
+     
+
+<table id="machineTable" style="border: 1px solid black; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border-bottom: 1px solid black;">Machine.No</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let machineNumber of [selectedMachine]" (click)="onRowClick(machineNumber)" [class.selected]="selectedMachine === machineNumber">
+        <td style="border-bottom: 1px solid black;">{{ machineNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+        
         </div>
     </div>
     <div class="col-md-12 row">
@@ -124,135 +141,136 @@
         </div>
         <div class="col-md-1">
          </div>
-        <div class="col-md-7">
+         <div class="col-md-7">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
                     <div class="col-md-12" style="overflow: auto; height: 200px;">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr>
-                    <td style="text-align: center;" colspan="6">
-                        <h4>Contact Persons</h4>
-                    </td>
-                </tr>
-                <tr style="text-align: center;">
-                    <th>SNo</th>
-                    <th>Salute</th>
-                    <th>Name</th>
-                    <th>Mobile</th>
-                    <th style="width: 40%;">Email</th>
-                    <th>Designation</th>
-                </tr>
-                <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
-                    <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
-                    <td>{{details.salute}}</td>
-                    <td>{{details.contactName}}</td>
-                    <td>{{details.mobile}}</td>
-                    <td>{{details.email}}</td>
-                    <td>{{details.designation}}</td>
-                </tr>
-            </table></div> 
-            <div class="col-md-12 row" *ngIf="machineSelected">
-                <h3>Add Contact:</h3>&nbsp;
-                <div class="col-md-2">
-                    <label for="machineNumber"><strong>Salute:</strong></label>
-                    <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
+                        <table class="table table-bordered table-with-bold-lines">
+                            <tr>
+                                <td style="text-align: center;" colspan="6">
+                                    <h4>Contact Persons</h4>
+                                </td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <th>SNo</th>
+                                <th>Salute</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th style="width: 40%;">Email</th>
+                                <th>Designation</th>
+                            </tr>
+                            <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
+                                <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
+                                <td>{{details.salute}}</td>
+                                <td>{{details.contactName}}</td>
+                                <td>{{details.mobile}}</td>
+                                <td>{{details.email}}</td>
+                                <td>{{details.designation}}</td>
+                            </tr>
+                            <tr *ngIf="machineSelected">
+                                <td colspan="6">
+                                    <div class="col-md-12 row">
+                                        <h3>Add Contact:</h3>&nbsp;
+                                        <div class="col-md-2">
+                                            <label for="machineNumber"><strong>Salute:</strong></label>
+                                            <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="machineNumber"><strong>Contact Name:</strong></label>
+                                            <input class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="address1"><strong>Designation:</strong></label>
+                                            <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="address1"><strong>Email:</strong></label>
+                                            <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="address1"><strong>Mobile:</strong></label>
+                                            <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
+                                        </div>
+                                        <div class="col-md-1 d-flex justify-content-start">
+                                            <button class="form-control btn btn-primary" type="submit" (click)="addContactDetails()">Save Contact</button>
+                                         
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div> 
+                    <div class="col-md-12 row">
+                       
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <label for="machineNumber"><strong>Contact Name:</strong></label>
-                    <input class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="address1"><strong>Designation:</strong></label>
-                    <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="address1"><strong>Email:</strong></label>
-                    <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="address1"><strong>Mobile:</strong></label>
-                    <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
-                </div>
-                <!-- <div class="col-md-1">
-                    <br> <button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Add</button>
-                </div> -->
             </div>
+        </div><br>
+        
+    <br><br><br>
+          
+        <div class="row">
+            <div class="col-md-2">
+              
+                <table class="table table-bordered table-with-bold-lines">
+                    <tr>
+                        <td>Date:</td>
+                        <td style="text-align: center;"><b>2023-12-25</b></td>
+                        <td>Time:</td>
+                        <td style="text-align: center;"><b>12:30:45</b></td>
+                    </tr>
+                </table>
             </div>
-        </div></div>
-        <div class="col-md-1"><br><br><br><br>
-            <br><button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Save Contact</button>
+            <div class="col-md-3">
+             
+                <table class="table table-bordered table-with-bold-lines">
+                    <tr>
+                        <td style="width: 20%;">T/No.</td>
+                        <td style="width: 20%;"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="tokenNo" class="form-control" readonly></td>
+                        <td style="width: 20%;">Login</td>
+                        <td style= "width: 20%;"><b>John Doe</b></td>
+                    </tr>
+                </table>
+            </div>
+            
+      
+            <div class="col-md-7" style="overflow: auto; height: 150px;">
+                <table class="table table-bordered table-with-bold-lines">
+                    <tr style="text-align: center;">
+                        <th>S No</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Log by</th>
+                        
+                        <th>Cust Call From</th>
+                        <th>Called back by</th>
+                        <th>Fault/Issue</th>
+                        <th>Resolution</th>
+                        <th>Entered Priority</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2023-12-25</td>
+                        <td></td>
+                        <td></td>
+                        
+                        <td></td>
+                        <td>John Doe</td>
+                        <td>Admin</td>
+                        <td>Machine issue</td>
+                        <td>Replaced faulty part</td>
+                        <td>High</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
-</div><br>
-<div style="background-color: rgb(249, 249, 249); padding: 15px">
+        
     <div class="col-md-12 row">
-        <div class="col-md-4">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr>
-                    <td>Date:</td>
-                    <td style="text-align: center;"><b>{{value | date}}</b></td>
-                    <td>Time:</td>
-                    <td style="text-align: center;"><b>{{ systemTime | async | date: 'HH:mm:ss' }}</b></td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr>
-                    <td>Ticket No.</td>
-                    <td style="width: 60%;"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="tokenNo"
-                            class="form-control" readonly></td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-1">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr>
-                    <td>Login</td>
-                    <td style="text-align: right;">
-                        <b>{{userName}}</b>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
-    <div class="col-md-12 row">
-        <div class="col-md-11" style="overflow: auto; height: 150px;">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr style="text-align: center;">
-                    <th>S No</th>
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Log by</th>
-                    <td></td>
-                    <th>Cust Call From</th>
-                    <th>Called back by</th>
-                    <th>Fault/Issue</th>
-                    <th>Resolution</th>
-                    <th>Entered Priority</th>
-                </tr>
-                <tr *ngFor="let tickets of customerTicketList; let i = index">
-                    <td>{{(i+1)}}</td>
-                    <td>{{tickets.createdOn | date}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{tickets.contactName}}</td>
-                    <td>{{tickets.createdBy}}</td>
-                    <td>{{tickets.remarks}}</td>
-                    <td>{{tickets.resolution}}</td>
-                    <td>{{tickets.priority}}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="col-md-12 row">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
                     <div class="col-md-5">
