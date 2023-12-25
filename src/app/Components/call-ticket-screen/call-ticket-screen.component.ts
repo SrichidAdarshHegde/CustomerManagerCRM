@@ -214,6 +214,9 @@ export class CallTicketScreenComponent {
         this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
         this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerId);
         this.getCustomerTickets(this.perticularCustomerData[0].customerId);
+        console.log(this.perticularCustomerInvoiceData);
+        console.log(this.contactDetails);
+        console.log(this.customerTicketList);
         console.log(this.perticularCustomerData[0].customerId);
         this.unit = this.perticularCustomerData[0].unit;
         this.addressOne = this.perticularCustomerData[0].addressOne;
