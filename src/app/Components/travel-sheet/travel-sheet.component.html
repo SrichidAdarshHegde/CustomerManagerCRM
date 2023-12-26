@@ -7,7 +7,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <th style="width: 20%;">Vehicle</th>
-                    <td style="width: 15%;"></td>
+                    <td style="width: 15%;"><input type="text" class="form-control"></td>
                     <td style="width: 20%;"><h6>Mileage CNG Kgs</h6></td>
                     <td style="width: 15%;"><h6>M Petrol L</h6></td>
                     <td style="width: 15%;"><h6>M Diesel L</h6></td>
@@ -16,22 +16,22 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Fuel Price</th>
                     <td>Rs. </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
-                    <td></td>
+                    <td colspan="5"><input type="text" class="form-control"></td>
                 </tr>
             </table>
         </div>
@@ -67,10 +67,10 @@
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th style="width: 10%;">Location</th>
-                        <th></th>
+                        <th style="width: 15%;">Location</th>
+                        <th style="width: 3%;"></th>
                         <th>M/C No</th>
-                        <th>Purpose</th>
+                        <th style="width: 13%;">Purpose</th>
                         <th>Task Class</th>
                         <th>Cluster Location</th>
                         <th>Est. Dist kms</th>
@@ -82,23 +82,81 @@
                         <th>Actual ODO Read</th>
                     </tr>
                 </thead>
-                    <tr *ngFor="let item of selectedData;  let i = index">
-                        <td>{{(i+1)}}</td>
-                        <td>{{item.companyName}}</td>
-                        <td></td>
-                        <td></td>
-                        <td>{{item.requestFor}}</td>
-                        <td></td>
-                        <td>{{item.cluster}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                <tr>
+                    <td>0</td>
+                    <td>Factory</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>E-City</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="5"><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td> 
+                </tr>
+                <ng-container *ngFor="let item of selectedData;  let i = index">
+                    <tr>
+                        <td rowspan="3">{{(i+1)}}</td>
+                        <td rowspan="3"><strong>{{item.companyName}}</strong></td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3">{{item.machineNumber}}</td>
+                        <td rowspan="3"><strong>{{item.requestFor}}</strong></td>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"><strong>{{item.cluster}}</strong></td>
+                        <td rowspan="3"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
                     </tr>
+                    <tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td colspan="5"><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                </ng-container>
             </table>
         </div>
     </div>
-</div>
+</div><br><br><br>

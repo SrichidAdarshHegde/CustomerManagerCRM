@@ -11,7 +11,7 @@ export class TravelSheetComponent {
   roleId: any;
   IsLoggedIn: any;
   selectedData: any[] = [];
-  userId: string;
+  userId: any;
   constructor(private router: ActivatedRoute){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
