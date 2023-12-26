@@ -49,8 +49,24 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
-import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
+import { TestqmComponent } from 'src/testqm/testqm.component';
+//import { Quotation4020Component } from './quotation4020/quotation4020.component';
+//import { RapidITableComponent } from './rapid-i-table/rapid-i-table.component';
+import { Rapid64Component } from './Components/QM TEMPLATES/rapid64/rapid64.component';
+import { Rapidi2015JLXComponent } from './Components/QM TEMPLATES/rapidi2015-jlx/rapidi2015-jlx.component';
+import { RapidIsparesComponent } from './Components/QM TEMPLATES/rapid-ispares/rapid-ispares.component';
+import { RapiditrainingchargesComponent } from './Components/QM TEMPLATES/rapiditrainingcharges/rapiditrainingcharges.component';
+import { V20152axesComponent } from './Components/QM TEMPLATES/v20152axes/v20152axes.component';
+import { V4020Component } from './Components/QM TEMPLATES/v4020/v4020.component';
+import { Rapidi64CamACSCComponent } from './Components/QM TEMPLATES/rapidi64-cam-acsc/rapidi64-cam-acsc.component';
+import { V4030Component } from './Components/QM TEMPLATES/v4030/v4030.component';
+import { Q4020Component } from './Components/QM TEMPLATES/q4020/q4020.component';
+import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.component';
+import { RapidtableComponent } from './Components/QM TEMPLATES/rapidtable/rapidtable.component';
+import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
 
+
+import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 import { Quatation4020HTComponent } from './Components/quatation templates/quatation4020-ht/quatation4020-ht.component';
 import { Quotation2015Iv2015JLXComponent } from './Components/quatation templates/quotation2015-iv2015-jlx/quotation2015-iv2015-jlx.component';
 import { Quotation2015HTComponent } from './Components/quatation templates/quotation2015-ht/quotation2015-ht.component';
@@ -141,8 +157,8 @@ const routes: Routes = [
 
   {
 
-    path:'editcustomer/:id',
-    component:EditCustomerListsComponent
+    path: 'editcustomer/:id',
+    component: EditCustomerListsComponent
   },
 ];
 

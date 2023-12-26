@@ -87,6 +87,19 @@ export class CallTicketScreenComponent {
   machineSelected: boolean = true;
   tokenNo: any;
   contactId: any;
+  selectedmodelName: any;
+machine: any;
+tickets: any;
+abc: any;
+i: any;
+selectedTicketNumber: any = [];
+selectedinvoicePerticular: any = [];
+
+invoiceDate: any;
+invoiceValue: any;
+invoiceAmount: any;
+newContact: any;
+addContact: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -164,6 +177,7 @@ export class CallTicketScreenComponent {
       console.log(this.fieldVisitRequestslist);
     });
   }
+ 
 
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
@@ -182,6 +196,32 @@ export class CallTicketScreenComponent {
   //   const paddedTableLength = tableLength.toString().padStart(4, '0');
   //   return paddedTableLength;
   // }
+// Inside your component class
+getTicketNumberForMachine(machineNumber: any): string {
+  const ticket = this.customerTicketList.find((ticket: any) => ticket.machineNumber === machineNumber);
+  return ticket ? ticket.tokenID : 'N/A';
+}
+
+getStatusForMachine(machineNumber: any): string {
+
+  const machine = this.machineList.find((machine: any) => machine.machineNumber === machineNumber);
+  return machine ? machine.status : 'N/A';
+}
+
+getInvoiceNumberForMachine(machineNumber: any): string {
+  const invoice = this.perticularCustomerInvoiceData.find((invoice: any) => invoice.machineNumber === machineNumber);
+  return invoice ? invoice.invoiceNumber : 'N/A';
+}
+
+getInvoiceDateForMachine(machineNumber: any): Date {
+  const invoice = this.perticularCustomerInvoiceData.find((invoice: any) => invoice.machineNumber === machineNumber);
+  return invoice ? new Date(invoice.createdOn) : new Date();
+}
+
+getInvoiceValueForMachine(machineNumber: any): string {
+  const invoice = this.perticularCustomerInvoiceData.find((invoice: any) => invoice.machineNumber === machineNumber);
+  return invoice ? invoice.invoiceAmount : 'N/A';
+}
 
   getSands() {
     this.masterSv.getSands().subscribe((response: any) => {
@@ -198,9 +238,14 @@ export class CallTicketScreenComponent {
 
   onRowClick(machineNumber: any) {
     this.selectedMachine = machineNumber;
+  
     console.log(this.selectedMachine);
     this.onChangeMachineNumber();
   }
+
+
+
+   
   onChangeMachineNumber() {
     this.regSv.getMachineFromMachineNumber(this.selectedMachine).subscribe((response: any) => {
       if (response == null) {
@@ -265,7 +310,8 @@ export class CallTicketScreenComponent {
             this.machineList.push({
               machineNumber: machine.machineNumber,
               machineInLocation: machine.machineInLocation,
-              modelName: machine.modelName
+              modelName: machine.modelName,
+
             });
           }
         }
