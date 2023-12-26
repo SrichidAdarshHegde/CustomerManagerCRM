@@ -8,9 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent {
-<<<<<<< HEAD
  
-=======
 
   print (printSectionId) {
     var innerContents = document.getElementById(printSectionId).innerHTML;
@@ -20,5 +18,4 @@ export class TestComponent {
     popupWinindow.document.close();
     //window.print();
   };
->>>>>>> 18913de6b8d62350aa0aed6bbb316de120fefd9b
 }
