@@ -76,6 +76,7 @@ export class TravelBudgetComponent {
   totalEstCompanyDistance: number = 0;
   lastEstCompanyDistance: number = 0;
   totalDistance: any;
+  selectedData: any[] = [];
   
   constructor(private regSv: RegistrationService, private router: ActivatedRoute, private route: Router) {
     if (localStorage.getItem('IsLoggedIn') == 'true') {
@@ -90,9 +91,15 @@ export class TravelBudgetComponent {
         this.TravelId = params["id"];
       }
     });
+
+    // this.router.paramMap.subscribe(params => {
+    //   const state = window.history.state;
+    //   this.selectedData = state.selectedData || [];
+
+    //   console.log('Selected Data:', this.selectedData);
+    // });
     window.scrollTo(0, 0);
   }
-  
   
   ngOnInit(): void {
     this.getCustomer();
