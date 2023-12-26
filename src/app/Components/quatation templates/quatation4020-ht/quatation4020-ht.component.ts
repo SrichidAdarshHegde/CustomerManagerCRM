@@ -14,4 +14,13 @@ export class Quatation4020HTComponent {
     popupWinindow.document.close();
     //window.print();
   };
+
+
+
+
+
+
+
+
+  
 }

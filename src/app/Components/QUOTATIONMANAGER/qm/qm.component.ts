@@ -141,8 +141,12 @@ export class QMComponent {
     this.editcustomerID = this.customerID ;
   
     this.templateId = this.selectedTemplate;
-    if(this.templateId == "1003"){
+    if(this.templateId == "1003")
+    
+    
+    {
       this.route.navigate(['/testqm',this.editcustomerID]);
+      
     }else{
       alert("No Template available for this");
     }
