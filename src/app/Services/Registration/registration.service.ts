@@ -8,16 +8,6 @@ import { AppGlobals } from 'src/app/AppGlobals';
 export class RegistrationService {
   getDatewiserequestfollowup: any;
   GetDatewiserequestinvoice: any;
-<<<<<<< HEAD
- 
-=======
->>>>>>> 18913de6b8d62350aa0aed6bbb316de120fefd9b
-
- 
-  
-  
-
- 
   constructor(private http: HttpClient, private globalurl: AppGlobals) {}
   //User Registartion
   userRegister(userRegData: any) {
@@ -47,47 +37,47 @@ export class RegistrationService {
   customerRegistration(customerRegData: any) {
     return this.http.post(
       this.globalurl.weburl +
-        'CustomerRegistration/PostSaveCustomerRegistration',
+      'CustomerRegistration/PostSaveCustomerRegistration',
       customerRegData
     );
   }
 
-  updateCustomerRegistration(customerupdateRegDate:any){
+  updateCustomerRegistration(customerupdateRegDate: any) {
     return this.http.post(
       this.globalurl.weburl +
-        'CustomerRegistration/PostSaveUpdateCustomerRegistration',
-        customerupdateRegDate
+      'CustomerRegistration/PostSaveUpdateCustomerRegistration',
+      customerupdateRegDate
     );
   }
 
-  
-  updateMachineRegistration(machinepdateRegData:any){
+
+  updateMachineRegistration(machinepdateRegData: any) {
     return this.http.post(
       this.globalurl.weburl +
-        'MachineRegistration/PostSaveUpdateMachinerRegistration',
-        machinepdateRegData
+      'MachineRegistration/PostSaveUpdateMachinerRegistration',
+      machinepdateRegData
     );
   }
   getCustomer() {
     return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetAllCustomer');
   }
 
-  getFollowup(){
+  getFollowup() {
     return this.http.get(this.globalurl.weburl + 'FollowUp/GetAllListtoFollowUp');
   }
 
-  getCustomerDetails(id:any){
-    return this.http.get(this.globalurl.weburl + "CustomerRegistration/GetParticularCustomer/"+id);
+  getCustomerDetails(id: any) {
+    return this.http.get(this.globalurl.weburl + "CustomerRegistration/GetParticularCustomer/" + id);
   }
 
   //Edit and delete Contact Details
-  deleteContactDeatils(id:any){
+  deleteContactDeatils(id: any) {
     return this.http.get(
       this.globalurl.weburl + 'MachineRegistration/DeleteContactDetails/' + id
     );
   }
 
-  updateContactDetails(data:any){
+  updateContactDetails(data: any) {
     return this.http.post(
       this.globalurl.weburl + 'MachineRegistration/UpdateContactDetails',
       data
@@ -102,146 +92,146 @@ export class RegistrationService {
   }
 
 
-  deleteCustomerdetails(customerid:any){
-    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/DeleteCustomerdetails/' + customerid); 
+  deleteCustomerdetails(customerid: any) {
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/DeleteCustomerdetails/' + customerid);
   }
 
 
 
   deleteMachine(data: any) {
     return this.http.post(
-      this.globalurl.weburl + 'MachineRegistration/DeleteMachineData/' , data
+      this.globalurl.weburl + 'MachineRegistration/DeleteMachineData/', data
     );
   }
-  getPerticularCustomer(data : any){
-    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCustomer/'+ data)
+  getPerticularCustomer(data: any) {
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCustomer/' + data)
   }
-  getPerticularCust(data : any){
-    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCust/'+ data)
-  }
-
-  getMachineInLocation(id:any){
-    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetMachineInLocation/'+id)
+  getPerticularCust(data: any) {
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCust/' + data)
   }
 
-  getPerticularPriority(data : any){
-    return this.http.get(this.globalurl.weburl + 'Requests/getPerticularPriority/'+ data)
+  getMachineInLocation(id: any) {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetMachineInLocation/' + id)
   }
-  
-  getPerticularCustomerRequests(data:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineRequestsFromCustomer/'+ data);
+
+  getPerticularPriority(data: any) {
+    return this.http.get(this.globalurl.weburl + 'Requests/getPerticularPriority/' + data)
+  }
+
+  getPerticularCustomerRequests(data: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineRequestsFromCustomer/' + data);
   }
 
 
-  getPerticularCustomerInvoice(data : any){
-    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCustomerInvoice/'+ data)
+  getPerticularCustomerInvoice(data: any) {
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCustomerInvoice/' + data)
   }
   //Machine Registartion
-  postcontactdetails(contactdata:any){
+  postcontactdetails(contactdata: any) {
     return this.http.post(this.globalurl.weburl + 'MachineRegistration/Postcontactdetails', contactdata)
   }
 
 
-  getCustomerContactDetails(id:any){
-    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/'+id);
+  getCustomerContactDetails(id: any) {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/' + id);
   }
 
-  GetCustomerContactDetailsForQM(id:any){
-    return this.http.get(this.globalurl.weburl + 'MachineRegistration/getCustomerContactDetailsForQM/'+id);
+  GetCustomerContactDetailsForQM(id: any) {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/getCustomerContactDetailsForQM/' + id);
   }
 
-  getCustomerTickets(id:any){
-    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerTickets/'+id);
+  getCustomerTickets(id: any) {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerTickets/' + id);
   }
 
-  postMachineRegistration(machineData : any){
+  postMachineRegistration(machineData: any) {
     return this.http.post(this.globalurl.weburl + 'MachineRegistration/PostMachineRegistration', machineData)
   }
   GetAllMachines() {
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetAllMachines');
   }
-  getPerticularMachine(id:any){
-    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetPerticularMachines/'+id)
+  getPerticularMachine(id: any) {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetPerticularMachines/' + id)
   }
-  GetMachineCustomerDetails(){
-    return this.http.get(this.globalurl.weburl+'MachineRegistration/GetMachineCustomerDetails')
+  GetMachineCustomerDetails() {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetMachineCustomerDetails')
   }
-  getCustomerFollowup(id:any){
-    return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomer/'+id)
+  getCustomerFollowup(id: any) {
+    return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomer/' + id)
   }
-  getCustomerFollowupCompleteCustomer(id:any){
-    return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomerComplete/'+id)
+  getCustomerFollowupCompleteCustomer(id: any) {
+    return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomerComplete/' + id)
   }
-  
 
-  getCustomerFollowupComplete(){
+
+  getCustomerFollowupComplete() {
     return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupComplete')
   }
 
-  getCustomerFollowupPending(){
+  getCustomerFollowupPending() {
     return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupPending')
   }
 
-  getFollowupListsforCustomer(id:any){
-    return this.http.get(this.globalurl.weburl + 'FollowUp/GetFollowupListsforCustomer/'+id)
+  getFollowupListsforCustomer(id: any) {
+    return this.http.get(this.globalurl.weburl + 'FollowUp/GetFollowupListsforCustomer/' + id)
   }
-  getFollowupLists(){
+  getFollowupLists() {
     return this.http.get(this.globalurl.weburl + 'FollowUp/GetFollowupList')
   }
 
-  getCustomerFollowupPendingCustomer(id:any){
-    return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomerPending/'+id)
+  getCustomerFollowupPendingCustomer(id: any) {
+    return this.http.get(this.globalurl.weburl + 'FollowUp/GetPerticularFollowupforCustomerPending/' + id)
   }
   //request & Interactions
-  getMachineFromMachineNumber(machineId:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineFromMachineNumber/'+ machineId);
+  getMachineFromMachineNumber(machineId: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineFromMachineNumber/' + machineId);
   }
 
-  getMachineRequestsFromMachineNumber(machineId:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineRequestsFromMachineNumber/'+ machineId);
+  getMachineRequestsFromMachineNumber(machineId: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineRequestsFromMachineNumber/' + machineId);
 
   }
-  saveRequestFormData(rqData:any){
+  saveRequestFormData(rqData: any) {
     return this.http.post(this.globalurl.weburl + 'RequestAndInteractions/PostSaveRequestForm', rqData)
   }
-  getPendingrequest(){
+  getPendingrequest() {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequests')
   }
-  
-  GetPendingRequestsfordashboard(){
+
+  GetPendingRequestsfordashboard() {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequestsfordashboard')
   }
 
-  getWorkfrontrequest(){
+  getWorkfrontrequest() {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequestsforWorkFront')
   }
 
-  getWorkfrontrequestzonewise(data:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequestsforWorkFrontZonewise/'+ data);
+  getWorkfrontrequestzonewise(data: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetPendingRequestsforWorkFrontZonewise/' + data);
 
   }
 
-  getAllrequest(){
+  getAllrequest() {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetAllRequests')
   }
-  getAllInteractions(){
+  getAllInteractions() {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetAllInteractions')
 
   }
-  postSaveInteraction(data:any){
+  postSaveInteraction(data: any) {
     return this.http.post(this.globalurl.weburl + 'RequestAndInteractions/PostSaveNewInteraction', data)
   }
 
-  GetMachineId(){
+  GetMachineId() {
     return this.http.get(this.globalurl.weburl + 'Registration/GetMachineId')
   }
-  
- 
+
+
   // Travel Budget Component
-  saveTravelBudget(budgetdata:any){
+  saveTravelBudget(budgetdata: any) {
     return this.http.post(this.globalurl.weburl + 'TravelBudget/saveTravelBudget', budgetdata)
   }
-  GetTravelBudget(){
+  GetTravelBudget() {
     return this.http.get(this.globalurl.weburl + 'TravelBudget/GetAllTravelBudget');
   }
 
@@ -249,81 +239,79 @@ export class RegistrationService {
 
 
 
-  GetTravelBudgetbyUser(userid:any){
-    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyUser/'+ userid);
+  GetTravelBudgetbyUser(userid: any) {
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyUser/' + userid);
   }
 
-  GetTravelBudgetbyTravelId(travelId:any){
-    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/'+ travelId);
-
-  }
-  
-
-  
-  GetTravelBudgetbyDistance(travelId:any){
-    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/'+ travelId);
+  GetTravelBudgetbyTravelId(travelId: any) {
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/' + travelId);
 
   }
 
-//Quotationmanagertemplates
-
-GetRefNo(){
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetAllRefNo/');
-}
-
-getCustomerBillingAddress(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Getbillingaddress/'+ id);
-
-}
 
 
+  GetTravelBudgetbyDistance(travelId: any) {
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/' + travelId);
 
-postSavequotationtemplate(data:any)
-{
-  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
-}
+  }
+
+  //Quotationmanagertemplates
+
+  GetRefNo() {
+    return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetAllRefNo/');
+  }
+
+  getCustomerBillingAddress(id: any) {
+    return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Getbillingaddress/' + id);
+
+  }
+
+
+
+  postSavequotationtemplate(data: any) {
+    return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
+  }
 
   //location details List
 
-  getAlldetails(id:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetAllDetails/'+id)
+  getAlldetails(id: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetAllDetails/' + id)
   }
 
 
 
- getClusterdetails(data:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetClusterdetails/'+data); 
+  getClusterdetails(data: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetClusterdetails/' + data);
   }
 
 
   getCluster() {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetAllCluster')
-    
+
   }
 
 
-  getPerticularCustomerdetails(data:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/Getparticularcustomerdetails/'+data); 
+  getPerticularCustomerdetails(data: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/Getparticularcustomerdetails/' + data);
 
   }
-  getDatewiserequest(id:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequest/'+id)
-    
-  }
-  getDatewiserequestinvoice(id:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestinvoice/'+id)
-    
-  }
-  getDatewiserequestInteraction(id:any){
-    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestInetraction/'+id)
-    
-}
-getDatewiserequestfollowupDate(id:any){
-  return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestfollowupDate/'+id)
-}
+  getDatewiserequest(id: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequest/' + id)
 
-getCustomerContactDetailss(id:any){
-  return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/'+id);
-}
+  }
+  getDatewiserequestinvoice(id: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestinvoice/' + id)
+
+  }
+  getDatewiserequestInteraction(id: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestInetraction/' + id)
+
+  }
+  getDatewiserequestfollowupDate(id: any) {
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetDatewiserequestfollowupDate/' + id)
+  }
+
+  getCustomerContactDetailss(id: any) {
+    return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerContactDetails/' + id);
+  }
 }
