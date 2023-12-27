@@ -141,14 +141,114 @@ export class QMComponent {
     this.editcustomerID = this.customerID ;
   
     this.templateId = this.selectedTemplate;
-    if(this.templateId == "1003")
+    switch (this.templateId) {
+      case "2004":
+        this.route.navigate(['/quotation2015HT', this.editcustomerID]);
+        break;
+      case "2005":
+        this.route.navigate(['/quotation2015indollor', this.editcustomerID]);
+        break;
     
-    
-    {
-      this.route.navigate(['/testqm',this.editcustomerID]);
+      case "2006":
+        this.route.navigate(['/quotation2015', this.editcustomerID]);
+        break;
+  
+  
+      case "2008":
+        this.route.navigate(['/quotation2015z25', this.editcustomerID]);
+        break;
+
+
+        case "2009":
+          this.route.navigate(['/quotation4020', this.editcustomerID]);
+          break;
+        case "2010":
+          this.route.navigate(['/quotation4020HT', this.editcustomerID]);
+          break;
       
-    }else{
-      alert("No Template available for this");
+        case "2011":
+          this.route.navigate(['/quotation4020z25', this.editcustomerID]);
+          break;
+    
+    
+        case "2012":
+          this.route.navigate(['/quotation4030', this.editcustomerID]);
+          break;
+
+          case "2013":
+        this.route.navigate(['/quotation4030indollor', this.editcustomerID]);
+        break;
+      case "2014":
+        this.route.navigate(['/quotation4030z25', this.editcustomerID]);
+        break;
+    
+      case "2015":
+        this.route.navigate(['/quotation5030', this.editcustomerID]);
+        break;
+  
+  
+      case "2016":
+        this.route.navigate(['/quotation5030z25jlx', this.editcustomerID]);
+        break;
+
+        case "2017":
+        this.route.navigate(['/rapiditable', this.editcustomerID]);
+        break;
+      case "2018":
+        this.route.navigate(['/rapid64-cam-acsc', this.editcustomerID]);
+        break;
+    
+      case "2019":
+        this.route.navigate(['/rapid64', this.editcustomerID]);
+        break;
+  
+  
+      case "2020":
+        this.route.navigate(['/quotation2015Iv2015JLX', this.editcustomerID]);
+        break;
+
+
+        case "2021":
+        this.route.navigate(['/rapidI5april2021', this.editcustomerID]);
+        break;
+      case "2022":
+        this.route.navigate(['/RapidIAMC', this.editcustomerID]);
+        break;
+    
+      case "2023":
+        this.route.navigate(['/rapidispares', this.editcustomerID]);
+        break;
+  
+  
+      case "2024":
+        this.route.navigate(['/rapiditrainings', this.editcustomerID]);
+        break;
+
+
+        case "2025":
+        this.route.navigate(['/v4020', this.editcustomerID]);
+        break;
+      case "2026":
+        this.route.navigate(['/v4030', this.editcustomerID]);
+        break;
+    
+      case "2027":
+        this.route.navigate(['/v2015-jlx', this.editcustomerID]);
+        break;
+  
+  
+      case "2028":
+        this.route.navigate(['/quotation4020indollor', this.editcustomerID]);
+        break;
+
+
+        case "2029":
+        this.route.navigate(['/quotationTemplate1', this.editcustomerID]);
+        break;
+      
+
+    default:
+        alert("No Template available for this");
     }
   }
 

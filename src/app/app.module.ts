@@ -104,6 +104,7 @@ import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.co
 import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
 
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
+import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 
 @NgModule({
   declarations: [
@@ -194,7 +195,8 @@ import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.com
     RapidI5april2021Component,
     CallTicketScreenComponent,
     TravelSheetComponent,
-
+RapidIsparesComponent,
+Quotation2015indollorComponent,
 
   ],
   imports: [

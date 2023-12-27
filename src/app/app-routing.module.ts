@@ -83,6 +83,7 @@ import { Quotation5030z25jlxComponent } from './Components/quatation templates/q
 import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/rapid-iamc.component';
 import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
+import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 
 const routes: Routes = [
 {path : '', component: HomeComponent},
@@ -134,26 +135,73 @@ const routes: Routes = [
 {path:'ModeofTransport',component:ModeofTransportMasterComponent},
 {path:'Template',component:TemplateComponent},
 {path:'DocumentMailTemplate',component:DocumentMailTemplateComponent},
-{path:'quatation4020HT',component:Quatation4020HTComponent},
-{path:'quotation2015Iv2015JLX',component:Quotation2015Iv2015JLXComponent},
-{path:'quotation2015HT',component:Quotation2015HTComponent},
-{path:'quotation2015',component:Quotation2015Component},
-{path:'quotation2015z25',component:Quotation2015z25Component},
-{path:'quotation4020',component:Quotation4020Component},
-{path : 'test', component: TestComponent},
-{path:'quotaiontemplate',component:QuotationtemplateComponent},
-{path:'quotation4020indollor',component:Quotation4020indollorComponent},
-{path:'quotation4020z25',component:Quotation4020z25Component},
-{path:'quotation4030',component:Quotation4030Component},
-{path:'quotation4030indollor',component:Quotation4030indollorComponent},
-{path:'quotation4030z25',component:Quotation4030z25Component},
-{path:'quotation5030',component:Quotation5030Component},
-{path:'quotation5030z25jlx',component:Quotation5030z25jlxComponent},
-{path:'RapidIAMC',component:RapidIAMCComponent},
-{path:'rapidI5april2021',component:RapidI5april2021Component},
+
 {path:'CallTicketScreen',component:CallTicketScreenComponent},
 
-  {path : 'test', component: TestComponent},
+{path : 'test', component: TestComponent},
+
+{path:'quotaiontemplate',component:QuotationtemplateComponent},
+
+
+//QM TEMPLATES
+
+
+
+
+
+{path:'quotation2015HT/:id',component:Quotation2015HTComponent},
+
+{path:'quotation2015indollor/:id',component:Quotation2015indollorComponent},
+
+{path:'quotation2015/:id',component:Quotation2015Component},
+
+{path:'quotation2015z25/:id',component:Quotation2015z25Component},
+
+{path:'quotation4020/:id',component:Q4020Component},
+
+{path:'quotation4020HT/:id',component:Q4020HTComponent},
+
+{path:'quotation4020indollor/:id',component:Quotation4020indollorComponent},
+
+{path:'quotation4020z25/:id',component:Quotation4020z25Component},
+
+{path:'quotation4030/:id',component:Quotation4030Component},
+
+{path:'quotation4030indollor/:id',component:Quotation4030indollorComponent},
+
+{path:'quotation4030z25/:id',component:Quotation4030z25Component},
+
+{path:'quotation5030/:id',component:Quotation5030Component},
+
+{path:'quotation5030z25jlx/:id',component:Quotation5030z25jlxComponent},
+
+{path:'rapiditable/:id',component:RapidtableComponent},
+
+{path:'rapid64-cam-acsc/:id',component:Rapidi64CamACSCComponent},
+
+{path:'rapid64/:id',component:Rapid64Component},
+
+{path:'quotation2015Iv2015JLX/:id',component:Quotation2015Iv2015JLXComponent},
+
+{path:'rapidI5april2021/:id',component:RapidI5april2021Component},
+
+{path:'RapidIAMC/:id',component:RapidIAMCComponent},
+
+{path:'rapidispares/:id',component:RapidIsparesComponent},
+
+{path:'rapiditrainings/:id',component:RapiditrainingchargesComponent},
+
+{path:'v4020/:id',component:V4020Component},
+
+{path:'v4030/:id',component:V4030Component},
+
+{path:'v2015-jlx',component:V20152axesComponent},
+
+
+//QUOTATION MANAGER 
+
+{path:'qm',component:QMComponent},
+
 
   {
 
