@@ -12,6 +12,22 @@ export class TravelSheetComponent {
   IsLoggedIn: any;
   selectedData: any[] = [];
   userId: any;
+  travel: any;
+  estDistKms: any;
+  estTravelTime: any;
+  estJobTime: any;
+  FoodFuel: any;
+  schdET: any;
+  mileageCng: any;
+  vehicle: any;
+  mileagePetrol: any;
+  FuelReqd: any;
+  mileageDiesel: any;
+  FuelPriceCNG: any;
+  FuelPricePetrol: any;
+  FuelPriceDiesel: any;
+  fuelReqd: any;
+  sparesReqd: any;
   constructor(private router: ActivatedRoute){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');

@@ -7,7 +7,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <th style="width: 20%;">Vehicle</th>
-                    <td style="width: 15%;"><input type="text" class="form-control"></td>
+                    <td style="width: 15%;"><input type="text" [(ngModel)]="vehicle" class="form-control"></td>
                     <td style="width: 20%;"><h6>Mileage CNG Kgs</h6></td>
                     <td style="width: 15%;"><h6>M Petrol L</h6></td>
                     <td style="width: 15%;"><h6>M Diesel L</h6></td>
@@ -16,22 +16,22 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="mileageCng" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="mileagePetrol" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="mileageDiesel" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FuelReqd" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Fuel Price</th>
                     <td>Rs. </td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FuelPriceCNG" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FuelPricePetrol" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FuelPriceDiesel" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="fuelReqd" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
-                    <td colspan="5"><input type="text" class="form-control"></td>
+                    <td colspan="5"><input type="text" [(ngModel)]="sparesReqd" class="form-control"></td>
                 </tr>
             </table>
         </div>
@@ -101,14 +101,14 @@
                 <tr style="background-color: rgb(255, 225, 225);">
                     <td></td>
                     <td></td>
-                    <td colspan="5"><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td> 
+                    <td colspan="5"><input type="text" [(ngModel)]="travel" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="estDistKms" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="estTravelTime" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FoodFuel" class="form-control"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td> 
                 </tr>
                 <ng-container *ngFor="let item of selectedData;  let i = index">
                     <tr>
@@ -123,15 +123,15 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.schdET" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.actalTime" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.actualOdoRead" class="form-control"></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.estJobTime" class="form-control"></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -139,23 +139,34 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><input type="text" class="form-control"></td>
+                        <td> <input type="text" [(ngModel)]="item.schdET1" class="form-control" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$"></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr style="background-color: rgb(255, 225, 225);">
                         <td></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td colspan="5"><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
+                        <td></td>
+                        <td colspan="5"><input type="text" [(ngModel)]="item.travel" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.estDistKms" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.estTravelTime" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.FoodFuel" class="form-control"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </ng-container>
+                <tr>
+                    <td colspan="6"></td>
+                    <th>Totals</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </table>
         </div>
     </div>
