@@ -14,3 +14,8 @@
     padding: 5px 10px; /* Adjust padding as needed */
     line-height: 0.5; /* Adjust line height as needed */
   }
+  .form-control{
+    height: calc(1.5em + 0.3rem + -2px);
+    border-width: 1px;
+    border-color: skyblue ;
+  }

@@ -28,4 +28,5 @@ export class TravelSheetComponent {
       
     });
   }
+  public value = new Date();
 }
