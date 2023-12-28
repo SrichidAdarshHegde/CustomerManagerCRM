@@ -75,6 +75,7 @@ export class WorkFrontComponent implements OnInit {
   selectedRows: any[] = [];
   selectedRows1: any[] = [];
   sequenceTwo: boolean[];
+  checkedRows: any[];
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
@@ -125,13 +126,145 @@ export class WorkFrontComponent implements OnInit {
 
   onCheckboxClick(request: any) {
     const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
-    
+  
+    // Create an empty row
+    const emptyRow = {
+      addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'',
+      clusterId
+        :
+        '',
+      companyName
+        :
+        '',
+      contactData
+        :
+        '',
+      contactDatastring
+        :
+        '',
+      country
+        :
+        '',
+      createdBy
+        :
+        '',
+      createdOn
+        :
+        '',
+      customerID
+        :
+        '',
+      customerId
+        :
+        '',
+      customerName
+        :
+        '',
+      date
+        :
+        '',
+      dateString
+        :
+        '',
+      features
+        :
+        '',
+      featuresId
+        :
+        '',
+      gstin
+        :
+        '',
+      invoiceAmount
+        :
+        '',
+      invoiceDate
+        :
+        '',
+      invoiceFileBlob
+        :
+        '',
+      invoiceNumber
+        :
+        '',
+      invoicePerticular
+        :
+        '',
+      invoicePerticularId
+        :
+        '',
+      isDone
+        :
+        '',
+      machineId
+        :
+        '',
+      machineNumber
+        :
+        '',
+      modelId
+        :
+        '',
+      modelName
+        :
+        '',
+      pincode
+        :
+        '',
+      priority
+        :
+        '',
+      region
+        :
+        '',
+      regionId
+        :
+        '',
+      remarks
+        :
+        '',
+      requestFor
+        :
+        '',
+      requestForId
+        :
+        '',
+      requestId
+        :
+        '',
+      routeId
+        :
+        '',
+      routeNumber
+        :
+        '',
+      sandS
+        :
+        '',
+      sandSId
+        :
+        '',
+      securityFormalities
+        :
+        '',
+      state:'',tokenID:'',unit :'', warrantyFrom :'', warrantyTill: '',weeklyOff:'', workingEnd :'', workingStart :'',zone :'', zoneId:''
+    };
+  
     if (index !== -1) {
+      // Remove the checked row if it already exists
       this.selectedRows.splice(index, 1);
-    } else {
-      this.selectedRows.push(request);
     }
+  
+    // Push the empty row
+    this.selectedRows.push(emptyRow);
+  
+    // Push the checked row
+    this.selectedRows.push(request);
+    // Filter out only the checked rows
+  this.checkedRows = this.selectedRows.filter(row => row.tokenID !== '');
+    console.log(this.checkedRows);
     console.log(this.selectedRows);
+
   }
 
   onCheckboxClick1(request: any) {

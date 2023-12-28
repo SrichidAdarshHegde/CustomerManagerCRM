@@ -217,7 +217,7 @@
                             </td>
                         </tr>
                         <tr><td colspan="12"><h4>Selected rows:</h4></td></tr>
-                            <tr *ngFor="let selectedRow of selectedRows; let i = index">
+                            <tr *ngFor="let selectedRow of checkedRows; let i = index">
                                 <td>{{ i + 1 }}</td>
                                 <td>{{ selectedRow.tokenID }}</td>
                                 <td>{{ selectedRow.date | date }}</td>
