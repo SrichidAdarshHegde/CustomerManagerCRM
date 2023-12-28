@@ -225,14 +225,14 @@ export class QMComponent {
         break;
 
 
-        case "2025":
+        case "2026":
         this.route.navigate(['/v4020', this.editcustomerID]);
         break;
-      case "2026":
+      case "2027":
         this.route.navigate(['/v4030', this.editcustomerID]);
         break;
     
-      case "2027":
+      case "2025":
         this.route.navigate(['/v2015-jlx', this.editcustomerID]);
         break;
   
@@ -243,7 +243,7 @@ export class QMComponent {
 
 
         case "2029":
-        this.route.navigate(['/quotationTemplate1', this.editcustomerID]);
+        this.route.navigate(['/rapidIVMC', this.editcustomerID]);
         break;
       
 
