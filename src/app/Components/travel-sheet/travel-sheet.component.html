@@ -80,6 +80,7 @@
                         <th>Schd ET</th>
                         <th>Actual Time</th>
                         <th>Actual ODO Read</th>
+                        <th>Sequence</th>
                     </tr>
                 </thead>
                 <tr>
@@ -94,7 +95,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><input type="text" class="form-control"></td>
+                    <td><input type="time" [(ngModel)]="initialTime" class="form-control"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -123,14 +124,15 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><input type="text" [(ngModel)]="item.schdET" class="form-control"></td>
+                        <td><input type="time" [(ngModel)]="item.schdET" class="form-control"></td>
                         <td><input type="text" [(ngModel)]="item.actalTime" class="form-control"></td>
                         <td><input type="text" [(ngModel)]="item.actualOdoRead" class="form-control"></td>
+                        <td rowspan="3" style="text-align: center;padding-top: 35px;"><b>{{(i+1)}}</b></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td><input type="text" [(ngModel)]="item.estJobTime" class="form-control"></td>
+                        <td><input type="text" [(ngModel)]="item.estJobTime" placeholder="HH:mm" class="form-control"></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -139,7 +141,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td> <input type="text" [(ngModel)]="item.schdET1" class="form-control" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$"></td>
+                        <td> <input type="time" [(ngModel)]="item.schdET1" class="form-control"></td>
                         <td></td>
                         <td></td>
                     </tr>
