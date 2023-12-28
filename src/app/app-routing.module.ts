@@ -84,6 +84,7 @@ import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/
 import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
+import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
 
 const routes: Routes = [
 {path : '', component: HomeComponent},
@@ -191,11 +192,19 @@ const routes: Routes = [
 
 {path:'rapiditrainings/:id',component:RapiditrainingchargesComponent},
 
+
+{path:'v4020',component:V4020Component},
 {path:'v4020/:id',component:V4020Component},
 
 {path:'v4030/:id',component:V4030Component},
 
 {path:'v2015-jlx',component:V20152axesComponent},
+
+
+{path:'rapidIVMC',component:RapidIVMCComponent},
+{path:'rapidIVMC/:id',component:RapidIVMCComponent},
+
+
 
 
 //QUOTATION MANAGER 
