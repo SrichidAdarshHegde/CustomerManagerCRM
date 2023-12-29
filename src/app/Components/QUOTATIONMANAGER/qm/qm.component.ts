@@ -204,7 +204,7 @@ export class QMComponent {
   
   
       case "2020":
-        this.route.navigate(['/quotation2015Iv2015JLX', this.editcustomerID]);
+        this.route.navigate(['/rapidi2015Iv2015JLX', this.editcustomerID]);
         break;
 
 

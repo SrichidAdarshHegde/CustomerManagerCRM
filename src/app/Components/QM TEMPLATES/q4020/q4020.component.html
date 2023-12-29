@@ -22,32 +22,37 @@
                       
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
-                        <tr style="border: 1px solid black;height: 25px;">
-                       
+                        <tr style="border: 1px solid black; height: 25px;">
+
+
+                            <td style="width: 19%; vertical-align: top; border: 1px solid black; text-align: left;">
+                                <p style="border-bottom: 1px solid black; text-align: left;">Billing Address:</p>
+                                <p style="text-align: left;">{{billingAddress}}</p>
+                              </td>
+                          <!-- First Column -->
+                          <td style="width: 10%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
+                            <!-- Centered content -->
+                            <p style="border-bottom: 1px solid black; text-align: left;">Ref.No: </p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">Date:</p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">Your Enquiry: </p>
+                            <p style="border-bottom: 0px solid black; text-align: left;">Kind Attention:</p>
+                          </td>
+                      
+                          <!-- Second Column -->
+                          <td class="abc" style="width: 10%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
+                            <!-- Right-aligned content -->
+                            <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
+                            <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
+                          </td>
+                      
+                          <!-- Third Column for Billing Address -->
                          
-                            <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
-                                <!-- Centered content -->
-                                <p style="border-bottom: 1px solid black;">Ref.No: </p>
-                                <p style="border-bottom: 1px solid black;">Date:</p>
-                                <p style="border-bottom: 1px solid black;">Your Enquiry: </p>
-                                <p style="border-bottom: 1px solid black;">Kind Attention:</p>
-                                <p style="border-bottom: 0px solid black;">Billing Address:</p>
-                            </td>
-                            
-
-                            <td class="abc" style="width: 33%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
-                                
-                                <!-- Right-aligned content -->
-                                <p style="border-bottom: 1px solid black;">{{RefID}}</p>
-                                <p style="border-bottom: 1px solid black;">{{value | date}} </p>
-                                <p style="border-bottom: 1px solid black;">Email/Telephonic </p>
-                                <p style="border-bottom: 1px solid black;"> Mr. M. Sundaram </p>
-                                <p style="border-bottom: 0px solid black;">{{billingAddress}}</p>
-
-                            </td>
                         </tr>
-
-                    </table>
+                      </table>
+                      
+                      
 
                     <div style="text-align: left;">
                         <br>
@@ -95,13 +100,13 @@
                             </tr>
                             <tr>
                                 <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center;">
-                                    1298SD
+                                    {{RefID}}
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center;">
-                                    1 Mar 2019
+                                   {{value | date}}
                                 </td>
                             </tr>
                            </table>
@@ -119,7 +124,7 @@
                         </tr>
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Sl.no</p>
 
                             </td>
@@ -131,20 +136,20 @@
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Qty</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Price</p>
                             </td>
 
                         </tr>
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1.
                             </td>
                             <td style="width: 65%; vertical-align: top; border: 1px solid black; background-color: lightblue;">
@@ -152,28 +157,28 @@
                             </td>
                             
 
-                            <td rowspan="4" style="width: 20%; vertical-align: top; border: 1px solid black;">
-                                1 Set
-                            </td>
-                            <td rowspan="4" style="width: 20%; vertical-align: top; border: 1px solid black;">
-                                14,715
-                            </td>
+                            <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <input type="text" [(ngModel)]="editableContent" style="width: 100%; border: none; outline: none;">
+                              </td>
+                              <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <input type="number" [(ngModel)]="editableNumber" style="width: 100%; border: none; outline: none;">
+                              </td>
 
 
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 <br>
                                 a<br>
-                                b <br><br>c <br> <br>
+                                b <br>c <br> 
                                 d<br> e<br> <br><br> f<br> g
 
 
                             </td>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Bench-top Vision Measuring System<br>
                                 Motorised joystick operated X, Y, Z measuring axes<br>
                                 Suitable for 120-240V, 50-60 Hz A.C. power with isolated Earthing use <br>
@@ -189,7 +194,7 @@
 
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2.
                             </td>
 
@@ -205,13 +210,13 @@
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 a <br> b <br> c <br> d <br>
 
 
                             </td>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
 
                                 Geometric Measurements, Snap-shot / Frame Save <br>
                                 Graphical *.dxf export / import and overlay functions <br>
@@ -231,7 +236,7 @@
 
 
                         <tr>
-                            <td   colspan="4"  style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
                                         system : USD 14,715 <br>
                                         (US Dollar Fourteen Thousand Seven Hundred and Fifteen Only)
@@ -244,7 +249,7 @@
 
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 3.
                             </td>
 
@@ -263,153 +268,153 @@
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 a
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Full CNC system with software-based Auto-Focus; Automatic Edge Detection (in profile
                                 light); Advanced Dust/Burr Filtering Algorithms; <br> Automated, Customised Reports;
                                 Easy Part-Programming
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 5,480
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 b
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2x Lens for 22X to 134X magnification
 
 
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 270
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 c
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Co-Axial Lighting System (to light up small bores)
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1,850
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 d
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Auxillary Lighting (Flexible twin lights to augment surface ring-light)
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1,850
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 e
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Renishaw® Touch Probe (TP20),Controller, software & 2mm Ruby Stylus*
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 190
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 f
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2D  Non - Contact Contour tracing module (XZ or YZ plane) *
 
 
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 4,750
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 g
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 3D  Non - Contact Scanning Module *
 
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 3,500
                             </td>
                         </tr>
@@ -417,23 +422,23 @@
 
                         <tr>
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 h
 
 
 
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2D Automatic profile scan module (only on X Y plane) *
 
 
 
                                 <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1,349
                             </td>
                         </tr>
@@ -441,12 +446,12 @@
 
                         <tr>
 <td></td>
-<td style="width: 20%; vertical-align: top; border: 1px solid black;">
+<td style="width: 5%; vertical-align: top; border: 1px solid black;">
     *Works only on CNC machine.
  <br>
                             </td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;"></td>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;"></td>
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;"></td>
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;"></td>
                         </tr>
 
                     </table>
@@ -482,13 +487,13 @@
                             </tr>
                             <tr>
                                 <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center;">
-                                    1298SD
+                                    {{RefID}}
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center;">
-                                    1 Mar 2019
+                                   {{value | date}}
                                 </td>
                             </tr>
                            </table>
@@ -525,7 +530,7 @@
                         </tr>
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >2.</p>
 
                             </td>
@@ -545,7 +550,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >3.</p>
 
                             </td>
@@ -565,7 +570,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >4.</p>
 
                             </td>
@@ -584,7 +589,7 @@
                         </tr>
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >5.</p>
 
                             </td>
@@ -605,13 +610,13 @@
 
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >6.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p > <strong> GST Details </strong></p>
 
                             </td>
@@ -627,13 +632,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >7.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Payment terms
 
                                 </p>
@@ -647,13 +652,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >8.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Inspection</p>
 
                             </td>
@@ -665,13 +670,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >9.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Warranty</p>
 
                             </td>
@@ -683,13 +688,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >10.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Software Upgrades</p>
 
                             </td>
@@ -701,13 +706,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >11.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Installation & Commissioning</p>
 
                             </td>
@@ -719,13 +724,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >12.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Additional Training
                                     </p>
 
@@ -738,13 +743,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >13.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Calibration</p>
 
                             </td>
@@ -757,13 +762,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >14.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Jurisdiction</p>
 
                             </td>
@@ -776,13 +781,13 @@
                         </tr>
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >15.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Internet Access</p>
 
                             </td>
@@ -796,13 +801,13 @@
 
 
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >16.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Power Supply</p>
 
                             </td>
@@ -814,13 +819,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >17.</p>
 
                             </td>
 
 
-                            <td style="width: 20%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <p >Instructions Manual</p>
 
                             </td>

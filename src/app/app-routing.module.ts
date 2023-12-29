@@ -182,7 +182,7 @@ const routes: Routes = [
 
 {path:'rapid64/:id',component:Rapid64Component},
 
-{path:'quotation2015Iv2015JLX/:id',component:Quotation2015Iv2015JLXComponent},
+{path:'rapidi2015Iv2015JLX/:id',component:Rapidi2015JLXComponent},
 
 {path:'rapidI5april2021/:id',component:RapidI5april2021Component},
 

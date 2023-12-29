@@ -19,32 +19,36 @@
                       
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
-                        <tr>
-                            <td style="width: 33%; vertical-align: top; border: 1px solid black;">
-                                <p style="border-bottom: 1px solid black;">M/s. Southern Polymers,</p>
-                                <p style="border-bottom: 1px solid black;"> No.48,</p>
-                                <p style="border-bottom: 1px solid black;">SIDCO Industrial Estate,</p>
-                                <p style="border-bottom: 1px solid black;">Thirumazhisai,</p>
-                                <p style="border-bottom: 1px solid black;">Chennai - 600124. Tamil Nadu</p>
-                                <p style="border-bottom: 0px solid black;">Tel. +91-44-2641 1700</p>
-                            </td>
-                            <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center;">
-                                <!-- Centered content -->
-                                <p style="border-bottom: 1px solid black;">Ref. No.: </p>
-                                <p style="border-bottom: 1px solid black;">Date:</p>
-                                <p style="border-bottom: 1px solid black;">Your Enquiry: </p>
-                                <p style="border-bottom: 1px solid black;">Kind Attention:</p>
-                            </td>
-                            <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: right;">
-                                <!-- Right-aligned content -->
-                                <p style="border-bottom: 1px solid black;"> 1298SD</p>
-                                <p style="border-bottom: 1px solid black;"> 1 Mar 2019 </p>
-                                <p style="border-bottom: 1px solid black;">Email/Telephonic </p>
-                                <p style="border-bottom: 1px solid black;"> Mr. M. Sundaram </p>
+                        <tr style="border: 1px solid black; height: 25px;">
 
-                            </td>
+
+                            <td style="width: 19%; vertical-align: top; border: 1px solid black; text-align: left;">
+                                <p style="border-bottom: 1px solid black; text-align: left;">Billing Address:</p>
+                                <p style="text-align: left;">{{billingAddress}}</p>
+                              </td>
+                          <!-- First Column -->
+                          <td style="width: 10%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
+                            <!-- Centered content -->
+                            <p style="border-bottom: 1px solid black; text-align: left;">Ref.No: </p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">Date:</p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">Your Enquiry: </p>
+                            <p style="border-bottom: 0px solid black; text-align: left;">Kind Attention:</p>
+                          </td>
+                      
+                          <!-- Second Column -->
+                          <td class="abc" style="width: 10%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
+                            <!-- Right-aligned content -->
+                            <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
+                            <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
+                            <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
+                          </td>
+                      
+                          <!-- Third Column for Billing Address -->
+                         
                         </tr>
-                    </table>
+                      </table>
+                      
 
                     <div style="text-align: left;">
                         <br>
@@ -73,32 +77,36 @@
     <img class="logo" style="width: 20%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
  </div>
  <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
-    <tr style="border: 1px solid black;height: 25px;">
-   
+    <tr style="border: 1px solid black; height: 25px;">
+
+
+        <td style="width: 19%; vertical-align: top; border: 1px solid black; text-align: left;">
+            <p style="border-bottom: 1px solid black; text-align: left;">Billing Address:</p>
+            <p style="text-align: left;">{{billingAddress}}</p>
+          </td>
+      <!-- First Column -->
+      <td style="width: 10%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
+        <!-- Centered content -->
+        <p style="border-bottom: 1px solid black; text-align: left;">Ref.No: </p>
+        <p style="border-bottom: 1px solid black; text-align: left;">Date:</p>
+        <p style="border-bottom: 1px solid black; text-align: left;">Your Enquiry: </p>
+        <p style="border-bottom: 0px solid black; text-align: left;">Kind Attention:</p>
+      </td>
+  
+      <!-- Second Column -->
+      <td class="abc" style="width: 10%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
+        <!-- Right-aligned content -->
+        <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
+        <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
+        <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
+        <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
+      </td>
+  
+      <!-- Third Column for Billing Address -->
      
-        <td style="width: 33%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
-            <!-- Centered content -->
-            <p style="border-bottom: 1px solid black;">Ref.No: </p>
-            <p style="border-bottom: 1px solid black;">Date:</p>
-            <p style="border-bottom: 1px solid black;">Your Enquiry: </p>
-            <p style="border-bottom: 1px solid black;">Kind Attention:</p>
-            <p style="border-bottom: 0px solid black;">Billing Address:</p>
-        </td>
-        
-
-        <td class="abc" style="width: 33%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
-            
-            <!-- Right-aligned content -->
-            <p style="border-bottom: 1px solid black;">{{RefID}}</p>
-            <p style="border-bottom: 1px solid black;">{{value | date}} </p>
-            <p style="border-bottom: 1px solid black;">Email/Telephonic </p>
-            <p style="border-bottom: 1px solid black;"> Mr. M. Sundaram </p>
-            <p style="border-bottom: 0px solid black;">{{billingAddress}}</p>
-
-        </td>
     </tr>
-
-</table>
+  </table>
+  
 
                     <table style="width: 100%; margin-top: 30px; border-collapse: collapse; border: 1px solid black;">
                         <tr>
