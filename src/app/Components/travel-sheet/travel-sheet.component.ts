@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-travel-sheet',
@@ -35,9 +35,11 @@ export class TravelSheetComponent {
   estTravelTime: string = '';
   FoodFuel: string = '';
  // totalSchdET: string = this.initialTime;
-  initialTime: string = "00:00"; // Set your initial time here
+  initialTime: string; // Set your initial time here
   cumulativeTime: number = 0;
-  constructor(private router: ActivatedRoute){
+startPlace: any;
+startCluster: any;
+  constructor( private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
@@ -54,6 +56,58 @@ export class TravelSheetComponent {
     });
   }
   public value = new Date();
+  reSequence(){
+    this.route.navigate(['/workFront']);
+  }
+
+  updateScheduleTimes() {
+    let cumulativeTime = this.getMinutesFromTime(this.initialTime);
+
+    for (let i = 0; i < this.selectedData.length; i++) {
+      const item = this.selectedData[i];
+
+      // Update cumulative time
+      if (item.requestFor == '') {
+        const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
+        const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
+        const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
+
+        cumulativeTime += estTravelTimeMinutes + foodFuelMinutes + estJobTimeMinutes;
+      }
+
+      // Use setTimeout to ensure that the update occurs after (ngModel) has been updated
+      setTimeout(() => {
+        // Update the schedule time in the current row
+        item.schdET1 = this.addMinutesToTime(this.initialTime, cumulativeTime);
+      });
+    }
+  }
+
+  getMinutesFromTime(time: string): number {
+    if (!time) {
+      return 0; // or handle the case where time is undefined/null
+    }
+
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  }
+
+  addMinutesToTime(time: string, minutes: number): string {
+    if (!time) {
+      return ''; // or handle the case where time is undefined/null
+    }
+
+    const [hours, oldMinutes] = time.split(':').map(Number);
+    const newMinutes = oldMinutes + minutes;
+    const newHours = Math.floor(newMinutes / 60);
+    const adjustedMinutes = newMinutes % 60;
+
+    return `${this.padZero(newHours)}:${this.padZero(adjustedMinutes)}`;
+  }
+
+  padZero(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
+  }
 
 //   calculateTime(item: any) {
 //     // Assuming estTravelTime is in HH:mm format
