@@ -28,6 +28,8 @@ export class Q4020Component {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  editableContent: string = '1 Set';
+  editableNumber: number = 14715; 
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
