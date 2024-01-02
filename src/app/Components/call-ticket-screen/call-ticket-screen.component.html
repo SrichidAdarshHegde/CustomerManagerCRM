@@ -135,11 +135,11 @@
                     </td>
                 </tr>
                 <tr style="text-align: center;">
-                    <th>SNo</th>
-                    <th>Salute</th>
+                    <th style="width: 5%;">SNo</th>
+                    <th>Sal</th>
                     <th>Name</th>
-                    <th>Mobile</th>
-                    <th style="width: 40%;">Email</th>
+                    <th style="width: 20%;">Mobile</th>
+                    <th style="width: 37%;">Email</th>
                     <th>Designation</th>
                 </tr>
                 <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
@@ -152,7 +152,7 @@
                 </tr>
             </table></div> 
             <div class="col-md-12 row" *ngIf="machineSelected">
-                <h3>Add Contact:</h3>&nbsp;
+                <h3><hr>Add Contact:</h3>&nbsp;
                 <div class="col-md-2">
                     <label for="machineNumber"><strong>Salute:</strong></label>
                     <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
@@ -228,27 +228,35 @@
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Log by</th>
-                    <td></td>
                     <th>Cust Call From</th>
-                    <th>Called back by</th>
+                    <!-- <th>Called back by</th> -->
                     <th>Fault/Issue</th>
                     <th>Resolution</th>
                     <th>Entered Priority</th>
                 </tr>
-                <tr *ngFor="let tickets of customerTicketList; let i = index">
-                    <td>{{(i+1)}}</td>
-                    <td>{{tickets.createdOn | date}}</td>
+                <!-- *ngFor="let tickets of customerTicketList; let i = index" -->
+                <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{tickets.contactName}}</td>
-                    <td>{{tickets.createdBy}}</td>
-                    <td>{{tickets.remarks}}</td>
-                    <td>{{tickets.resolution}}</td>
-                    <td>{{tickets.priority}}</td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" name="fault" [(ngModel)]="foult" class="form-control"></td>
+                    <td><input type="text" name="resolution" [(ngModel)]="Resolution" class="form-control"></td>
+                    <td></td>
                 </tr>
             </table>
+        </div>
+        <div class="col-md-1">
+            <div class="flex-column align-items-center"><br>
+                <div class="col-md-12"><br>
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
+                    </button>
+                    <br><br>
+                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
+                </div><br><br>
+            </div>
         </div>
     </div>
     <div class="col-md-12 row">
@@ -279,7 +287,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <h4>Fault</h4>
                         <textarea [(ngModel)]="foult" class="form-control table-with-bold-lines" name="text" rows="6"
                             cols="100"></textarea>
@@ -288,19 +296,12 @@
                         <h4>Resolution</h4>
                         <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100"
                             rows="6"></textarea>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
         <div class="col-md-2">
-            <div class="flex-column align-items-center"><br>
-                <div class="col-md-12"><br>
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
-                    </button>
-                    <br><br>
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
-                </div><br><br>
-            </div>
+            
         </div>
     </div>
 </div>
