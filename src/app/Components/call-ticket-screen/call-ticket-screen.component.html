@@ -98,38 +98,6 @@
                     <td>{{abc.invoiceAmount}}</td>
                 </tr>
             </table>
-          <table id="machineTable" style="border: 1px solid black; border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr>
-      <th style="border-bottom: 1px solid black; padding: 8px;">SNo</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Ticket No.</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">M/c no</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Model</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Status</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Start Dt</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">End Dt</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Inv No</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Inv Dt</th>
-      <th style="border-bottom: 1px solid black; padding: 8px;">Inv Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let machine of machineList; let i = index" [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ i + 1 }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ getTicketNumberForMachine(machine.machineNumber) }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ machine.machineNumber }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ machine.modelName }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ getStatusForMachine(machine.machineNumber) }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ machine.warrantyFrom | date }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ machine.warrantyTill | date }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ getInvoiceNumberForMachine(machine.machineNumber) }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ getInvoiceDateForMachine(machine.machineNumber) | date }}</td>
-      <td style="border-bottom: 1px solid black; padding: 8px;">{{ getInvoiceValueForMachine(machine.machineNumber) }}</td>
-    </tr>
-  </tbody>
-</table>
-
-        
         </div>
     </div>
     <div class="col-md-12 row">
@@ -155,131 +123,91 @@
             </table>
         </div>
         <div class="col-md-1">
-            <!-- Empty column -->
-        </div>
+         </div>
         <div class="col-md-7">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
                     <div class="col-md-12" style="overflow: auto; height: 200px;">
-                        <table class="table table-bordered table-with-bold-lines">
-                            <tr>
-                                <td style="text-align: center;" colspan="6">
-                                    <h4>Contact Persons</h4>
-                                </td>
-                            </tr>
-                            <tr style="text-align: center;">
-                                <th>SNo</th>
-                                <th>Salute</th>
-                                <th>Name</th>
-                                <th>Mobile</th>
-                                <th style="width: 40%;">Email</th>
-                                <th>Designation</th>
-                            </tr>
-                            <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
-                                <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
-                                <td>{{details.salute}}</td>
-                                <td>{{details.contactName}}</td>
-                                <td>{{details.mobile}}</td>
-                                <td>{{details.email}}</td>
-                                <td>{{details.designation}}</td>
-                            </tr>
-                            <tr *ngIf="machineSelected">
-                                <td style="text-align: center;" colspan="6">
-                                    <h4>Add Contacts</h4>
-                                </td>
-                            </tr>
-                            <!-- New row for adding contact details -->
-                            <tr *ngIf="machineSelected">
-                                <td></td>
-                                <td><input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" placeholder="salute" required></td>
-                                <td><input class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" placeholder="contact name" required></td>
-                                <td><input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" placeholder="mobile"  required></td>
-                                <td><input class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="email" required></td>
-                                <td><input class="form-control" id="designation" name="designation" [(ngModel)]="designation" placeholder="designation"  required></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-12 row" *ngIf="machineSelected">
-                   
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1">
-            <br><br><br><br>
-            <br><button class="form-control btn btn-primary" type="submit" (click)="addContactDetails()">Save Contact</button>
-        </div>
-    </div>
-    <br>
-    
-    <div style="background-color: rgb(249, 249, 249); padding: 15px">
-        <div class="col-md-12 row">
-            <div class="col-md-2">
-                <!-- First Table -->
-                <table class="table table-bordered table-with-bold-lines">
-                    <tr>
-                        <td>Date:</td>
-                        <td style="text-align: center;"><b>{{value | date}}</b></td>
-                        <td>Time:</td>
-                        <td style="text-align: center;"><b>{{ systemTime | async | date: 'HH:mm:ss' }}</b></td>
-                    </tr>
-                </table>
-            </div>
-            
-           
-            
-      
-            <div class="col-md-7" style="overflow: auto; height: 150px;">
-                <table class="table table-bordered table-with-bold-lines">
-                    <tr style="text-align: center;">
-                        <th>S No</th>
-                        <th>Date</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Log by</th>
-                        
-                        <th>Cust Call From</th>
-                        <th>Called back by</th>
-                        <th>Fault/Issue</th>
-                        <th>Resolution</th>
-                        <th>Entered Priority</th>
-                    </tr>
-                    
-              
-
-                <tr *ngFor="let tickets of customerTicketList; let i = index">
-                    <td>{{(i+1)}}</td>
-                    <td>{{tickets.createdOn | date}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-              
-                    <td>{{tickets.contactName}}</td>
-                    <td>{{tickets.createdBy}}</td>
-                    <td>{{tickets.remarks}}</td>
-                    <td>{{tickets.resolution}}</td>
-                    <td>{{tickets.priority}}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-
-    <div class="col-md-12 row" style="margin-top: -90px;">
-        <div class="col-md-1">
-            <!-- First Table -->
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
-                    <td>T/No.</td>
-                    <td>
-                        <input style="text-align: right;" type="text" name="Machine" [(ngModel)]="tokenNo" class="form-control" readonly>
+                    <td style="text-align: center; padding: 0px;" colspan="6">
+                        <h4>Contact Persons</h4>
                     </td>
+                </tr>
+                <tr style="text-align: center;">
+                    <th>SNo</th>
+                    <th>Salute</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th style="width: 40%;">Email</th>
+                    <th>Designation</th>
+                </tr>
+                <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
+                    <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
+                    <td>{{details.salute}}</td>
+                    <td>{{details.contactName}}</td>
+                    <td>{{details.mobile}}</td>
+                    <td>{{details.email}}</td>
+                    <td>{{details.designation}}</td>
+                </tr>
+            </table></div> 
+            <div class="col-md-12 row" *ngIf="machineSelected">
+                <h3>Add Contact:</h3>&nbsp;
+                <div class="col-md-2">
+                    <label for="machineNumber"><strong>Salute:</strong></label>
+                    <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="machineNumber"><strong>Contact Name:</strong></label>
+                    <input class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="address1"><strong>Designation:</strong></label>
+                    <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="address1"><strong>Email:</strong></label>
+                    <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="address1"><strong>Mobile:</strong></label>
+                    <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
+                </div>
+                <!-- <div class="col-md-1">
+                    <br> <button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Add</button>
+                </div> -->
+            </div>
+            </div>
+        </div></div>
+        <div class="col-md-1"><br><br><br><br>
+            <br><button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Save Contact</button>
+        </div>
+    </div>
+</div><br>
+<div style="background-color: rgb(249, 249, 249); padding: 15px">
+    <div class="col-md-12 row">
+        <div class="col-md-4">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td>Date:</td>
+                    <td style="text-align: center;"><b>{{value | date}}</b></td>
+                    <td>Time:</td>
+                    <td style="text-align: center;"><b>{{ systemTime | async | date: 'HH:mm:ss' }}</b></td>
                 </tr>
             </table>
         </div>
-    
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td>Ticket No.</td>
+                    <td style="width: 60%;"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="tokenNo"
+                            class="form-control" readonly></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
         <div class="col-md-1">
-            <!-- Second Table -->
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td>Login</td>
@@ -289,10 +217,42 @@
                 </tr>
             </table>
         </div>
+        <div class="col-md-1"></div>
     </div>
-    
     <div class="col-md-12 row">
-        <div class="col-md-9">
+        <div class="col-md-11" style="overflow: auto; height: 150px;">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr style="text-align: center;">
+                    <th>S No</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Log by</th>
+                    <td></td>
+                    <th>Cust Call From</th>
+                    <th>Called back by</th>
+                    <th>Fault/Issue</th>
+                    <th>Resolution</th>
+                    <th>Entered Priority</th>
+                </tr>
+                <tr *ngFor="let tickets of customerTicketList; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{tickets.createdOn | date}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{tickets.contactName}}</td>
+                    <td>{{tickets.createdBy}}</td>
+                    <td>{{tickets.remarks}}</td>
+                    <td>{{tickets.resolution}}</td>
+                    <td>{{tickets.priority}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12 row">
+        <div class="col-md-10">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
                     <div class="col-md-5">

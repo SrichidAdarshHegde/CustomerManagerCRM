@@ -72,14 +72,18 @@ startCluster: any;
         const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
 
-        cumulativeTime += estTravelTimeMinutes + foodFuelMinutes + estJobTimeMinutes;
+        // Handle undefined values
+        const validEstTravelTime = !isNaN(estTravelTimeMinutes);
+        const validFoodFuel = !isNaN(foodFuelMinutes);
+        const validEstJobTime = !isNaN(estJobTimeMinutes);
+
+        if (validEstTravelTime) cumulativeTime += estTravelTimeMinutes;
+        if (validFoodFuel) cumulativeTime += foodFuelMinutes;
+        if (validEstJobTime) cumulativeTime += estJobTimeMinutes;
       }
 
-      // Use setTimeout to ensure that the update occurs after (ngModel) has been updated
-      setTimeout(() => {
-        // Update the schedule time in the current row
-        item.schdET1 = this.addMinutesToTime(this.initialTime, cumulativeTime);
-      });
+      // Update the schedule time in the current row
+      item.schdET1 = this.addMinutesToTime(this.initialTime, cumulativeTime);
     }
   }
 

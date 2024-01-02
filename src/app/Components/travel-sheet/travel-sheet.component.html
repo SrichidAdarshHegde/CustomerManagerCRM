@@ -95,7 +95,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><input type="time" [(ngModel)]="initialTime" class="form-control" (ngModelChange)="updateScheduleTimes()"></td>
+                    <td> <input type="time" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="form-control"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -112,10 +112,10 @@
                         <td rowspan="2" *ngIf="item.requestFor != ''"></td>
                         <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.estDistKms" class="form-control"></td>
                         <td *ngIf="item.requestFor != ''"></td>
-                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
                         <td *ngIf="item.requestFor != ''"></td>
-                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.FoodFuel" (ngModelChange)="updateScheduleTimes()" class="form-control"></td>
-                        <td *ngIf="item.requestFor != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.FoodFuel" (ngModelChange)="item.FoodFuel = $event; updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="item.estJobTime = $event; updateScheduleTimes()" class="form-control"></td>
                         <td *ngIf="item.requestFor == ''"></td>
                         <td></td>
                         <td></td>
