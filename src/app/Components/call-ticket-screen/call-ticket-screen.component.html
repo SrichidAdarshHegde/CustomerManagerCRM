@@ -6,7 +6,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td colspan="4"><ng-select [items]="customerList" [bindLabel]="'companyName'"
-                            [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
+                            [(ngModel)]="selectedCustomer" (change)="onSelectCustomer($event)">
                             <ng-option value="" disabled>Select Customer</ng-option>
                         </ng-select></td>
                 </tr>
@@ -81,21 +81,22 @@
                     <th>Inv Dt</th>
                     <th>Inv Value</th>
                 </tr>
+                <!-- let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; -->
                 <tr
-                    *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index" [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
-                    <td>{{(i+1)}}</td>
+                    *ngFor="let machine of MachineTicketList ;  let i = index" [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
+                    <td style="text-align: right;">{{(i+1)}}</td>
                     <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
-                    <td>{{tickets.tokenID}}</td>
-                    <td>
+                    <td style="text-align: right;">{{machine.tokenNo}}</td>
+                    <td style="text-align: right;">
                         {{machine.machineNumber}}
                     </td>
                     <td>{{machine.modelName}}</td>
-                    <td>{{invoicePerticular}}</td>
-                    <td>{{warrantyFrom | date}}</td>
-                    <td>{{warrantyTill | date}}</td>
-                    <td>{{abc.invoiceNumber}}</td>
-                    <td>{{abc.createdOn | date}}</td>
-                    <td>{{abc.invoiceAmount}}</td>
+                    <td>{{machine.invoicePerticular}}</td>
+                    <td>{{machine.warrantyFrom | date}}</td>
+                    <td>{{machine.warrantyTill | date}}</td>
+                    <td style="text-align: right;">{{machine.invoiceNumber}}</td>
+                    <td style="text-align: right;">{{machine.invoiceDate | date}}</td>
+                    <td style="text-align: right;">{{machine.invoiceAmount}}</td>
                 </tr>
             </table>
         </div>
@@ -143,12 +144,12 @@
                     <th>Designation</th>
                 </tr>
                 <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
-                    <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
-                    <td>{{details.salute}}</td>
-                    <td>{{details.contactName}}</td>
-                    <td>{{details.mobile}}</td>
-                    <td>{{details.email}}</td>
-                    <td>{{details.designation}}</td>
+                    <td style="cursor: pointer;text-align: right;" (click)="onClickRow(details)" class="hover-text">{{(i+1)}}</td>
+                    <td style="text-align: left;">{{details.salute}}</td>
+                    <td style="text-align: left;">{{details.contactName}}</td>
+                    <td style="text-align: right;">{{details.mobile}}</td>
+                    <td style="text-align: left;">{{details.email}}</td>
+                    <td style="text-align: left;">{{details.designation}}</td>
                 </tr>
             </table></div> 
             <div class="col-md-12 row" *ngIf="machineSelected">
@@ -196,7 +197,10 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" (click)="startTimer()">Start Timer</button>&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-primary" (click)="endTimer()">End Timer</button>
+        </div>
         <div class="col-md-2">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
@@ -211,7 +215,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td>Login</td>
-                    <td style="text-align: right;">
+                    <td style="text-align: left;">
                         <b>{{userName}}</b>
                     </td>
                 </tr>
@@ -237,11 +241,11 @@
                 <!-- *ngFor="let tickets of customerTicketList; let i = index" -->
                 <tr>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{value | date}}</td>
+                    <td>{{startTime | date:'hh:mm:ss' }}</td>
+                    <td>{{endTime | date:'hh:mm:ss' }}</td>
+                    <td>{{userName}}</td>
+                    <td>{{contactName}}</td>
                     <td><input type="text" name="fault" [(ngModel)]="foult" class="form-control"></td>
                     <td><input type="text" name="resolution" [(ngModel)]="Resolution" class="form-control"></td>
                     <td></td>
@@ -249,13 +253,13 @@
             </table>
         </div>
         <div class="col-md-1">
-            <div class="flex-column align-items-center"><br>
-                <div class="col-md-12"><br>
+            <div class="flex-column align-items-center">
+                <div class="col-md-12">
                     <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
                     </button>
                     <br><br>
                     <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
-                </div><br><br>
+                </div>
             </div>
         </div>
     </div>

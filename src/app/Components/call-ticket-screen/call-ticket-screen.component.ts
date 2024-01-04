@@ -87,6 +87,12 @@ export class CallTicketScreenComponent {
   machineSelected: boolean = true;
   tokenNo: any;
   contactId: any;
+  startTime: Date;
+  endTime: Date;
+  contactName: any;
+  MachineTicketList: any[] = [];
+  customerId: any;
+
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -110,34 +116,21 @@ export class CallTicketScreenComponent {
   }
   public value = new Date();
 
-  //  getAttendedBybyid(data:any){
-  //   this.customerID = data.customerID;
-  //   this.regSv
-  //   .getAttendedby(this.customerID)
-  //     .subscribe((response: any) => {
-  //       if (response == null) {
-  //         alert("No User Found!!!")
-  //       } else {
-  //       this.interactiondata = response;
-  //       }
-  //  });
-  // }
+  startTimer() {
+    if(this.startTime == null){
+      this.startTime = new Date();
+    }else{
+      alert("Already started");
+    }
+    
+  }
 
-  // getRequests() {
-  //   this.masterSv.getRequests().subscribe((response: any) => {
-  //     console.log(response);
-  //     const mappedRequests: { label: string; value: any }[] = response.map((requests: any) => ({
-  //       label: requests.requestsName,
-  //       value: requests.requestsId,
-  //     }));
-  //     this.requestslist = mappedRequests.sort((a: { label: string }, b: { label: string }) =>
-  //       a.label.localeCompare(b.label)
-  //     );
-
-  //     console.log(this.requestslist);
-  //   });
-  // }
-
+  endTimer() {
+    this.endTime = new Date();
+    const timeDifference = this.endTime.getTime() - this.startTime.getTime();
+    console.log('Time difference: ' + timeDifference + ' milliseconds');
+  }
+ 
   getRequests() {
     this.masterSv.getRequests().subscribe((response: any) => {
       this.combinedList = response;
@@ -201,6 +194,7 @@ export class CallTicketScreenComponent {
     console.log(this.selectedMachine);
     this.onChangeMachineNumber();
   }
+
   onChangeMachineNumber() {
     this.regSv.getMachineFromMachineNumber(this.selectedMachine).subscribe((response: any) => {
       if (response == null) {
@@ -238,13 +232,56 @@ export class CallTicketScreenComponent {
         this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
         this.features = this.perticularCustomerData[0].features;
         this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
-
-        this.securityFormalities =
-          this.perticularCustomerData[0].securityFormalities;
-
+        this.securityFormalities = this.perticularCustomerData[0].securityFormalities;
       }
       console.log('Selected Machine Number:', this.selectedMachine);
     })
+  }
+
+
+  onSelectCustomer(data: any){
+    this.customerID = data.companyName;
+    this.regSv.getMachineTicketDetails(this.customerID).subscribe((response: any) => {
+      if (response != null || response.length != 0) {
+        this.MachineTicketList = response;
+        console.log('List is', this.MachineTicketList);
+          } else {
+            alert("Something went wrong!!!")
+          }
+    });
+    this.regSv
+        .getPerticularCust(this.customerID)
+        .subscribe((response: any) => {
+          if (response != null) {
+            this.perticularCustomerData = response;
+            this.companyName = this.perticularCustomerData[0].companyName;
+            this.custID = this.perticularCustomerData[0].customerID;
+            this.getPerticularCustomerContactDetails(this.custID);
+            console.log(this.perticularCustomerData[0].customerID);
+            console.log(this.perticularCustomerData);
+            this.unit = this.perticularCustomerData[0].unit;
+            this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressTwo = this.perticularCustomerData[0].addressTwo;
+            this.addressThree = this.perticularCustomerData[0].addressThree;
+            this.city = this.perticularCustomerData[0].city;
+            this.pincode = this.perticularCustomerData[0].pincode;
+            this.state = this.perticularCustomerData[0].state;
+            this.country = this.perticularCustomerData[0].country;
+            this.gstin = this.perticularCustomerData[0].gstin;
+            this.cluster = this.perticularCustomerData[0].cluster;
+            this.routeNo = this.perticularCustomerData[0].routeNumber;
+            this.region = this.perticularCustomerData[0].region;
+            this.zone = this.perticularCustomerData[0].zone;
+            this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
+            this.workingStart = this.perticularCustomerData[0].workingStart;
+            this.workingEnd = this.perticularCustomerData[0].workingEnd;
+            this.securityFormalities =
+              this.perticularCustomerData[0].securityFormalities;
+
+          } else {
+            alert("Something went wrong!!!")
+          }
+        });
   }
 
   onSelectCompany(data: any) {
@@ -278,8 +315,8 @@ export class CallTicketScreenComponent {
             this.perticularCustomerData = response;
             this.companyName = this.perticularCustomerData[0].companyName;
             this.custID = this.perticularCustomerData[0].customerID;
-            // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
-            // console.log(this.perticularCustomerData[0].customerId);  
+            this.GetInvoicesCustomer(this.custID);
+            console.log(this.custID);  
             this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerID);
             // this.getCustomerTickets(this.perticularCustomerData[0].customerID);
             console.log(this.perticularCustomerData[0].customerID);
@@ -312,30 +349,6 @@ export class CallTicketScreenComponent {
           }
         });
       this.machineSelected = true;
-    // }
-    // else {
-    //   this.regSv.getMachineInLocation(this.customerID)
-    //     .subscribe((response: any) => {
-    //       if (response == null) {
-    //         alert("No Machine Found!!!");
-    //       } else {
-    //         this.perticularMachineData = response;
-    //         console.log(this.perticularMachineData);
-
-    //         // Clear existing machineList and then populate with new data
-    //         this.machineList = [];
-
-    //         // Loop through the machines and populate the machineList
-    //         for (const machine of this.perticularMachineData) {
-    //           this.machineList.push({
-    //             machineNumber: machine.machineNumber,
-    //             machineInLocation: machine.machineInLocation,
-    //             modelName: machine.modelName
-    //           });
-    //         }
-    //       }
-    //     });
-    // }
   }
 
   getCustomerTickets(id: any) {
@@ -351,8 +364,9 @@ export class CallTicketScreenComponent {
   isSelectedRow(id: any): boolean {
     return this.contactId === id;
 }
-  onClickRow(id: any) {
-    this.contactId = id;
+  onClickRow(details: any) {
+    this.contactId = details.id;
+    this.contactName = details.contactName;
     console.log(this.contactId);
   }
 
@@ -422,6 +436,9 @@ export class CallTicketScreenComponent {
       // frmData.append("Designation", this.designation);
       // frmData.append("Email", this.email);
       // frmData.append("Mobile", this.mobile);
+      frmData.append("StartTime", this.startTime.toISOString());
+      frmData.append("EndTime", this.endTime.toISOString());   
+      frmData.append("CallFrom", this.contactName);
 
       frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
 
