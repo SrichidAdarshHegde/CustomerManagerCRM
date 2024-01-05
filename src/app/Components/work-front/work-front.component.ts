@@ -77,6 +77,8 @@ export class WorkFrontComponent implements OnInit {
   sequenceTwo: boolean[];
   checkedRows: any[];
   checkedRows1: any[];
+  checkedIndexes: number[] = [];
+  checkedIndexes1: number[] = [];
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
@@ -269,7 +271,24 @@ export class WorkFrontComponent implements OnInit {
   // }
 
   onCheckboxClick(request: any) {
+   
     const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
+const index1 = this.workpriority.indexOf(request);
+
+if (index1 !== -1) {
+    if (this.sequence[index1]) {
+        // If checked, remove the index from the checkedIndexes array
+        const checkedIndex = this.checkedIndexes.indexOf(index1);
+        if (checkedIndex !== -1) {
+            this.checkedIndexes.splice(checkedIndex, 1);
+        }
+    } else {
+        // If unchecked, add the index to the checkedIndexes array
+        this.checkedIndexes.push(index1);
+    }
+}
+  
+
 
     // Remove any existing empty rows
     this.selectedRows = this.selectedRows.filter(row => row.tokenID !== '');
@@ -300,7 +319,20 @@ export class WorkFrontComponent implements OnInit {
 
   onCheckboxClick1(request: any) {
     const index = this.selectedRows1.findIndex(row => row.tokenID === request.tokenID);
+    const index1 = this.workpriority.indexOf(request);
 
+    if (index1 !== -1) {
+        if (this.sequence[index1]) {
+            // If checked, remove the index from the checkedIndexes array
+            const checkedIndex = this.checkedIndexes1.indexOf(index1);
+            if (checkedIndex !== -1) {
+                this.checkedIndexes1.splice(checkedIndex, 1);
+            }
+        } else {
+            // If unchecked, add the index to the checkedIndexes array
+            this.checkedIndexes1.push(index1);
+        }
+    }
     // Remove any existing empty rows
     this.selectedRows1 = this.selectedRows1.filter(row => row.tokenID !== '');
   
