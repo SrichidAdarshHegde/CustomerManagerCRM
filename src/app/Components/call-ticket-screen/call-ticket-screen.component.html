@@ -85,7 +85,7 @@
                 <tr
                     *ngFor="let machine of MachineTicketList ;  let i = index" [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
                     <td style="text-align: right;">{{(i+1)}}</td>
-                    <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
+                    <td class="hover-text" (click)="onRowClick(machine)" style="cursor: pointer;"></td>
                     <td style="text-align: right;">{{machine.tokenNo}}</td>
                     <td style="text-align: right;">
                         {{machine.machineNumber}}
@@ -135,7 +135,7 @@
                         <h4>Contact Persons</h4>
                     </td>
                 </tr>
-                <tr style="text-align: center;">
+                <tr class="sticky-header" style="text-align: center;">
                     <th style="width: 5%;">SNo</th>
                     <th>Sal</th>
                     <th>Name</th>
@@ -204,9 +204,12 @@
         <div class="col-md-2">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
-                    <td>Ticket No.</td>
-                    <td style="width: 60%;"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="tokenNo"
-                            class="form-control" readonly></td>
+                    <td>Ticket No.</td> 
+                    <td style="width: 60%;"><input *ngIf="ticketNo != null" style="text-align: right;" type="text" name="Machine" [(ngModel)]="ticketNo"
+                            class="form-control" readonly>
+                            <input *ngIf="ticketNo == null" style="text-align: right;" type="text" name="Machine" [(ngModel)]="newTicketNo"
+                            class="form-control" readonly>
+                        </td>
                 </tr>
             </table>
         </div>
@@ -236,7 +239,18 @@
                     <!-- <th>Called back by</th> -->
                     <th>Fault/Issue</th>
                     <th>Resolution</th>
-                    <th>Entered Priority</th>
+                    <th>Enter Priority</th>
+                </tr>
+                <tr *ngFor="let ticket of ticketDetailsList; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{ticket.createdOn | date}}</td>
+                    <td>{{ticket.startTime | date:'hh:mm:ss' }}</td>
+                    <td>{{ticket.endTime | date:'hh:mm:ss' }}</td>
+                    <td>{{ticket.createdBy}}</td>
+                    <td>{{ticket.callFrom}}</td>
+                    <td>{{ticket.remarks}}</td>
+                    <td>{{ticket.resolution}}</td>
+                    <td>{{ticket.requestFor}}</td>
                 </tr>
                 <!-- *ngFor="let tickets of customerTicketList; let i = index" -->
                 <tr>
@@ -248,7 +262,19 @@
                     <td>{{contactName}}</td>
                     <td><input type="text" name="fault" [(ngModel)]="foult" class="form-control"></td>
                     <td><input type="text" name="resolution" [(ngModel)]="Resolution" class="form-control"></td>
-                    <td></td>
+                    <td>
+                        <!-- <label for="unit">Tele Support:</label>
+                        <ng-select [items]="teleSupportrequestslist" name="requestsName"
+                            [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
+                            (change)="onSelectRequest()">
+                        </ng-select>
+                        <label for="unit">Field Visit:</label>
+                        <ng-select [items]="fieldVisitRequestslist" name="requestsName"
+                            [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
+                            (change)="onSelectRequest()">
+                        </ng-select>
+                    -->
+                    </td>
                 </tr>
             </table>
         </div>

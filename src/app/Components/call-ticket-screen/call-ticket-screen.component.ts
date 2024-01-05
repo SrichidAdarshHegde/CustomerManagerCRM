@@ -85,13 +85,15 @@ export class CallTicketScreenComponent {
   contactname: any;
   salute: any;
   machineSelected: boolean = true;
-  tokenNo: any;
+  ticketNo: any;
   contactId: any;
   startTime: Date;
   endTime: Date;
   contactName: any;
   MachineTicketList: any[] = [];
   customerId: any;
+  newTicketNo: any;
+  ticketDetailsList: any[] = [];
 
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
@@ -161,7 +163,7 @@ export class CallTicketScreenComponent {
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
       this.tableLength = result.length + 1; 
-      this.tokenNo = this.tableLength.toString().padStart(4, '0');
+      this.newTicketNo = this.tableLength.toString().padStart(4, '0');
     })
   }
 
@@ -185,14 +187,34 @@ export class CallTicketScreenComponent {
       console.log(this.sandslist);
     })
   }
+
   isRowSelected(id: any): boolean {
     return this.selectedMachine === id;
 }
 
-  onRowClick(machineNumber: any) {
-    this.selectedMachine = machineNumber;
+  onRowClick(data: any) {
+    this.selectedMachine = data.machineNumber;
+    this.ticketNo = data.tokenNo;
     console.log(this.selectedMachine);
+    this.onSelectTicket();
+    if(this.ticketNo == null){
+      this.ticketDetailsList = [];
+    }
     this.onChangeMachineNumber();
+  }
+
+  onSelectTicket(){
+    this.regSv.getTicketDetailsFromTicket(this.ticketNo).subscribe((response: any) => {
+      if (response != null){
+        this.ticketDetailsList = response;
+        console.log('Ticket Details:', this.ticketDetailsList);
+        if(this.ticketNo == null){
+          this.ticketDetailsList = [];
+        }
+      }else{
+        alert("Invalid Ticket Number");
+      }
+    })
   }
 
   onChangeMachineNumber() {
@@ -423,19 +445,23 @@ export class CallTicketScreenComponent {
       alert('Please enter Fault');
     }else if(this.Resolution == null || this.Resolution == ""){
       alert('Please enter Resolution');
+    }else if(this.startTime == null || this.startTime == undefined){
+      alert('Please enter Start Time');
+    }else if(this.endTime == null || this.endTime == undefined){
+      alert('Please enter End Time');
     }
     else {
       const frmData = new FormData();
       frmData.append("MachineNumber", this.selectedMachine);
       frmData.append("CustomerId", this.custID);
       frmData.append("CustomerName", this.companyName);
-      frmData.append("TokenNo", this.tokenNo);
+      if(this.ticketNo == null){
+        frmData.append("TokenNo", this.newTicketNo);
+      }else{
+        frmData.append("TokenNo", this.ticketNo);
+      }
       frmData.append("ContactId", this.contactId);
-      // frmData.append("Salute", this.salute);
-      // frmData.append("ContactName", this.contactname);
-      // frmData.append("Designation", this.designation);
-      // frmData.append("Email", this.email);
-      // frmData.append("Mobile", this.mobile);
+      
       frmData.append("StartTime", this.startTime.toISOString());
       frmData.append("EndTime", this.endTime.toISOString());   
       frmData.append("CallFrom", this.contactName);

@@ -156,6 +156,9 @@ export class RegistrationService {
   getMachineFromMachineNumber(machineId: any) {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineFromMachineNumber/' + machineId);
   }
+  getTicketDetailsFromTicket(ticketNo :any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetTicketDetailsFromTicket/' + ticketNo);
+  }
   getMachineRequestsFromMachineNumber(machineId:any){
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineRequestsFromMachineNumber/'+ machineId);
   }
