@@ -319,20 +319,20 @@ if (index1 !== -1) {
 
   onCheckboxClick1(request: any) {
     const index = this.selectedRows1.findIndex(row => row.tokenID === request.tokenID);
-    const index1 = this.workpriority.indexOf(request);
+    const index1 = this.workpriority45.indexOf(request);
 
-    if (index1 !== -1) {
-        if (this.sequence[index1]) {
-            // If checked, remove the index from the checkedIndexes array
-            const checkedIndexes1 = this.checkedIndexes1.indexOf(index1);
-            if (checkedIndex !== -1) {
-                this.checkedIndexes1.splice(checkedIndexes1, 1);
-            }
-        } else {
-            // If unchecked, add the index to the checkedIndexes array
-            this.checkedIndexes1.push(index1);
+if (index1 !== -1) {
+    if (this.sequenceTwo[index1]) {
+        // If checked, remove the index from the checkedIndexes array
+        const checkedIndex1 = this.checkedIndexes1.indexOf(index1);
+        if (checkedIndex1 !== -1) {
+            this.checkedIndexes1.splice(checkedIndex1, 1);
         }
+    } else {
+        // If unchecked, add the index to the checkedIndexes array
+        this.checkedIndexes1.push(index1);
     }
+}
     // Remove any existing empty rows
     this.selectedRows1 = this.selectedRows1.filter(row => row.tokenID !== '');
   
