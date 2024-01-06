@@ -324,9 +324,9 @@ if (index1 !== -1) {
     if (index1 !== -1) {
         if (this.sequence[index1]) {
             // If checked, remove the index from the checkedIndexes array
-            const checkedIndex = this.checkedIndexes1.indexOf(index1);
+            const checkedIndexes1 = this.checkedIndexes1.indexOf(index1);
             if (checkedIndex !== -1) {
-                this.checkedIndexes1.splice(checkedIndex, 1);
+                this.checkedIndexes1.splice(checkedIndexes1, 1);
             }
         } else {
             // If unchecked, add the index to the checkedIndexes array
