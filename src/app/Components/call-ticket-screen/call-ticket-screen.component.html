@@ -227,19 +227,19 @@
         <div class="col-md-1"></div>
     </div>
     <div class="col-md-12 row">
-        <div class="col-md-11" style="overflow: auto; height: 150px;">
+        <div class="col-md-12" style="overflow: auto; height: 170px;">
             <table class="table table-bordered table-with-bold-lines">
-                <tr style="text-align: center;">
-                    <th>S No</th>
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Log by</th>
-                    <th>Cust Call From</th>
+                <tr class="sticky-header" style="text-align: center;">
+                    <th style="width: 2%;">S No</th>
+                    <th style="width: 8%;">Date</th>
+                    <th style="width: 8%;">Start Time</th>
+                    <th style="width: 8%;">End Time</th>
+                    <th style="width: 5%;">Log by</th>
+                    <th style="width: 12%;">Cust Call From</th>
                     <!-- <th>Called back by</th> -->
                     <th>Fault/Issue</th>
                     <th>Resolution</th>
-                    <th>Enter Priority</th>
+                    <th>Entered Priority</th>
                 </tr>
                 <tr *ngFor="let ticket of ticketDetailsList; let i = index">
                     <td>{{(i+1)}}</td>
@@ -252,44 +252,53 @@
                     <td>{{ticket.resolution}}</td>
                     <td>{{ticket.requestFor}}</td>
                 </tr>
-                <!-- *ngFor="let tickets of customerTicketList; let i = index" -->
+            </table>
+        </div>
+       
+    </div>
+    <br>
+    <div class="col-md-12 row">
+        <div class="col-md-12 row">
+            <table class="table table-bordered table-with-bold-lines">
                 <tr>
-                    <td></td>
-                    <td>{{value | date}}</td>
-                    <td>{{startTime | date:'hh:mm:ss' }}</td>
-                    <td>{{endTime | date:'hh:mm:ss' }}</td>
-                    <td>{{userName}}</td>
-                    <td>{{contactName}}</td>
-                    <td><input type="text" name="fault" [(ngModel)]="foult" class="form-control"></td>
-                    <td><input type="text" name="resolution" [(ngModel)]="Resolution" class="form-control"></td>
-                    <td>
-                        <!-- <label for="unit">Tele Support:</label>
+                    <td style="width: 2%;"></td>
+                    <td style="width: 8%;">{{value | date}}</td>
+                    <td style="width: 8%;">{{startTime | date:'hh:mm:ss' }}</td>
+                    <td style="width: 8%;">{{endTime | date:'hh:mm:ss' }}</td>
+                    <td style="width: 5%;">{{userName}}</td>
+                    <td style="width: 12%;">{{contactName}}</td>
+                    <td><h6>Fault/Issue</h6><input type="text" name="fault" [(ngModel)]="foult" class="form-control"></td>
+                    <td><h6>Resolution</h6><input type="text" name="resolution" [(ngModel)]="Resolution" class="form-control"></td>
+                    <td><div class="col-md-12 row"><div class="col-md-6">
+                        <label for="unit"><strong>Tele Support:</strong></label>
                         <ng-select [items]="teleSupportrequestslist" name="requestsName"
                             [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
                             (change)="onSelectRequest()">
-                        </ng-select>
-                        <label for="unit">Field Visit:</label>
+                        </ng-select></div><div class="col-md-6">
+                        <label for="unit"><strong>Field Visit:</strong></label>
                         <ng-select [items]="fieldVisitRequestslist" name="requestsName"
                             [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
                             (change)="onSelectRequest()">
                         </ng-select>
-                    -->
+                    </div></div>
                     </td>
                 </tr>
             </table>
         </div>
-        <div class="col-md-1">
-            <div class="flex-column align-items-center">
-                <div class="col-md-12">
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
-                    </button>
-                    <br><br>
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>           
+          
     <div class="col-md-12 row">
+        <div class="col-md-9"></div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
+                </button>
+                &nbsp;  &nbsp;
+                <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+   
+    <!-- <div class="col-md-12 row">
         <div class="col-md-10">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
@@ -317,22 +326,13 @@
                             </tr>
                         </table>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <h4>Fault</h4>
-                        <textarea [(ngModel)]="foult" class="form-control table-with-bold-lines" name="text" rows="6"
-                            cols="100"></textarea>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Resolution</h4>
-                        <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100"
-                            rows="6"></textarea>
-                    </div> -->
+                   
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             
         </div>
-    </div>
+    </div> -->
 </div>
 <br><br><br>
