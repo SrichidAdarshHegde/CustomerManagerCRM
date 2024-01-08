@@ -592,7 +592,7 @@ generateTStwo() {
     this.remarks = abd.remarks
     this.requestFor = abd.requestFor
     this.zone = abd.zone
-    this.requestId = abd.requestId
+    this.requestId = abd.requestForId
   }
 
 
@@ -600,7 +600,7 @@ generateTStwo() {
     var interactionData = {
       CutomerId: this.customerID,
       CutomerName: this.companyName,
-      tokenID: this.tokenID,
+      TicketNo: this.tokenID,
       //MachineId : this.ma
       MachineNumber: this.machineNumber,
       ModelId: this.modelId,
@@ -628,8 +628,6 @@ generateTStwo() {
         window.location.reload()
       }
     })
-
-
   }
 
 }

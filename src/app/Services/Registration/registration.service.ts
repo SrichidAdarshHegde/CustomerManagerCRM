@@ -94,6 +94,9 @@ export class RegistrationService {
   getMachineTicketDetails(id:any){
     return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetMachineTicketDetails/' + id)
   }
+  getRequestForById(id:any){
+    return this.http.get(this.globalurl.weburl + 'Requests/GetRequestForById/' + id)
+  }
   getMachineInLocation(id:any){
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetMachineInLocation/'+id)
   }

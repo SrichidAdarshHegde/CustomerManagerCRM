@@ -53,7 +53,7 @@ export class CallTicketScreenComponent {
   priority: any;
   selectedPriority: any;
   selpriority: any;
-  foult: any;
+  fault: any;
   Resolution: any;
   selectedRequest: any;
   selectedrequest: any;
@@ -94,7 +94,17 @@ export class CallTicketScreenComponent {
   customerId: any;
   newTicketNo: any;
   ticketDetailsList: any[] = [];
-
+  usersList: any;
+  selectedAttendedBy: any;
+  selectedAttendedHow: any;
+  attendtypelist: any;
+  ticketNumber: any;
+  dateofinteraction: any;
+  requestId: any;
+  modelName: any;
+  requestForId: any;
+  reqForId: any;
+  requestForName: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -110,6 +120,8 @@ export class CallTicketScreenComponent {
     this.getTokenNo();
     this.getRequests();
     this.getSands();
+    this.getUsers();
+    this.getAttendType();
     this.systemTime = interval(1000).pipe(
       startWith(0),
       map(() => new Date())
@@ -119,8 +131,8 @@ export class CallTicketScreenComponent {
   public value = new Date();
 
   startTimer() {
-    if(this.startTime == null){
-      this.startTime = new Date();
+    if(this.value == null){
+      this.value = new Date();
     }else{
       alert("Already started");
     }
@@ -195,6 +207,8 @@ export class CallTicketScreenComponent {
   onRowClick(data: any) {
     this.selectedMachine = data.machineNumber;
     this.ticketNo = data.tokenNo;
+    this.modelName = data.modelName;
+    this.requestForId =  data.requestForId;
     console.log(this.selectedMachine);
     this.onSelectTicket();
     if(this.ticketNo == null){
@@ -380,9 +394,7 @@ export class CallTicketScreenComponent {
     });
   }
 
-  clear() {
-    window.location.reload();
-  }
+  
   isSelectedRow(id: any): boolean {
     return this.contactId === id;
 }
@@ -441,11 +453,11 @@ export class CallTicketScreenComponent {
       alert('Please select request type');
     }else if(this.contactId == null || this.contactId == ""){
       alert('Please select Contact Person');
-    }else if(this.foult == null || this.foult == ""){
+    }else if(this.fault == null || this.fault == ""){
       alert('Please enter Fault');
     }else if(this.Resolution == null || this.Resolution == ""){
       alert('Please enter Resolution');
-    }else if(this.startTime == null || this.startTime == undefined){
+    }else if(this.value == null || this.value == undefined){
       alert('Please enter Start Time');
     }else if(this.endTime == null || this.endTime == undefined){
       alert('Please enter End Time');
@@ -456,13 +468,15 @@ export class CallTicketScreenComponent {
       frmData.append("CustomerId", this.custID);
       frmData.append("CustomerName", this.companyName);
       if(this.ticketNo == null){
-        frmData.append("TokenNo", this.newTicketNo);
+        this.ticketNumber = this.newTicketNo;
       }else{
-        frmData.append("TokenNo", this.ticketNo);
+        this.ticketNumber = this.ticketNo;
       }
+        frmData.append("TokenNo", this.ticketNumber);
+      
       frmData.append("ContactId", this.contactId);
       
-      frmData.append("StartTime", this.startTime.toISOString());
+      frmData.append("StartTime", this.value.toISOString());
       frmData.append("EndTime", this.endTime.toISOString());   
       frmData.append("CallFrom", this.contactName);
 
@@ -474,7 +488,7 @@ export class CallTicketScreenComponent {
 
       frmData.append("SandS", JSON.stringify(this.selectedsands));
 
-      frmData.append("Remarks", this.foult);
+      frmData.append("Remarks", this.fault);
       frmData.append("Resolution", this.Resolution);
       frmData.append("CreatedBy", this.userName);
       this.httpService.post('http://localhost:44303/api/RequestAndInteractions/PostSaveRequestForm/', frmData).subscribe((data: any) => {
@@ -524,4 +538,82 @@ export class CallTicketScreenComponent {
       console.log(this.customerList);
     });
   }
+  getAttendType() {
+    this.masterSv.getAttendType().subscribe((response: any) => {
+      this.attendtypelist = response;
+      console.log(this.attendtypelist)
+    })
+  }
+    getUsers() {
+      this.regSv.getUsers().subscribe((response: any) => {
+        this.usersList = response;
+        console.log(this.usersList);
+      });
+    }
+    onSelectAttendedBy(data: any) {
+      this.selectedAttendedBy = data.target.value
+    }
+    onSelectAttendedHow(data: any) {
+      this.selectedAttendedHow = data.target.value
+    }
+
+  Done() {
+    this.reqForId = this.requestForId;
+    this.regSv.getRequestForById(this.reqForId).subscribe((Response:any) => {
+      if (Response == null || Response == ''){
+        alert("No request Found");
+      }else{
+        this.requestForName = Response;
+        console.log(Response);
+      }
+    });
+  
+  }
+  savedoneDetails() {
+    if(this.selectedAttendedBy == null || this.selectedAttendedBy == ''){
+      alert("Please Enter Attended By");
+    }else if(this.selectedAttendedHow == null || this.selectedAttendedHow == ''){
+      alert("Please Enter Attended How");
+    }else if(this.dateofinteraction == null || this.dateofinteraction == ''){
+      alert('Please Enter Date of Interaction');
+    }else if(this.ticketNo == null || this.ticketNo == ''){
+      alert("No Ticket are available to clear")
+    }else {
+      if(this.ticketNo == null){
+        this.ticketNumber = this.newTicketNo;
+      }else{
+        this.ticketNumber = this.ticketNo;
+      }
+    var interactionData = {
+      CutomerId: this.custID,
+      CutomerName: this.companyName,
+      TicketNo: this.ticketNumber,
+      MachineNumber: this.selectedMachine,
+      // ModelId: this.modelId,
+      ModelName: this.modelName,
+      // RegionId: this.regionId,
+      RegionName: this.region,
+      //ZoneId : this.z
+      ZoneName: this.zone,
+      Remarks: this.fault,
+      AttendedByUserId: this.selectedAttendedBy,
+      //AttendedByUserName : this.selectedAttendedBy,
+      AttendedHowId: this.selectedAttendedHow,
+      //AttendedHowName : this.selectedAttendedHow,
+      CreatedBy: this.userName,
+      RequestId: this.reqForId,
+      DateOfInteraction: this.dateofinteraction
+    }
+    this.regSv.postSaveInteraction(interactionData).subscribe((response: any) => {
+      if (response == "success") {
+        alert("Interacted Successfully")
+        window.location.reload()
+      }
+      else {
+        alert("Somthing Went Wrong!!")
+        window.location.reload()
+      }
+    })
+  }
+}
 }
