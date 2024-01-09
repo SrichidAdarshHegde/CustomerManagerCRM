@@ -67,7 +67,7 @@ startCluster: any;
       const item = this.selectedData[i];
 
       // Update cumulative time
-      if (item.requestFor == '') {
+     
         const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
         const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
@@ -80,7 +80,7 @@ startCluster: any;
         if (validEstTravelTime) cumulativeTime += estTravelTimeMinutes;
         if (validFoodFuel) cumulativeTime += foodFuelMinutes;
         if (validEstJobTime) cumulativeTime += estJobTimeMinutes;
-      }
+     
 
       // Update the schedule time in the current row
       item.schdET1 = this.addMinutesToTime(this.initialTime, cumulativeTime);
