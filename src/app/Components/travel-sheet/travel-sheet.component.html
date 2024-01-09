@@ -104,13 +104,13 @@
                         <td rowspan="2">{{(i+1)}}</td>
                         <td rowspan="2"><strong>{{item.companyName}}</strong></td>
                         <td rowspan="2"></td>
-                        <td rowspan="2">{{item.machineNumber}}</td>
+                        <td rowspan="2" style="text-align: right;">{{item.machineNumber}}</td>
                         <td rowspan="2" *ngIf="item.requestFor != ''"><strong>{{item.requestFor}}</strong></td>
                         <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.purpose" class="form-control"></td>
                         <td rowspan="2"></td>
                         <td rowspan="2"><strong>{{item.cluster}}</strong></td>
                         <td rowspan="2" *ngIf="item.requestFor != ''"></td>
-                        <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.estDistKms" class="form-control"></td>
+                        <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.estDistKms" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
                         <td *ngIf="item.requestFor != ''"></td>
                         <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
                         <td *ngIf="item.requestFor != ''"></td>
@@ -134,11 +134,11 @@
                 <tr>
                     <td colspan="6"></td>
                     <th>Totals</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="text-align: center;"><strong>{{ totalEstDistKms }}</strong></td>
+                    <td style="text-align: center;"><strong>{{formattedTotalEstTravelTime }}</strong></td>
+                    <td style="text-align: center;"><strong>{{formattedTotalFoodFuel }}</strong></td>
+                    <td style="text-align: center;"><strong>{{formattedTotalEstJobTime }}</strong></td>
+                    <td style="text-align: center;"><strong>{{timeDifference }}</strong></td>
                     <td></td>
                     <td></td>
                     <td> <button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
@@ -146,4 +146,4 @@
             </table>
         </div>
     </div>
-</div><br><br><br>
+</div><br><br><br><br><br>

@@ -39,6 +39,14 @@ export class TravelSheetComponent {
   cumulativeTime: number = 0;
 startPlace: any;
 startCluster: any;
+timeDifference?: string;
+totalEstTravelTime: number = 0;
+formattedTotalEstTravelTime: string = '';
+totalFoodFuel: number = 0;
+formattedTotalFoodFuel: string = '';
+totalEstJobTime: number = 0;
+formattedTotalEstJobTime: string = '';
+totalEstDistKms: number = 0;
   constructor( private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
@@ -62,7 +70,10 @@ startCluster: any;
 
   updateScheduleTimes() {
     let cumulativeTime = this.getMinutesFromTime(this.initialTime);
-
+    this.totalEstTravelTime = 0;
+    this.totalFoodFuel = 0;
+    this.totalEstJobTime = 0;
+    this.totalEstDistKms = 0;
     for (let i = 0; i < this.selectedData.length; i++) {
       const item = this.selectedData[i];
 
@@ -71,22 +82,45 @@ startCluster: any;
         const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
         const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
-
+        const estDistKms = parseFloat(item.estDistKms) || 0; 
         // Handle undefined values
         const validEstTravelTime = !isNaN(estTravelTimeMinutes);
         const validFoodFuel = !isNaN(foodFuelMinutes);
         const validEstJobTime = !isNaN(estJobTimeMinutes);
 
-        if (validEstTravelTime) cumulativeTime += estTravelTimeMinutes;
-        if (validFoodFuel) cumulativeTime += foodFuelMinutes;
-        if (validEstJobTime) cumulativeTime += estJobTimeMinutes;
-     
+        if (validEstTravelTime) {
+          cumulativeTime += estTravelTimeMinutes;
+          // Add estTravelTime to the total sum
+          this.totalEstTravelTime += estTravelTimeMinutes;
+        }
+        if (validFoodFuel) {
+          cumulativeTime += foodFuelMinutes;
+          this.totalFoodFuel += foodFuelMinutes;
+        }
+      
+    if (validEstJobTime) {
+      cumulativeTime += estJobTimeMinutes;
+      this.totalEstJobTime += estJobTimeMinutes;
+    }
+    this.totalEstDistKms += estDistKms;
 
       // Update the schedule time in the current row
       item.schdET1 = this.addMinutesToTime(this.initialTime, cumulativeTime);
-    }
+      this.formattedTotalEstTravelTime = this.formatMinutesToHHMM(this.totalEstTravelTime);
+      this.formattedTotalFoodFuel = this.formatMinutesToHHMM(this.totalFoodFuel);
+      this.formattedTotalEstJobTime = this.formatMinutesToHHMM(this.totalEstJobTime);
+    // Calculate time difference and update a property for display
+    const timeDifferenceMinutes = this.getMinutesFromTime(item.schdET1) - this.getMinutesFromTime(this.initialTime);
+    this.timeDifference = this.formatMinutesToHHMM(timeDifferenceMinutes);
   }
+}
 
+formatMinutesToHHMM(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  return `${this.padZero(hours)}:${this.padZero(remainingMinutes)}`;
+}
   getMinutesFromTime(time: string): number {
     if (!time) {
       return 0; // or handle the case where time is undefined/null
