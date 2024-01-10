@@ -16,18 +16,18 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="text" [(ngModel)]="mileageCng" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="mileagePetrol" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="mileageDiesel" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="FuelReqd" class="form-control"></td>
+                    <td><input *ngIf="totalEstDistKms != null" type="text" [(ngModel)]="mileageCng" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="mileagePetrol" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="mileageDiesel" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="fuelReqd" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Fuel Price</th>
                     <td>Rs. </td>
-                    <td><input type="text" [(ngModel)]="FuelPriceCNG" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="FuelPricePetrol" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="FuelPriceDiesel" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="fuelReqd" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FuelPriceCNG" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="FuelPricePetrol" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="FuelPriceDiesel" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="fuelPriceReqd" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
@@ -40,7 +40,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td style="text-align: center;width: 60%;"><h4>TRIP SHEET</h4></td>
-                    <th><h4>No. </h4></th>
+                    <th><h4>No. {{tripSheetNo}} </h4></th>
                 </tr>
             </table>
         </div>
@@ -141,7 +141,8 @@
                     <td style="text-align: center;"><strong>{{timeDifference }}</strong></td>
                     <td></td>
                     <td></td>
-                    <td> <button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
+                    <td><button class="btn btn-primary" (click)="save()">Save</button></td>
+                    <td><button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
                 </tr>
             </table>
         </div>

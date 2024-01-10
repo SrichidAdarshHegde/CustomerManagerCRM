@@ -192,6 +192,10 @@ export class RegistrationService {
   GetMachineId(){
     return this.http.get(this.globalurl.weburl + 'Registration/GetMachineId')
   }
+  // Travel sheet component
+  getTripSheetNo(){
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNo')
+  }
   // Travel Budget Component
   saveTravelBudget(budgetdata: any) {
     return this.http.post(this.globalurl.weburl + 'TravelBudget/saveTravelBudget', budgetdata)

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
 @Component({
   selector: 'app-travel-sheet',
@@ -18,15 +20,15 @@ export class TravelSheetComponent {
   estJobTime: any;
  // FoodFuel: any;
   schdET: any;
-  mileageCng: any;
+  mileageCng: number;
   vehicle: any;
-  mileagePetrol: any;
-  FuelReqd: any;
-  mileageDiesel: any;
-  FuelPriceCNG: any;
-  FuelPricePetrol: any;
-  FuelPriceDiesel: any;
-  fuelReqd: any;
+  mileagePetrol: number;
+  fuelPriceReqd : number;
+  mileageDiesel: number;
+  FuelPriceCNG: number;
+  FuelPricePetrol: number;
+  FuelPriceDiesel: number;
+  fuelReqd: number;
   sparesReqd: any;
 //initialTime: any;
  // initialTime: string = '00:00';
@@ -47,7 +49,11 @@ formattedTotalFoodFuel: string = '';
 totalEstJobTime: number = 0;
 formattedTotalEstJobTime: string = '';
 totalEstDistKms: number = 0;
-  constructor( private router: ActivatedRoute, private route: Router){
+  tableLength: any;
+  tripSheetNo: any;
+
+  constructor( private router: ActivatedRoute, private route: Router, private regSv: RegistrationService,
+    private http: HttpClient){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
@@ -63,11 +69,61 @@ totalEstDistKms: number = 0;
       
     });
   }
+  ngOnInit(): void {
+    this.getTripSheetNo();
+  }
+  getTripSheetNo() {
+    this.regSv.getTripSheetNo().subscribe((result: any) => {
+      this.tableLength = result.length + 1; 
+      this.tripSheetNo = this.tableLength.toString().padStart(3, '0');
+    })
+  }
   public value = new Date();
   reSequence(){
     this.route.navigate(['/workFront']);
   }
-
+  private apiUrl = 'http://localhost:44303/api';
+  recalculateFuel() {
+    // Ensure totalEstDistKms is greater than zero to avoid division by zero
+    if (this.totalEstDistKms > 0) {
+      let mileage: number | undefined;
+      let fuelPrice: number | undefined;
+  
+      if (this.mileageCng !== null && this.mileageCng !== undefined && this.mileageCng !== 0) {
+        mileage = this.mileageCng;
+        fuelPrice = this.FuelPriceCNG;
+      } else if (this.mileagePetrol !== null && this.mileagePetrol !== undefined && this.mileagePetrol !== 0) {
+        mileage = this.mileagePetrol;
+        fuelPrice = this.FuelPricePetrol;
+      } else if (this.mileageDiesel !== null && this.mileageDiesel !== undefined && this.mileageDiesel !== 0) {
+        mileage = this.mileageDiesel;
+        fuelPrice = this.FuelPriceDiesel;
+      } else {
+        // Handle the case where no valid mileage value is provided
+        this.fuelReqd = null;
+        this.fuelPriceReqd = null;
+        return;
+      }
+  
+      if (mileage !== null && mileage !== undefined && mileage !== 0) {
+        this.fuelReqd = this.totalEstDistKms / mileage;
+        this.fuelPriceReqd = this.fuelReqd * (fuelPrice || 0);
+      } else {
+        // Handle the case where mileage is zero or undefined
+        this.fuelReqd = null;
+        this.fuelPriceReqd = null;
+      }
+    } else {
+      // Handle the case where totalEstDistKms is zero
+      this.fuelReqd = null;
+      this.fuelPriceReqd = null;
+    }
+  }
+  
+  onInputChange() {
+    this.recalculateFuel();
+  }
+ 
   updateScheduleTimes() {
     let cumulativeTime = this.getMinutesFromTime(this.initialTime);
     this.totalEstTravelTime = 0;
@@ -76,9 +132,7 @@ totalEstDistKms: number = 0;
     this.totalEstDistKms = 0;
     for (let i = 0; i < this.selectedData.length; i++) {
       const item = this.selectedData[i];
-
       // Update cumulative time
-     
         const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
         const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
@@ -112,7 +166,9 @@ totalEstDistKms: number = 0;
     // Calculate time difference and update a property for display
     const timeDifferenceMinutes = this.getMinutesFromTime(item.schdET1) - this.getMinutesFromTime(this.initialTime);
     this.timeDifference = this.formatMinutesToHHMM(timeDifferenceMinutes);
+    
   }
+  console.log('final data:',this.selectedData);
 }
 
 formatMinutesToHHMM(minutes: number): string {
@@ -147,30 +203,34 @@ formatMinutesToHHMM(minutes: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
-//   calculateTime(item: any) {
-//     // Assuming estTravelTime is in HH:mm format
-//     const estTravelTimeParts = item.estTravelTime.split(':');
-//     const estTravelHours = parseInt(estTravelTimeParts[0], 10);
-//     const estTravelMinutes = parseInt(estTravelTimeParts[1], 10);
+  save(){
+    const apiUrl = 'http://localhost:44303/api/';
 
-//     // Assuming FoodFuel is in HH:mm format
-//     const foodFuelParts = item.FoodFuel.split(':');
-//     const foodFuelHours = parseInt(foodFuelParts[0], 10);
-//     const foodFuelMinutes = parseInt(foodFuelParts[1], 10);
+    const data = {
+        tripSheetNo: this.tripSheetNo,
+        ArrayValues: this.selectedData,
+        totalEstDistKms : this.totalEstDistKms,
+        formattedTotalEstTravelTime:this.formattedTotalEstTravelTime,
+        formattedTotalFoodFuel:this.formattedTotalFoodFuel,
+        formattedTotalEstJobTime:this.formattedTotalEstJobTime,
+        timeDifference: this.timeDifference,
+        Engineer: this.userName,
+        mileageCng : this.mileageCng,
+        mileagePetrol: this.mileagePetrol,
+        mileageDiesel: this.mileageDiesel,
+        fuelReqd: this.fuelReqd,
+        FuelPriceCNG: this.FuelPriceCNG,
+        FuelPricePetrol: this.FuelPricePetrol,
+        FuelPriceDiesel: this.FuelPriceDiesel,
+        fuelPriceReqd: this.fuelPriceReqd,
+        sparesReqd: this.sparesReqd,
+        vehicle: this.vehicle,
+        startPlace:this.startPlace,
+        startCluster:this.startCluster,
+        initialTime:this.initialTime
+    };
 
-//     // Calculate the total minutes for estTravelTime and FoodFuel
-//     const estTravelTotalMinutes = estTravelHours * 60 + estTravelMinutes;
-//     const foodFuelTotalMinutes = foodFuelHours * 60 + foodFuelMinutes;
-
-//     // Add estTravelTotalMinutes and foodFuelTotalMinutes to cumulativeTime
-//     this.cumulativeTime += estTravelTotalMinutes + foodFuelTotalMinutes;
-
-//     // Calculate hours and minutes for schdET1
-//     const schdET1Hours = Math.floor(this.cumulativeTime / 60);
-//     const schdET1Minutes = this.cumulativeTime % 60;
-
-//     // Format the result as HH:mm
-//     item.schdET1 = `${schdET1Hours.toString().padStart(2, '0')}:${schdET1Minutes.toString().padStart(2, '0')}`;
-// }
+    return this.http.post(apiUrl, data);
+  }
 
 }
