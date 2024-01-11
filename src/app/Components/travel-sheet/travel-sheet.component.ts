@@ -203,34 +203,60 @@ formatMinutesToHHMM(minutes: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
-  save(){
-    const apiUrl = 'http://localhost:44303/api/';
-
+  save() {
+    const apiUrl = 'http://localhost:44303/api/TravelBudget/PostSaveTripSheetData';
+  
     const data = {
-        tripSheetNo: this.tripSheetNo,
-        ArrayValues: this.selectedData,
-        totalEstDistKms : this.totalEstDistKms,
-        formattedTotalEstTravelTime:this.formattedTotalEstTravelTime,
-        formattedTotalFoodFuel:this.formattedTotalFoodFuel,
-        formattedTotalEstJobTime:this.formattedTotalEstJobTime,
-        timeDifference: this.timeDifference,
-        Engineer: this.userName,
-        mileageCng : this.mileageCng,
-        mileagePetrol: this.mileagePetrol,
-        mileageDiesel: this.mileageDiesel,
-        fuelReqd: this.fuelReqd,
-        FuelPriceCNG: this.FuelPriceCNG,
-        FuelPricePetrol: this.FuelPricePetrol,
-        FuelPriceDiesel: this.FuelPriceDiesel,
-        fuelPriceReqd: this.fuelPriceReqd,
-        sparesReqd: this.sparesReqd,
-        vehicle: this.vehicle,
-        startPlace:this.startPlace,
-        startCluster:this.startCluster,
-        initialTime:this.initialTime
+      tripSheetNo: this.tripSheetNo,
+      triSheetValues: this.selectedData.map(item => {
+        return {
+          machineNumber: item.machineNumber,
+          companyName: item.companyName,
+          customerId: item.customerId,
+          purpose: item.purpose,
+          clusterLocation: item.clusterLocation,
+          modelId: item.modelId,
+          modelName: item.modelName,
+          remarks: item.remarks,
+          requestForId: item.requestForId,
+          ticketId: item.ticketId,
+          zone: item.zone,
+          estDistanceKms: item.estDistanceKms,
+          estTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
+          foodFuelOthers: this.convertTimeStringToTimeSpan(item.foodFuelOthers),
+          estJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
+          schdET: this.convertTimeStringToTimeSpan(item.schdET),
+          // Add other properties specific to ArrayDataVM
+        };
+      }),
+      totalEstDistKms: this.totalEstDistKms,
+      formattedTotalEstTravelTime: this.formattedTotalEstTravelTime,
+      formattedTotalFoodFuel: this.formattedTotalFoodFuel,
+      formattedTotalEstJobTime: this.formattedTotalEstJobTime,
+      timeDifference: this.timeDifference,
+      engineer: this.userName,
+      mileageCng: this.mileageCng,
+      mileagePetrol: this.mileagePetrol,
+      mileageDiesel: this.mileageDiesel,
+      fuelReqd: this.fuelReqd,
+      fuelPriceCNG: this.FuelPriceCNG,
+      fuelPricePetrol: this.FuelPricePetrol,
+      fuelPriceDiesel: this.FuelPriceDiesel,
+      fuelPriceReqd: this.fuelPriceReqd,
+      sparesReqd: this.sparesReqd,
+      vehicle: this.vehicle,
+      startPlace: this.startPlace,
+      startCluster: this.startCluster,
+      initialTime: this.initialTime,
+      userId: this.userId,
+      // Add other properties specific to TripSheetDataVM
     };
-
+  
     return this.http.post(apiUrl, data);
   }
-
+  
+  convertTimeStringToTimeSpan(timeString: string | null): string | null {
+    return timeString ? `${timeString}:00` : null;
+  }
+  
 }
