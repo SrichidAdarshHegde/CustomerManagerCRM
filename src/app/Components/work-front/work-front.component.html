@@ -72,17 +72,16 @@
                         <th
                             style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Done</th>
-                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Sequence
-                            </th>
+                            </th> -->
                     </tr>
 
                     <tbody>
 
                         <tr
-                            *ngFor="let request of otherWorklist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                            <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 *
-                                (p-1)+(i+1)}}
+                            *ngFor="let request of otherWorklist  ; let i = index">
+                            <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{(i+1)}}
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                            {{ request.tokenID}}</td>
@@ -114,9 +113,9 @@
                                     <i class='fas fa-arrow-alt-circle-right'></i>
                                 </button>
                             </td>
-                            <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                            <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
                                 <input type="text" [(ngModel)]="sequence" style="width: 50px;">
-                            </td>
+                            </td> -->
                         </tr>
 
                     </tbody>
@@ -190,16 +189,16 @@
                         <th
                             style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Done</th>
-                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Sequence
-                            </th>
+                            </th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <tr
-                        *ngFor="let request of workpriority | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                        *ngFor="let request of workpriority ; let i = index">
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
-                            {{10 * (p-1)+(i+1)}}
+                            {{(i+1)}}
                         </td>
 
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
@@ -234,9 +233,9 @@
                                 <i class='fas fa-arrow-alt-circle-right'></i>
                             </button>
                         </td>
-                        <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                        <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
                             <input type="text" [(ngModel)]="sequence" style="width: 50px;">
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
 
@@ -308,17 +307,17 @@
                     <th
                         style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                         Done</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Sequence
-                        </th>
+                        </th> -->
                 </tr>
 
                 <tbody>
 
                     <tr
-                        *ngFor="let request of workpriority45 | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                        *ngFor="let request of workpriority45 ; let i = index">
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
-                            {{10 * (p-1)+(i+1)}}
+                            {{(i+1)}}
                         </td>
 
 
@@ -354,9 +353,9 @@
                                 <i class='fas fa-arrow-alt-circle-right'></i>
                             </button>
                         </td>
-                        <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                        <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
                             <input type="text" [(ngModel)]="sequence" style="width: 50px;">
-                        </td>
+                        </td> -->
                     </tr>
 
                 </tbody>
