@@ -6,7 +6,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td colspan="4"><ng-select [items]="customerList" [bindLabel]="'companyName'"
-                            [(ngModel)]="selectedCustomer" (change)="onSelectCompany($event)">
+                            [(ngModel)]="selectedCustomer" (change)="onSelectCustomer($event)">
                             <ng-option value="" disabled>Select Customer</ng-option>
                         </ng-select></td>
                 </tr>
@@ -56,17 +56,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <p>Cluster</p> 
+                        <p>Cluster</p>
                     </td>
                     <td><b>{{cluster}}</b></td>
                     <td>
-                        <p>Route</p> 
+                        <p>Route</p>
                     </td>
                     <td><b>{{routeNo}}</b></td>
                 </tr>
             </table>
         </div>
-        <div class="col-md-8" style="overflow: auto; height: 340px;">
+        <div class="col-md-8" style="overflow: auto; height: 240px;">
             <table class="table table-bordered table-with-bold-lines">
                 <tr style="text-align: center;">
                     <th>SNo</th>
@@ -81,21 +81,22 @@
                     <th>Inv Dt</th>
                     <th>Inv Value</th>
                 </tr>
-                <tr
-                    *ngFor="let machine of machineList ; let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; let i = index" [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
-                    <td>{{(i+1)}}</td>
-                    <td class="hover-text" (click)="onRowClick(machine.machineNumber)" style="cursor: pointer;"></td>
-                    <td>{{tickets.tokenID}}</td>
-                    <td>
+                <!-- let abc of perticularCustomerInvoiceData ; let tickets of customerTicketList; -->
+                <tr *ngFor="let machine of MachineTicketList ;  let i = index"
+                    [style.background-color]="isRowSelected(machine.machineNumber) ? 'lightblue' : 'white'">
+                    <td style="text-align: right;">{{(i+1)}}</td>
+                    <td class="hover-text" (click)="onRowClick(machine)" style="cursor: pointer;"></td>
+                    <td style="text-align: right;">{{machine.tokenNo}}</td>
+                    <td style="text-align: right;">
                         {{machine.machineNumber}}
                     </td>
                     <td>{{machine.modelName}}</td>
-                    <td>{{invoicePerticular}}</td>
-                    <td>{{warrantyFrom | date}}</td>
-                    <td>{{warrantyTill | date}}</td>
-                    <td>{{abc.invoiceNumber}}</td>
-                    <td>{{abc.createdOn | date}}</td>
-                    <td>{{abc.invoiceAmount}}</td>
+                    <td>{{machine.invoicePerticular}}</td>
+                    <td>{{machine.warrantyFrom | date}}</td>
+                    <td>{{machine.warrantyTill | date}}</td>
+                    <td style="text-align: right;">{{machine.invoiceNumber}}</td>
+                    <td style="text-align: right;">{{machine.invoiceDate | date}}</td>
+                    <td style="text-align: right;">{{machine.invoiceAmount}}</td>
                 </tr>
             </table>
         </div>
@@ -122,63 +123,75 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-6">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-7">
             <div class="flex-column align-items-center">
                 <div class="col-md-12 row">
-                    <div class="col-md-12" style="overflow: auto; height: 300px;">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr>
-                    <td style="text-align: center;" colspan="6">
-                        <h4>Contact Persons</h4>
-                    </td>
-                </tr>
-                <tr style="text-align: center;">
-                    <th>SNo</th>
-                    <th>Salute</th>
-                    <th>Name</th>
-                    <th>Mobile</th>
-                    <th style="width: 40%;">Email</th>
-                    <th>Designation</th>
-                </tr>
-                <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
-                    <td style="cursor: pointer;" (click)="onClickRow(details.id)" class="hover-text">{{(i+1)}}</td>
-                    <td>{{details.salute}}</td>
-                    <td>{{details.contactName}}</td>
-                    <td>{{details.mobile}}</td>
-                    <td>{{details.email}}</td>
-                    <td>{{details.designation}}</td>
-                </tr>
-            </table></div>
-            <div class="col-md-12 row" *ngIf="machineSelected">
-                <div class="col-md-2">
-                    <label for="machineNumber"><strong>Salute:</strong></label>
-                    <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="machineNumber"><strong>Contact Name:</strong></label>
-                    <input class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="address1"><strong>Designation:</strong></label>
-                    <input class="form-control" id="designation" name="designation" [(ngModel)]="designation" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="address1"><strong>Email:</strong></label>
-                    <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="address1"><strong>Mobile:</strong></label>
-                    <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
-                </div>
-                <!-- <div class="col-md-1">
+                    <div class="col-md-12" style="overflow: auto; height: 200px;">
+                        <table class="table table-bordered table-with-bold-lines">
+                            <tr>
+                                <td style="text-align: center; padding: 0px;" colspan="6">
+                                    <h4>Contact Persons</h4>
+                                </td>
+                            </tr>
+                            <tr class="sticky-header" style="text-align: center;">
+                                <th style="width: 5%;">SNo</th>
+                                <th>Sal</th>
+                                <th>Name</th>
+                                <th style="width: 20%;">Mobile</th>
+                                <th style="width: 37%;">Email</th>
+                                <th>Designation</th>
+                            </tr>
+                            <tr *ngFor="let details of contactDetails; let i = index"
+                                [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
+                                <td style="cursor: pointer;text-align: right;" (click)="onClickRow(details)"
+                                    class="hover-text">{{(i+1)}}</td>
+                                <td style="text-align: left;">{{details.salute}}</td>
+                                <td style="text-align: left;">{{details.contactName}}</td>
+                                <td style="text-align: right;">{{details.mobile}}</td>
+                                <td style="text-align: left;">{{details.email}}</td>
+                                <td style="text-align: left;">{{details.designation}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-12 row" *ngIf="machineSelected">
+                        <h3>
+                            <hr>Add Contact:
+                        </h3>&nbsp;
+                        <div class="col-md-2">
+                            <label for="machineNumber"><strong>Salute:</strong></label>
+                            <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute"
+                                required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="machineNumber"><strong>Contact Name:</strong></label>
+                            <input class="form-control" type="text" id="contactname" name="contactname"
+                                [(ngModel)]="contactname" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="address1"><strong>Designation:</strong></label>
+                            <input class="form-control" id="designation" name="designation" [(ngModel)]="designation"
+                                required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="address1"><strong>Email:</strong></label>
+                            <input class="form-control" id="email" name="email" [(ngModel)]="email" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="address1"><strong>Mobile:</strong></label>
+                            <input class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile" required>
+                        </div>
+                        <!-- <div class="col-md-1">
                     <br> <button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Add</button>
                 </div> -->
+                    </div>
+                </div>
             </div>
-            </div>
-        </div></div>
+        </div>
         <div class="col-md-1"><br><br><br><br>
-            <br><button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Save Contact</button>
+            <br><button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Save
+                Contact</button>
         </div>
     </div>
 </div><br>
@@ -188,19 +201,26 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td>Date:</td>
-                    <td style="text-align: center;"><b>{{value | date}}</b></td>
+                    <td style="text-align: center;"><b>{{value | date:'dd MMM yyyy'}}</b></td>
                     <td>Time:</td>
                     <td style="text-align: center;"><b>{{ systemTime | async | date: 'HH:mm:ss' }}</b></td>
                 </tr>
             </table>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <!-- <button class="btn btn-primary" (click)="startTimer()">Start Timer</button> -->
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="endTimer()">End Timer</button>
+        </div>
         <div class="col-md-2">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td>Ticket No.</td>
-                    <td style="width: 60%;"><input style="text-align: right;" type="text" name="Machine" [(ngModel)]="tokenNo"
-                            class="form-control" readonly></td>
+                    <td style="width: 60%;"><input *ngIf="ticketNo != null" style="text-align: right;" type="text"
+                            name="Machine" [(ngModel)]="ticketNo" class="form-control" readonly>
+                        <input *ngIf="ticketNo == null" style="text-align: right;" type="text" name="Machine"
+                            [(ngModel)]="newTicketNo" class="form-control" readonly>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -209,7 +229,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td>Login</td>
-                    <td style="text-align: right;">
+                    <td style="text-align: left;">
                         <b>{{userName}}</b>
                     </td>
                 </tr>
@@ -218,88 +238,161 @@
         <div class="col-md-1"></div>
     </div>
     <div class="col-md-12 row">
-        <div class="col-md-11" style="overflow: auto; height: 300px;">
+        <div class="col-md-12" style="overflow: auto; height: 170px;">
             <table class="table table-bordered table-with-bold-lines">
-                <tr style="text-align: center;">
-                    <th>S No</th>
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Log by</th>
-                    <td></td>
-                    <th>Cust Call From</th>
-                    <th>Called back by</th>
+                <tr class="sticky-header" style="text-align: center;">
+                    <th style="width: 2%;">S No</th>
+                    <th style="width: 8%;">Date</th>
+                    <th style="width: 8%;">Start Time</th>
+                    <th style="width: 8%;">End Time</th>
+                    <th style="width: 5%;">Log by</th>
+                    <th style="width: 12%;">Cust Call From</th>
                     <th>Fault/Issue</th>
                     <th>Resolution</th>
                     <th>Entered Priority</th>
                 </tr>
-                <tr *ngFor="let tickets of customerTicketList; let i = index">
+                <tr *ngFor="let ticket of ticketDetailsList; let i = index">
                     <td>{{(i+1)}}</td>
-                    <td>{{tickets.createdOn | date}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{tickets.contactName}}</td>
-                    <td>{{tickets.createdBy}}</td>
-                    <td>{{tickets.remarks}}</td>
-                    <td>{{tickets.resolution}}</td>
-                    <td>{{tickets.priority}}</td>
+                    <td>{{ticket.createdOn | date:'dd MMM yyyy'}}</td>
+                    <td>{{ticket.startTime | date:'HH:mm:ss' }}</td>
+                    <td>{{ticket.endTime | date:'HH:mm:ss' }}</td>
+                    <td>{{ticket.createdBy}}</td>
+                    <td>{{ticket.callFrom}}</td>
+                    <td>{{ticket.remarks}}</td>
+                    <td>{{ticket.resolution}}</td>
+                    <td>{{ticket.requestFor}}</td>
                 </tr>
             </table>
         </div>
     </div>
+
     <div class="col-md-12 row">
-        <div class="col-md-10">
-            <div class="flex-column align-items-center">
-                <div class="col-md-12 row">
-                    <div class="col-md-5">
-                        <br><br>
-                        <table class="table table-bordered table-with-bold-lines">
-                            <tr>
-                                <th colspan="2">Call Entry - Priority</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="unit">Tele Support:</label>
-                                    <ng-select [items]="teleSupportrequestslist" name="requestsName"
-                                        [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
-                                        (change)="onSelectRequest()">
-                                    </ng-select>
-                                </td>
-                                <td>
-                                    <label for="unit">Field Visit:</label>
-                                    <ng-select [items]="fieldVisitRequestslist" name="requestsName"
-                                        [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
-                                        (change)="onSelectRequest()">
-                                    </ng-select>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Fault</h4>
-                        <textarea [(ngModel)]="foult" class="form-control table-with-bold-lines" name="text" rows="6"
-                            cols="100"></textarea>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Resolution</h4>
-                        <textarea [(ngModel)]="Resolution" class="form-control" name="text" cols="100"
-                            rows="6"></textarea>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-12 row">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <td style="width: 2%;"></td>
+                    <td style="width: 8%;">{{value | date:'dd MMM yyyy'}}</td>
+                    <td style="width: 8%;">{{value | date:'HH:mm:ss' }}</td>
+                    <td style="width: 8%;">{{endTime | date:'HH:mm:ss' }}</td>
+                    <td style="width: 5%;">{{userName}}</td>
+                    <td style="width: 12%;">{{contactName}}</td>
+                    <td>
+                        <h6>Fault/Issue</h6><input type="text" name="fault" [(ngModel)]="fault" class="form-control">
+                    </td>
+                    <td>
+                        <h6>Resolution</h6><input type="text" name="resolution" [(ngModel)]="Resolution"
+                            class="form-control">
+                    </td>
+                    <td>
+                        <div class="col-md-12 row">
+                            <div class="col-md-6">
+                                <label for="unit"><strong>Tele Support:</strong></label>
+                                <ng-select [items]="teleSupportrequestslist" name="requestsName"
+                                    [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
+                                    (change)="onSelectRequest()">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="unit"><strong>Field Visit:</strong></label>
+                                <ng-select [items]="fieldVisitRequestslist" name="requestsName"
+                                    [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
+                                    (change)="onSelectRequest()">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
+    </div>
+
+    <div class="col-md-12 row">
+        <div class="col-md-9"></div>
         <div class="col-md-2">
-            <div class="flex-column align-items-center"><br>
-                <div class="col-md-12"><br>
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="clear()">Done - clear
-                    </button>
-                    <br><br>
-                    <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To Workfront</button><br>
-                </div><br><br>
+            <button class="btn btn-primary" style="height: 65px;width: 130px;" data-toggle="modal" data-target="#myModalFollowup" (click)="Done()">Done - clear
+            </button>
+            &nbsp; &nbsp;
+            <button class="btn btn-primary" style="height: 65px;width: 130px;" (click)="saveRequest()">To
+                Workfront</button><br>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+    <div class="modal fade" id="myModalFollowup" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title custom-title">Clear the Ticket number - {{ticketNo}} </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12 row">
+                        <div class="col-md-5">
+                            <label for="unit"><b>Customer Name :</b>
+                                {{companyName}}</label>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="unit"><b>Machine Number :</b>
+                                {{selectedMachine}}</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="unit"><b>Model:</b>
+                               {{modelName}}</label>
+                        </div>
+                    </div><br>
+                    <div class="col-md-12 row">
+                        <div class="col-md-5">
+                            <label for="unit"><b>Region :</b>
+                                {{region}}</label>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="unit"><b>Zone :</b> {{zone}}</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="unit"><b>RequestFor:</b>
+                                {{requestForName}}</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <div class="col-md-5">
+                            <label for="unit"><b>Remarks :</b>
+                                {{fault}}</label>
+                        </div>
+                    </div><br>
+                    <div class="col-md-12 row">
+                        <div class="col-md-5">
+                            <label for="unit" style="width: 90%;"><b>Date Of
+                                    Interaction:</b></label>
+                            <input type="date" name="dateOfInteraction" [(ngModel)]="dateofinteraction" class="form-control" placeholder="Select Interacted Date">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="unit"><b>Attended <br>By
+                                    :</b></label>
+                            <select (change)="onSelectAttendedBy($event)" class="form-control">
+                                <option value="">Select Person</option>
+                                <option *ngFor="let users of usersList" value={{users.id}}>
+                                    {{users.userName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="unit"><b>Attended How:</b></label>
+                            <select (change)="onSelectAttendedHow($event)" class="form-control" style="width: 100px;">
+                                <!-- Adjust the width value as needed -->
+                                <option value="">Select Type Of Interaction
+                                </option>
+                                <option *ngFor="let attendtype of attendtypelist" [value]="attendtype.attendTypeId">
+                                    {{attendtype.attendTypeName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div><br><br>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: center; align-items: center;">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" style="background-color: rgb(27, 9, 129);" (click)="savedoneDetails()">DONE</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<br><br><br>

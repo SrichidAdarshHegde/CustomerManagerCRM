@@ -5,7 +5,6 @@ import { MasterService } from 'src/app/Services/MasterService/master.service';
 import * as XLSX from 'xlsx';
 import * as jspdf from 'jspdf';
 
-
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
@@ -13,59 +12,58 @@ import * as jspdf from 'jspdf';
 })
 export class TemplateComponent {
   @ViewChild('table', { static: false }) table!: ElementRef;
-  exporting:boolean=false;
-    p: number = 1;
-    username :any;
+  exporting: boolean = false;
+  p: number = 1;
+  userName: any;
   TemplateName: any;
   TemplateList: any;
   documentTemplateID: any;
   viewdocumentTemplate: any;
-  userName: any;
-  roleId:any;
+  roleId: any;
   IsLoggedIn: any;
- 
-    constructor(private masterSv:MasterService)
-    {if (localStorage.getItem('IsLoggedIn') == 'true'){
+  selectedDocumentType: any;
+  documentID: any;
+  perticularDocumentTypeData: any;
+  DocumentName: any;
+  DocumentTypeList: any;
+
+  constructor(private masterSv: MasterService) {
+    if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
       this.IsLoggedIn = true;
     }
-    }
-    ngOnInit(): void {
-      this.getTemplate()
-    }
-    getTemplate() {
-      this.masterSv.getTemplate().subscribe((response: any) => {
-         this.TemplateList = response;
-         console.log(this.TemplateList);
-      })
-   }
-   saveTemplate() {
-    const templateData = {
-      TemplateName: this.TemplateName,
-      CreatedBy: this.userName
-    };
-  
-    this.masterSv.saveTemplate(templateData).subscribe((response: any) => {
-      if (response === 'success') {
-        alert('Template Saved');
-        this.getTemplate(); 
-        this.TemplateName = ''; 
-      } else {
-        alert('Something Went Wrong!!');
-      }
-    })
   }
+
+  ngOnInit(): void {
+    this.getTemplate();
+    this.getDocumentTypes();
+  }
+
+  getTemplate() {
+    this.masterSv.getTemplate().subscribe((response: any) => {
+      this.TemplateList = response;
+      console.log(this.TemplateList);
+    });
+  }
+
+  getDocumentTypes() {
+    this.masterSv.getDocumentType().subscribe((data: any) => {
+      this.DocumentTypeList = data;
+      console.log(this.DocumentTypeList);
+    });
+  }
+
   
   deleteTemplate(id: any) {
     this.masterSv.deleteTemplate(id).subscribe((response: any) => {
-      if (response === "success") {
-        alert("Template Deleted");
+      if (response === 'success') {
+        alert('Template Deleted');
         this.getTemplate();
       } else {
-        alert("Something Went Wrong!!");
+        alert('Something Went Wrong!!');
       }
-    })
+    });
   }
 
   exportTableToPDF(): void {
@@ -81,19 +79,26 @@ export class TemplateComponent {
       doc.save('consumables_data.pdf');
     });
   }
-   exportTableToExcel(): void {
+
+  exportTableToExcel(): void {
     const element = document.getElementById('tableId'); // Replace 'tableId' with the actual ID of your HTML table
-  
+
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-  
-    const excelBuffer: any = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+
+    const excelBuffer: any = XLSX.write(wb, {
+      bookType: 'xlsx',
+      type: 'array'
+    });
     this.saveAsExcelFile(excelBuffer, 'consumables_data');
-   }
-  
+  }
+
   private saveAsExcelFile(buffer: any, fileName: string): void {
-    const data: Blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+    const data: Blob = new Blob([buffer], {
+      type:
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+    });
     const downloadLink = document.createElement('a');
     downloadLink.href = window.URL.createObjectURL(data);
     downloadLink.download = fileName + '.xlsx';
@@ -104,28 +109,53 @@ export class TemplateComponent {
     this.documentTemplateID = data.documentTemplateID;
     this.viewdocumentTemplate = data.templateName;
   }
-  
+
   UpdateTemplate() {
     var documenttemplateData = {
       DocumentTemplateID: this.documentTemplateID,
       TemplateName: this.viewdocumentTemplate,
       CreatedBy: this.userName
-    }
-  
-    this.masterSv.UpdateTemplate(documenttemplateData).subscribe((response: any) => {
+    };
+
+    this.masterSv
+      .UpdateTemplate(documenttemplateData)
+      .subscribe((response: any) => {
+        if (response === 'success') {
+          alert('Template Updated');
+          window.location.reload();
+        } else {
+          alert('Something Went Wrong!!');
+          window.location.reload();
+        }
+      });
+  }
+  saveTemplate() {
+    var templateData = {
+      TemplateName: this.TemplateName,
+      CreatedBy: this.userName,
+      documentID: this.documentID
+    };
+
+    this.masterSv.saveTemplate(templateData).subscribe((response: any) => {
       if (response === 'success') {
-        alert('Template Updated');
-        window.location.reload();
+        alert('Template Saved');
+        this.getTemplate();
+        this.TemplateName = '';
       } else {
         alert('Something Went Wrong!!');
-        window.location.reload();
       }
-    })
+    });
   }
 
+  OnselectDocumentType(data:any) {
+
+    this.documentID = data.target.value;
   
-
-
-
+    // this.masterSv
+    //   .getPerticularDocumentType(this.documentID)
+    //   .subscribe((response: any) => {
+    //     this.perticularDocumentTypeData = response;
+    //     this.DocumentName = this.perticularDocumentTypeData[0].DocumentName;
+    //   });
+  }
 }
-

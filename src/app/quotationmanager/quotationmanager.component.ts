@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./quotationmanager.component.css']
 })
 export class QuotationmanagerComponent {
-  onSelectCompany:any;
-  selectedCustomer:any;
-  customerList:any;
+ 
 }

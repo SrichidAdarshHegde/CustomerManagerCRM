@@ -67,7 +67,45 @@ import { QuotationmanagerComponent } from './quotationmanager/quotationmanager.c
 import { MailquotationtemplateComponent } from 'src/mailquotationtemplate/mailquotationtemplate.component';
 import { BrochureComponent } from 'src/brochure/brochure.component';
 import { QuotationtemplateComponent } from 'src/quotationtemplate/quotationtemplate.component';
+import { Quatation4020HTComponent } from './Components/quatation templates/quatation4020-ht/quatation4020-ht.component';
+import { Quotation2015Iv2015JLXComponent } from './Components/quatation templates/quotation2015-iv2015-jlx/quotation2015-iv2015-jlx.component';
+import { Quotation2015HTComponent } from './Components/quatation templates/quotation2015-ht/quotation2015-ht.component';
+import { Quotation2015Component } from './Components/quatation templates/quotation2015/quotation2015.component';
+import { Quotation2015z25Component } from './Components/quatation templates/quotation2015z25/quotation2015z25.component';
+
+import { Quotation4020Component } from './Components/quatation templates/quotation4020/quotation4020.component';
+import { Quotation4020indollorComponent } from './Components/quatation templates/quotation4020indollor/quotation4020indollor.component';
+import { Quotation4020z25Component } from './Components/quatation templates/quotation4020z25/quotation4020z25.component';
+import { Quotation4030Component } from './Components/quatation templates/quotation4030/quotation4030.component';
+import { Quotation4030z25Component } from './Components/quatation templates/quotation4030z25/quotation4030z25.component';
+import { Quotation4030indollorComponent } from './Components/quatation templates/quotation4030indollor/quotation4030indollor.component';
+import { Quotation5030Component } from './Components/quatation templates/quotation5030/quotation5030.component';
+import { Quotation5030z25jlxComponent } from './Components/quatation templates/quotation5030z25jlx/quotation5030z25jlx.component';
+import { QuotationforRapidITableComponent } from './Components/quatation templates/quotationfor-rapid-itable/quotationfor-rapid-itable.component';
+import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/rapid-iamc.component';
+import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
+
+
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
+
+
+import { Rapid64Component } from './Components/QM TEMPLATES/rapid64/rapid64.component';
+import { Rapidi2015JLXComponent } from './Components/QM TEMPLATES/rapidi2015-jlx/rapidi2015-jlx.component';
+import { RapidIsparesComponent } from './Components/QM TEMPLATES/rapid-ispares/rapid-ispares.component';
+import { RapiditrainingchargesComponent } from './Components/QM TEMPLATES/rapiditrainingcharges/rapiditrainingcharges.component';
+import { V20152axesComponent } from './Components/QM TEMPLATES/v20152axes/v20152axes.component';
+import { DocumentEditorContainerModule } from '@syncfusion/ej2-angular-documenteditor';
+import { V4020Component } from './Components/QM TEMPLATES/v4020/v4020.component';
+import { V4030Component } from './Components/QM TEMPLATES/v4030/v4030.component';
+import { Rapidi64CamACSCComponent } from './Components/QM TEMPLATES/rapidi64-cam-acsc/rapidi64-cam-acsc.component';
+import { RapidtableComponent } from './Components/QM TEMPLATES/rapidtable/rapidtable.component';
+import { Q4020Component } from './Components/QM TEMPLATES/q4020/q4020.component';
+import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.component';
+import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
+
+import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
+import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
+import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
 
 @NgModule({
   declarations: [
@@ -123,11 +161,44 @@ import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-
     DocumentmanagerComponent,
 
     DocumentTypeMasterComponent,
-      ModeofTransportMasterComponent,
-      TemplateComponent,
-      DocumentMailTemplateComponent,
-      CallTicketScreenComponent,
-    
+    ModeofTransportMasterComponent,
+    TemplateComponent,
+    DocumentMailTemplateComponent,
+
+    Rapid64Component,
+    Rapidi2015JLXComponent,
+    RapidIsparesComponent,
+    RapiditrainingchargesComponent,
+    V20152axesComponent,
+    V4020Component,
+    V4030Component,
+    Rapidi64CamACSCComponent,
+    RapidtableComponent,
+    Q4020Component,
+    Q4020HTComponent,
+    QMComponent,
+
+    Quatation4020HTComponent,
+    Quotation2015HTComponent,
+    Quotation2015Component,
+    Quotation2015z25Component,
+
+    Quotation4020Component,
+    Quotation4020indollorComponent,
+    Quotation4020z25Component,
+    Quotation4030Component,
+    Quotation4030z25Component,
+    Quotation4030indollorComponent,
+    Quotation5030Component,
+    Quotation5030z25jlxComponent,
+    QuotationforRapidITableComponent,
+    RapidIAMCComponent,
+    RapidI5april2021Component,
+    CallTicketScreenComponent,
+    TravelSheetComponent,
+RapidIsparesComponent,
+Quotation2015indollorComponent,
+RapidIVMCComponent,
 
   ],
   imports: [
@@ -145,8 +216,9 @@ import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-
     NgxPaginationModule,
     NgSelectModule,
     FontAwesomeModule,
+    DocumentEditorContainerModule,
   ],
-  providers: [AppGlobals, NgbActiveModal,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AppGlobals, NgbActiveModal, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

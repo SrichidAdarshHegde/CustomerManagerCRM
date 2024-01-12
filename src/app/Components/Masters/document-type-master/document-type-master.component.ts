@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
 import html2canvas from 'html2canvas';
 import * as XLSX from 'xlsx';
@@ -7,9 +8,9 @@ import * as jspdf from 'jspdf';
 @Component({
   selector: 'app-document-type-master',
   templateUrl: './document-type-master.component.html',
-  styleUrls: ['./document-type-master.component.css']
+  styleUrls: ['./document-type-master.component.css'],
 })
-export class DocumentTypeMasterComponent  {
+export class DocumentTypeMasterComponent implements OnInit {
   @ViewChild('table', { static: false }) table!: ElementRef;
   exporting:boolean=false;
    
@@ -124,4 +125,5 @@ UpdateDocumentType() {
 
   }
   
+
 

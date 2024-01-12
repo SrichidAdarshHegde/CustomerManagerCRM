@@ -103,7 +103,7 @@ export class InteractionListComponent {
     this.remarks = request.remarks
     this.requestFor = request.requestFor
     this.zone = request.zone
-    this.requestId = request.requestId
+    this.requestId = request.requestForId
   }
 
   saveInteraction(){

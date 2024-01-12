@@ -53,7 +53,7 @@ export class CallTicketScreenComponent {
   priority: any;
   selectedPriority: any;
   selpriority: any;
-  foult: any;
+  fault: any;
   Resolution: any;
   selectedRequest: any;
   selectedrequest: any;
@@ -84,9 +84,27 @@ export class CallTicketScreenComponent {
   designation: any;
   contactname: any;
   salute: any;
-  machineSelected: boolean = false;
-  tokenNo: any;
+  machineSelected: boolean = true;
+  ticketNo: any;
   contactId: any;
+  startTime: Date;
+  endTime: Date;
+  contactName: any;
+  MachineTicketList: any[] = [];
+  customerId: any;
+  newTicketNo: any;
+  ticketDetailsList: any[] = [];
+  usersList: any;
+  selectedAttendedBy: any;
+  selectedAttendedHow: any;
+  attendtypelist: any;
+  ticketNumber: any;
+  dateofinteraction: any;
+  requestId: any;
+  modelName: any;
+  requestForId: any;
+  reqForId: any;
+  requestForName: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -102,6 +120,8 @@ export class CallTicketScreenComponent {
     this.getTokenNo();
     this.getRequests();
     this.getSands();
+    this.getUsers();
+    this.getAttendType();
     this.systemTime = interval(1000).pipe(
       startWith(0),
       map(() => new Date())
@@ -110,34 +130,21 @@ export class CallTicketScreenComponent {
   }
   public value = new Date();
 
-  //  getAttendedBybyid(data:any){
-  //   this.customerID = data.customerID;
-  //   this.regSv
-  //   .getAttendedby(this.customerID)
-  //     .subscribe((response: any) => {
-  //       if (response == null) {
-  //         alert("No User Found!!!")
-  //       } else {
-  //       this.interactiondata = response;
-  //       }
-  //  });
-  // }
+  startTimer() {
+    if(this.value == null){
+      this.value = new Date();
+    }else{
+      alert("Already started");
+    }
+    
+  }
 
-  // getRequests() {
-  //   this.masterSv.getRequests().subscribe((response: any) => {
-  //     console.log(response);
-  //     const mappedRequests: { label: string; value: any }[] = response.map((requests: any) => ({
-  //       label: requests.requestsName,
-  //       value: requests.requestsId,
-  //     }));
-  //     this.requestslist = mappedRequests.sort((a: { label: string }, b: { label: string }) =>
-  //       a.label.localeCompare(b.label)
-  //     );
-
-  //     console.log(this.requestslist);
-  //   });
-  // }
-
+  endTimer() {
+    this.endTime = new Date();
+    const timeDifference = this.endTime.getTime() - this.startTime.getTime();
+    console.log('Time difference: ' + timeDifference + ' milliseconds');
+  }
+ 
   getRequests() {
     this.masterSv.getRequests().subscribe((response: any) => {
       this.combinedList = response;
@@ -168,7 +175,7 @@ export class CallTicketScreenComponent {
   getTokenNo() {
     this.regSv.GetMachineId().subscribe((result: any) => {
       this.tableLength = result.length + 1; 
-      this.tokenNo = this.tableLength.toString().padStart(4, '0');
+      this.newTicketNo = this.tableLength.toString().padStart(4, '0');
     })
   }
 
@@ -192,15 +199,38 @@ export class CallTicketScreenComponent {
       console.log(this.sandslist);
     })
   }
+
   isRowSelected(id: any): boolean {
     return this.selectedMachine === id;
 }
 
-  onRowClick(machineNumber: any) {
-    this.selectedMachine = machineNumber;
+  onRowClick(data: any) {
+    this.selectedMachine = data.machineNumber;
+    this.ticketNo = data.tokenNo;
+    this.modelName = data.modelName;
+    this.requestForId =  data.requestForId;
     console.log(this.selectedMachine);
+    this.onSelectTicket();
+    if(this.ticketNo == null){
+      this.ticketDetailsList = [];
+    }
     this.onChangeMachineNumber();
   }
+
+  onSelectTicket(){
+    this.regSv.getTicketDetailsFromTicket(this.ticketNo).subscribe((response: any) => {
+      if (response != null){
+        this.ticketDetailsList = response;
+        console.log('Ticket Details:', this.ticketDetailsList);
+        if(this.ticketNo == null){
+          this.ticketDetailsList = [];
+        }
+      }else{
+        alert("Invalid Ticket Number");
+      }
+    })
+  }
+
   onChangeMachineNumber() {
     this.regSv.getMachineFromMachineNumber(this.selectedMachine).subscribe((response: any) => {
       if (response == null) {
@@ -214,6 +244,9 @@ export class CallTicketScreenComponent {
         this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
         this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerId);
         this.getCustomerTickets(this.perticularCustomerData[0].customerId);
+        console.log(this.perticularCustomerInvoiceData);
+        console.log(this.contactDetails);
+        console.log(this.customerTicketList);
         console.log(this.perticularCustomerData[0].customerId);
         this.unit = this.perticularCustomerData[0].unit;
         this.addressOne = this.perticularCustomerData[0].addressOne;
@@ -235,13 +268,56 @@ export class CallTicketScreenComponent {
         this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
         this.features = this.perticularCustomerData[0].features;
         this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
-
-        this.securityFormalities =
-          this.perticularCustomerData[0].securityFormalities;
-
+        this.securityFormalities = this.perticularCustomerData[0].securityFormalities;
       }
       console.log('Selected Machine Number:', this.selectedMachine);
     })
+  }
+
+
+  onSelectCustomer(data: any){
+    this.customerID = data.companyName;
+    this.regSv.getMachineTicketDetails(this.customerID).subscribe((response: any) => {
+      if (response != null || response.length != 0) {
+        this.MachineTicketList = response;
+        console.log('List is', this.MachineTicketList);
+          } else {
+            alert("Something went wrong!!!")
+          }
+    });
+    this.regSv
+        .getPerticularCust(this.customerID)
+        .subscribe((response: any) => {
+          if (response != null) {
+            this.perticularCustomerData = response;
+            this.companyName = this.perticularCustomerData[0].companyName;
+            this.custID = this.perticularCustomerData[0].customerID;
+            this.getPerticularCustomerContactDetails(this.custID);
+            console.log(this.perticularCustomerData[0].customerID);
+            console.log(this.perticularCustomerData);
+            this.unit = this.perticularCustomerData[0].unit;
+            this.addressOne = this.perticularCustomerData[0].addressOne;
+            this.addressTwo = this.perticularCustomerData[0].addressTwo;
+            this.addressThree = this.perticularCustomerData[0].addressThree;
+            this.city = this.perticularCustomerData[0].city;
+            this.pincode = this.perticularCustomerData[0].pincode;
+            this.state = this.perticularCustomerData[0].state;
+            this.country = this.perticularCustomerData[0].country;
+            this.gstin = this.perticularCustomerData[0].gstin;
+            this.cluster = this.perticularCustomerData[0].cluster;
+            this.routeNo = this.perticularCustomerData[0].routeNumber;
+            this.region = this.perticularCustomerData[0].region;
+            this.zone = this.perticularCustomerData[0].zone;
+            this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
+            this.workingStart = this.perticularCustomerData[0].workingStart;
+            this.workingEnd = this.perticularCustomerData[0].workingEnd;
+            this.securityFormalities =
+              this.perticularCustomerData[0].securityFormalities;
+
+          } else {
+            alert("Something went wrong!!!")
+          }
+        });
   }
 
   onSelectCompany(data: any) {
@@ -275,8 +351,8 @@ export class CallTicketScreenComponent {
             this.perticularCustomerData = response;
             this.companyName = this.perticularCustomerData[0].companyName;
             this.custID = this.perticularCustomerData[0].customerID;
-            // this.GetInvoicesCustomer(this.perticularCustomerData[0].customerId);
-            // console.log(this.perticularCustomerData[0].customerId);  
+            this.GetInvoicesCustomer(this.custID);
+            console.log(this.custID);  
             this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].customerID);
             // this.getCustomerTickets(this.perticularCustomerData[0].customerID);
             console.log(this.perticularCustomerData[0].customerID);
@@ -309,30 +385,6 @@ export class CallTicketScreenComponent {
           }
         });
       this.machineSelected = true;
-    // }
-    // else {
-    //   this.regSv.getMachineInLocation(this.customerID)
-    //     .subscribe((response: any) => {
-    //       if (response == null) {
-    //         alert("No Machine Found!!!");
-    //       } else {
-    //         this.perticularMachineData = response;
-    //         console.log(this.perticularMachineData);
-
-    //         // Clear existing machineList and then populate with new data
-    //         this.machineList = [];
-
-    //         // Loop through the machines and populate the machineList
-    //         for (const machine of this.perticularMachineData) {
-    //           this.machineList.push({
-    //             machineNumber: machine.machineNumber,
-    //             machineInLocation: machine.machineInLocation,
-    //             modelName: machine.modelName
-    //           });
-    //         }
-    //       }
-    //     });
-    // }
   }
 
   getCustomerTickets(id: any) {
@@ -342,14 +394,13 @@ export class CallTicketScreenComponent {
     });
   }
 
-  clear() {
-    window.location.reload();
-  }
+  
   isSelectedRow(id: any): boolean {
     return this.contactId === id;
 }
-  onClickRow(id: any) {
-    this.contactId = id;
+  onClickRow(details: any) {
+    this.contactId = details.id;
+    this.contactName = details.contactName;
     console.log(this.contactId);
   }
 
@@ -402,23 +453,32 @@ export class CallTicketScreenComponent {
       alert('Please select request type');
     }else if(this.contactId == null || this.contactId == ""){
       alert('Please select Contact Person');
-    }else if(this.foult == null || this.foult == ""){
+    }else if(this.fault == null || this.fault == ""){
       alert('Please enter Fault');
     }else if(this.Resolution == null || this.Resolution == ""){
       alert('Please enter Resolution');
+    }else if(this.value == null || this.value == undefined){
+      alert('Please enter Start Time');
+    }else if(this.endTime == null || this.endTime == undefined){
+      alert('Please enter End Time');
     }
     else {
       const frmData = new FormData();
       frmData.append("MachineNumber", this.selectedMachine);
       frmData.append("CustomerId", this.custID);
       frmData.append("CustomerName", this.companyName);
-      frmData.append("TokenNo", this.tokenNo);
+      if(this.ticketNo == null){
+        this.ticketNumber = this.newTicketNo;
+      }else{
+        this.ticketNumber = this.ticketNo;
+      }
+        frmData.append("TokenNo", this.ticketNumber);
+      
       frmData.append("ContactId", this.contactId);
-      // frmData.append("Salute", this.salute);
-      // frmData.append("ContactName", this.contactname);
-      // frmData.append("Designation", this.designation);
-      // frmData.append("Email", this.email);
-      // frmData.append("Mobile", this.mobile);
+      
+      frmData.append("StartTime", this.value.toISOString());
+      frmData.append("EndTime", this.endTime.toISOString());   
+      frmData.append("CallFrom", this.contactName);
 
       frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
 
@@ -428,7 +488,7 @@ export class CallTicketScreenComponent {
 
       frmData.append("SandS", JSON.stringify(this.selectedsands));
 
-      frmData.append("Remarks", this.foult);
+      frmData.append("Remarks", this.fault);
       frmData.append("Resolution", this.Resolution);
       frmData.append("CreatedBy", this.userName);
       this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/RequestAndInteractions/PostSaveRequestForm/', frmData).subscribe((data: any) => {
@@ -478,4 +538,82 @@ export class CallTicketScreenComponent {
       console.log(this.customerList);
     });
   }
+  getAttendType() {
+    this.masterSv.getAttendType().subscribe((response: any) => {
+      this.attendtypelist = response;
+      console.log(this.attendtypelist)
+    })
+  }
+    getUsers() {
+      this.regSv.getUsers().subscribe((response: any) => {
+        this.usersList = response;
+        console.log(this.usersList);
+      });
+    }
+    onSelectAttendedBy(data: any) {
+      this.selectedAttendedBy = data.target.value
+    }
+    onSelectAttendedHow(data: any) {
+      this.selectedAttendedHow = data.target.value
+    }
+
+  Done() {
+    this.reqForId = this.requestForId;
+    this.regSv.getRequestForById(this.reqForId).subscribe((Response:any) => {
+      if (Response == null || Response == ''){
+        alert("No request Found");
+      }else{
+        this.requestForName = Response;
+        console.log(Response);
+      }
+    });
+  
+  }
+  savedoneDetails() {
+    if(this.selectedAttendedBy == null || this.selectedAttendedBy == ''){
+      alert("Please Enter Attended By");
+    }else if(this.selectedAttendedHow == null || this.selectedAttendedHow == ''){
+      alert("Please Enter Attended How");
+    }else if(this.dateofinteraction == null || this.dateofinteraction == ''){
+      alert('Please Enter Date of Interaction');
+    }else if(this.ticketNo == null || this.ticketNo == ''){
+      alert("No Ticket are available to clear")
+    }else {
+      if(this.ticketNo == null){
+        this.ticketNumber = this.newTicketNo;
+      }else{
+        this.ticketNumber = this.ticketNo;
+      }
+    var interactionData = {
+      CutomerId: this.custID,
+      CutomerName: this.companyName,
+      TicketNo: this.ticketNumber,
+      MachineNumber: this.selectedMachine,
+      // ModelId: this.modelId,
+      ModelName: this.modelName,
+      // RegionId: this.regionId,
+      RegionName: this.region,
+      //ZoneId : this.z
+      ZoneName: this.zone,
+      Remarks: this.fault,
+      AttendedByUserId: this.selectedAttendedBy,
+      //AttendedByUserName : this.selectedAttendedBy,
+      AttendedHowId: this.selectedAttendedHow,
+      //AttendedHowName : this.selectedAttendedHow,
+      CreatedBy: this.userName,
+      RequestId: this.reqForId,
+      DateOfInteraction: this.dateofinteraction
+    }
+    this.regSv.postSaveInteraction(interactionData).subscribe((response: any) => {
+      if (response == "success") {
+        alert("Interacted Successfully")
+        window.location.reload()
+      }
+      else {
+        alert("Somthing Went Wrong!!")
+        window.location.reload()
+      }
+    })
+  }
+}
 }

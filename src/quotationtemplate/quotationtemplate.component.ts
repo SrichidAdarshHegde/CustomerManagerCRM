@@ -51,7 +51,7 @@ export class QuotationtemplateComponent {
     this.masterSv.saveTemplates(faultsData).subscribe((response:any)=>{
       if(response == "success"){
         alert("Template Saved")
-        window.location.reload()
+         window.location.reload()
       }else{
         alert("Somthing Went Wrong!!")
         window.location.reload()

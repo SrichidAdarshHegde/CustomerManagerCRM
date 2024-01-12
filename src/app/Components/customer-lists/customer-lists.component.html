@@ -14,18 +14,20 @@
         <table style="width:90%;border-collapse: collapse; 
         margin-left: auto;
         margin-right: auto;" #table id="tableId">
-            <tr>
+            <tr class="sticky-header">
                 <th style="border: 1px solid black;text-align: center;">SNo.</th>
                 <th style="border: 1px solid black;text-align: center;">Customer Name</th>
                 <th style="border: 1px solid black;text-align: center;">Unit</th>
                 <th style="border: 1px solid black;text-align: center;">Address One</th>
                 <th style="border: 1px solid black;text-align: center;">Address Two</th>
                 <th style="border: 1px solid black;text-align: center;">Address Three</th>
+                <th style="border: 1px solid black;text-align: center;">Billing Address</th>
+
                 <th style="border: 1px solid black;text-align: center;">City</th>
                 <th style="border: 1px solid black;text-align: center;">State</th>
                 <th style="border: 1px solid black;text-align: center;">Pin</th>
                 <th style="border: 1px solid black;text-align: center;">GSTIN</th>
-                <th style="border: 1px solid black;text-align: center;">Clustor</th>
+                <th style="border: 1px solid black;text-align: center;">Cluster</th>
                 <th style="border: 1px solid black;text-align: center;">Route No</th>
                 <!-- <th style="border: 1px solid black;text-align: center;">Region</th> -->
                 <th style="border: 1px solid black;text-align: center;">Zone</th>
@@ -35,13 +37,14 @@
             <tr style="border: 1px solid black;height: 25px;"
                 *ngFor="let customer of customerList | search: searchText; let i = index">
                 <td style="border: 1px solid black;text-align: right;">{{(i+1)}}</td>
-                <td style="border: 1px solid black;" data-toggle="modal" data-target="#exampleModal"
+                <td style="border: 1px solid black;text-align: left;" data-toggle="modal" data-target="#exampleModal"
                     (click)="getPerticularCustomerContactDetails(customer)"><button
                         class="btn btn-clear">{{customer.companyName}}</button></td>
                 <td style="border: 1px solid black;">{{customer.unit}}</td>
                 <td style="border: 1px solid black;">{{customer.addressOne}}</td>
                 <td style="border: 1px solid black;">{{customer.addressTwo}}</td>
                 <td style="border: 1px solid black;">{{customer.addressThree}}</td>
+                <td style="border: 1px solid black;">{{customer.billingAddress}}</td>
                 <td style="border: 1px solid black;">{{customer.city}}</td>
                 <td style="border: 1px solid black;">{{customer.state}}</td>
                 <td style="border: 1px solid black;text-align: right;">{{customer.pincode}}</td>
