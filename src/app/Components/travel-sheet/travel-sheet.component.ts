@@ -210,11 +210,7 @@ formatMinutesToHHMM(minutes: number): string {
       alert("Please Enter Trip Sheet No");
     }else if(this.selectedData.length == 0){
       alert("Atleast One Record Should Be Added.");
-    }else if(this.mileageCng == null || this.mileageCng == undefined && this.mileagePetrol == null || this.mileagePetrol == undefined && this.mileageDiesel == null || this.mileageDiesel == undefined){
-      alert("Fuel Mileage should not be empty.");
-    }else if(this.FuelPriceCNG == null || this.FuelPriceCNG == undefined && this.FuelPricePetrol == null || this.FuelPricePetrol == undefined && this.FuelPriceDiesel == null || this.FuelPriceDiesel == undefined){
-      alert("Fuel Price should not be empty.");
-    }else if(this.initialTime == null || this.initialTime == ''){
+    } else if(this.initialTime == null || this.initialTime == ''){
       alert("Please enter starting time");
     }else if(this.startCluster == null || this.startCluster == ''){
       alert("Starting Cluster value can't be left blank.");
@@ -227,7 +223,7 @@ formatMinutesToHHMM(minutes: number): string {
         return {
           MachineNumber: item.machineNumber,
           CompanyName: item.companyName,
-          CustomerId: item.customerId,
+          CustomerId: item.customerID,
           Purpose: item.purpose,
           ClusterLocation: item.cluster,
           ModelId: item.modelId,
