@@ -52,8 +52,10 @@ totalEstDistKms: number = 0;
   tableLength: any;
   tripSheetNo: any;
 
-  constructor( private router: ActivatedRoute, private route: Router, private regSv: RegistrationService,
-    private http: HttpClient){
+  constructor( private router: ActivatedRoute,
+     private route: Router,
+      private regSv: RegistrationService,
+    private httpService: HttpClient){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
@@ -159,12 +161,12 @@ totalEstDistKms: number = 0;
     this.totalEstDistKms += estDistKms;
 
       // Update the schedule time in the current row
-      item.schdET1 = this.addMinutesToTime(this.initialTime, cumulativeTime);
+      item.schdET = this.addMinutesToTime(this.initialTime, cumulativeTime);
       this.formattedTotalEstTravelTime = this.formatMinutesToHHMM(this.totalEstTravelTime);
       this.formattedTotalFoodFuel = this.formatMinutesToHHMM(this.totalFoodFuel);
       this.formattedTotalEstJobTime = this.formatMinutesToHHMM(this.totalEstJobTime);
     // Calculate time difference and update a property for display
-    const timeDifferenceMinutes = this.getMinutesFromTime(item.schdET1) - this.getMinutesFromTime(this.initialTime);
+    const timeDifferenceMinutes = this.getMinutesFromTime(item.schdET) - this.getMinutesFromTime(this.initialTime);
     this.timeDifference = this.formatMinutesToHHMM(timeDifferenceMinutes);
     
   }
@@ -203,60 +205,80 @@ formatMinutesToHHMM(minutes: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
-  save() {
-    const apiUrl = 'http://localhost:44303/api/TravelBudget/PostSaveTripSheetData';
-  
-    const data = {
-      tripSheetNo: this.tripSheetNo,
-      triSheetValues: this.selectedData.map(item => {
+  save() {  
+    if(this.tripSheetNo == null || this.tripSheetNo == ''){
+      alert("Please Enter Trip Sheet No");
+    }else if(this.selectedData.length == 0){
+      alert("Atleast One Record Should Be Added.");
+    }else if(this.mileageCng == null || this.mileageCng == undefined && this.mileagePetrol == null || this.mileagePetrol == undefined && this.mileageDiesel == null || this.mileageDiesel == undefined){
+      alert("Fuel Mileage should not be empty.");
+    }else if(this.FuelPriceCNG == null && this.FuelPricePetrol == null && this.FuelPriceDiesel == null){
+      alert("Fuel Mileage should not be empty.");
+    }else if(this.initialTime == null || this.initialTime == ''){
+      alert("Please enter starting time");
+    }else if(this.startCluster == null || this.startCluster == ''){
+      alert("Starting Cluster value can't be left blank.");
+    }else if(this.startPlace == null || this.startPlace == ''){
+      alert("Starting Place value can't be left blank.");
+    }else{
+    var data = {
+      TripSheetNo: this.tripSheetNo,
+      TripSheetValues: this.selectedData.map(item => {
         return {
-          machineNumber: item.machineNumber,
-          companyName: item.companyName,
-          customerId: item.customerId,
-          purpose: item.purpose,
-          clusterLocation: item.clusterLocation,
-          modelId: item.modelId,
-          modelName: item.modelName,
-          remarks: item.remarks,
-          requestForId: item.requestForId,
-          ticketId: item.ticketId,
-          zone: item.zone,
-          estDistanceKms: item.estDistanceKms,
-          estTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
-          foodFuelOthers: this.convertTimeStringToTimeSpan(item.foodFuelOthers),
-          estJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
-          schdET: this.convertTimeStringToTimeSpan(item.schdET),
+          MachineNumber: item.machineNumber,
+          CompanyName: item.companyName,
+          CustomerId: item.customerId,
+          Purpose: item.purpose,
+          ClusterLocation: item.cluster,
+          ModelId: item.modelId,
+          ModelName: item.modelName,
+          Remarks: item.remarks,
+          RequestForId: item.requestForId,
+          TicketId: item.tokenID,
+          Zone: item.zone,
+          EstDistanceKms: item.estDistKms,
+          EstTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
+          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.FoodFuel),
+          EstJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
+          SchdET: this.convertTimeStringToTimeSpan(item.schdET),
           // Add other properties specific to ArrayDataVM
         };
       }),
-      totalEstDistKms: this.totalEstDistKms,
-      formattedTotalEstTravelTime: this.formattedTotalEstTravelTime,
-      formattedTotalFoodFuel: this.formattedTotalFoodFuel,
-      formattedTotalEstJobTime: this.formattedTotalEstJobTime,
-      timeDifference: this.timeDifference,
-      engineer: this.userName,
-      mileageCng: this.mileageCng,
-      mileagePetrol: this.mileagePetrol,
-      mileageDiesel: this.mileageDiesel,
-      fuelReqd: this.fuelReqd,
-      fuelPriceCNG: this.FuelPriceCNG,
-      fuelPricePetrol: this.FuelPricePetrol,
-      fuelPriceDiesel: this.FuelPriceDiesel,
-      fuelPriceReqd: this.fuelPriceReqd,
-      sparesReqd: this.sparesReqd,
-      vehicle: this.vehicle,
-      startPlace: this.startPlace,
-      startCluster: this.startCluster,
-      initialTime: this.initialTime,
-      userId: this.userId,
+      TotalEstDistKms: this.totalEstDistKms,
+      TotalEstTravelTime: this.formattedTotalEstTravelTime,
+      TotalFoodFuel: this.formattedTotalFoodFuel,
+      TotalEstJobTime: this.formattedTotalEstJobTime,
+      TotalSchdET: this.timeDifference,
+      CreatedBy: this.userName,
+      MileageCNG: this.mileageCng,
+      MileagePetrol: this.mileagePetrol,
+      MileageDiesel: this.mileageDiesel,
+      FuelReqd: this.fuelReqd,
+      FuelPriceCNG: this.FuelPriceCNG,
+      FuelPricePetrol: this.FuelPricePetrol,
+      FuelPriceDiesel: this.FuelPriceDiesel,
+      FuelPriceReqd: this.fuelPriceReqd,
+      SparesReqd: this.sparesReqd,
+      Vehicle: this.vehicle,
+      StartPlace: this.startPlace,
+      StartCluster: this.startCluster,
+      InitialTime: this.initialTime,
+      UserId: this.userId,
       // Add other properties specific to TripSheetDataVM
     };
   
-    return this.http.post(apiUrl, data);
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+      if(data == "success"){
+        alert("Saved Successfully");
+        this.route.navigate(['/'])
+      }else{
+        alert("Somthing Went Wrong!!")
+      }  
+    })
   }
-  
+}
   convertTimeStringToTimeSpan(timeString: string | null): string | null {
     return timeString ? `${timeString}:00` : null;
   }
-  
+
 }
