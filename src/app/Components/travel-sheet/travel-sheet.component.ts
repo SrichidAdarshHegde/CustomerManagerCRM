@@ -2,13 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
-
+import { ElementRef, ViewChild } from '@angular/core';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-travel-sheet',
   templateUrl: './travel-sheet.component.html',
   styleUrls: ['./travel-sheet.component.css']
 })
 export class TravelSheetComponent {
+  @ViewChild('table', { static: false }) table!: ElementRef;
+
   userName: any;
   roleId: any;
   IsLoggedIn: any;
@@ -73,6 +77,19 @@ totalEstDistKms: number = 0;
   }
   ngOnInit(): void {
     this.getTripSheetNo();
+  }
+  exportTableToPDF1(): void {
+    const doc = new jspdf.jsPDF();
+    const table = this.table.nativeElement;
+
+    html2canvas(table).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      doc.save('TripSheet - '+this.tripSheetNo+'.pdf');
+    });
   }
   getTripSheetNo() {
     this.regSv.getTripSheetNo().subscribe((result: any) => {
