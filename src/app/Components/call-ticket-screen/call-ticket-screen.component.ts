@@ -452,8 +452,8 @@ export class CallTicketScreenComponent {
   }
   saveRequest() {
     this.endTime = new Date();
-    const timeDifference = this.endTime.getTime() - this.startTime.getTime();
-    console.log('Time difference: ' + timeDifference + ' milliseconds')
+    //const timeDifference = this.endTime.getTime() - this.startTime.getTime();
+    //console.log('Time difference: ' + timeDifference + ' milliseconds')
     if (this.selectedrequest == null || this.selectedrequest == "") {
       alert('Please select request type');
     }else if(this.contactId == null || this.contactId == ""){
@@ -481,7 +481,7 @@ export class CallTicketScreenComponent {
       
       frmData.append("ContactId", this.contactId);
       
-      frmData.append("StartTime", this.startTime.toISOString());
+      frmData.append("StartTime", this.value.toISOString());
       frmData.append("EndTime", this.endTime.toISOString());   
       frmData.append("CallFrom", this.contactName);
 
