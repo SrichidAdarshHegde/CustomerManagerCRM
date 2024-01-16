@@ -105,6 +105,7 @@ export class CallTicketScreenComponent {
   requestForId: any;
   reqForId: any;
   requestForName: any;
+  value: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -128,22 +129,22 @@ export class CallTicketScreenComponent {
     );
     // this.getAttendedBybyid(this.customerID);
   }
-  public value = new Date();
+  //public value = new Date();
 
-  startTimer() {
-    if(this.value == null){
-      this.value = new Date();
-    }else{
-      alert("Already started");
-    }
+  // startTimer() {
+  //   if(this.value == null){
+  //     this.value = new Date();
+  //   }else{
+  //     alert("Already started");
+  //   }
     
-  }
+  // }
 
-  endTimer() {
-    this.endTime = new Date();
-    const timeDifference = this.endTime.getTime() - this.startTime.getTime();
-    console.log('Time difference: ' + timeDifference + ' milliseconds');
-  }
+  // endTimer() {
+  //   this.endTime = new Date();
+  //   const timeDifference = this.endTime.getTime() - this.startTime.getTime();
+  //   console.log('Time difference: ' + timeDifference + ' milliseconds');
+  // }
  
   getRequests() {
     this.masterSv.getRequests().subscribe((response: any) => {
@@ -205,6 +206,7 @@ export class CallTicketScreenComponent {
 }
 
   onRowClick(data: any) {
+    this.value = new Date();
     this.selectedMachine = data.machineNumber;
     this.ticketNo = data.tokenNo;
     this.modelName = data.modelName;
@@ -449,6 +451,9 @@ export class CallTicketScreenComponent {
   }
   }
   saveRequest() {
+    this.endTime = new Date();
+    const timeDifference = this.endTime.getTime() - this.startTime.getTime();
+    console.log('Time difference: ' + timeDifference + ' milliseconds')
     if (this.selectedrequest == null || this.selectedrequest == "") {
       alert('Please select request type');
     }else if(this.contactId == null || this.contactId == ""){
@@ -476,7 +481,7 @@ export class CallTicketScreenComponent {
       
       frmData.append("ContactId", this.contactId);
       
-      frmData.append("StartTime", this.value.toISOString());
+      frmData.append("StartTime", this.startTime.toISOString());
       frmData.append("EndTime", this.endTime.toISOString());   
       frmData.append("CallFrom", this.contactName);
 
