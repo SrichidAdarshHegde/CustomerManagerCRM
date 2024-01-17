@@ -5,7 +5,7 @@
   
   .table-with-bold-lines th,
   .table-with-bold-lines td {
-    border: 1px solid black; 
+    border: 1px solid rgb(0, 0, 0); 
     padding: 5px;
   }
   

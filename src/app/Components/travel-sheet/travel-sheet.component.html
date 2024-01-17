@@ -65,7 +65,7 @@
         <div class="col-md-11">
             <table class="table table-bordered table-with-bold-lines">
                 <thead>
-                    <tr>
+                    <tr style="background-color: lavender;">
                         <th>SN</th>
                         <th style="width: 15%;">Location</th>
                         <th style="width: 3%;"></th>
@@ -83,7 +83,7 @@
                         <th>Sequence</th>
                     </tr>
                 </thead>
-                <tr>
+                <tr style="background-color: #a0dd5a;">
                     <td>0</td>
                     <td><input type="text" [(ngModel)]="startPlace" class="form-control"></td>
                     <td></td>
@@ -95,12 +95,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td> <input type="time" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="form-control"></td>
+                    <td> <input type="time" style="background-color: #ddf892;" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="form-control"></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <ng-container *ngFor="let item of selectedData;  let i = index">
-                    <tr>
+                    <tr [ngStyle]="{'background-color': item.requestFor !== '' ? '#a0dd5a' : 'yellow'}">
                         <td rowspan="2">{{(i+1)}}</td>
                         <td rowspan="2"><strong>{{item.companyName}}</strong></td>
                         <td rowspan="2"></td>
@@ -120,13 +120,13 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td rowspan="2" style="text-align: center;padding-top: 35px;"><b>{{(i+1)}}</b></td>
+                        <td rowspan="2" style="text-align: center;padding-top: 35px; background-color: lavender;"><b>{{(i+1)}}</b></td>
                     </tr>
-                    <tr>
+                    <tr [ngStyle]="{'background-color': item.requestFor !== '' ? '#a0dd5a' : 'yellow'}">
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td> <input type="time" [(ngModel)]="item.schdET" class="form-control"></td>
+                        <td> <input type="time" style="background-color: #ddf892;" [(ngModel)]="item.schdET" class="form-control"></td>
                         <td></td>
                         <td></td>
                     </tr>
