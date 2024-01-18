@@ -304,7 +304,44 @@ postSavequotationtemplateRapidI5APRIL2015(data:any)
 {
   return this.http.post(this.globalurl.weburl + 'quotation2015/SavequotationtemplateRapidI5APRIL2015/', data)
 }
+gettemplatedetails2015(id:any){
+  {
+    return this.http.get(this.globalurl.weburl + 'quotation2015/gettemplatedetails2015/'+ id);
+  }
+  
+}
+gettemplatedetails2015HT(id:any){
+  {
+    return this.http.get(this.globalurl.weburl + 'quotation2015/gettemplatedetails2015HT/'+ id);
+  }
+}
+gettemplatedetails2015z25(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate2015Z25/'+ id);
+}
 
+
+gettemplatedetails4020INdollor(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4020INDOLLOR/'+ id);
+}
+
+gettemplatedetails4020z25(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4020z25/'+ id);
+}
+gettemplatedetails4030(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4030/'+ id);
+}
+gettemplatedetails4030indollor(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4030INDOLLOR/'+ id);
+}
+gettemplatedetails4030z25(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4030Z25/'+ id);
+}
+gettemplatedetails5030(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate5030/'+ id);
+}
+gettemplatedetails5030z25jlx(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate5030Z25ZLX/'+ id);
+}
 
 getQ4020details(id:any)
 {

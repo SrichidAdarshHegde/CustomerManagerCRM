@@ -203,6 +203,7 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
 RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
+NumtowordsPipe,
 
   ],
   imports: [
