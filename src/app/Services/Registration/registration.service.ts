@@ -10,6 +10,7 @@ export class RegistrationService {
   
   getDatewiserequestfollowup: any;
   GetDatewiserequestinvoice: any;
+ 
   getData: any;
 
  
@@ -248,62 +249,7 @@ GetRefNo1(){
 // save templates
 postSavequotationtemplate(data:any)
 {
-  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate/', data)
-}
-postSavequotationtemplate2015(data:any)
-{
-  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate2015/', data)
-}
-
-GetSavetemplatecommonRefID(data: any) {
-  return this.http.post(this.globalurl.weburl + 'quotation2015/SavetemplatecommonRefID/', data)
-}
-
-gettemplatedetails2015(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'quotation2015/Gettemplatedetails2015/'+ id);
-}
-
-gettemplatedetails2015HT(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails2015HT/'+ id);
-}
-
-gettemplatedetails2015z25(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails2015z25/'+ id);
-}
-gettemplatedetails4020INdollor(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails4020INdollor/'+ id);
-}
-gettemplatedetails4020z25(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails4020z25/'+ id);
-}
-gettemplatedetails4030(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails4030/'+ id);
-}
-gettemplatedetails4030indollor(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails4030indollor/'+ id);
-}
-gettemplatedetails4030z25(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails4030z25/'+ id);
-}
-gettemplatedetails5030(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails5030/'+ id);
-}
-gettemplatedetails5030z25jlx(id:any)
-{
-  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Gettemplatedetails5030z25jlx/'+ id);
-}
-postSavequotationtemplate2015HT(data:any)
-{
-  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate2015HT/', data)
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
 }
 
 postSavequotationtemplate2015Z25(data:any)
@@ -358,7 +304,44 @@ postSavequotationtemplateRapidI5APRIL2015(data:any)
 {
   return this.http.post(this.globalurl.weburl + 'quotation2015/SavequotationtemplateRapidI5APRIL2015/', data)
 }
+gettemplatedetails2015(id:any){
+  {
+    return this.http.get(this.globalurl.weburl + 'quotation2015/gettemplatedetails2015/'+ id);
+  }
+  
+}
+gettemplatedetails2015HT(id:any){
+  {
+    return this.http.get(this.globalurl.weburl + 'quotation2015/gettemplatedetails2015HT/'+ id);
+  }
+}
+gettemplatedetails2015z25(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate2015Z25/'+ id);
+}
 
+
+gettemplatedetails4020INdollor(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4020INDOLLOR/'+ id);
+}
+
+gettemplatedetails4020z25(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4020z25/'+ id);
+}
+gettemplatedetails4030(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4030/'+ id);
+}
+gettemplatedetails4030indollor(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4030INDOLLOR/'+ id);
+}
+gettemplatedetails4030z25(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate4030Z25/'+ id);
+}
+gettemplatedetails5030(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate5030/'+ id);
+}
+gettemplatedetails5030z25jlx(id:any){
+  return this.http.get(this.globalurl.weburl + 'quotation2015/Savequotationtemplate5030Z25ZLX/'+ id);
+}
 
 getQ4020details(id:any)
 {
