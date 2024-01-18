@@ -87,6 +87,7 @@ import { RapidI5april2021Component } from './Components/quatation templates/rapi
 
 
 
+
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 
@@ -108,7 +109,6 @@ import { NumtowordsPipe } from 'src/numtowords.pipe';
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
-
 
 @NgModule({
   declarations: [
@@ -163,7 +163,7 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
     BrochureComponent,
     QuotationtemplateComponent,
     DocumentmanagerComponent,
-
+    QuotationtemplateComponent,
     DocumentTypeMasterComponent,
     ModeofTransportMasterComponent,
     TemplateComponent,
@@ -203,10 +203,6 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
 RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
-NumtowordsPipe,
-
-
-
 
   ],
   imports: [

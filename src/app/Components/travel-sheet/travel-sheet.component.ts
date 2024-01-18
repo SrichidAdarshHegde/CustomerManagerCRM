@@ -1,12 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { RegistrationService } from 'src/app/Services/Registration/registration.service';
+import { ElementRef, ViewChild } from '@angular/core';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-travel-sheet',
   templateUrl: './travel-sheet.component.html',
   styleUrls: ['./travel-sheet.component.css']
 })
 export class TravelSheetComponent {
+  @ViewChild('table', { static: false }) table!: ElementRef;
+
   userName: any;
   roleId: any;
   IsLoggedIn: any;
@@ -18,15 +24,15 @@ export class TravelSheetComponent {
   estJobTime: any;
  // FoodFuel: any;
   schdET: any;
-  mileageCng: any;
+  mileageCng: number;
   vehicle: any;
-  mileagePetrol: any;
-  FuelReqd: any;
-  mileageDiesel: any;
-  FuelPriceCNG: any;
-  FuelPricePetrol: any;
-  FuelPriceDiesel: any;
-  fuelReqd: any;
+  mileagePetrol: number;
+  fuelPriceReqd : number;
+  mileageDiesel: number;
+  FuelPriceCNG: number;
+  FuelPricePetrol: number;
+  FuelPriceDiesel: number;
+  fuelReqd: number;
   sparesReqd: any;
 //initialTime: any;
  // initialTime: string = '00:00';
@@ -35,9 +41,25 @@ export class TravelSheetComponent {
   estTravelTime: string = '';
   FoodFuel: string = '';
  // totalSchdET: string = this.initialTime;
-  initialTime: string = "00:00"; // Set your initial time here
+  initialTime: string; // Set your initial time here
   cumulativeTime: number = 0;
-  constructor(private router: ActivatedRoute){
+startPlace: any;
+startCluster: any;
+timeDifference?: string;
+totalEstTravelTime: number = 0;
+formattedTotalEstTravelTime: string = '';
+totalFoodFuel: number = 0;
+formattedTotalFoodFuel: string = '';
+totalEstJobTime: number = 0;
+formattedTotalEstJobTime: string = '';
+totalEstDistKms: number = 0;
+  tableLength: any;
+  tripSheetNo: any;
+
+  constructor( private router: ActivatedRoute,
+     private route: Router,
+      private regSv: RegistrationService,
+    private httpService: HttpClient){
     if (localStorage.getItem('IsLoggedIn') == 'true') {
       this.userName = localStorage.getItem('UserName');
       this.roleId = localStorage.getItem('Role');
@@ -53,32 +75,223 @@ export class TravelSheetComponent {
       
     });
   }
+  ngOnInit(): void {
+    this.getTripSheetNo();
+  }
+  exportTableToPDF1(): void {
+    const doc = new jspdf.jsPDF();
+    const table = this.table.nativeElement;
+
+    html2canvas(table).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      doc.save('TripSheet - '+this.tripSheetNo+'.pdf');
+    });
+  }
+  getTripSheetNo() {
+    this.regSv.getTripSheetNo().subscribe((result: any) => {
+      this.tableLength = result.length + 1; 
+      this.tripSheetNo = this.tableLength.toString().padStart(3, '0');
+    })
+  }
   public value = new Date();
+  reSequence(){
+    this.route.navigate(['/workFront']);
+  }
+  private apiUrl = 'http://localhost:44303/api';
+  recalculateFuel() {
+    // Ensure totalEstDistKms is greater than zero to avoid division by zero
+    if (this.totalEstDistKms > 0) {
+      let mileage: number | undefined;
+      let fuelPrice: number | undefined;
+  
+      if (this.mileageCng !== null && this.mileageCng !== undefined && this.mileageCng !== 0) {
+        mileage = this.mileageCng;
+        fuelPrice = this.FuelPriceCNG;
+      } else if (this.mileagePetrol !== null && this.mileagePetrol !== undefined && this.mileagePetrol !== 0) {
+        mileage = this.mileagePetrol;
+        fuelPrice = this.FuelPricePetrol;
+      } else if (this.mileageDiesel !== null && this.mileageDiesel !== undefined && this.mileageDiesel !== 0) {
+        mileage = this.mileageDiesel;
+        fuelPrice = this.FuelPriceDiesel;
+      } else {
+        // Handle the case where no valid mileage value is provided
+        this.fuelReqd = null;
+        this.fuelPriceReqd = null;
+        return;
+      }
+  
+      if (mileage !== null && mileage !== undefined && mileage !== 0) {
+        this.fuelReqd = this.totalEstDistKms / mileage;
+        this.fuelPriceReqd = this.fuelReqd * (fuelPrice || 0);
+      } else {
+        // Handle the case where mileage is zero or undefined
+        this.fuelReqd = null;
+        this.fuelPriceReqd = null;
+      }
+    } else {
+      // Handle the case where totalEstDistKms is zero
+      this.fuelReqd = null;
+      this.fuelPriceReqd = null;
+    }
+  }
+  
+  onInputChange() {
+    this.recalculateFuel();
+  }
+ 
+  updateScheduleTimes() {
+    let cumulativeTime = this.getMinutesFromTime(this.initialTime);
+    this.totalEstTravelTime = 0;
+    this.totalFoodFuel = 0;
+    this.totalEstJobTime = 0;
+    this.totalEstDistKms = 0;
+    for (let i = 0; i < this.selectedData.length; i++) {
+      const item = this.selectedData[i];
+      // Update cumulative time
+        const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
+        const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
+        const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
+        const estDistKms = parseFloat(item.estDistKms) || 0; 
+        // Handle undefined values
+        const validEstTravelTime = !isNaN(estTravelTimeMinutes);
+        const validFoodFuel = !isNaN(foodFuelMinutes);
+        const validEstJobTime = !isNaN(estJobTimeMinutes);
 
-//   calculateTime(item: any) {
-//     // Assuming estTravelTime is in HH:mm format
-//     const estTravelTimeParts = item.estTravelTime.split(':');
-//     const estTravelHours = parseInt(estTravelTimeParts[0], 10);
-//     const estTravelMinutes = parseInt(estTravelTimeParts[1], 10);
+        if (validEstTravelTime) {
+          cumulativeTime += estTravelTimeMinutes;
+          // Add estTravelTime to the total sum
+          this.totalEstTravelTime += estTravelTimeMinutes;
+        }
+        if (validFoodFuel) {
+          cumulativeTime += foodFuelMinutes;
+          this.totalFoodFuel += foodFuelMinutes;
+        }
+      
+    if (validEstJobTime) {
+      cumulativeTime += estJobTimeMinutes;
+      this.totalEstJobTime += estJobTimeMinutes;
+    }
+    this.totalEstDistKms += estDistKms;
 
-//     // Assuming FoodFuel is in HH:mm format
-//     const foodFuelParts = item.FoodFuel.split(':');
-//     const foodFuelHours = parseInt(foodFuelParts[0], 10);
-//     const foodFuelMinutes = parseInt(foodFuelParts[1], 10);
+      // Update the schedule time in the current row
+      item.schdET = this.addMinutesToTime(this.initialTime, cumulativeTime);
+      this.formattedTotalEstTravelTime = this.formatMinutesToHHMM(this.totalEstTravelTime);
+      this.formattedTotalFoodFuel = this.formatMinutesToHHMM(this.totalFoodFuel);
+      this.formattedTotalEstJobTime = this.formatMinutesToHHMM(this.totalEstJobTime);
+    // Calculate time difference and update a property for display
+    const timeDifferenceMinutes = this.getMinutesFromTime(item.schdET) - this.getMinutesFromTime(this.initialTime);
+    this.timeDifference = this.formatMinutesToHHMM(timeDifferenceMinutes);
+    
+  }
+  console.log('final data:',this.selectedData);
+}
 
-//     // Calculate the total minutes for estTravelTime and FoodFuel
-//     const estTravelTotalMinutes = estTravelHours * 60 + estTravelMinutes;
-//     const foodFuelTotalMinutes = foodFuelHours * 60 + foodFuelMinutes;
+formatMinutesToHHMM(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
 
-//     // Add estTravelTotalMinutes and foodFuelTotalMinutes to cumulativeTime
-//     this.cumulativeTime += estTravelTotalMinutes + foodFuelTotalMinutes;
+  return `${this.padZero(hours)}:${this.padZero(remainingMinutes)}`;
+}
+  getMinutesFromTime(time: string): number {
+    if (!time) {
+      return 0; // or handle the case where time is undefined/null
+    }
 
-//     // Calculate hours and minutes for schdET1
-//     const schdET1Hours = Math.floor(this.cumulativeTime / 60);
-//     const schdET1Minutes = this.cumulativeTime % 60;
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  }
 
-//     // Format the result as HH:mm
-//     item.schdET1 = `${schdET1Hours.toString().padStart(2, '0')}:${schdET1Minutes.toString().padStart(2, '0')}`;
-// }
+  addMinutesToTime(time: string, minutes: number): string {
+    if (!time) {
+      return ''; // or handle the case where time is undefined/null
+    }
+
+    const [hours, oldMinutes] = time.split(':').map(Number);
+    const newMinutes = oldMinutes + minutes;
+    const newHours = Math.floor(newMinutes / 60);
+    const adjustedMinutes = newMinutes % 60;
+
+    return `${this.padZero(newHours)}:${this.padZero(adjustedMinutes)}`;
+  }
+
+  padZero(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
+  }
+
+  save() {  
+    if(this.tripSheetNo == null || this.tripSheetNo == ''){
+      alert("Please Enter Trip Sheet No");
+    }else if(this.selectedData.length == 0){
+      alert("Atleast One Record Should Be Added.");
+    } else if(this.initialTime == null || this.initialTime == ''){
+      alert("Please enter starting time");
+    }else if(this.startCluster == null || this.startCluster == ''){
+      alert("Starting Cluster value can't be left blank.");
+    }else if(this.startPlace == null || this.startPlace == ''){
+      alert("Starting Place value can't be left blank.");
+    }else{
+    var data = {
+      TripSheetNo: this.tripSheetNo,
+      TripSheetValues: this.selectedData.map(item => {
+        return {
+          MachineNumber: item.machineNumber,
+          CompanyName: item.companyName,
+          CustomerId: item.customerID,
+          Purpose: item.purpose,
+          ClusterLocation: item.cluster,
+          ModelId: item.modelId,
+          ModelName: item.modelName,
+          Remarks: item.remarks,
+          RequestForId: item.requestForId,
+          TicketId: item.tokenID,
+          Zone: item.zone,
+          EstDistanceKms: item.estDistKms,
+          EstTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
+          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.FoodFuel),
+          EstJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
+          SchdET: this.convertTimeStringToTimeSpan(item.schdET),
+          // Add other properties specific to ArrayDataVM
+        };
+      }),
+      TotalEstDistKms: this.totalEstDistKms,
+      TotalEstTravelTime: this.formattedTotalEstTravelTime,
+      TotalFoodFuel: this.formattedTotalFoodFuel,
+      TotalEstJobTime: this.formattedTotalEstJobTime,
+      TotalSchdET: this.timeDifference,
+      CreatedBy: this.userName,
+      MileageCNG: this.mileageCng,
+      MileagePetrol: this.mileagePetrol,
+      MileageDiesel: this.mileageDiesel,
+      FuelReqd: this.fuelReqd,
+      FuelPriceCNG: this.FuelPriceCNG,
+      FuelPricePetrol: this.FuelPricePetrol,
+      FuelPriceDiesel: this.FuelPriceDiesel,
+      FuelPriceReqd: this.fuelPriceReqd,
+      SparesReqd: this.sparesReqd,
+      Vehicle: this.vehicle,
+      StartPlace: this.startPlace,
+      StartCluster: this.startCluster,
+      InitialTime: this.initialTime,
+      UserId: this.userId,
+      // Add other properties specific to TripSheetDataVM
+    };
+  
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+      if(data == "success"){
+        alert("Saved Successfully");
+        this.route.navigate(['/'])
+      }else{
+        alert("Somthing Went Wrong!!")
+      }  
+    })
+  }
+}
+  convertTimeStringToTimeSpan(timeString: string | null): string | null {
+    return timeString ? `${timeString}:00` : null;
+  }
 
 }

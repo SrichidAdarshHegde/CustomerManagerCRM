@@ -337,6 +337,21 @@ deleteMail(roleid: any) {
       this.globalUrl.weburl + 'Requests/DeleteRequests/' + Requestsid
     );
   }
+
+  // Purpose Job Time Master
+  savePurposeJobTime(data: any) {
+    return this.http.post(this.globalUrl.weburl + 'PurposeEstJobTime/PostSavePurposeEstJobTime', data);
+  }
+  getAllPurposeJobTime(){
+    return this.http.get(this.globalUrl.weburl + 'PurposeEstJobTime/GetAllPurposeJobTime');
+  }
+  updatePurpose(data:any){
+    return this.http.post( this.globalUrl.weburl + 'PurposeEstJobTime/PostUpdatePurpose',data);
+  }
+  deletePurpose(id: any) {
+    return this.http.get(this.globalUrl.weburl + 'PurposeEstJobTime/DeletePurposeJobTime/' + id);
+  }
+  
   // AttendType master
   getAttendType() {
     return this.http.get(this.globalUrl.weburl + 'AttendType/GetAllAttendType');

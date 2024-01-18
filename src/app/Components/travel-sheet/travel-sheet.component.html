@@ -1,5 +1,5 @@
 <br>
-<div>
+<div #table>
     <!-- first division -->
     <!-- <div class="container"></div> -->
     <div class="col-md-12 row">
@@ -16,18 +16,18 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input type="text" [(ngModel)]="mileageCng" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="mileagePetrol" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="mileageDiesel" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="FuelReqd" class="form-control"></td>
+                    <td><input *ngIf="totalEstDistKms != null" type="text" [(ngModel)]="mileageCng" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="mileagePetrol" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="mileageDiesel" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="fuelReqd" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Fuel Price</th>
                     <td>Rs. </td>
-                    <td><input type="text" [(ngModel)]="FuelPriceCNG" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="FuelPricePetrol" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="FuelPriceDiesel" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="fuelReqd" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="FuelPriceCNG" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="FuelPricePetrol" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="FuelPriceDiesel" class="form-control" (ngModelChange)="onInputChange()"></td>
+                    <td><input type="text" [(ngModel)]="fuelPriceReqd" class="form-control"></td>
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
@@ -40,7 +40,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td style="text-align: center;width: 60%;"><h4>TRIP SHEET</h4></td>
-                    <th>No. </th>
+                    <th><h4>No. {{tripSheetNo}} </h4></th>
                 </tr>
             </table>
         </div>
@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <th><h6>Date</h6></th>
-                    <td><strong>{{value | date}}</strong></td>
+                    <td><strong>{{value | date:'dd MMM yyyy'}}</strong></td>
                 </tr>
             </table>
         </div>
@@ -65,7 +65,7 @@
         <div class="col-md-11">
             <table class="table table-bordered table-with-bold-lines">
                 <thead>
-                    <tr>
+                    <tr style="background-color: lavender;">
                         <th>SN</th>
                         <th style="width: 15%;">Location</th>
                         <th style="width: 3%;"></th>
@@ -83,77 +83,50 @@
                         <th>Sequence</th>
                     </tr>
                 </thead>
-                <tr>
+                <tr style="background-color: #a0dd5a;">
                     <td>0</td>
-                    <td>Factory</td>
+                    <td><input type="text" [(ngModel)]="startPlace" class="form-control"></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>E-City</td>
+                    <td><input type="text" [(ngModel)]="startCluster" class="form-control"></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><input type="time" [(ngModel)]="initialTime" class="form-control"></td>
+                    <td> <input type="time" style="background-color: #ddf892;" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="form-control"></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr style="background-color: rgb(255, 225, 225);">
-                    <td></td>
-                    <td></td>
-                    <td colspan="5"><input type="text" [(ngModel)]="travel" class="form-control"></td>
-                    <td><input type="text" [(ngModel)]="estDistKms" class="form-control"></td>
-                    <td><input type="time" [(ngModel)]="estTravelTime" class="form-control"></td>
-                    <td><input type="time" [(ngModel)]="FoodFuel" class="form-control"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td> 
                 </tr>
                 <ng-container *ngFor="let item of selectedData;  let i = index">
-                    <tr>
-                        <td rowspan="3">{{(i+1)}}</td>
-                        <td rowspan="3"><strong>{{item.companyName}}</strong></td>
-                        <td rowspan="3"></td>
-                        <td rowspan="3">{{item.machineNumber}}</td>
-                        <td rowspan="3"><strong>{{item.requestFor}}</strong></td>
-                        <td rowspan="3"></td>
-                        <td rowspan="3"><strong>{{item.cluster}}</strong></td>
-                        <td rowspan="3"></td>
+                    <tr [ngStyle]="{'background-color': item.requestFor !== '' ? '#a0dd5a' : 'yellow'}">
+                        <td rowspan="2">{{(i+1)}}</td>
+                        <td rowspan="2"><strong>{{item.companyName}}</strong></td>
+                        <td rowspan="2"></td>
+                        <td rowspan="2" style="text-align: right;">{{item.machineNumber}}</td>
+                        <td rowspan="2" *ngIf="item.requestFor != ''"><strong>{{item.requestFor}}</strong></td>
+                        <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.purpose" class="form-control"></td>
+                        <td rowspan="2"></td>
+                        <td rowspan="2"><strong>{{item.cluster}}</strong></td>
+                        <td rowspan="2" *ngIf="item.requestFor != ''"></td>
+                        <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.estDistKms" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor != ''"></td>
+                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor != ''"></td>
+                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.FoodFuel" (ngModelChange)="item.FoodFuel = $event; updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="item.estJobTime = $event; updateScheduleTimes()" class="form-control"></td>
+                        <td *ngIf="item.requestFor == ''"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><input type="time" [(ngModel)]="item.schdET" class="form-control"></td>
-                        <td><input type="text" [(ngModel)]="item.actalTime" class="form-control"></td>
-                        <td><input type="text" [(ngModel)]="item.actualOdoRead" class="form-control"></td>
-                        <td rowspan="3" style="text-align: center;padding-top: 35px;"><b>{{(i+1)}}</b></td>
+                        <td rowspan="2" style="text-align: center;padding-top: 35px; background-color: lavender;"><b>{{(i+1)}}</b></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><input type="text" [(ngModel)]="item.estJobTime" placeholder="HH:mm" class="form-control"></td>
+                    <tr [ngStyle]="{'background-color': item.requestFor !== '' ? '#a0dd5a' : 'yellow'}">
                         <td></td>
                         <td></td>
                         <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td> <input type="time" [(ngModel)]="item.schdET1" class="form-control"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr style="background-color: rgb(255, 225, 225);">
-                        <td></td>
-                        <td></td>
-                        <td colspan="5"><input type="text" [(ngModel)]="item.travel" class="form-control"></td>
-                        <td><input type="text" [(ngModel)]="item.estDistKms" class="form-control"></td>
-                        <td><input type="text" [(ngModel)]="item.estTravelTime" class="form-control"></td>
-                        <td><input type="text" [(ngModel)]="item.FoodFuel" class="form-control"></td>
-                        <td></td>
-                        <td></td>
+                        <td> <input type="time" style="background-color: #ddf892;" [(ngModel)]="item.schdET" class="form-control"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -161,15 +134,23 @@
                 <tr>
                     <td colspan="6"></td>
                     <th>Totals</th>
+                    <td style="text-align: center;"><strong>{{ totalEstDistKms }}</strong></td>
+                    <td style="text-align: center;"><strong>{{formattedTotalEstTravelTime }}</strong></td>
+                    <td style="text-align: center;"><strong>{{formattedTotalFoodFuel }}</strong></td>
+                    <td style="text-align: center;"><strong>{{formattedTotalEstJobTime }}</strong></td>
+                    <td style="text-align: center;"><strong>{{timeDifference }}</strong></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><button class="btn btn-primary" (click)="save()">Save</button></td>
+                    <td><button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
                 </tr>
             </table>
         </div>
     </div>
-</div><br><br><br>
+</div><br>
+<div style="text-align: center;">
+    
+    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF1()">Export
+        to
+        PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
+</div><br><br><br><br>

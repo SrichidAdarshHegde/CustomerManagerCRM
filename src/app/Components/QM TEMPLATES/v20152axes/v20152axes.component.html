@@ -5,9 +5,44 @@
     <div class="col-md-1"></div>
     <div class="col-md-11">
 
+        
+        <div class="container" style="border: 0cap;">
+            <br> <div>
+                <label for="refIDInput">Enter Reference ID:</label>
+                <input type="text" id="refIDInput" [(ngModel)]="RefID" placeholder="Enter Reference ID">&nbsp;
+                <button (click)="fetchTemplate()">Fetch</button>
+              </div>
+            <div class="col-md-8">
+                <p style="text-align: center; font-size: 20px;"><strong> <u> V2015_2Axes_Manual Editabel </u></strong></p>
+                <input type="hidden" [(ngModel)]="TemplateName" value="V2015_2Axes_Manual" />
+                </div> 
+            <div class="col-md-12 row">
+                
+                 
+    <table style="width: 67%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableAxesQty:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editableaxesQty" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditableAxesPrice:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editableaxesPrice" style="width: 100px; border: none;" />
+            </td>
+        </tr>
+    </table> 
+    <div class="col-md-8 d-flex justify-content-center align-items-center"><br> <br> <br> 
+        <button class="btn btn-primary text-center" (click)="updateTemplate()">Save Changes</button>
+    </div>
+
+
         <div class="container" style="border: 0cap;">
 
-            <div class="col-md-12 row">
+          
                 <div class="col-md-1"></div>
                 <div id="printsection" class="col-md-8 table-bordered"
                     style="background-color:white;border-color:forestgreen;border-width:2px">
@@ -16,9 +51,14 @@
                         <div class="col-md-8">
                           
                         </div>
-                        <div class="col-md-4 logo">
-                           <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
-                        </div>
+                        <div class="col-md-2 logo">
+                           
+                            <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
+                         </div>
+                         <div class="col-md-2">
+                             <p style="text-align: center; font-size: 30px;"><strong>V2015_2Axes_Manual</strong></p>
+                             <input type="hidden" [(ngModel)]="TemplateName" value="RapidI TRAINING CHARGES" />
+                             </div>
                       
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
@@ -159,10 +199,10 @@
                             
 
                             <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1 Set
-                            </td>
-                            <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                14,715
+                                <p  style="width: 100%; border: none; outline: none;">{{AxesQty}}</p>
+                              </td>
+                              <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p   style="width: 100%; border: none; outline: none;">{{AxesPrice}}</p>
                             </td>
 
 
@@ -173,7 +213,7 @@
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <br>
                                 a<br>
-                                b <br><br>c <br> <br>
+                                b <br>c <br> <br>
                                 d<br> e<br> <br><br> f<br> g
 
 
@@ -237,16 +277,13 @@
 
 
                         <tr>
-                            <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer system : Rs. 5,01,500=00
-                                    <br>
-                                    (Rupees Five Lakhs One Thousand and Five Hundred Only)
-
-
-                                    </strong>
-
-                                </h5>
-                            </td>
+                            <td colspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+    <h5 style="text-align: center;">
+        <strong>Basic Machine package price excluding Computer system: USD {{ TotalAmount | number }} <br>
+            (US Dollar {{ TotalAmount | numtowords  }} Only)|
+        </strong>
+    </h5>
+</td>
                         </tr>
 
 
@@ -658,16 +695,19 @@
 
             <div>&nbsp;</div>
 
-        <!-- <button type="button" class="btn btn-success" data-dismiss="modal"
-            style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button>  -->
-
-            <div class="col-md-12 row"><br />
-                <div class="col-md-4">&nbsp;</div>
+     
+            <div class="col-md-12 row"><br><br><br>
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                    
+        <button style="width: 50%;" type="button" class="btn btn-success" data-dismiss="modal"
+        style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button> 
+                </div>
                 <div class="col-md-2">
-                    <input type="button" (click)="print('printsection')" value="PRINT"
+                    <input style="width: 50%;" type="button" (click)="print('printsection')" value="PRINT"
                         class="form-control btn-warning" />
                 </div>
-                <br><br> <br><br> <br><br> <br><br>
+                <br><br> <br><br> <br><br> <br><br><br> <br><br>
                 <div class="col-md-4">&nbsp;</div>
             </div>
         </div>
