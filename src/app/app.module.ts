@@ -204,6 +204,7 @@ RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
+NumtowordsPipe
 
   ],
   imports: [
