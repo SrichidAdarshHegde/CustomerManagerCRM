@@ -13,9 +13,14 @@
                         <div class="col-md-8">
                           
                         </div>
-                        <div class="col-md-4 logo">
-                           <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
-                        </div>
+                        <div class="col-md-2 logo">
+                           
+                            <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
+                         </div>
+                         <div class="col-md-2">
+                             <p style="text-align: center; font-size: 30px;"><strong>RapidI TRAINING CHARGES</strong></p>
+                             <input type="hidden" [(ngModel)]="TemplateName" value="RapidI TRAINING CHARGES" />
+                             </div>
                       
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
@@ -243,17 +248,21 @@
 
 <div>&nbsp;</div>
 
-<!-- <button type="button" class="btn btn-success" data-dismiss="modal"
-style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button>  -->
 
-<div class="col-md-12 row"><br />
-<div class="col-md-4">&nbsp;</div>
-<div class="col-md-2">
-<input type="button" (click)="print('printsection')" value="PRINT"
-    class="form-control btn-warning" />
-</div>
-<br><br> <br><br> <br><br> <br><br>
-<div class="col-md-4">&nbsp;</div>
+
+<div class="col-md-12 row"><br><br><br>
+    <div class="col-md-4"></div>
+    <div class="col-md-1">
+        
+<button style="width: 50%;" type="button" class="btn btn-success" data-dismiss="modal"
+style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button> 
+    </div>
+    <div class="col-md-2">
+        <input style="width: 50%;" type="button" (click)="print('printsection')" value="PRINT"
+            class="form-control btn-warning" />
+    </div>
+    <br><br> <br><br> <br><br> <br><br><br> <br><br>
+    <div class="col-md-4">&nbsp;</div>
 </div>
 </div>
 </div>

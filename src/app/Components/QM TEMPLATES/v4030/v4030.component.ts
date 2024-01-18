@@ -27,6 +27,26 @@ export class V4030Component {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateID:any;
+
+  //editable
+
+  editableQty: string = '1 set';
+  editablePrice:number=735000 ;
+  editableauxQty: string = '1 Pair';
+  editableauxPrice: number =19500 ; 
+
+
+  BasicQty: string = '1 set';
+  BasicPrice: number =735000  ; 
+  AuxQty: string = '1 Pair';
+  AuxPrice: number =19500 ; 
+
+  TemplateName:string="V4030_2Axes_Manual";
+  CustomerName:any;
+  TotalAmount: any;
+
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -51,6 +71,36 @@ export class V4030Component {
    
   }
 
+
+  updateTemplate() {
+  
+    const previousValues = {
+      BasicQty:this.BasicQty,
+      BasicPrice:this.BasicPrice,
+      AuxQty:this.AuxQty,
+      AuxPrice:this.AuxPrice,
+    }
+    this.BasicQty = this.editableQty;
+    this.BasicPrice = this.editablePrice;  
+    this.AuxQty = this.editableauxQty;
+    this.AuxPrice = this.editableauxPrice;
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
+   
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+  //  resetEditableValues() {
+     
+  //      this.editableQty = null;
+  //      this.editablePrice = null;
+  //      this.editableauxQty = null;
+  //      this.editableauxPrice = null;
+  //  }
 
   print (printSectionId) {
     var innerContents = document.getElementById(printSectionId).innerHTML;
@@ -83,29 +133,72 @@ getBillingAddress(){
     });
   }
 
-  
+  fetchTemplate() {
+    this.regSv.getV4030etails(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.BasicQty = response.BasicQty;
+      this.BasicPrice = response.BasicPrice;
+      this.AuxQty = response.AuxQty;
+      this.AuxPrice = response.AuxPrice;
+    
+    
+     
+  this.TemplateName=response.TemplateName;
+      // this.KindAttention = response.KindAttention;
+    });
+  }
   save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+    this.TotalAmount = this.AuxPrice + this.BasicPrice;
+   
+    // Create the templateData object
+    const templateData = {
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  AuxQty:this.AuxQty,
+  BasicPrice:this.BasicPrice,
+  AuxPrice:this.AuxPrice,
+  BasicQty:this.BasicQty,
+
+  
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+  TotalAmount:this.TotalAmount,
+   
+     
+
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
-      {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
-  }
+    this.regSv.postSaveV4030(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+  this.AuxQty=this.AuxQty,
+  this.AuxPrice=this.AuxPrice,
+  this.BasicQty=this.BasicQty,
+  this.BasicQty=this.BasicQty,
 
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
+      {
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 
 }

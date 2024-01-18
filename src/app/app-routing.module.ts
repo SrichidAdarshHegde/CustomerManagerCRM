@@ -198,7 +198,9 @@ const routes: Routes = [
 
 {path:'v4030/:id',component:V4030Component},
 
-{path:'v2015-jlx',component:V20152axesComponent},
+{path:'v2015-jlx/:id',component:V20152axesComponent},
+
+
 
 
 {path:'rapidIVMC',component:RapidIVMCComponent},
@@ -220,6 +222,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

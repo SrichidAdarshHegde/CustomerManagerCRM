@@ -28,6 +28,7 @@ export class RapiditrainingchargesComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateName:string="RapidI TRAINING CHARGES";
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -92,19 +93,23 @@ getBillingAddress(){
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSaveRapidtrainingcharges(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+ 
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
-  }
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 }
