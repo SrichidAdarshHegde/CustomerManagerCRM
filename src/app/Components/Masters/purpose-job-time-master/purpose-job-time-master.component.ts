@@ -45,6 +45,11 @@ export class PurposeJobTimeMasterComponent {
     });
   }
   save() {
+    if(this.purposeName == null || this.purposeName == ''){
+      alert("Please enter the Purpose Name");
+    }else if(this.jobTime == null || this.jobTime == ''){
+      alert("Please enter the Job Time");
+    }else{
     var purposeData = {
       PurposeName: this.purposeName,
       JobTime: this.jobTime,
@@ -60,12 +65,8 @@ export class PurposeJobTimeMasterComponent {
       }
     });
   }
-
-  editPurpose(data: any) {
-    this.viewpurposeupdate = data.purposeName;
-    this.viewJobTime = data.jobTime;
-    this.purposeId = data.id;
   }
+
   deletePurpose(id: any) {
     this.masterSv.deletePurpose(id).subscribe((response: any) => {
       if (response == 'success') {
@@ -78,6 +79,11 @@ export class PurposeJobTimeMasterComponent {
     });
   }
 
+  editPurpose(data: any) {
+    this.viewpurposeupdate = data.purposeName;
+    this.viewJobTime = data.jobTime;
+    this.purposeId = data.id;
+  }
   updatePurpose() {
     var purposeData = {
       Id: this.purposeId,
@@ -108,7 +114,6 @@ export class PurposeJobTimeMasterComponent {
       doc.save('purpose_data.pdf');
     });
   }
-
 
   exportTableToExcel(): void {
     const element = document.getElementById('tableId'); // Replace 'tableId' with the actual ID of your HTML table
