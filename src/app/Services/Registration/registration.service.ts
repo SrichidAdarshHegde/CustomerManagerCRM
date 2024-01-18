@@ -247,9 +247,13 @@ GetRefNo1(){
 }
 
 // save templates
-postSavequotationtemplate(data:any)
+postSavequotationtemplate2015(data:any)
 {
   return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
+}
+postSavequotationtemplate2015HT(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate2015HT/', data)
 }
 
 postSavequotationtemplate2015Z25(data:any)
