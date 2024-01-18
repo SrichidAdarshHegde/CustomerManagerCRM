@@ -26,6 +26,58 @@ export class Quotation2015HTComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateName: string = "Quotation 2015 HT";
+  BasicSystemQty: string = '1 Set';
+  BasicSystemPrice: number =800000  ; 
+ 
+  OptionalQtyA:number=1;
+  OptionalPriceA:number=	5480;
+
+  OptionalQtyB:number=1;
+  OptionalPriceB:number=38500;
+
+  OptionalQtyC: number=1;
+  OptionalPriceC:  number=19500;
+
+  OptionalQtyD:number=1 ;
+  OptionalPriceD: number = 89100; 
+  TemplateID: any;
+  
+  CustomerName: any;
+KindAttention: any;
+
+   
+
+  //editable
+
+  editableQty: string = '1 Set';
+  editablePrice:number=800000;
+
+  editableQtyA:number=1;
+  editablePriceA:number=5480;
+
+  editableQtyB:number=1;
+  editablePriceB:number=38500;
+
+   editableQtyC:number=1;
+  editablePriceC:number=19500;
+
+  editableQtyD:number=1;
+  editablePriceD:number=89100;
+
+ 
+// OptionalPriceH: number;
+  
+
+companyoldName: any;
+
+KindAttentionlist: any;
+
+  fetchedData: any;
+
+  templateId: any;
+  selectedTemplate: any;
+  editcustomerID: any;
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -50,6 +102,75 @@ export class Quotation2015HTComponent {
    
   }
 
+  updateTemplate() {
+  
+    const previousValues = {
+      BasicSystemQty:this.BasicSystemQty,
+      BasicSystemPrice:this.BasicSystemPrice,
+    
+      OptionalQtyA:this.OptionalQtyA,
+      OptionalPriceA:this.OptionalPriceA,
+    
+      OptionalQtyB:this.OptionalQtyB,
+      OptionalPriceB:this.OptionalPriceB,
+    
+      OptionalQtyC:this.OptionalQtyC,
+      OptionalPriceC:this.OptionalPriceC,
+    
+      OptionalQtyD:this.OptionalQtyD,
+      OptionalPriceD:this.OptionalPriceD,
+    
+   
+    };
+
+
+    this.BasicSystemQty = this.editableQty;
+
+    this.BasicSystemPrice = this.editablePrice;
+    this.OptionalQtyA = this.editableQtyA;
+    this.OptionalPriceA = this.editablePriceA;
+    this.OptionalQtyB = this.editableQtyB;
+    this.OptionalPriceB = this.editablePriceB;
+    this.OptionalQtyC = this.editableQtyC;
+    this.OptionalPriceC = this.editablePriceC;
+    this.OptionalQtyD = this.editableQtyD;
+    this.OptionalPriceD = this.editablePriceD;
+  
+
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+ if (changesMade) {
+    alert('Changes made successfully.');
+  } else {
+    alert('No changes made or something went wrong.');
+  }
+
+  // Reset the editable values
+  this.resetEditableValues();
+}
+resetEditableValues() {
+  
+    this.editableQty = null;
+    this.editablePrice = null;
+    this.editableQtyA = null;
+    this.editablePriceA = null;
+    this.editableQtyB = null;
+    this.editablePriceB = null;
+    this.editableQtyC = null;
+    this.editablePriceC = null;
+    this.editableQtyD = null;
+    this.editablePriceD = null;
+    
+
+}
+
+  logCompleteQuotation() {
+    const quotationDiv = document.getElementById('RefID');
+    if (quotationDiv) {
+      console.log(quotationDiv.innerHTML);
+    } else {
+      console.error('Element with ID "RefID" not found.');
+    }
+  }
 
   print (printSectionId) {
     var innerContents = document.getElementById(printSectionId).innerHTML;
@@ -59,13 +180,14 @@ export class Quotation2015HTComponent {
     popupWinindow.document.close();
     //window.print();
   };
+  
 
   public value = new Date();
 
 
 getBillingAddress(){
     this.selectedcustID= this.customerID;
-    this.regSv.getCustomerBillingAddress(this.selectedcustID).subscribe((result: any) => {
+    this.regSv.getCustomerBillingAddress1(this.selectedcustID).subscribe((result: any) => {
       this.customerdata = result;
       console.log(this.customerdata);
       this.billingAddress=this.customerdata[0].billingAddress;
@@ -74,7 +196,7 @@ getBillingAddress(){
 }
 
   getRefNo() {
-    this.regSv.GetRefNo().subscribe((result: any) => {
+    this.regSv.GetRefNo1().subscribe((result: any) => {
       if (this.RefID == null || this.RefID == '') {
         this.tableLength = result.length + 1;
         this.RefID = this.tableLength.toString().padStart(3, '0'); // Assuming result is an array or collection
@@ -82,30 +204,105 @@ getBillingAddress(){
     });
   }
 
+  onSelectTemplate(data: any) {
+    this.selectedTemplate = data.target.value;
+    console.log('Selected Template:', this.selectedTemplate);
+  }
+
+  fetchTemplate() {
+    this.regSv.gettemplatedetails2015HT (this.RefID).subscribe((response: any) => {
+      this. BasicSystemQty=response.basicSystemQty,
+      this. BasicSystemPrice=response.basicSystemPrice,
+
+      this.OptionalQtyA = response.optionalQtyA;
+      this.OptionalPriceA = response.optionalPriceA;
   
+      this.OptionalQtyB = response.optionalQtyB;
+      this.OptionalPriceB = response.optionalPriceB;
+  
+      this.OptionalQtyC = response.optionalQtyC;
+      this.OptionalPriceC = response.optionalPriceC;
+  
+      this.OptionalQtyD = response.optionalQtyD;
+      this.OptionalPriceD = response.optionalPriceD;
+  
+    
+  
+      this.KindAttention = response.KindAttention;
+      
+    });
+  }
+
+
   save(){
     var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  BasicSystemQty:this.BasicSystemQty,
+  BasicSystemPrice:this.BasicSystemPrice,
+
+  OptionalQtyA:this.OptionalQtyA,
+  OptionalPriceA:this.OptionalPriceA,
+
+  OptionalQtyB:this.OptionalQtyB,
+  OptionalPriceB:this.OptionalPriceB,
+
+  OptionalQtyC:this.OptionalQtyC,
+  OptionalPriceC:this.OptionalPriceC,
+
+  OptionalQtyD:this.OptionalQtyD,
+  OptionalPriceD:this.OptionalPriceD,
+
+  
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+  KindAttention:this.KindAttention,
+   
+     
+
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSavequotationtemplate2015HT(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.BasicSystemQty=this.BasicSystemQty,
+  this.BasicSystemPrice=this.BasicSystemPrice,
+
+  this.OptionalQtyA=this.OptionalQtyA,
+  this.OptionalPriceA=this.OptionalPriceA,
+
+  this.OptionalQtyB=this.OptionalQtyB,
+  this.OptionalPriceB=this.OptionalPriceB,
+
+  this.OptionalQtyC=this.OptionalQtyC,
+  this.OptionalPriceC = this.OptionalPriceC,
+
+  this.OptionalQtyD = this.OptionalQtyD,
+  this.OptionalPriceD = this.OptionalPriceD,
+
+  
+        
+        this.KindAttention=this.KindAttention,
+       
+        alert("Saved Successfully")
+     //   window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
+        alert("Somthing Went Wrong!!")
+      //  window.location.reload()
+      } 
+    })
+
     
    
   }
 
-
 }
-

@@ -26,6 +26,12 @@ export class RapidI5april2021Component {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+ 
+  getBillingAddress1: any;
+  TemplateID: any;
+  TemplateName: any;
+  CustomerName: any;
+KindAttention: any;
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -46,7 +52,7 @@ export class RapidI5april2021Component {
 
   ngOnInit(): void {
     this.getRefNo(); 
-    this.getBillingAddress();
+    this.getBillingAddress1();
    
   }
 
@@ -65,7 +71,7 @@ export class RapidI5april2021Component {
 
 getBillingAddress(){
     this.selectedcustID= this.customerID;
-    this.regSv.getCustomerBillingAddress(this.selectedcustID).subscribe((result: any) => {
+    this.regSv.getCustomerBillingAddress1(this.selectedcustID).subscribe((result: any) => {
       this.customerdata = result;
       console.log(this.customerdata);
       this.billingAddress=this.customerdata[0].billingAddress;
@@ -74,7 +80,7 @@ getBillingAddress(){
 }
 
   getRefNo() {
-    this.regSv.GetRefNo().subscribe((result: any) => {
+    this.regSv.GetRefNo1().subscribe((result: any) => {
       if (this.RefID == null || this.RefID == '') {
         this.tableLength = result.length + 1;
         this.RefID = this.tableLength.toString().padStart(3, '0'); // Assuming result is an array or collection
@@ -85,15 +91,19 @@ getBillingAddress(){
   
   save(){
     var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSavequotationtemplateRapidI5APRIL2015(templateData).subscribe((response:any )=>
       {
         if(response == "success"){
-          alert("Interacted Successfully")
+          alert("Saved Successfully")
           window.location.reload()
         }
         else
@@ -102,9 +112,12 @@ getBillingAddress(){
           window.location.reload()
         } 
       })
-    
+ 
+  
    
   }
+
+
 
 
 }
