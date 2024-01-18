@@ -28,6 +28,23 @@ export class Rapid64Component {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateID:any;
+
+  editableQtyA: string = '1 Set';
+  editableQtyB: string = '1 Set';
+  editableQtyC: string = '1 Set';
+  editablePrice:number=65200;
+
+  UpgradeQtyA: string = '1 Set';
+  UpgradeQtyB: string = '1 Set';
+  UpgradeQtyC: string = '1 Set';
+  UpgradePrice: number =65200 ; 
+
+  TemplateName: string = "Rapid64 UPGRADE";
+  CustomerName:any;
+  TotalAmount: number;
+
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -84,27 +101,101 @@ getBillingAddress(){
     });
   }
 
+  updateTemplate() {
   
+    const previousValues = {
+      UpgradeQtyA:this.UpgradeQtyA,
+      UpgradeQtyB:this.UpgradeQtyB,
+      UpgradeQtyC:this.UpgradeQtyC,
+      UpgradePrice:this.UpgradePrice,
+    }
+    this.UpgradeQtyA = this.editableQtyA;
+    this.UpgradeQtyB = this.editableQtyB;  
+    this.UpgradeQtyC = this.editableQtyC;
+    this.UpgradePrice = this.editablePrice;
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
+   
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+  //  resetEditableValues() {
+     
+  //      this.editableQty = null;
+  //      this.editablePrice = null;
+  //      this.editabledesQty = null;
+  //      this.editabledesPrice = null;
+  //  }
+  fetchTemplate() {
+    this.regSv.getRapid64details(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.UpgradeQtyA = response.UpgradeQtyA;
+  
+      this.UpgradeQtyB = response.UpgradeQtyB;
+      this.UpgradeQtyC = response.UpgradeQtyC;
+  
+      this.UpgradePrice = response.UpgradePrice;
+     
+  this.TemplateName=response.TemplateName;
+      // this.KindAttention = response.KindAttention;
+    });
+  }
+
+
   save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+    this.TotalAmount = this.UpgradePrice;
+   
+    // Create the templateData object
+    const templateData = {
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  UpgradeQtyA:this.UpgradeQtyA,
+  UpgradeQtyB:this.UpgradeQtyB,
+  UpgradeQtyC:this.UpgradeQtyC,
+  UpgradePrice:this.UpgradePrice,
+
+  
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+ TotalAmount:this.TotalAmount,
+   
+     
+
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSaverapid64(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+  this.UpgradeQtyA=this.UpgradeQtyA,
+  this.UpgradeQtyB=this.UpgradeQtyB,
+  this.UpgradeQtyC=this.UpgradeQtyC,
+  this.UpgradePrice=this.UpgradePrice,
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
-  }
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 }

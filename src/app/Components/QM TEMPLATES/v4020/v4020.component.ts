@@ -27,6 +27,27 @@ export class V4020Component {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateID:any;
+
+  editableQty: string = '1 set';
+  editablePrice:number=605500 ;
+  editabledesQty: string = '1 Pair';
+  editabledesPrice: number =19500 ; 
+
+
+  BasicQty: string = '1 set';
+  BasicPrice: number =605500   ; 
+  DesQty: string = '1 Pair';
+  DesPrice: number =19500 ; 
+
+  TemplateName:string="V4020_2Axes_Manual";
+  CustomerName:any;
+  totalAmount: any;
+  totalAmountWords: any;
+  numToWords: any;
+  TotalAmount: number;
+
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -83,29 +104,93 @@ getBillingAddress(){
     });
   }
 
+  updateTemplate() {
   
-  save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
-
-      
+    const previousValues = {
+      BasicQty:this.BasicQty,
+      BasicPrice:this.BasicPrice,
+      DesQty:this.DesQty,
+      DesPrice:this.DesPrice,
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
-      {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
+    this.BasicQty = this.editableQty;
+    this.BasicPrice = this.editablePrice;  
+    this.DesQty = this.editabledesQty;
+    this.DesPrice = this.editabledesPrice;
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
    
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+  //  resetEditableValues() {
+     
+  //      this.editableQty = null;
+  //      this.editablePrice = null;
+  //      this.editabledesQty = null;
+  //      this.editabledesPrice = null;
+  //  }
+  fetchTemplate() {
+    this.regSv.getV4020details(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.BasicQty = response.BasicQty;
+      this.BasicPrice = response.BasicPrice;
+      this.DesQty = response.DesQty;
+      this.DesPrice = response.DesPrice;
+    
+    
+     
+  this.TemplateName=response.TemplateName;
+      // this.KindAttention = response.KindAttention;
+    });
   }
+  save() {
+    // Calculate the totalAmount based on DesPrice and BasicPrice
+    this.TotalAmount = this.DesPrice + this.BasicPrice;
+   
+    // Create the templateData object
+    const templateData = {
+      RefID: this.RefID,
+      billingAddress: this.billingAddress,
+      BasicQty: this.BasicQty,
+      BasicPrice: this.BasicPrice,
+      DesQty: this.DesQty,
+      DesPrice: this.DesPrice,
+      CreatedBy: this.userName,
+      TemplateID: this.TemplateID,
+      TemplateName: this.TemplateName,
+      CustomerName: this.CustomerName,
+      TotalAmount: this.TotalAmount, // Include the calculated totalAmount
+     
+    };
+    this.regSv.postSaveV4020(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+  this.DesQty=this.DesQty,
+  this.DesPrice=this.DesPrice,
+
+  this.BasicQty=this.BasicQty,
+  this.BasicPrice=this.BasicPrice,
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
+      {
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 
 
 }
