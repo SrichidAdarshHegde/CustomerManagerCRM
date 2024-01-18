@@ -345,7 +345,12 @@ deleteMail(roleid: any) {
   getAllPurposeJobTime(){
     return this.http.get(this.globalUrl.weburl + 'PurposeEstJobTime/GetAllPurposeJobTime');
   }
- 
+  updatePurpose(data:any){
+    return this.http.post( this.globalUrl.weburl + 'PurposeEstJobTime/PostUpdatePurpose',data);
+  }
+  deletePurpose(id: any) {
+    return this.http.get(this.globalUrl.weburl + 'PurposeEstJobTime/DeletePurposeJobTime/' + id);
+  }
   
   // AttendType master
   getAttendType() {

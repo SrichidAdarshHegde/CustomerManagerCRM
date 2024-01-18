@@ -27,6 +27,23 @@ export class Rapidi64CamACSCComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+
+editableDesQty:string='1 set';
+editableDesPrice:number=62500;
+editableACSCQty: string = '1 set';
+editableACSCPrice:number=45600;
+
+  ACSCQty: string = '1 Set';
+  ACSCPrice: number =45600 ; 
+
+  DesQty: string = '1 Set';
+  DesPrice: number =62500 ; 
+  TemplateName:string="Rapid64 CAM-ACSC";
+  TemplateID: any;
+  CustomerName: any;
+  KindAttention: any;
+  TotalAmount: any;
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -83,27 +100,95 @@ getBillingAddress(){
     });
   }
 
+  updateTemplate() {
   
+    const previousValues = {
+      ACSCQty:this.ACSCQty,
+      ACSCPrice:this.ACSCPrice,
+      DesQty:this.DesQty,
+      DesPrice:this.DesPrice,
+    }
+    this.ACSCQty = this.editableACSCQty;
+    this.ACSCPrice = this.editableACSCPrice;  
+    this.DesQty = this.editableDesQty;
+    this.DesPrice = this.editableDesPrice;
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
+   
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+  //  resetEditableValues() {
+     
+  //      this.editableQty = null;
+  //      this.editablePrice = null;
+  //      this.editabledesQty = null;
+  //      this.editabledesPrice = null;
+  //  }
+
+  fetchTemplate() {
+    this.regSv.getRapid64CAMdetails(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.ACSCPrice = response.ACSCPrice;
+  
+      this.ACSCQty = response.ACSCQty;
+      this.DesPrice = response.DesPrice;
+  
+      this.DesQty = response.DesQty;
+     
+  this.TemplateName=response.TemplateName;
+       this.KindAttention = response.KindAttention;
+    });
+  }
   save(){
-    var templateData = {
+    this.TotalAmount = this.DesPrice + this.ACSCPrice;
+   
+    // Create the templateData object
+    const templateData = {
       RefID : this.RefID,
       billingAddress:this.billingAddress,
-
+      ACSCPrice:this.ACSCPrice,
+      ACSCQty:this.ACSCQty,
+      DesPrice:this.DesPrice,
+      DesQty:this.DesQty,
+      TemplateName:this.TemplateName,
       
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TotalAmount:this.TotalAmount,
+  CustomerName:this.CustomerName,
+
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSaveRapidi64cam(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+
+  this.ACSCPrice=this.ACSCPrice,
+  this.ACSCQty=this.ACSCQty,
+  this.DesPrice=this.DesPrice,
+  this.DesQty=this.DesQty,
+
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
-  }
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 }

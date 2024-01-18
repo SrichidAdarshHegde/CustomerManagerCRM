@@ -24,6 +24,7 @@ userName: any;
   roleId: any;
   IsLoggedIn: any;
   purposeList: any;
+  purposeId: any;
 constructor(private masterSv: MasterService) {
   if (localStorage.getItem('IsLoggedIn') == 'true') {
     this.userName = localStorage.getItem('UserName');
@@ -62,14 +63,38 @@ this.masterSv.savePurposeJobTime(purposeData).subscribe((response: any) => {
 }
 
 editPurpose(data:any){
-
+  this.viewpurposeupdate = data.purposeName;
+  this.viewJobTime = data.jobTime;
+  this.purposeId = data.id;
 }
-deleteRequests(Id:any){
-
+deletePurpose(id:any){
+  this.masterSv.deletePurpose(id).subscribe((response: any) => {
+    if (response == 'success') {
+      alert('Purpose Deleted');
+      window.location.reload();
+    } else {
+      alert('Somthing Went Wrong!!');
+      window.location.reload();
+    }
+  });
 }
 
-UpdateRequest(){
-
+updatePurpose(){
+  var purposeData = {
+    Id:this.purposeId,
+    PurposeName:this.viewpurposeupdate,
+    JobTime: this.viewJobTime,
+    CreatedBy: this.userName,
+  };
+  this.masterSv.updatePurpose(purposeData).subscribe((response: any) => {
+    if (response == 'success') {
+      alert('Purpose - Est Job time Updated');
+      window.location.reload();
+    } else {
+      alert('Somthing Went Wrong!!');
+      window.location.reload();
+    }
+  });
 }
 exportTableToPDF(): void {
   const doc = new jspdf.jsPDF();

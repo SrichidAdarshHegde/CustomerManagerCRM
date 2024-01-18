@@ -5,10 +5,19 @@ import { AppGlobals } from 'src/app/AppGlobals';
   providedIn: 'root',
 })
 export class RegistrationService {
+
+
+  
   getDatewiserequestfollowup: any;
   GetDatewiserequestinvoice: any;
+  getData: any;
+
  
   constructor(private http: HttpClient, private globalurl: AppGlobals) {}
+
+
+
+ 
   //User Registartion
   userRegister(userRegData: any) {
     return this.http.post(
@@ -349,6 +358,135 @@ postSavequotationtemplateRapidI5APRIL2015(data:any)
 {
   return this.http.post(this.globalurl.weburl + 'quotation2015/SavequotationtemplateRapidI5APRIL2015/', data)
 }
+
+
+getQ4020details(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetQ4020details/'+ id);
+}
+
+
+getQ4020HTdetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetQ4020HTdetails/'+ id);
+}
+
+get2015indollordetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Get2015indollordetails/'+ id);
+}
+
+
+getRapidisparesdetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetRapidisparesdetails/'+ id);
+}
+
+
+getRapid64details(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetRapid64details/'+ id);
+}
+
+getRapid64CAMdetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetRapid64CAMdetails/'+ id);
+}
+
+getRapid2015JLXdetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetRapid2015JLXdetails/'+ id);
+}
+
+getRapiditabledetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetRapiditabledetails/'+ id);
+}
+
+getV4020details(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetV4020details/'+ id);
+}
+
+getV4030etails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetV4030etails/'+ id);
+}
+
+getV20152axesetails(id:any)
+{
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetV20152axesetails/'+ id);
+}
+
+
+//Quotation4020HT
+
+postSavequotation4020HT(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotation4020HT', data)
+}
+
+//Quotation2015INDOLLAR
+
+postSavequotation2015indollar(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotation2015indollar', data)
+}
+
+postSaverapidspares(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Saverapidspares', data)
+}
+
+
+
+
+postSaveRapidi64cam(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveRapidi64cam', data)
+}
+
+
+
+postSaveRapid2015JLX(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveRapid2015JLX', data)
+}
+
+postSaveRapidtrainingcharges(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveRapidtrainingcharges', data)
+}
+
+postSaveRapidtable(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveRapidtable', data)
+}
+
+postSaveV4020(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveV4020', data)
+}
+
+postSaveV4030(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveV4030', data)
+}
+
+postSaveV2015(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveV2015', data)
+}
+
+
+
+
+postSaverapid64(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Saverapid64', data)
+}
+
+
   //location details List
   getAlldetails(id:any){
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetAllDetails/'+id)

@@ -41,6 +41,9 @@ export class QMComponent {
   maillist: any;
   templateId: any;
   editcustomerID: any;
+  enquiry: string = '';
+  person1: string = '';
+  person2: string = '';
 
   constructor(
     private masterSv:MasterService,
@@ -62,6 +65,8 @@ export class QMComponent {
     this.getMail();
   }
 
+
+  
   addContactDetails() {
     if (this.machineNumber != null && this.customerID != null) {
       var contactdata = {
@@ -125,7 +130,7 @@ export class QMComponent {
   getTemplate(){
     this.masterSv.getTemplates().subscribe((response:any)=>{
       this.templatelist = response;
-      console.log(this.templatelist)
+      console.log(this.templatelist);
       if(this.templatelist.length!=0){
         this.exporting=true;
       }
