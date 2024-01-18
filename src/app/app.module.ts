@@ -86,6 +86,8 @@ import { RapidIAMCComponent } from './Components/quatation templates/rapid-iamc/
 import { RapidI5april2021Component } from './Components/quatation templates/rapid-i5april2021/rapid-i5april2021.component';
 
 
+
+
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 
@@ -102,6 +104,7 @@ import { RapidtableComponent } from './Components/QM TEMPLATES/rapidtable/rapidt
 import { Q4020Component } from './Components/QM TEMPLATES/q4020/q4020.component';
 import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.component';
 import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
+import { NumtowordsPipe } from 'src/numtowords.pipe';
 
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
@@ -129,6 +132,7 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
     RegionComponent,
     ZoneComponent,
     UserListComponent,
+    
     CustomerListsComponent,
     ModelMasterComponent,
     FeaturesMasterComponent,
@@ -159,7 +163,7 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
     BrochureComponent,
     QuotationtemplateComponent,
     DocumentmanagerComponent,
-
+    QuotationtemplateComponent,
     DocumentTypeMasterComponent,
     ModeofTransportMasterComponent,
     TemplateComponent,

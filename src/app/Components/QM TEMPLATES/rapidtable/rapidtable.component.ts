@@ -27,6 +27,19 @@ export class RapidtableComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+
+  editableVisionQty: string = '1 No';
+  editableVisionPrice: number =5825000; 
+
+  TemplateName:string="RapidI TABLE";
+
+
+  VisionQty: string = '1 No';
+  VisionPrice: number =5825000 ; 
+  TemplateID: any;
+  CustomerName: any;
+  TotalAmount: any;
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -83,27 +96,81 @@ getBillingAddress(){
     });
   }
 
+  updateTemplate() {
   
+    const previousValues = {
+      BasicSystemQty:this.VisionQty,
+      BasicSystemPrice:this.VisionPrice,
+    }
+      this.VisionQty = this.editableVisionQty;
+
+    this.VisionPrice = this.editableVisionPrice;
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
+   
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+  //  resetEditableValues() {
+     
+  //      this.editableaxesQty = null;
+  //      this.editableaxesPrice = null;
+  //  }
+  
+  fetchTemplate() {
+    this.regSv.getRapiditabledetails(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.VisionPrice = response.VisionPrice;
+  
+      this.VisionQty = response.VisionQty;
+    
+     
+  this.TemplateName=response.TemplateName;
+      // this.KindAttention = response.KindAttention;
+    });
+  }
+
   save(){
-    var templateData = {
+    this.TotalAmount = this.VisionPrice;
+   
+    // Create the templateData object
+    const templateData = {
       RefID : this.RefID,
       billingAddress:this.billingAddress,
+      VisionPrice:this.VisionPrice,
+      VisionQty:this.VisionQty,
+      CreatedBy :this.userName,
+      TotalAmount:this.TotalAmount,
 
-      
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSaveRapidtable(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+  this.VisionPrice=this.VisionPrice,
+  this.VisionQty=this.VisionQty,
+
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
-  }
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 }

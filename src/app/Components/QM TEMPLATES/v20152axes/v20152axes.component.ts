@@ -27,6 +27,22 @@ export class V20152axesComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateID:any;
+
+  //editable
+
+  editableaxesQty: string = '1 set';
+  editableaxesPrice:number=640000;
+
+  AxesQty: string = '1 Set';
+  
+  AxesPrice: number =640000 ; 
+
+  TemplateName:string="V2015_2Axes_Manual";
+  CustomerName:any;
+  TotalAmount: number;
+
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -51,6 +67,30 @@ export class V20152axesComponent {
    
   }
 
+  updateTemplate() {
+  
+    const previousValues = {
+      BasicSystemQty:this.AxesQty,
+      BasicSystemPrice:this.AxesPrice,
+    }
+      this.AxesQty = this.editableaxesQty;
+
+    this.AxesPrice = this.editableaxesPrice;
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
+   
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+  //  resetEditableValues() {
+     
+  //      this.editableaxesQty = null;
+  //      this.editableaxesPrice = null;
+  //  }
 
   print (printSectionId) {
     var innerContents = document.getElementById(printSectionId).innerHTML;
@@ -83,27 +123,67 @@ getBillingAddress(){
     });
   }
 
-  
+  fetchTemplate() {
+    this.regSv.getV20152axesetails(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.AxesQty = response.AxesQty;
+      this.AxesPrice = response.AxesPrice;
+    
+    
+    
+     
+  this.TemplateName=response.TemplateName;
+      // this.KindAttention = response.KindAttention;
+    });
+  }
   save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+    this.TotalAmount = this.AxesPrice ;
+   
+    // Create the templateData object
+    const templateData = {
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  AxesQty:this.AxesQty,
+
+  AxesPrice:this.AxesPrice,
+
+  
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+  TotalAmount:this.TotalAmount,
+   
+     
+
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSaveV2015(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
+  this.AxesQty=this.AxesQty,
+  this.AxesPrice=this.AxesPrice,
+
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
-    
-   
-  }
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
+  
+ 
+}
 }

@@ -27,6 +27,54 @@ export class Q4020HTComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateID:any;
+  
+//editable
+
+  editableQty: number = 1;
+  editablePrice:number=900000;
+
+  editableQtyA:number=1;
+  editablePriceA:number=267000;
+
+  editableQtyB:number=1;
+  editablePriceB:number=36000;
+
+   editableQtyC:string='1 Pair';
+  editablePriceC:number=19500;
+
+  editableQtyD:number=1;
+  editablePriceD:number=89100;
+
+
+
+
+
+
+
+  BasicSystemQty: number=1;
+  BasicSystemPrice: number= 900000; 
+
+  OptionalQtyA:number=1;
+  OptionalPriceA:number=267000;
+
+  OptionalQtyB:number=1;
+  OptionalPriceB:number=36000;
+
+  OptionalQtyC:string='1 Pair';
+  OptionalPriceC:  number=19500;
+
+  OptionalQtyD:number=1;
+  OptionalPriceD: number =89100; 
+
+
+
+  TemplateName: string = "Quotation 4020HT";
+  CustomerName:any;
+  KindAttention: any;
+  TotalAmount: number;
+  cdr: any;
+ 
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -51,6 +99,74 @@ export class Q4020HTComponent {
    
   }
 
+  updateTemplate() {
+  
+    const previousValues = {
+      BasicSystemQty:this.BasicSystemQty,
+      BasicSystemPrice:this.BasicSystemPrice,
+    
+      OptionalQtyA:this.OptionalQtyA,
+      OptionalPriceA:this.OptionalPriceA,
+    
+      OptionalQtyB:this.OptionalQtyB,
+      OptionalPriceB:this.OptionalPriceB,
+    
+      OptionalQtyC:this.OptionalQtyC,
+      OptionalPriceC:this.OptionalPriceC,
+    
+      OptionalQtyD:this.OptionalQtyD,
+      OptionalPriceD:this.OptionalPriceD,
+    
+    };
+
+
+    this.BasicSystemQty = this.editableQty;
+
+    this.BasicSystemPrice = this.editablePrice;
+    this.OptionalQtyA = this.editableQtyA;
+    this.OptionalPriceA = this.editablePriceA;
+    this.OptionalQtyB = this.editableQtyB;
+    this.OptionalPriceB = this.editablePriceB;
+    this.OptionalQtyC = this.editableQtyC;
+    this.OptionalPriceC = this.editablePriceC;
+    this.OptionalQtyD = this.editableQtyD;
+    this.OptionalPriceD = this.editablePriceD;
+  
+
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+ if (changesMade) {
+    alert('Changes made successfully.');
+  } else {
+    alert('No changes made or something went wrong.');
+  }
+
+  // Reset the editable values
+  this.resetEditableValues();
+}
+resetEditableValues() {
+  
+    this.editableQty = null;
+    this.editablePrice = null;
+    this.editableQtyA = null;
+    this.editablePriceA = null;
+    this.editableQtyB = null;
+    this.editablePriceB = null;
+    this.editableQtyC = null;
+    this.editablePriceC = null;
+    this.editableQtyD = null;
+    this.editablePriceD = null;
+  
+}
+
+  logCompleteQuotation() {
+    const quotationDiv = document.getElementById('RefID');
+    if (quotationDiv) {
+      console.log(quotationDiv.innerHTML);
+    } else {
+      console.error('Element with ID "RefID" not found.');
+    }
+  }
+
 
   print (printSectionId) {
     var innerContents = document.getElementById(printSectionId).innerHTML;
@@ -60,6 +176,7 @@ export class Q4020HTComponent {
     popupWinindow.document.close();
     //window.print();
   };
+  
 
   public value = new Date();
 
@@ -83,26 +200,102 @@ getBillingAddress(){
     });
   }
 
+  fetchTemplate() {
+    this.regSv.getQ4020HTdetails(this.RefID).subscribe((response: any) => {
+      this. BasicSystemQty=response.basicSystemQty,
+      this. BasicSystemPrice=response.basicSystemPrice,
+
+      this.OptionalQtyA = response.optionalQtyA;
+      this.OptionalPriceA = response.optionalPriceA;
   
+      this.OptionalQtyB = response.optionalQtyB;
+      this.OptionalPriceB = response.optionalPriceB;
+  
+      this.OptionalQtyC = response.optionalQtyC;
+      this.OptionalPriceC = response.optionalPriceC;
+  
+      this.OptionalQtyD = response.optionalQtyD;
+      this.OptionalPriceD = response.optionalPriceD;
+  
+      this.TemplateName=response.TemplateName;
+  
+      this.KindAttention = response.KindAttention;
+    });
+  }
+  
+
+
   save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+    this.TotalAmount = this.BasicSystemPrice;
+    this.cdr.detectChanges();
+    // Create the templateData object
+    const templateData = {
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  BasicSystemQty:this.BasicSystemQty,
+  BasicSystemPrice:this.BasicSystemPrice,
+
+  OptionalQtyA:this.OptionalQtyA,
+  OptionalPriceA:this.OptionalPriceA,
+
+  OptionalQtyB:this.OptionalQtyB,
+  OptionalPriceB:this.OptionalPriceB,
+
+  OptionalQtyC:this.OptionalQtyC,
+  OptionalPriceC:this.OptionalPriceC,
+
+  OptionalQtyD:this.OptionalQtyD,
+  OptionalPriceD:this.OptionalPriceD,
+
+
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+  KindAttention:this.KindAttention,
+  TotalAmount:this.TotalAmount,
+   
+     
+
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSavequotation4020HT(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+        this.BasicSystemQty=this.BasicSystemQty,
+  this.BasicSystemPrice=this.BasicSystemPrice,
+
+  this.OptionalQtyA=this.OptionalQtyA,
+  this.OptionalPriceA=this.OptionalPriceA,
+
+  this.OptionalQtyB=this.OptionalQtyB,
+  this.OptionalPriceB=this.OptionalPriceB,
+
+  this.OptionalQtyC=this.OptionalQtyC,
+  this.OptionalPriceC = this.OptionalPriceC,
+
+  this.OptionalQtyD = this.OptionalQtyD,
+  this.OptionalPriceD = this.OptionalPriceD,
+
+
+        
+        this.KindAttention=this.KindAttention,
+       
+        alert("Saved Successfully")
+     //   window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
+        alert("Somthing Went Wrong!!")
+      //  window.location.reload()
+      } 
+    })
+
     
    
   }

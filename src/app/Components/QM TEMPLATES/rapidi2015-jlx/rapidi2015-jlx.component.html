@@ -1,9 +1,168 @@
 <div class="col-md-12 row">
     <div class="col-md-1"></div>
     <div class="col-md-11">
+
+        <div class="container" style="border: 0cap;">
+            <br> <div>
+                <label for="refIDInput">Enter Reference ID:</label>
+                <input type="text" id="refIDInput" [(ngModel)]="RefID" placeholder="Enter Reference ID">&nbsp;
+                <button (click)="fetchTemplate()">Fetch</button>
+              </div>
+            <div class="col-md-8">
+                <p style="text-align: center; font-size: 20px;"><strong> <u> RapidI2015-JLX Editabel </u></strong></p>
+
+                </div> 
+            <div class="col-md-12 row">
+                
+                 
+    <table style="width: 67%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQty:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editableQty" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePrice:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablePrice" style="width: 100px; border: none;" />
+            </td>
+        </tr>
+
+        <tr style="border: 1px solid black; height: 1px;">
+        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyA:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input type="string" id="editableQty" [(ngModel)]="editableQtyA" style="width: 100px; border: none;" />
+        </td>
+        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceA:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input  type="text" id="editablePrice" [(ngModel)]="editablePriceA" style="width: 100px; border: none;" />
+        </td>
+        </tr>
+
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyB:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editableQtyB" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceB:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablePriceB" style="width: 100px; border: none;" />
+            </td>
+            </tr>
+
+            <tr style="border: 1px solid black; height: 1px;">
+                <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                    <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyC:</label>
+                </td>
+                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                    <input type="text" id="editableQty" [(ngModel)]="editableQtyC" style="width: 100px; border: none;" />
+                </td>
+                <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                    <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceC:</label>
+                </td>
+                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                    <input  type="text" id="editablePrice" [(ngModel)]="editablePriceC" style="width: 100px; border: none;" />
+                </td>
+                </tr>
+
+                <tr style="border: 1px solid black; height: 1px;">
+                    <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                        <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyD:</label>
+                    </td>
+                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                        <input type="text" id="editableQty" [(ngModel)]="editableQtyD" style="width: 100px; border: none;" />
+                    </td>
+                    <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                        <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceD:</label>
+                    </td>
+                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                        <input  type="text" id="editablePrice" [(ngModel)]="editablePriceD" style="width: 100px; border: none;" />
+                    </td>
+                    </tr>
+
+                    
+                    <tr style="border: 1px solid black; height: 1px;">
+                        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyE:</label>
+                        </td>
+                        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                            <input type="text" id="editableQty" [(ngModel)]="editableQtyE" style="width: 100px; border: none;" />
+                        </td>
+                        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceE:</label>
+                        </td>
+                        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                            <input  type="text" id="editablePrice" [(ngModel)]="editablePriceE" style="width: 100px; border: none;" />
+                        </td>
+                        </tr>
+
+                        <tr style="border: 1px solid black; height: 1px;">
+                            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyF:</label>
+                            </td>
+                            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                <input type="text" id="editableQty" [(ngModel)]="editableQtyF" style="width: 100px; border: none;" />
+                            </td>
+                            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceF:</label>
+                            </td>
+                            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                <input  type="text" id="editablePrice" [(ngModel)]="editablePriceF" style="width: 100px; border: none;" />
+                            </td>
+                            </tr>
+
+                            <tr style="border: 1px solid black; height: 1px;">
+                                <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                    <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyG:</label>
+                                </td>
+                                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                    <input type="text" id="editableQty" [(ngModel)]="editableQtyG" style="width: 100px; border: none;" />
+                                </td>
+                                <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                    <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceG:</label>
+                                </td>
+                                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                    <input  type="text" id="editablePrice" [(ngModel)]="editablePriceG" style="width: 100px; border: none;" />
+                                </td>
+                                </tr>
+
+                                <tr style="border: 1px solid black; height: 1px;">
+                                    <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                        <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyH:</label>
+                                    </td>
+                                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                        <input type="text" id="editableQty" [(ngModel)]="editableQtyH" style="width: 100px; border: none;" />
+                                    </td>
+                                    <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                        <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceH:</label>
+                                    </td>
+                                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                        <input  type="text" id="editablePrice" [(ngModel)]="editablePriceH" style="width: 100px; border: none;" />
+                                    </td>
+                                    </tr>
+                            
+
+
+
+    </table> 
+    <div class="col-md-8 d-flex justify-content-center align-items-center"><br> <br> <br> 
+        <button class="btn btn-primary text-center" (click)="updateTemplate()">Save Changes</button>
+    </div>
+    
         <div class="container" style="border: 0cap;">
 
-            <div class="col-md-12 row">
+           
                 <div class="col-md-1"></div>
                 <div id="printsection" class="col-md-8 table-bordered"
                     style="background-color:white;border-color:forestgreen;border-width:2px">
@@ -12,9 +171,14 @@
                         <div class="col-md-8">
                           
                         </div>
-                        <div class="col-md-4 logo">
-                           <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
-                        </div>
+                        <div class="col-md-2 logo">
+                           
+                            <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
+                         </div>
+                         <div class="col-md-2">
+                             <p style="text-align: center; font-size: 30px;"><strong>RapidI 2015JLX</strong></p>
+                             <input type="hidden" [(ngModel)]="TemplateName" value="RapidI 2015JLX" />
+                             </div>
                       
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
@@ -144,15 +308,16 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 1.
                             </td>
-                            <td style="width: 65%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 65%; vertical-align: top; border: 1px solid black; background-color: lightblue;">
                                 <strong> Basic System </strong>
                             </td>
+                            
 
-                            <td rowspan="4" style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
-                                B
-                            </td>
-                            <td rowspan="4" style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
-                                C
+                            <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{BasicSystemQty}}</p>
+                              </td>
+                              <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p   style="width: 100%; border: none; outline: none;">{{BasicSystemPrice}}</p>
                             </td>
 
 
@@ -163,7 +328,7 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 <br>
                                 a<br>
-                                b <br><br>c <br> <br>
+                                b <br>c <br> 
                                 d<br> e<br> <br><br> f<br> g
 
 
@@ -189,7 +354,7 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                                 2.
                             </td>
 
-                            <td style="width: 65%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 65%; vertical-align: top; border: 1px solid black;  background-color: lightblue;">
                                 <strong> Rapid-I V5.0 Software features </strong>
 
 
@@ -224,18 +389,16 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 
 
 
-
+                   
 
                         <tr>
-                            <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
-                                        system : USD 12,500 <br>
-                                        (US Dollar Twelve Thousand Five Hundred Only)
-
-                                    </strong>
-
-                                </h5>
-                            </td>
+                            <td colspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+    <h5 style="text-align: center;">
+        <strong>Basic Machine package price excluding Computer system: USD {{ TotalAmount | number }} <br>
+            (US Dollar {{ TotalAmount | numtowords  }} Only)|
+        </strong>
+    </h5>
+</td>
                         </tr>
 
 
@@ -244,7 +407,7 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                                 3.
                             </td>
 
-                            <td style="width: 65%; vertical-align: top; border: 1px solid black;">
+                            <td style="width: 65%; vertical-align: top; border: 1px solid black;  background-color: lightblue;">
                                 <strong> Optional Accessories & Features: </strong>
 
 
@@ -258,28 +421,26 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 
 
                         <tr>
-
-                            <td style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 a
-
-
-
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                Full CNC system with software-based Auto-Focus; Automatic Edge Detection (in profile light); Advanced Dust/Burr Filtering Algorithms; Automated, Customised Reports; Easy Part-Programming
+                                Full CNC system with software-based Auto-Focus; Automatic Edge Detection (in profile
+                                light); Advanced Dust/Burr Filtering Algorithms; <br> Automated, Customised Reports;
+                                Easy Part-Programming
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;" >{{OptionalQtyA}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                5,480
+                                <p  style="width: 100%; border: none; outline: none;" >{{OptionalPriceA}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 b
 
 
@@ -288,19 +449,21 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2x Lens for 22X to 134X magnification
 
+
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                270
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 c
 
 
@@ -308,18 +471,20 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Co-Axial Lighting System (to light up small bores)
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1,850                            </td>
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
+                            </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 d
 
 
@@ -331,36 +496,37 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1  pair
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyD}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                190                            </td>
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceD}}</p>
+                            </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 e
 
 
 
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                Renishaw® Touch Probe (TP20), Controller, software & 2mm Ruby Stylus*
+                                Renishaw® Touch Probe (TP20),Controller, software & 2mm Ruby Stylus*
 
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyE}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                4,750
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceE}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 f
 
 
@@ -369,19 +535,21 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2D  Non - Contact Contour tracing module (XZ or YZ plane) *
 
+
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                3,500
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 g
 
 
@@ -390,20 +558,21 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 3D  Non - Contact Scanning Module *
 
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                4,200
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
                             </td>
                         </tr>
 
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top;text-align: right;  border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 h
 
 
@@ -412,13 +581,15 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2D Automatic profile scan module (only on X Y plane) *
 
+
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyH}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1,349
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceH}}</p>
                             </td>
                         </tr>
 
@@ -427,8 +598,7 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 <td></td>
 <td style="width: 5%; vertical-align: top; border: 1px solid black;">
     *Works only on CNC machine.
-
-                                <br>
+ <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;"></td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;"></td>
@@ -447,9 +617,8 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                      
                     </div>
 
-                </div>
+                    <br><br><br><br> <br><br><br><br>
 
-              
 
                 <div class="col-md-12 row">
                     <div class="col-md-6">
@@ -774,34 +943,40 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 
 
                 </table>
-                </div>
-                <div style="text-align: left;">
-              
-                    <p>For  <strong> CUSTOMISED TECHNOLOGIES (P) LTD.,</strong></p>
-
-                   <strong> Shivaputra B Dinni </strong> <br />
-                   <strong>    (Sr. Application Engg) </strong><br />
-
-                 
-                </div>
             </div>
-
+            <div style="text-align: left;">
           
+                <p>For  <strong> CUSTOMISED TECHNOLOGIES (P) LTD.,</strong></p>
+
+               <strong> Shivaputra B Dinni </strong> <br />
+               <strong>    (Sr. Application Engg) </strong><br />
+
+             
+            </div> </div>
+
+      
 
 
+    </div><br>
+
+    <div>&nbsp;</div>
+
+   
+    <div class="col-md-12 row"><br><br><br>
+        <div class="col-md-4"></div>
+        <div class="col-md-1">
+            
+<button style="width: 50%;" type="button" class="btn btn-success" data-dismiss="modal"
+style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button> 
         </div>
-
-        <div>&nbsp;</div>
-        <div class="col-md-12 row"><br />
-            <div class="col-md-4">&nbsp;</div>
-            <div class="col-md-2">
-                <input type="button" (click)="print('printsection')" value="PRINT"
-                    class="form-control btn-warning" />
-            </div>
-            <br><br> <br><br> <br><br> <br><br>
-            <div class="col-md-4">&nbsp;</div>
+        <div class="col-md-2">
+            <input style="width: 50%;" type="button" (click)="print('printsection')" value="PRINT"
+                class="form-control btn-warning" />
         </div>
+        <br><br> <br><br> <br><br> <br><br><br> <br><br>
+        <div class="col-md-4">&nbsp;</div>
     </div>
+</div>
 </div>
 
 

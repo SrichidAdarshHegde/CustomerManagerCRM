@@ -2,9 +2,9 @@
   "name": "customer-manager",
   "version": "0.0.0",
   "scripts": {
+    "start": "node --max_old_space_size=2192 ./node_modules/@angular/cli/bin/ng serve",
+    "build": "node --max_old_space_size=2192 ./node_modules/@angular/cli/bin/ng build --configuration production --build-optimizer=false --output-hashing=all",
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -26,6 +26,7 @@
     "@syncfusion/ej2": "^24.1.45",
     "@syncfusion/ej2-angular-documenteditor": "^24.1.41",
     "@types/jspdf": "^2.0.0",
+    "@types/number-to-words": "^1.2.3",
     "angular-animations": "^0.11.0",
     "axios": "^1.4.0",
     "fa-icons": "^0.2.0",
@@ -36,6 +37,7 @@
     "ngx-doc-viewer": "^15.0.1",
     "ngx-infinite-scroll": "^16.0.0",
     "ngx-pagination": "^6.0.3",
+    "number-to-words": "^1.2.4",
     "routes": "^2.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

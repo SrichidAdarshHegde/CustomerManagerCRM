@@ -26,6 +26,12 @@ export class RapidIAMCComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  getBillingAddress1: any;
+  getRefNo1: any;
+  TemplateID: any;
+  CustomerName: any;
+  TemplateName: any;
+KindAttention: any;
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -45,8 +51,8 @@ export class RapidIAMCComponent {
 
 
   ngOnInit(): void {
-    this.getRefNo(); 
-    this.getBillingAddress();
+    this.getRefNo1(); 
+    this.getBillingAddress1();
    
   }
 
@@ -63,9 +69,9 @@ export class RapidIAMCComponent {
   public value = new Date();
 
 
-getBillingAddress(){
+  getCustomerBillingAddress(){
     this.selectedcustID= this.customerID;
-    this.regSv.getCustomerBillingAddress(this.selectedcustID).subscribe((result: any) => {
+    this.regSv.getCustomerBillingAddress1(this.selectedcustID).subscribe((result: any) => {
       this.customerdata = result;
       console.log(this.customerdata);
       this.billingAddress=this.customerdata[0].billingAddress;
@@ -74,7 +80,7 @@ getBillingAddress(){
 }
 
   getRefNo() {
-    this.regSv.GetRefNo().subscribe((result: any) => {
+    this.regSv.GetRefNo1().subscribe((result: any) => {
       if (this.RefID == null || this.RefID == '') {
         this.tableLength = result.length + 1;
         this.RefID = this.tableLength.toString().padStart(3, '0'); // Assuming result is an array or collection
@@ -88,12 +94,16 @@ getBillingAddress(){
       RefID : this.RefID,
       billingAddress:this.billingAddress,
 
-      
+    
+      TemplateID:this.TemplateID,
+      TemplateName:this.TemplateName,
+      CustomerName:this.CustomerName,
+    
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSavequotationtemplateRapidIAMC(templateData).subscribe((response:any )=>
       {
         if(response == "success"){
-          alert("Interacted Successfully")
+          alert("Saved Successfully")
           window.location.reload()
         }
         else

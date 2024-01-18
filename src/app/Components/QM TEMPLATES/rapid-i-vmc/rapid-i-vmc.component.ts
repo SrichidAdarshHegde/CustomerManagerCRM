@@ -94,7 +94,7 @@ getBillingAddress(){
     this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
       {
         if(response == "success"){
-          alert("Interacted Successfully")
+          alert("Saved Successfully")
           window.location.reload()
         }
         else

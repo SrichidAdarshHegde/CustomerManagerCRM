@@ -85,6 +85,7 @@ import { RapidI5april2021Component } from './Components/quatation templates/rapi
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
+import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
 
 const routes: Routes = [
 {path : '', component: HomeComponent},
@@ -109,6 +110,7 @@ const routes: Routes = [
 {path : 'customerLists', component: CustomerListsComponent},
 {path : 'modelMaster', component: ModelMasterComponent},
 {path : 'featuresMaster', component: FeaturesMasterComponent},
+{path : 'purposeMaster', component: PurposeJobTimeMasterComponent},
 {path : 'invoiceParticulars', component: InvoicePerticularComponent},
 {path : 'machineLists', component: MachineListComponent},
 {path : 'request&interaction', component: RequestAndInteractionComponent},
@@ -198,7 +200,9 @@ const routes: Routes = [
 
 {path:'v4030/:id',component:V4030Component},
 
-{path:'v2015-jlx',component:V20152axesComponent},
+{path:'v2015-jlx/:id',component:V20152axesComponent},
+
+
 
 
 {path:'rapidIVMC',component:RapidIVMCComponent},
@@ -220,6 +224,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
