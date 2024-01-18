@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
-
 import * as XLSX from 'xlsx';
 
 import { ElementRef, ViewChild } from '@angular/core';
