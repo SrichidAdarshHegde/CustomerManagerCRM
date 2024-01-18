@@ -5,6 +5,165 @@
 
             <div class="col-md-12 row">
                 <div class="col-md-1"></div>
+                
+        <div>
+            <label for="refIDInput">Enter Reference ID:</label>
+            <input type="text" id="refIDInput" [(ngModel)]="RefID" placeholder="Enter Reference ID">
+            <button (click)="fetchTemplate()">Fetch</button>
+        </div>
+    
+        <div class="col-md-8">
+            <p style="text-align: center; font-size: 20px;"><strong> <u> Quotation 2015 Editabel </u></strong></p>
+
+            </div> 
+        <div class="col-md-12 row">
+            
+            
+    <table style="width: 67%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
+    <tr style="border: 1px solid black; height: 1px;">
+        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQty:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input type="text" id="editableQty" [(ngModel)]="editableQty" style="width: 100px; border: none;" />
+        </td>
+        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePrice:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input  type="text" id="editablePrice" [(ngModel)]="editablePrice" style="width: 100px; border: none;" />
+        </td>
+    </tr>
+
+    <tr style="border: 1px solid black; height: 1px;">
+    <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+        <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyA:</label>
+    </td>
+    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+        <input type="string" id="editableQty" [(ngModel)]="editableQtyA" style="width: 100px; border: none;" />
+    </td>
+    <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+        <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceA:</label>
+    </td>
+    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+        <input  type="text" id="editablePrice" [(ngModel)]="editablePriceA" style="width: 100px; border: none;" />
+    </td>
+    </tr>
+
+    <tr style="border: 1px solid black; height: 1px;">
+        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyB:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input type="text" id="editableQty" [(ngModel)]="editableQtyB" style="width: 100px; border: none;" />
+        </td>
+        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceB:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input  type="text" id="editablePrice" [(ngModel)]="editablePriceB" style="width: 100px; border: none;" />
+        </td>
+        </tr>
+
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyC:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editableQtyC" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceC:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablePriceC" style="width: 100px; border: none;" />
+            </td>
+            </tr>
+
+            <tr style="border: 1px solid black; height: 1px;">
+                <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                    <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyD:</label>
+                </td>
+                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                    <input type="text" id="editableQty" [(ngModel)]="editableQtyD" style="width: 100px; border: none;" />
+                </td>
+                <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                    <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceD:</label>
+                </td>
+                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                    <input  type="text" id="editablePrice" [(ngModel)]="editablePriceD" style="width: 100px; border: none;" />
+                </td>
+                </tr>
+
+                
+                <tr style="border: 1px solid black; height: 1px;">
+                    <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                        <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyE:</label>
+                    </td>
+                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                        <input type="text" id="editableQty" [(ngModel)]="editableQtyE" style="width: 100px; border: none;" />
+                    </td>
+                    <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                        <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceE:</label>
+                    </td>
+                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                        <input  type="text" id="editablePrice" [(ngModel)]="editablePriceE" style="width: 100px; border: none;" />
+                    </td>
+                    </tr>
+
+                    <tr style="border: 1px solid black; height: 1px;">
+                        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyF:</label>
+                        </td>
+                        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                            <input type="text" id="editableQty" [(ngModel)]="editableQtyF" style="width: 100px; border: none;" />
+                        </td>
+                        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceF:</label>
+                        </td>
+                        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                            <input  type="text" id="editablePrice" [(ngModel)]="editablePriceF" style="width: 100px; border: none;" />
+                        </td>
+                        </tr>
+
+                        <tr style="border: 1px solid black; height: 1px;">
+                            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyG:</label>
+                            </td>
+                            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                <input type="text" id="editableQty" [(ngModel)]="editableQtyG" style="width: 100px; border: none;" />
+                            </td>
+                            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceG:</label>
+                            </td>
+                            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                <input  type="text" id="editablePrice" [(ngModel)]="editablePriceG" style="width: 100px; border: none;" />
+                            </td>
+                            </tr>
+
+                            <tr style="border: 1px solid black; height: 1px;">
+                                <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                    <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyH:</label>
+                                </td>
+                                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                    <input type="text" id="editableQty" [(ngModel)]="editableQtyH" style="width: 100px; border: none;" />
+                                </td>
+                                <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                    <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceH:</label>
+                                </td>
+                                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                    <input  type="text" id="editablePrice" [(ngModel)]="editablePriceH" style="width: 100px; border: none;" />
+                                </td>
+                                </tr>
+                        
+
+
+
+    </table> 
+    <div class="col-md-8 d-flex justify-content-center align-items-center"><br> <br> <br> 
+    <button class="btn btn-primary text-center" (click)="updateTemplate()">Save Changes</button>
+    </div>
+       
                 <div id="printsection" class="col-md-8 table-bordered"
                     style="background-color:white;border-color:forestgreen;border-width:2px">
 
@@ -15,7 +174,14 @@
                         <div class="col-md-4 logo">
                            <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
                         </div>
-                      
+                        <div class="col-md-2">
+                            <p style="text-align: center; font-size: 30px;">
+                                <strong>Quotation 4030 In Dollar</strong>
+                            </p>
+                            
+                            <!-- Hidden input field to save the static name using ngModel -->
+                            <input type="hidden" [(ngModel)]="TemplateName" value="Quotation 4030 In Dollar" />
+                        </div>
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
                         <tr style="border: 1px solid black; height: 25px;">
@@ -40,7 +206,9 @@
                             <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
                             <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
                             <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
-                            <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
+                            <p style="text-align: left; border-bottom: 0;">
+                                <input type="text" id="KindAttention" name="KindAttention" [(ngModel)]="KindAttention" style="width: 100%; border: none;" required>
+                              </p>
                           </td>
                       
                           <!-- Third Column for Billing Address -->
@@ -148,11 +316,12 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                                 <strong> Basic System </strong>
                             </td>
 
+                           
                             <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1 SET
-                            </td>
-                            <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                17,040 
+                                <p  style="width: 100%; border: none; outline: none;">{{BasicSystemQty}}</p>
+                              </td>
+                              <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p   style="width: 100%; border: none; outline: none;">{{BasicSystemPrice}}</p>
                             </td>
 
 
@@ -228,35 +397,15 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
 
                         <tr>
                             <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
-                                        system : USD 17,040=00 <br>
-                                        (US Dollar Seventeen Thousand and Forty Only)
-
-                                    </strong>
+                                <h5 style="text-align: center;">  <strong>Basic Machine package price excluding Computer system: USD {{ BasicSystemPrice | number }} <br>
+                                    (US Dollar {{ BasicSystemPrice |numtowords }} Only)
+                                </strong>
 
                                 </h5>
                             </td>
                         </tr>
 
-
-                        <tr>
-                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                3.
-                            </td>
-
-                            <td style="width: 65%; vertical-align: top; border: 1px solid black;">
-                                <strong> Optional Accessories & Features: </strong>
-
-
-                            </td>
-
-<td></td>
-
-<td></td>
-                        </tr>
-
-
-
+       
                         <tr>
 
                             <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
@@ -272,10 +421,10 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;" >{{OptionalQtyA}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                5,480
+                                <p  style="width: 100%; border: none; outline: none;" >{{OptionalPriceA}}</p>
                             </td>
                         </tr>
 
@@ -290,13 +439,15 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2x Lens for 22X to 134X magnification
 
+
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                270
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
                             </td>
                         </tr>
 
@@ -314,16 +465,16 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1,850
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top; text-align: right;border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 d
 
 
@@ -335,16 +486,16 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1 pair
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyD}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                190
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceD}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top; text-align: right;border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 e
 
 
@@ -352,13 +503,14 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 Renishaw® Touch Probe (TP20),Controller, software & 2mm Ruby Stylus*
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyE}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                4,750
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceE}}</p>
                             </td>
                         </tr>
 
@@ -371,20 +523,23 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
 
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                               2D  Non - Contact Contour tracing module (XZ or YZ plane) *
+                                2D  Non - Contact Contour tracing module (XZ or YZ plane) *
+
+
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                3,500
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
                             </td>
                         </tr>
 
                         <tr>
 
-                            <td style="width: 5%; vertical-align: top; text-align: right;border: 1px solid black;">
+                            <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
                                 g
 
 
@@ -392,13 +547,15 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 3D  Non - Contact Scanning Module *
-                                
+
+
+                                <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                4,200
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
                             </td>
                         </tr>
 
@@ -413,13 +570,16 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 2D Automatic profile scan module (only on X Y plane) *
+
+
+
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                1,349
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
                             </td>
                         </tr>
 
@@ -428,10 +588,8 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
 <td></td>
 <td style="width: 5%; vertical-align: top; border: 1px solid black;">
     *Works only on CNC machine.
-                                <br>
-
-
-                            
+ <br>
+                            </td>
                             
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;"></td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;"></td>
@@ -794,6 +952,7 @@ As desired, we are pleased to offer our Vision Measuring System – Rapid-I v403
             <div>&nbsp;</div>
             <div class="col-md-12 row"><br />
                 <div class="col-md-4">&nbsp;</div>
+                <button type="button" class="btn btn-success btn-md" data-dismiss="modal" style="background-color: rgb(27, 9, 129); height: 40px;" (click)="save()">SAVE</button>
                 <div class="col-md-2">
                     <input type="button" (click)="print('printsection')" value="PRINT"
                         class="form-control btn-warning" />
