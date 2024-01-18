@@ -64,6 +64,7 @@ import { Q4020Component } from './Components/QM TEMPLATES/q4020/q4020.component'
 import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.component';
 import { RapidtableComponent } from './Components/QM TEMPLATES/rapidtable/rapidtable.component';
 import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
+import { FormsModule } from '@angular/forms';
 
 
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
