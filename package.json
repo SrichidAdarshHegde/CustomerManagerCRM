@@ -23,7 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.1.1",
     "@ng-select/ng-select": "^11.0.0",
     "@popperjs/core": "^2.11.8",
-    "@syncfusion/ej2": "^24.1.41",
+    "@syncfusion/ej2": "^24.1.45",
     "@syncfusion/ej2-angular-documenteditor": "^24.1.41",
     "@types/jspdf": "^2.0.0",
     "@types/number-to-words": "^1.2.3",
