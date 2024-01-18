@@ -123,7 +123,7 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
     DashBoardComponent,
     RoleMasterComponent,
     ToUpperPipe,
-    CustomerRegistrationComponent,
+     CustomerRegistrationComponent,
     MachineRegistrationComponent,
     CountryComponent,
     StateComponent,
