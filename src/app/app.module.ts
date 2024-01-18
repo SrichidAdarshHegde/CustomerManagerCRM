@@ -109,7 +109,6 @@ import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.com
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -203,10 +202,6 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
 RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
-NumtowordsPipe,
-
-
-
 
   ],
   imports: [

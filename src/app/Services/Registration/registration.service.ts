@@ -92,6 +92,12 @@ export class RegistrationService {
   getPerticularCust(data: any) {
     return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetPerticularCust/' + data)
   }
+  getMachineTicketDetails(id:any){
+    return this.http.get(this.globalurl.weburl + 'CustomerRegistration/GetMachineTicketDetails/' + id)
+  }
+  getRequestForById(id:any){
+    return this.http.get(this.globalurl.weburl + 'Requests/GetRequestForById/' + id)
+  }
   getMachineInLocation(id:any){
     return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetMachineInLocation/'+id)
   }
@@ -154,6 +160,9 @@ export class RegistrationService {
   getMachineFromMachineNumber(machineId: any) {
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineFromMachineNumber/' + machineId);
   }
+  getTicketDetailsFromTicket(ticketNo :any){
+    return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetTicketDetailsFromTicket/' + ticketNo);
+  }
   getMachineRequestsFromMachineNumber(machineId:any){
     return this.http.get(this.globalurl.weburl + 'RequestAndInteractions/GetMachineRequestsFromMachineNumber/'+ machineId);
   }
@@ -183,6 +192,10 @@ export class RegistrationService {
   }
   GetMachineId(){
     return this.http.get(this.globalurl.weburl + 'Registration/GetMachineId')
+  }
+  // Travel sheet component
+  getTripSheetNo(){
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNo')
   }
   // Travel Budget Component
   saveTravelBudget(budgetdata: any) {

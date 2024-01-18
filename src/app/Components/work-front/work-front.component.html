@@ -21,58 +21,43 @@
     <div class="table-responsive">
         <div class="col-md-12 row" *ngIf="zoneSelected">
             <table class="table table-bordered">
-                <table #table id="tableId" class="table table-bordered"
-                    style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
+                <table #table id="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                     <tr style="border-width:1px; border-color:black;font-size:12px;">
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Sl No</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Ticket No</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Date</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             M/c No</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Company</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Priority </th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Schedule</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Purpose</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Remarks {{formattedDateRemarks}}</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             <div class="btn-group">
                                 <button class="btn btn-secondary" (click)="sortWorklist()"> Route No </button>
                             </div>
                         </th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Cluster</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
-                            Done</th>
+                        <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            Done</th> -->
                         <!-- <th
                             style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Sequence
                         </th> -->
                     </tr>
                     <tbody>
-                        <tr
-                            *ngFor="let request of otherWorklist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                            <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 *
-                                (p-1)+(i+1)}}
+                        <tr *ngFor="let request of otherWorklist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                            <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 * (p-1)+(i+1)}}
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{ request.tokenID}}</td>
@@ -97,12 +82,11 @@
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{request.cluster}}</td>
-                            <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup"
-                                    (click)="Done(request)">Done
+                            <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup" (click)="Done(request)">Done
                                     <i class='fas fa-arrow-alt-circle-right'></i>
                                 </button>
-                            </td>
+                            </td> -->
                             <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
                                 <input class="form-control" type="text" [(ngModel)]="request.sequence" style="width: 50px;">
                             </td> -->
@@ -112,8 +96,7 @@
                 <div style="text-align: center;" *ngIf="exporting">
                     <button style="margin: 0 auto;" class="btn btn-info" (click)="exportTableToExcel()">Export to Excel
                         &nbsp;&nbsp;<i class="far fa-file-excel"></i></button>
-                    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info"
-                        (click)="exportTableToPDF()">Export to
+                    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF()">Export to
                         PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
                 </div>
             </table>
@@ -123,59 +106,44 @@
     <div class="table-responsive">
         <div class="col-md-12 row" *ngIf="zoneSelected">
             <table class="table table-bordered">
-                <table #table1 id="tableId1" class="table table-bordered"
-                    style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
+                <table #table1 id="tableId1" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                     <thead>
                         <tr style="border-width:1px; border-color:black;font-size:12px;">
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Sl No</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Ticket No</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Date</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 M/c No</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Company</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Priority </th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Schedule</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Purpose</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Remarks {{formattedDateRemarks}}</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 <div class="btn-group">
                                     <button class="btn btn-secondary" (click)="sortWorklist()"> Route No
                                     </button>
                                 </div>
                             </th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Cluster</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
-                                Done</th>
-                            <th
-                                style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                                Done</th> -->
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                                 Sequence
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                            *ngFor="let request of workpriority | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                        <tr *ngFor="let request of workpriority | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{10 * (p-1)+(i+1)}}
                             </td>
@@ -202,22 +170,25 @@
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{request.cluster}}</td>
-                            <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup"
-                                    (click)="Done(request)">Done
+                            <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup" (click)="Done(request)">Done
                                     <i class='fas fa-arrow-alt-circle-right'></i>
                                 </button>
-                            </td>
+                            </td> -->
                             <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                                <input class="form-control" type="checkbox" [(ngModel)]="sequence[i]" 
-                                (click)="onCheckboxClick(request)" style="width: 50px;">
-                         
+                                <input class="form-control" type="checkbox" [(ngModel)]="sequence[i]" (click)="onCheckboxClick(request)" style="width: 50px;">
+
                                 <!-- <span *ngIf="sequence[i]">{{checkedIndexes.indexOf(i) + 1}}</span>
                                 {{request.len}} -->
                             </td>
+                            <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
+                                {{ checkedIndexes.indexOf(i) !== -1 ? checkedIndexes.indexOf(i) + 1 : '' }}
+                            </td>
                         </tr>
-                        <tr><td colspan="12"><h4>Selected rows:</h4></td></tr>
-                            <tr *ngFor="let selectedRow of checkedRows; let i = index">
+                        <!-- <tr>
+                            <td colspan="12"><h4>Selected rows:</h4></td>
+                        </tr> -->
+                        <!-- <tr *ngFor="let selectedRow of checkedRows; let i = index">
                                 <td>{{ i + 1 }}</td>
                                 <td>{{ selectedRow.tokenID }}</td>
                                 <td>{{ selectedRow.date | date }}</td>
@@ -229,12 +200,11 @@
                                 <td>{{ selectedRow.remarks }}</td>
                                 <td>{{ selectedRow.routeId }}</td>
                                 <td>{{ selectedRow.cluster }}</td>
-                            </tr>
-                       
+                            </tr> -->
+
                         <tr>
                             <td colspan="12"> </td>
-                            <td><button style="height: 76px;width: 108px;margin-right: -40px;font-size: 20px;"
-                                 class="btn btn-primary" (click)="generateTS()">Generate Tripsheet</button></td>
+                            <td><button style=" border-width:1px; height: 76px;width: 108px;margin-right: -40px;font-size: 20px;" class="btn btn-primary" (click)="generateTS()">Generate Tripsheet</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -242,8 +212,7 @@
                     <button style="margin: 0 auto;" class="btn btn-info" (click)="exportTableToExcel1()">Export
                         to Excel
                         &nbsp;&nbsp;<i class="far fa-file-excel"></i></button>
-                    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info"
-                        (click)="exportTableToPDF1()">Export
+                    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF1()">Export
                         to
                         PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
                 </div>
@@ -253,61 +222,46 @@
     <div class="table-responsive">
         <div class="col-md-12 row" *ngIf="zoneSelected">
             <table class="table table-bordered">
-                <table #table2 id="tableId2" class="table table-bordered"
-                    style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
+                <table #table2 id="tableId2" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                     <tr style="border-width:1px; border-color:black;font-size:12px;">
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Sl No</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Ticket No</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Date</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             M/c No</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Company</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Priority </th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Schedule</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Purpose</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Remarks {{formattedDateRemarks}}</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             <div class="btn-group">
                                 <button class="btn btn-secondary" (click)="sortWorklist()">
                                     Route No </button>
                             </div>
                         </th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Cluster</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
-                            Done</th>
-                        <th
-                            style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                        <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
+                            Done</th> -->
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
                             Sequence
                         </th>
                     </tr>
                     <tbody>
-                        <tr
-                            *ngFor="let requests of workpriority45 | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                        <tr *ngFor="let requests of workpriority45 | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{10 * (p-1)+(i+1)}}
                             </td>
-                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
+                            <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{requests.tokenID}}</td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{requests.date | date}}</td>
@@ -330,47 +284,50 @@
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{requests.cluster}}</td>
-                            <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup"
-                                    (click)="Done(requests)">Done
+                            <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup" (click)="Done(requests)">Done
                                     <i class='fas fa-arrow-alt-circle-right'></i>
                                 </button>
-                            </td>
-                            <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">
-                                <input class="form-control" type="checkbox" [(ngModel)]="sequenceTwo[i]" 
-                                (click)="onCheckboxClick1(requests)" style="width: 50px;">
-                         
+                            </td> -->
+                            <td style=" border-width:1px; border-color:black;text-align: center;font-size:18px;">
+                                <input class="form-control" type="checkbox" [(ngModel)]="sequenceTwo[i]" (click)="onCheckboxClick1(requests)" style="width: 50px;">
+
                                 <!-- <span *ngIf="sequence[i]">{{checkedIndexes.indexOf(i) + 1}}</span>
                                 {{request.len}} -->
                             </td>
+                            <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
+                                {{ checkedIndexes1.indexOf(i) !== -1 ? checkedIndexes1.indexOf(i) + 1 : '' }}
+                            </td>
                         </tr>
-                        <tr><td colspan="12"><h4>Selected rows:</h4></td></tr>
-                            <tr *ngFor="let selectedRow of selectedRows1; let i = index">
-                                <td>{{ i + 1 }}</td>
-                                <td>{{ selectedRow.tokenID }}</td>
-                                <td>{{ selectedRow.date | date }}</td>
-                                <td>{{ selectedRow.machineNumber }}</td>
-                                <td>{{ selectedRow.companyName }}</td>
-                                <td>{{ selectedRow.priority }}</td>
-                                <td></td>
-                                <td>{{ selectedRow.requestFor }}</td>
-                                <td>{{ selectedRow.remarks }}</td>
-                                <td>{{ selectedRow.routeId }}</td>
-                                <td>{{ selectedRow.cluster }}</td>
-                            </tr>
-                    
+                        <!-- <tr>
+                            <td colspan="12">
+                                <h4>Selected rows:</h4>
+                            </td>
+                        </tr> -->
+                        <!-- <tr *ngFor="let selectedRow of checkedRows1; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ selectedRow.tokenID }}</td>
+                            <td>{{ selectedRow.date | date }}</td>
+                            <td>{{ selectedRow.machineNumber }}</td>
+                            <td>{{ selectedRow.companyName }}</td>
+                            <td>{{ selectedRow.priority }}</td>
+                            <td></td>
+                            <td>{{ selectedRow.requestFor }}</td>
+                            <td>{{ selectedRow.remarks }}</td>
+                            <td>{{ selectedRow.routeId }}</td>
+                            <td>{{ selectedRow.cluster }}</td>
+                        </tr> -->
+
                         <tr>
                             <td colspan="12"> </td>
-                            <td><button style="height: 76px;width: 108px;margin-right: -40px;font-size: 20px;" 
-                                class="btn btn-primary" (click)="generateTStwo()">Generate Tripsheet</button></td>
+                            <td><button style="border-width:1px; height: 76px;width: 108px;margin-right: -40px;font-size: 20px;" class="btn btn-primary" (click)="generateTStwo()">Generate Tripsheet</button></td>
                         </tr>
                     </tbody>
                 </table>
                 <div style="text-align: center;" *ngIf="exporting">
                     <button style="margin: 0 auto;" class="btn btn-info" (click)="exportTableToExcel2()">Export to Excel
                         &nbsp;&nbsp;<i class="far fa-file-excel"></i></button>
-                    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info"
-                        (click)="exportTableToPDF2()">Export
+                    <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF2()">Export
                         to
                         PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
                 </div>
@@ -423,8 +380,7 @@
                         <div class="col-md-5">
                             <label for="unit" style="width: 90%;"><b>Date Of
                                     Interaction:</b></label>
-                            <input type="date" name="dateOfInteraction" [(ngModel)]="dateofinteraction"
-                                class="form-control" placeholder="Select Interacted Date">
+                            <input type="date" name="dateOfInteraction" [(ngModel)]="dateofinteraction" class="form-control" placeholder="Select Interacted Date">
                         </div>
                         <div class="col-md-5">
                             <label for="unit"><b>Attended <br>By
@@ -450,8 +406,7 @@
                     </div><br><br>
                 </div>
                 <div class="modal-footer" style="display: flex; justify-content: center; align-items: center;">
-                    <button type="button" class="btn btn-success" data-dismiss="modal"
-                        style="background-color: rgb(27, 9, 129);" (click)="savedoneDetails()">DONE</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" style="background-color: rgb(27, 9, 129);" (click)="savedoneDetails()">DONE</button>
                 </div>
             </div>
         </div>
