@@ -27,6 +27,26 @@ export class RapidIsparesComponent {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
+  TemplateID:any;
+
+ 
+  editableVisionQtyA: string = '1 No';
+  editableVisionPriceA:number=6500;
+  editableVisionQtyB: string = '1 Time';
+  editableVisionPriceB:number=4200;
+
+ 
+  VisionQtyA: string = '1 No';
+  VisionPriceA: number =6500 ; 
+  VisionQtyB: string = '1 Time';
+  VisionPriceB: number =4200 ; 
+
+  convertToWords:any;
+  TemplateName: string = "Rapid-I-SPARES";
+  CustomerName:any;
+  TotalAmount: number;
+
+
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -49,6 +69,10 @@ export class RapidIsparesComponent {
     this.getRefNo(); 
     this.getBillingAddress();
    
+  }
+
+  getEnquiry() {
+    return this.regSv.getData('enquiry');
   }
 
 
@@ -83,29 +107,105 @@ getBillingAddress(){
     });
   }
 
+  updateTemplate() {
   
+    const previousValues = {
+      VisionQtyA:this.VisionQtyA,
+      VisionPriceA:this.VisionPriceA,
+    
+      VisionQtyB:this.VisionQtyB,
+      VisionPriceB:this.VisionPriceB,
+    
+      
+    };
+
+
+    this.VisionQtyA = this.VisionQtyA;
+
+    this.VisionPriceA = this.VisionPriceA;
+    this.VisionQtyB = this.VisionQtyB;
+    this.VisionPriceB = this.VisionPriceB;
+   
+
+    const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
+ if (changesMade) {
+    alert('Changes made successfully.');
+  } else {
+    alert('No changes made or something went wrong.');
+  }
+
+  // Reset the editable values
+
+}
+
+
+  fetchTemplate() {
+    this.regSv.getRapidisparesdetails(this.RefID).subscribe((response: any) => {
+    
+
+      this.billingAddress = response.billingAddress;
+      this.VisionPriceA = response.VisionPriceA;
+  
+      this.VisionQtyA = response.VisionQtyA;
+      this.VisionQtyB = response.VisionQtyB;
+  
+      this.VisionPriceB = response.VisionPriceB;
+     
+  this.TemplateName=response.TemplateName;
+      // this.KindAttention = response.KindAttention;
+    });
+  }
+
   save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+    this.TotalAmount = this.VisionPriceA + this.VisionPriceB;
+   
+    // Create the templateData object
+    const templateData = {
+      
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
+
+  VisionQtyA:this.VisionQtyA,
+  VisionPriceA:this.VisionPriceA,
+
+  VisionQtyB:this.VisionQtyB,
+  VisionPriceB:this.VisionPriceB,
+
+ 
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+  TotalAmount:this.TotalAmount,
+   
+     
+
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSaverapidspares(templateData).subscribe((response:any )=>
       {
-        if(response == "success"){
-          alert("Interacted Successfully")
-          window.location.reload()
+        if(response !=null){
+          this.billingAddress=this.billingAddress,
+    this.VisionQtyA=this.VisionQtyA,
+    this.VisionPriceA=this.VisionPriceA,
+    this.VisionQtyB=this.VisionQtyB,
+    this.VisionPriceB=this.VisionPriceB,
+
+
+          alert("Saved Successfully")
+         // window.location.reload()
         }
         else
         {
           alert("Somthing Went Wrong!!")
-          window.location.reload()
+          //window.location.reload()
         } 
       })
     
    
   }
-
-
 }

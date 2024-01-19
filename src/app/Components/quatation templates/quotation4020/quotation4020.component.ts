@@ -8,6 +8,14 @@ import { RegistrationService } from 'src/app/Services/Registration/registration.
   styleUrls: ['./quotation4020.component.css']
 })
 export class Quotation4020Component {
+print(arg0: string) {
+throw new Error('Method not implemented.');
+}
+billingAddress: any;
+RefID: any;
+value: string|number|Date;
+editableContent: any;
+editableNumber: any;
   
 
 

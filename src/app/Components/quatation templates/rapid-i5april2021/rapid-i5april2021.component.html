@@ -15,7 +15,10 @@
                         <div class="col-md-4 logo">
                            <img class="logo" style="width: 20%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
                         </div>
-                      
+                        <div class="col-md-2">
+                            <p style="text-align: center; font-size: 30px;"><strong>Rapid-I 4020&4030J LX ACSC 05 Apr 2021</strong></p>
+
+                            </div>
                     </div>
                     <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
                         <tr style="border: 1px solid black; height: 25px;">
@@ -99,7 +102,9 @@
         <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
         <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
         <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
-        <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
+        <p style="text-align: left; border-bottom: 0;">
+            <input type="text" id="KindAttention" name="KindAttention" [(ngModel)]="KindAttention" style="width: 100%; border: none;" required>
+          </p>
       </td>
   
       <!-- Third Column for Billing Address -->
@@ -347,6 +352,7 @@
             <div>&nbsp;</div>
             <div class="col-md-12 row"><br />
                 <div class="col-md-4">&nbsp;</div>
+                <button type="button" class="btn btn-success btn-md" data-dismiss="modal" style="background-color: rgb(27, 9, 129); height: 40px;" (click)="save()">SAVE</button>
                 <div class="col-md-2">
                     <input type="button" (click)="print('printsection')" value="PRINT"
                         class="form-control btn-warning" />
