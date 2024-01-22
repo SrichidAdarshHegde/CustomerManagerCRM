@@ -207,6 +207,10 @@ export class RegistrationService {
   getTripSheetNo(){
     return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNo')
   }
+
+  getTripDetails(number :any){
+    return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripDetails/'+ number);
+  }
   // Travel Budget Component
   saveTravelBudget(budgetdata: any) {
     return this.http.post(this.globalurl.weburl + 'TravelBudget/saveTravelBudget', budgetdata)
@@ -240,13 +244,18 @@ getCustomerBillingAddress1(id:any)
   return this.http.get(this.globalurl.weburl + 'quotation2015/Getbillingaddress/'+ id);
 }
 getKindAttention(){
-  return this.http.get(this.globalurl.weburl + 'quotation2015/GetKindAttention/');
+  return this.http.get(this.globalurl.weburl + 'quotation2015/GetKindAttention/'); 
 }
 GetRefNo1(){
   return this.http.get(this.globalurl.weburl + 'quotation2015/GetAllRefNo/');
 }
 
 // save templates
+
+postSavequotationtemplate(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate/', data)
+}
 postSavequotationtemplate2015(data:any)
 {
   return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
