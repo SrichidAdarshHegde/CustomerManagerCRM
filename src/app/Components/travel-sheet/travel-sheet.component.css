@@ -27,3 +27,8 @@
     background-color: #f0f8ff;
     /* Light Blue (you can adjust the color) */
 }
+
+.borderless-input {
+    border: none;
+    background-color: transparent;
+  }

@@ -113,6 +113,7 @@ tripSheetNumber: any;
   getTripSheetNo() {
     this.regSv.getTripSheetNo().subscribe((result: any) => {
       this.tableLength = result.length + 1; 
+      console.log('result is', result)
       this.tripSheetNo = this.tableLength.toString().padStart(3, '0');
     })
   }
