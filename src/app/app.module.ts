@@ -204,7 +204,8 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
-PurposeJobTimeMasterComponent
+PurposeJobTimeMasterComponent,
+NumtowordsPipe
 
   ],
   imports: [
