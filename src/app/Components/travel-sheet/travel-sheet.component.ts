@@ -111,12 +111,14 @@ tripSheetNumber: any;
   
 
   getTripSheetNo() {
-    this.regSv.getTripSheetNo().subscribe((result: any) => {
-      this.tableLength = result.length + 1; 
-      console.log('result is', result)
-      this.tripSheetNo = this.tableLength.toString().padStart(3, '0');
-    })
+    this.regSv.getTripSheetNo().subscribe(
+      (result: any) => {
+        // Increment the received TripSheetNumber by 1 or set to '001' if it's 0
+        this.tripSheetNo = (parseInt(result, 10) + 1 || 1).toString().padStart(3, '0');
+      }
+    );
   }
+  
 
   getTripDetails(){
     this.regSv.getTripDetails(this.tripSheetNumber).subscribe((result:any) => {
@@ -275,9 +277,7 @@ formatMinutesToHHMM(minutes: number): string {
   }
 
   save() {  
-    if(this.tripSheetNo == null || this.tripSheetNo == ''){
-      alert("Please Enter Trip Sheet No");
-    }else if(this.selectedData.length == 0){
+    if(this.selectedData.length == 0){
       alert("Atleast One Record Should Be Added.");
     } else if(this.initialTime == null || this.initialTime == ''){
       alert("Please enter starting time");
@@ -294,7 +294,7 @@ formatMinutesToHHMM(minutes: number): string {
           CompanyName: item.companyName,
           CustomerId: item.customerID,
           Purpose: item.purpose,
-          ClusterLocation: item.cluster,
+          ClusterLocation: item.clusterLocation,
           ModelId: item.modelId,
           ModelName: item.modelName,
           Remarks: item.remarks,
@@ -337,7 +337,7 @@ formatMinutesToHHMM(minutes: number): string {
         alert("Saved Successfully");
         this.route.navigate(['/'])
       }else{
-        alert("Somthing Went Wrong!!")
+        alert("Somthing Went Wrong!!");
       }  
     })
   }
