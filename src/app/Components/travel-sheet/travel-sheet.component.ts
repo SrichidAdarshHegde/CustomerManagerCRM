@@ -5,6 +5,7 @@ import { RegistrationService } from 'src/app/Services/Registration/registration.
 import { ElementRef, ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-travel-sheet',
   templateUrl: './travel-sheet.component.html',
@@ -37,7 +38,7 @@ export class TravelSheetComponent {
 //initialTime: any;
  // initialTime: string = '00:00';
   travel: string = '';
-  estDistKms: string = '';
+  estDistanceKms: string = '';
   estTravelTime: string = '';
   FoodFuel: string = '';
  // totalSchdET: string = this.initialTime;
@@ -55,6 +56,8 @@ formattedTotalEstJobTime: string = '';
 totalEstDistKms: number = 0;
   tableLength: any;
   tripSheetNo: any;
+tripSheetNumber: any;
+  tripDetails: any;
 
   constructor( private router: ActivatedRoute,
      private route: Router,
@@ -79,29 +82,77 @@ totalEstDistKms: number = 0;
     this.getTripSheetNo();
   }
   exportTableToPDF1(): void {
-    const doc = new jspdf.jsPDF();
+    // Set A4 dimensions in landscape mode
+    const pdfWidth = 297; // A4 width in mm
+    const pdfHeight = 210; // A4 height in mm
+  
+    const doc = new jspdf.jsPDF({
+      orientation: 'landscape',
+      unit: 'mm',
+      format: [pdfWidth, pdfHeight],
+    });
+  
     const table = this.table.nativeElement;
-
+  
     html2canvas(table).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgData = canvas.toDataURL('image/jpeg');
+      const imgWidth = pdfWidth; // Use A4 width for image width
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      doc.save('TripSheet - '+this.tripSheetNo+'.pdf');
+  
+      // Calculate the position to center the image on the page
+      const xPos = 0;
+      const yPos = (pdfHeight - imgHeight) / 2;
+  
+      doc.addImage(imgData, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.save('TripSheet - ' + this.tripSheetNo + '.pdf');
     });
   }
+  
+  
+
   getTripSheetNo() {
     this.regSv.getTripSheetNo().subscribe((result: any) => {
       this.tableLength = result.length + 1; 
       this.tripSheetNo = this.tableLength.toString().padStart(3, '0');
     })
   }
+
+  getTripDetails(){
+    this.regSv.getTripDetails(this.tripSheetNumber).subscribe((result:any) => {
+      if(result.length != 0 ){
+      this.selectedData = result;
+      console.log('Trip Sheet Details', this.selectedData);
+      this.tripSheetNo = this.selectedData[1].tripSheetNo;
+      this.FuelPriceCNG = this.selectedData[1].fuelPriceCNG;
+      this.FuelPricePetrol = this.selectedData[1].fuelPricePetrol;
+      this.FuelPriceDiesel = this.selectedData[1].fuelPriceDiesel;
+      this.fuelPriceReqd = this.selectedData[1].fuelPriceReqd;
+      this.fuelReqd = this.selectedData[1].fuelReqd;
+      this.initialTime = this.selectedData[1].initialTime;
+      this.mileageCng = this.selectedData[1].mileageCNG;
+      this.mileagePetrol = this.selectedData[1].mileagePetrol;
+      this.mileageDiesel = this.selectedData[1].mileageDiesel;
+      this.sparesReqd = this.selectedData[1].sparesReqd;
+      this.startCluster = this.selectedData[1].startCluster;
+      this.startPlace = this.selectedData[1].startPlace;
+      this.vehicle = this.selectedData[1].vehicle;
+      this.totalEstDistKms = this.selectedData[1].totalEstDistKms;
+      this.formattedTotalEstJobTime = this.selectedData[1].totalEstJobTime;
+      this.formattedTotalEstTravelTime = this.selectedData[1].totalEstTravelTime;
+      this.formattedTotalFoodFuel = this.selectedData[1].totalFoodFuel;
+      this.timeDifference = this.selectedData[1].totalSchdET;
+    }
+    else{
+      alert("Invalid Trip Sheet Number");
+    }
+    })
+  }
+
   public value = new Date();
   reSequence(){
     this.route.navigate(['/workFront']);
   }
-  private apiUrl = 'https://blockchainmatrimony.com/customermanagerapi/api';
+  private apiUrl = 'http://localhost:44303/api';
   recalculateFuel() {
     // Ensure totalEstDistKms is greater than zero to avoid division by zero
     if (this.totalEstDistKms > 0) {
@@ -153,9 +204,9 @@ totalEstDistKms: number = 0;
       const item = this.selectedData[i];
       // Update cumulative time
         const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
-        const foodFuelMinutes = this.getMinutesFromTime(item.FoodFuel);
+        const foodFuelMinutes = this.getMinutesFromTime(item.foodFuelOthers);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
-        const estDistKms = parseFloat(item.estDistKms) || 0; 
+        const estDistKms = parseFloat(item.estDistanceKms) || 0; 
         // Handle undefined values
         const validEstTravelTime = !isNaN(estTravelTimeMinutes);
         const validFoodFuel = !isNaN(foodFuelMinutes);
@@ -249,9 +300,9 @@ formatMinutesToHHMM(minutes: number): string {
           RequestForId: item.requestForId,
           TicketId: item.tokenID,
           Zone: item.zone,
-          EstDistanceKms: item.estDistKms,
+          EstDistanceKms: item.estDistanceKms,
           EstTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
-          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.FoodFuel),
+          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.foodFuelOthers),
           EstJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
           SchdET: this.convertTimeStringToTimeSpan(item.schdET),
           // Add other properties specific to ArrayDataVM
@@ -280,7 +331,7 @@ formatMinutesToHHMM(minutes: number): string {
       // Add other properties specific to TripSheetDataVM
     };
   
-    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
         this.route.navigate(['/'])
@@ -293,5 +344,5 @@ formatMinutesToHHMM(minutes: number): string {
   convertTimeStringToTimeSpan(timeString: string | null): string | null {
     return timeString ? `${timeString}:00` : null;
   }
-
+ 
 }
