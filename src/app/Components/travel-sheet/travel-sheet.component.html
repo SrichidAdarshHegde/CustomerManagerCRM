@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
-                    <td colspan="5"><input type="text" [(ngModel)]="sparesReqd" class="borderless-input"  ></td>
+                    <td colspan="5"><input style="height: 45px; width: 100%;" type="text" [(ngModel)]="sparesReqd" class="borderless-input"  ></td>
                 </tr>
             </table>
         </div>
@@ -75,7 +75,7 @@
         </div>
         <div class="col-md-2">
             <label for="tripSheetNumber">Enter Trip Sheet Number</label>
-            <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber" class="form-control"  ><br>
+            <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
             <button class="btn btn-primary" (click)="getTripDetails()">Fetch Data</button>
         </div>
     </div>
@@ -104,7 +104,7 @@
                     </tr>
                 </thead>
                 <tr style="background-color: #a0dd5a;">
-                    <td>0</td>
+                    <td style="text-align: right;">0</td>
                     <td><input type="text" [(ngModel)]="startPlace" class="borderless-input"  ></td>
                     <td></td>
                     <td></td>
@@ -121,16 +121,16 @@
                 </tr>
                 <ng-container *ngFor="let item of selectedData;  let i = index">
                     <tr [ngStyle]="{'background-color': item.companyName !== '' ? '#a0dd5a' : 'yellow'}">
-                        <td rowspan="2">{{(i+1)}}</td>
+                        <td rowspan="2" style="text-align: right;">{{(i+1)}}</td>
                         <td style="border: 1px solid #000;" rowspan="2"><strong>{{item.companyName}}</strong></td>
                         <td rowspan="2"></td>
-                        <td rowspan="2">{{item.machineNumber}}</td>
+                        <td rowspan="2" style="text-align: right;">{{item.machineNumber}}</td>
                         <td rowspan="2" *ngIf="item.companyName != ''"><strong>{{item.requestFor}}</strong></td>
                         <td rowspan="2" *ngIf="item.companyName == ''"><input type="text" [(ngModel)]="item.purpose" class="borderless-input"  ></td>
                         <td rowspan="2"></td>
-                        <td rowspan="2"><strong>{{item.cluster}}</strong></td>
+                        <td rowspan="2"><strong>{{item.clusterLocation}}</strong></td>
                         <td rowspan="2" *ngIf="item.companyName != ''"></td>
-                        <td rowspan="2" *ngIf="item.companyName == ''"><input type="number" [(ngModel)]="item.estDistanceKms" (ngModelChange)="item.estDistanceKms = $event; updateScheduleTimes()" class="borderless-input"  ></td>
+                        <td rowspan="2" *ngIf="item.companyName == ''" style="text-align: right;"><input type="number" [(ngModel)]="item.estDistanceKms" (ngModelChange)="item.estDistanceKms = $event; updateScheduleTimes()" class="borderless-input"  ></td>
                         <td *ngIf="item.companyName != ''"></td>
                         <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="borderless-input"  ></td>
                         <td *ngIf="item.companyName != ''"></td>
