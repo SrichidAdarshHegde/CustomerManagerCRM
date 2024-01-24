@@ -235,6 +235,7 @@ getBillingAddress(){
           this.OptionalPriceD = response.optionalPriceD;
   
           this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
         } else {
           alert(`Reference ID not found for this template`);
         }
