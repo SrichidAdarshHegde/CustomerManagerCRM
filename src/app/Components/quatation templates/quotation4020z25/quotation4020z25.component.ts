@@ -265,25 +265,31 @@ getBillingAddress(){
     this.selectedTemplate = data.target.value;
     console.log('Selected Template:', this.selectedTemplate);
   }
-
   fetchTemplate() {
-    this.regSv.gettemplatedetails4020z25(this.RefID).subscribe((response: any) => {
-      this. BasicSystemQty=response.basicSystemQty,
-      this. BasicSystemPrice=response.basicSystemPrice,
-
-      this.OptionalQtyA = response.optionalQtyA;
-      this.OptionalPriceA = response.optionalPriceA;
+    if (!this.RefID || this.RefID === '') {
+      alert('Reference ID is required to fetch the template.');
+      return;
+    }
   
-      this.OptionalQtyB = response.optionalQtyB;
-      this.OptionalPriceB = response.optionalPriceB;
+    this.regSv.gettemplatedetails4020z25(this.RefID).subscribe(
+      (response: any) => {
+        if (response != null) {
+          this.BasicSystemQty = response.basicSystemQty;
+          this.BasicSystemPrice = response.basicSystemPrice;
   
-      this.OptionalQtyC = response.optionalQtyC;
-      this.OptionalPriceC = response.optionalPriceC;
+          this.OptionalQtyA = response.optionalQtyA;
+          this.OptionalPriceA = response.optionalPriceA;
   
-      this.OptionalQtyD = response.optionalQtyD;
-      this.OptionalPriceD = response.optionalPriceD;
+          this.OptionalQtyB = response.optionalQtyB;
+          this.OptionalPriceB = response.optionalPriceB;
   
-      this.OptionalQtyE = response.optionalQtyE;
+          this.OptionalQtyC = response.optionalQtyC;
+          this.OptionalPriceC = response.optionalPriceC;
+  
+          this.OptionalQtyD = response.optionalQtyD;
+          this.OptionalPriceD = response.optionalPriceD;
+          
+          this.OptionalQtyE = response.optionalQtyE;
       this.OptionalPriceE = response.optionalPriceE;
   
       this.OptionalQtyF = response.optionalQtyF;
@@ -295,11 +301,15 @@ getBillingAddress(){
       this.OptionalQtyH = response.optionalQtyH;
       this.OptionalPriceH = response.optionalPriceH;
   
-      this.KindAttention = response.KindAttention;
-    });
+  
+          this.KindAttention = response.KindAttention;
+        } else {
+          alert(`Reference ID not found for this template`);
+        }
+      }
+    );
   }
   
-
 
   save(){
     var templateData = {
