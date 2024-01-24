@@ -135,7 +135,7 @@ getBillingAddress(){
 
   fetchTemplate() {
     this.regSv.getV4030etails(this.RefID).subscribe((response: any) => {
-    
+      if (response) {
 
       this.billingAddress = response.billingAddress;
       this.BasicQty = response.BasicQty;
@@ -147,8 +147,14 @@ getBillingAddress(){
      
   this.TemplateName=response.TemplateName;
       // this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
+  
   save(){
     this.TotalAmount = this.AuxPrice + this.BasicPrice;
    

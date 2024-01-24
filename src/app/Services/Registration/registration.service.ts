@@ -206,6 +206,10 @@ GetMachineId(){
 getTripSheetNo(){
   return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNo')
 }
+
+getTripDetails(number :any){
+  return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripDetails/'+ number);
+}
 // Travel Budget Component
 saveTravelBudget(budgetdata: any) {
   return this.http.post(this.globalurl.weburl + 'TravelBudget/saveTravelBudget', budgetdata)
@@ -230,8 +234,14 @@ getCustomerBillingAddress(id:any)
 {
 return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Getbillingaddress/'+ id);
 }
+postcontactdetailsqm(contactdata: any) {
+return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/postcontactdetailsqm', contactdata)
+}
 
 
+getCustomerContactDetailsqm(id:any){
+return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetCustomerContactDetailsqm/'+id);
+}
 
 //quotation 2015 templates
 getCustomerBillingAddress1(id:any)
@@ -239,16 +249,20 @@ getCustomerBillingAddress1(id:any)
 return this.http.get(this.globalurl.weburl + 'quotation2015/Getbillingaddress/'+ id);
 }
 getKindAttention(){
-return this.http.get(this.globalurl.weburl + 'quotation2015/GetKindAttention/');
+return this.http.get(this.globalurl.weburl + 'quotation2015/GetKindAttention/'); 
 }
 GetRefNo1(){
 return this.http.get(this.globalurl.weburl + 'quotation2015/GetAllRefNo/');
 }
 
 // save templates
+postSavequotationtemplate4020(data:any)
+{
+return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate/', data)
+}
 postSavequotationtemplate2015(data:any)
 {
-return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate', data)
+return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate', data)
 }
 postSavequotationtemplate2015HT(data:any)
 {
@@ -312,10 +326,6 @@ gettemplatedetails2015(id:any){
   return this.http.get(this.globalurl.weburl + 'quotation2015/gettemplatedetails2015/'+ id);
 }
 
-}
-postSavequotationtemplate(data:any)
-{
-  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate/', data)
 }
 gettemplatedetails2015HT(id:any){
 {

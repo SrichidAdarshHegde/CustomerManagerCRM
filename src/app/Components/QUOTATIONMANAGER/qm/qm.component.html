@@ -111,8 +111,8 @@
       <th>Email</th>
       <th>Designation</th>
     </tr>
-    <tr *ngFor="let details of contactDetails; let i = index">
-      <td>{{(i+1)}}</td>
+    <tr *ngFor="let details of contactDetails; let i = index" [style.background-color]="isSelectedRow(details.id) ? 'lightblue' : 'white'">
+      <td style="cursor: pointer;text-align: right;" (click)="onClickRow(details)" class="hover-text">{{(i+1)}}</td>
       <td>{{details.salute}}</td>
       <td>{{details.contactName}}</td>
       <td>{{details.mobile}}</td>
@@ -120,55 +120,69 @@
       <td>{{details.designation}}</td>
     </tr>
   </table>
- 
-</div>
 
-
-
-<div style="width: 833px; height: 105px; left: 663.64px; top: 344.20px; position: absolute">
+  <table class="table table-bordered table-with-bold-lines">
+    <tr class="sticky-header" style="text-align: center;">
+      <td style="width: 10%;"><input placeholder="Sal" class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required></td>
+      <td style="width: 20%;"><input placeholder="Name" class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required></td>
+      <td style="width: 20%;"><input placeholder="Mobile" class="form-control" id="mobile" type="text" name="mobile" [(ngModel)]="mobile" required></td>
+      <td style="width:20%;"><input placeholder="Email" class="form-control" type="text" id="email" name="email" [(ngModel)]="email" required></td>
+      <td style="width: 20%;"><input placeholder="Designation" type="text" class="form-control" id="designation" name="designation" [(ngModel)]="designation" required></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="5">
+        <button class="form-control btn btn-primary" type="button" (click)="addContactDetails()">Add</button>
+      </td>
+    </tr>
+  </table>
+  
   
 </div>
+
+
+
+
+
+
 
 <br>
 <br>
 
-<div style="width: 679px; height: 336px; left: 646.52px; top: 460.16px; position: absolute"> 
-   
-  <div style="width: 665px; height: 323px; left: 27px; top: 31.01px; position: absolute"></div>
-</div>
-</div>
-<div style="width: 1351px; height: 944px; left: 0px; top: 0px; position: absolute">
-<div style="width: 1351px; height: 925px; left: 0px; top: 0px; position: absolute">
-  <div style="width: 1351px; height: 917px; left: 0px; top: 0px; position: absolute">
-    
   
 
    
     
-    <div style="width: 645px; height: 470px; left: 668px; top: -3px; position: absolute; background: white; border: 1px #DFD7D7 solid">
+    <div style="width: 645px; height: 465px; left: 668px; top: -3px; position: absolute; background: white; border: 1px #DFD7D7 solid">
 <div class="row">
-<div class="col-md-4">
-  <label style="display: inline-block; margin-bottom: 5px;" for="date">Date:</label>
-  <input type="text" class="form-control" id="date" name="date">
+   <div class="col-md-4">
+    <label style="display: inline-block; margin-bottom: 5px;" for="date">Date:</label>
+    <div>
+     <input type="date" class="form-control" [(ngModel)]="value" placeholder="dd-MMM-yyyy" >
+
+    </div>
 </div>
+
+
+  
 
 
 
 <div class="col-md-4">
   <label style="display: inline-block; margin-bottom: 5px;" for="refNo">Ref No:</label>
-  <input type="text" class="form-control" id="refNo" name="refNo">
+  <input class="form-control" [(ngModel)]="RefID" style="margin-left: -7px;">
 </div>
 <div class="col-md-4">
   <label style="display: inline-block; margin-bottom: 5px;" for="sender">Sender:</label>
-  <input type="text" class="form-control" id="sender" name="sender">
+  <input class="form-control" [(ngModel)]="userName" style="margin-left: -7px;" readonly>
 </div>
 </div>
 <br>
 
 <div class="row">
 <div class="col-md-8 d-flex align-items-center">
-<label style="display: inline-block; margin-bottom: 5px;" for="enquiry">Your Enquiry:</label>
-<input type="text" class="form-control" id="enquiry" name="enquiry"      style="margin-left: 10px;">
+  <label style="display: inline-block; margin-bottom: 5px;" for="enquiry">Your Enquiry:</label>
+    <input type="hidden" id="enquiry" name="enquiry" value="email"> <!-- Default value, you can set this to "telephonic" if needed -->
+    <input type="text" class="form-control" value="Email/Telephonic"  style="margin-left: -6px;">
 </div>
 <div class="col-md-4 d-flex align-items-center">
 <div class="form-check" style="margin-top: 0;">
@@ -185,8 +199,9 @@
 
 <div class="row">
 <div class="col-md-8 d-flex align-items-center">
-<label style="margin-bottom: 5px;" for="person1">Person1:</label>
-<input type="text" class="form-control" id="person1" name="person1"  style="margin-left: 10px;">
+  <label style="display: inline-block; margin-bottom: 5px;" for="person1">Person1:</label>
+  <input class="form-control" [(ngModel)]="contactName" style="margin-left: 10px;" readonly>
+
 </div>
 </div>
 <br>
@@ -209,7 +224,7 @@
 </div>
 </div>
 </div>
-
+ 
 
 
 
@@ -267,7 +282,7 @@
 </div>
 
 
-<table>
+<table >
 <thead>
 <tr>
     <th>Ref No</th>
@@ -278,9 +293,9 @@
 </tr>
 </thead>
 <tbody>
-<!-- Add your data rows here -->
+
 <tr>
-    <td></td>
+  <td></td>
     <td></td>
     <td></td>
     <td></td>

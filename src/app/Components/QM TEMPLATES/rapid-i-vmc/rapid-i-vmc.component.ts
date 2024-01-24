@@ -84,26 +84,26 @@ getBillingAddress(){
   }
 
   
-  save(){
-    var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+  // save(){
+  //   var templateData = {
+  //     RefID : this.RefID,
+  //     billingAddress:this.billingAddress,
 
       
-    }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
-      {
-        if(response == "success"){
-          alert("Saved Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
+  //   }
+  //   this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+  //     {
+  //       if(response == "success"){
+  //         alert("Saved Successfully")
+  //         window.location.reload()
+  //       }
+  //       else
+  //       {
+  //         alert("Somthing Went Wrong!!")
+  //         window.location.reload()
+  //       } 
+  //     })
     
    
-  }
+  // }
 }

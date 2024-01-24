@@ -272,6 +272,7 @@ getBillingAddress(){
 
   fetchTemplate() {
     this.regSv.getQ4020details(this.RefID).subscribe((response: any) => {
+      if (response) {
       this. BasicSystemQty=response.basicSystemQty,
       this. BasicSystemPrice=response.basicSystemPrice,
 
@@ -300,8 +301,13 @@ getBillingAddress(){
       this.OptionalPriceH = response.optionalPriceH;
   
       this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
   
 
 
@@ -353,7 +359,7 @@ getBillingAddress(){
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSavequotationtemplate4020(templateData).subscribe((response:any )=>
     {
       if(response !=null){
         this.BasicSystemQty=this.BasicSystemQty,
