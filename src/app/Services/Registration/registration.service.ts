@@ -262,7 +262,7 @@ return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequo
 }
 postSavequotationtemplate2015(data:any)
 {
-return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate', data)
+  return this.http.post(this.globalurl.weburl + 'quotation2015/Savequotationtemplate2015', data)
 }
 postSavequotationtemplate2015HT(data:any)
 {

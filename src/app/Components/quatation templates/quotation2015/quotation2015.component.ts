@@ -102,6 +102,8 @@ KindAttentionlist: any;
   CreatedOn: any;
   CreatedBy: any;
 templateName: any;
+  TotalAmount: number;
+  cdr: any;
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -308,6 +310,8 @@ getBillingAddress(){
   
 
   save(){
+    this.TotalAmount = this.BasicSystemPrice;
+   
     var templateData = {
   RefID : this.RefID,
   billingAddress:this.billingAddress,
@@ -347,7 +351,7 @@ getBillingAddress(){
   CustomerName:this.CustomerName,
   KindAttention:this.KindAttention,
   TemplateName:this.TemplateName,
-     
+    TotalAmount:this.TotalAmount
 
 
       
