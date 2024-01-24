@@ -8,7 +8,7 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <th style="width: 20%;">Vehicle</th>
-                    <td style="width: 20%;"><input style="width: 100%;" type="text" [(ngModel)]="vehicle" class="borderless-input"  ></td>
+                    <td style="width: 20%;"><input style="width: 100%;" type="text" [(ngModel)]="vehicle" class="borderless-input" placeholder="enter"></td>
                     <td style="width: 20%;">
                         <h6>Mileage CNG Kgs</h6>
                     </td>
@@ -25,22 +25,22 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileageCng" class="borderless-input"   (ngModelChange)="onInputChange()"></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileagePetrol" class="borderless-input"   (ngModelChange)="onInputChange()"></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileageDiesel" class="borderless-input"   (ngModelChange)="onInputChange()"></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="fuelReqd" class="borderless-input"  ></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileageCng" class="borderless-input" placeholder="Enter CNG mileage" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileagePetrol" class="borderless-input" placeholder="Enter Petrol mileage" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileageDiesel" class="borderless-input" placeholder="Enter Diesel mileage" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="fuelReqd" class="borderless-input"></td>
                 </tr>
                 <tr>
                     <th>Fuel Price</th>
                     <td>Rs. </td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceCNG" class="borderless-input"   (ngModelChange)="onInputChange()"></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPricePetrol" class="borderless-input"   (ngModelChange)="onInputChange()"></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceDiesel" class="borderless-input"   (ngModelChange)="onInputChange()"></td>
-                    <td><input style="text-align: right;" type="text" [(ngModel)]="fuelPriceReqd" class="borderless-input"  ></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceCNG" class="borderless-input" placeholder="Enter CNG price" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPricePetrol" class="borderless-input" placeholder="Enter Petrol price" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceDiesel" class="borderless-input" placeholder="Enter Diesel price" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="fuelPriceReqd" class="borderless-input"></td>
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
-                    <td colspan="5"><input style="height: 45px; width: 100%;" type="text" [(ngModel)]="sparesReqd" class="borderless-input"  ></td>
+                    <td colspan="5"><input style="height: 45px; width: 100%;" type="text" [(ngModel)]="sparesReqd" class="borderless-input" placeholder="Enter spares"></td>
                 </tr>
             </table>
         </div>
@@ -140,11 +140,11 @@
                         <td rowspan="2"></td>
                         <td rowspan="2" style="text-align: right;">{{item.machineNumber}}</td>
                         <td rowspan="2" *ngIf="item.companyName != ''"><strong>{{item.requestFor}}</strong></td>
-                        <td rowspan="2" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;" [(ngModel)]="item.purpose" class="borderless-input"  ></td>
+                        <td rowspan="2" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;" [(ngModel)]="item.purpose" class="borderless-input" placeholder="Enter purpose"></td>
                         <td rowspan="2"></td>
-                        <td rowspan="2"><strong>{{item.clusterLocation}}</strong></td>
+                        <td rowspan="2"><strong>{{item.cluster}}</strong></td>
                         <td rowspan="2" *ngIf="item.companyName != ''"></td>
-                        <td rowspan="2" *ngIf="item.companyName == ''" style="text-align: right;"><input type="number" [(ngModel)]="item.estDistanceKms" (ngModelChange)="item.estDistanceKms = $event; updateScheduleTimes()" class="borderless-input"  ></td>
+                        <td rowspan="2" *ngIf="item.companyName == ''" style="text-align: right;"><input type="number" [(ngModel)]="item.estDistanceKms" (ngModelChange)="item.estDistanceKms = $event; updateScheduleTimes()" class="borderless-input" placeholder="Enter distance"></td>
                         <td *ngIf="item.companyName != ''"></td>
                         <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="borderless-input"  ></td>
                         <td *ngIf="item.companyName != ''"></td>

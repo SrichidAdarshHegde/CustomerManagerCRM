@@ -294,7 +294,7 @@ formatMinutesToHHMM(minutes: number): string {
           CompanyName: item.companyName,
           CustomerId: item.customerID,
           Purpose: item.purpose,
-          ClusterLocation: item.clusterLocation,
+          Cluster: item.cluster,
           ModelId: item.modelId,
           ModelName: item.modelName,
           Remarks: item.remarks,
