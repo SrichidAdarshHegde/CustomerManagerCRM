@@ -359,7 +359,7 @@ getBillingAddress(){
 
       
     }
-    this.regSv.postSavequotationtemplate(templateData).subscribe((response:any )=>
+    this.regSv.postSavequotationtemplate4020(templateData).subscribe((response:any )=>
     {
       if(response !=null){
         this.BasicSystemQty=this.BasicSystemQty,
