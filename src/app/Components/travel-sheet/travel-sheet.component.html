@@ -3,35 +3,44 @@
     <!-- first division -->
     <!-- <div class="container"></div> -->
     <div class="col-md-12 row">
+        <div class="col-md-1"></div>
         <div class="col-md-6">
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <th style="width: 20%;">Vehicle</th>
-                    <td style="width: 15%;"><input type="text" [(ngModel)]="vehicle" class="form-control"></td>
-                    <td style="width: 20%;"><h6>Mileage CNG Kgs</h6></td>
-                    <td style="width: 15%;"><h6>M Petrol L</h6></td>
-                    <td style="width: 15%;"><h6>M Diesel L</h6></td>
-                    <td><h6>Fuel Reqd Kgs</h6></td>
+                    <td style="width: 20%;"><input style="width: 100%;" type="text" [(ngModel)]="vehicle" class="borderless-input"></td>
+                    <td style="width: 20%;">
+                        <h6>Mileage CNG Kgs</h6>
+                    </td>
+                    <td style="width: 15%;">
+                        <h6>M Petrol L</h6>
+                    </td>
+                    <td style="width: 15%;">
+                        <h6>M Diesel L</h6>
+                    </td>
+                    <td>
+                        <h6>Fuel Reqd Kgs</h6>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input *ngIf="totalEstDistKms != null" type="text" [(ngModel)]="mileageCng" class="form-control" (ngModelChange)="onInputChange()"></td>
-                    <td><input type="text" [(ngModel)]="mileagePetrol" class="form-control" (ngModelChange)="onInputChange()"></td>
-                    <td><input type="text" [(ngModel)]="mileageDiesel" class="form-control" (ngModelChange)="onInputChange()"></td>
-                    <td><input type="text" [(ngModel)]="fuelReqd" class="form-control"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileageCng" class="borderless-input" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileagePetrol" class="borderless-input" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="mileageDiesel" class="borderless-input" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="fuelReqd" class="borderless-input"></td>
                 </tr>
                 <tr>
                     <th>Fuel Price</th>
                     <td>Rs. </td>
-                    <td><input type="text" [(ngModel)]="FuelPriceCNG" class="form-control" (ngModelChange)="onInputChange()"></td>
-                    <td><input type="text" [(ngModel)]="FuelPricePetrol" class="form-control" (ngModelChange)="onInputChange()"></td>
-                    <td><input type="text" [(ngModel)]="FuelPriceDiesel" class="form-control" (ngModelChange)="onInputChange()"></td>
-                    <td><input type="text" [(ngModel)]="fuelPriceReqd" class="form-control"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceCNG" class="borderless-input" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPricePetrol" class="borderless-input" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceDiesel" class="borderless-input" (ngModelChange)="onInputChange()"></td>
+                    <td><input style="text-align: right;" type="text" [(ngModel)]="fuelPriceReqd" class="borderless-input"></td>
                 </tr>
                 <tr>
                     <th>Spares Reqd</th>
-                    <td colspan="5"><input type="text" [(ngModel)]="sparesReqd" class="form-control"></td>
+                    <td colspan="5"><input style="height: 45px; width: 100%;" type="text" [(ngModel)]="sparesReqd" class="borderless-input"></td>
                 </tr>
             </table>
         </div>
@@ -39,29 +48,54 @@
             &nbsp;&nbsp;
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
-                    <td style="text-align: center;width: 60%;"><h4>TRIP SHEET</h4></td>
-                    <th><h4>No. {{tripSheetNo}} </h4></th>
+                    <td style="text-align: center;width: 60%;">
+                        <h4>TRIP SHEET</h4>
+                    </td>
+                    <th>
+                        <h4>No. {{tripSheetNo}} </h4>
+                    </th>
                 </tr>
-            </table>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-2" style="margin-top: 25px;">
-            <table class="table table-bordered table-with-bold-lines">
                 <tr>
-                    <th style="width: 50%;"><h6>Engineer</h6></th>
+                    <th style="width: 50%;">
+                        <h6>Engineer</h6>
+                    </th>
                     <td><b>{{userName}}</b></td>
                 </tr>
                 <tr>
-                    <th><h6>Date</h6></th>
+                    <th>
+                        <h6>Date</h6>
+                    </th>
                     <td><strong>{{value | date:'dd MMM yyyy'}}</strong></td>
                 </tr>
             </table>
         </div>
         <div class="col-md-1"></div>
+        <!-- <div class="col-md-2" style="margin-top: 25px;">
+            <table class="table table-bordered table-with-bold-lines">
+                <tr>
+                    <th style="width: 50%;">
+                        <h6>Engineer</h6>
+                    </th>
+                    <td><b>{{userName}}</b></td>
+                </tr>
+                <tr>
+                    <th>
+                        <h6>Date</h6>
+                    </th>
+                    <td><strong>{{value | date:'dd MMM yyyy'}}</strong></td>
+                </tr>
+            </table>
+        </div> -->
+        <div class="col-md-2">
+            <label for="tripSheetNumber">Enter Trip Sheet Number</label>
+            <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
+            <button class="btn btn-primary" (click)="getTripDetails()">Fetch Data</button>
+        </div>
     </div>
 
     <!-- second division -->
     <div class="col-md-12 row">
+        <div class="col-md-1"></div>
         <div class="col-md-11">
             <table class="table table-bordered table-with-bold-lines">
                 <thead>
@@ -84,49 +118,49 @@
                     </tr>
                 </thead>
                 <tr style="background-color: #a0dd5a;">
-                    <td>0</td>
-                    <td><input type="text" [(ngModel)]="startPlace" class="form-control"></td>
+                    <td style="text-align: right;">0</td>
+                    <td><input type="text" style="width: 100%;" [(ngModel)]="startPlace" class="borderless-input" placeholder="Enter"></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><input type="text" [(ngModel)]="startCluster" class="form-control"></td>
+
+                    <td><input type="text" [(ngModel)]="startCluster" class="borderless-input"></td>
+
+                    <td><input type="text" [(ngModel)]="startCluster" class="borderless-input" placeholder="Enter cluster"></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td> <input type="time" style="background-color: #ddf892;" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="form-control"></td>
+                    <td> <input type="time" style="background-color: #ddf892;" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="borderless-input"></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <ng-container *ngFor="let item of selectedData;  let i = index">
-                    <tr [ngStyle]="{'background-color': item.requestFor !== '' ? '#a0dd5a' : 'yellow'}">
-                        <td rowspan="2">{{(i+1)}}</td>
-                        <td rowspan="2"><strong>{{item.companyName}}</strong></td>
+                    <tr [ngStyle]="{'background-color': item.companyName !== '' ? '#a0dd5a' : 'yellow'}">
+                        <td rowspan="2" style="text-align: right;">{{(i+1)}}</td>
+                        <td style="border: 1px solid #000;" rowspan="2"><strong>{{item.companyName}}</strong></td>
                         <td rowspan="2"></td>
                         <td rowspan="2" style="text-align: right;">{{item.machineNumber}}</td>
-                        <td rowspan="2" *ngIf="item.requestFor != ''"><strong>{{item.requestFor}}</strong></td>
-                        <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.purpose" class="form-control"></td>
+                        <td rowspan="2" *ngIf="item.companyName != ''"><strong>{{item.requestFor}}</strong></td>
+                        <td rowspan="2" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;" [(ngModel)]="item.purpose" class="borderless-input"></td>
                         <td rowspan="2"></td>
-                        <td rowspan="2"><strong>{{item.cluster}}</strong></td>
-                        <td rowspan="2" *ngIf="item.requestFor != ''"></td>
-                        <td rowspan="2" *ngIf="item.requestFor == ''"><input type="text" [(ngModel)]="item.estDistKms" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
-                        <td *ngIf="item.requestFor != ''"></td>
-                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="form-control"></td>
-                        <td *ngIf="item.requestFor != ''"></td>
-                        <td *ngIf="item.requestFor == ''"><input type="time" [(ngModel)]="item.FoodFuel" (ngModelChange)="item.FoodFuel = $event; updateScheduleTimes()" class="form-control"></td>
-                        <td *ngIf="item.requestFor != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="item.estJobTime = $event; updateScheduleTimes()" class="form-control"></td>
-                        <td *ngIf="item.requestFor == ''"></td>
+                        <td rowspan="2"><strong>{{item.clusterLocation}}</strong></td>
+                        <td rowspan="2" *ngIf="item.companyName != ''"></td>
+                        <td rowspan="2" *ngIf="item.companyName == ''" style="text-align: right;"><input type="number" [(ngModel)]="item.estDistanceKms" (ngModelChange)="item.estDistanceKms = $event; updateScheduleTimes()" class="borderless-input"></td>
+                        <td *ngIf="item.companyName != ''"></td>
+                        <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="borderless-input"></td>
+                        <td *ngIf="item.companyName != ''"></td>
+                        <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.foodFuelOthers" (ngModelChange)="item.foodFuelOthers = $event; updateScheduleTimes()" class="borderless-input"></td>
+                        <td *ngIf="item.companyName != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="item.estJobTime = $event; updateScheduleTimes()" class="borderless-input"></td>
+                        <td *ngIf="item.companyName == ''"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td rowspan="2" style="text-align: center;padding-top: 35px; background-color: lavender;"><b>{{(i+1)}}</b></td>
                     </tr>
-                    <tr [ngStyle]="{'background-color': item.requestFor !== '' ? '#a0dd5a' : 'yellow'}">
+                    <tr [ngStyle]="{'background-color': item.companyName !== '' ? '#a0dd5a' : 'yellow'}">
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td> <input type="time" style="background-color: #ddf892;" [(ngModel)]="item.schdET" class="form-control"></td>
+                        <td> <input type="time" style="background-color: #ddf892;" [(ngModel)]="item.schdET" class="borderless-input"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -142,14 +176,14 @@
                     <td></td>
                     <td></td>
                     <td><button class="btn btn-primary" (click)="save()">Save</button></td>
-                    <td><button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
+                    <td><button class="btn btn-secondary">Resequence</button></td>
                 </tr>
             </table>
         </div>
     </div>
 </div><br>
 <div style="text-align: center;">
-    
+
     <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF1()">Export
         to
         PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>

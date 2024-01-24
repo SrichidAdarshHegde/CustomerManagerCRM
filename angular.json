@@ -16,7 +16,6 @@
             "outputPath": "dist/customer-manager",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "aot": false,
             "polyfills": [
               "zone.js"
             ],
@@ -35,13 +34,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "50mb",
+                  "maximumError": "50mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "50mb",
+                  "maximumError": "50mb"
                 }
               ],
               "outputHashing": "all"

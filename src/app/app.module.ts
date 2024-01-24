@@ -87,6 +87,7 @@ import { RapidI5april2021Component } from './Components/quatation templates/rapi
 
 
 
+
 import { CallTicketScreenComponent } from './Components/call-ticket-screen/call-ticket-screen.component';
 
 
@@ -124,7 +125,7 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
     DashBoardComponent,
     RoleMasterComponent,
     ToUpperPipe,
-    CustomerRegistrationComponent,
+     CustomerRegistrationComponent,
     MachineRegistrationComponent,
     CountryComponent,
     StateComponent,
@@ -205,6 +206,7 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
+PurposeJobTimeMasterComponent,
 NumtowordsPipe,
 PurposeJobTimeMasterComponent,
   ],
