@@ -111,6 +111,8 @@ import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotat
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
 import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -206,7 +208,7 @@ Quotation2015indollorComponent,
 RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
-
+PurposeJobTimeMasterComponent,
   ],
   imports: [
     BrowserModule,

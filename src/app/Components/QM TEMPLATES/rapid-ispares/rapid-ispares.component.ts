@@ -141,9 +141,8 @@ getBillingAddress(){
 
   fetchTemplate() {
     this.regSv.getRapidisparesdetails(this.RefID).subscribe((response: any) => {
-    
-
-      this.billingAddress = response.billingAddress;
+      if (response) {
+     this.billingAddress = response.billingAddress;
       this.VisionPriceA = response.VisionPriceA;
   
       this.VisionQtyA = response.VisionQtyA;
@@ -153,8 +152,13 @@ getBillingAddress(){
      
   this.TemplateName=response.TemplateName;
       // this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
 
   save(){
     this.TotalAmount = this.VisionPriceA + this.VisionPriceB;

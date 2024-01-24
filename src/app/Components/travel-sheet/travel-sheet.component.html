@@ -37,10 +37,8 @@
                     <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPricePetrol" class="borderless-input" placeholder="Enter Petrol price" (ngModelChange)="onInputChange()"></td>
                     <td><input style="text-align: right;" type="text" [(ngModel)]="FuelPriceDiesel" class="borderless-input" placeholder="Enter Diesel price" (ngModelChange)="onInputChange()"></td>
                     <td><input style="text-align: right;" type="text" [(ngModel)]="fuelPriceReqd" class="borderless-input"></td>
-                </tr>
-                <tr>
-                    <th>Spares Reqd</th>
-                    <td colspan="5"><input style="height: 45px; width: 100%;" type="text" [(ngModel)]="sparesReqd" class="borderless-input" placeholder="Enter spares"></td>
+                    <td colspan="5"><input style="height: 45px; width: 100%;" type="text" [(ngModel)]="sparesReqd" class="borderless-input"></td>
+
                 </tr>
             </table>
         </div>
@@ -124,12 +122,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
+
+                    <td><input type="text" [(ngModel)]="startCluster" class="borderless-input"></td>
+
                     <td><input type="text" [(ngModel)]="startCluster" class="borderless-input" placeholder="Enter cluster"></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td> <input type="time" style="background-color: #ddf892;" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="borderless-input"  ></td>
+                    <td> <input type="time" style="background-color: #ddf892;" [ngModel]="initialTime" (ngModelChange)="initialTime = $event; updateScheduleTimes()" class="borderless-input"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -146,10 +144,10 @@
                         <td rowspan="2" *ngIf="item.companyName != ''"></td>
                         <td rowspan="2" *ngIf="item.companyName == ''" style="text-align: right;"><input type="number" [(ngModel)]="item.estDistanceKms" (ngModelChange)="item.estDistanceKms = $event; updateScheduleTimes()" class="borderless-input" placeholder="Enter distance"></td>
                         <td *ngIf="item.companyName != ''"></td>
-                        <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="borderless-input"  ></td>
+                        <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.estTravelTime" (ngModelChange)="item.estTravelTime = $event; updateScheduleTimes()" class="borderless-input"></td>
                         <td *ngIf="item.companyName != ''"></td>
-                        <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.foodFuelOthers" (ngModelChange)="item.foodFuelOthers = $event; updateScheduleTimes()" class="borderless-input"  ></td>
-                        <td *ngIf="item.companyName != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="item.estJobTime = $event; updateScheduleTimes()" class="borderless-input"  ></td>
+                        <td *ngIf="item.companyName == ''"><input type="time" [(ngModel)]="item.foodFuelOthers" (ngModelChange)="item.foodFuelOthers = $event; updateScheduleTimes()" class="borderless-input"></td>
+                        <td *ngIf="item.companyName != ''"><input type="time" [(ngModel)]="item.estJobTime" (ngModelChange)="item.estJobTime = $event; updateScheduleTimes()" class="borderless-input"></td>
                         <td *ngIf="item.companyName == ''"></td>
                         <td></td>
                         <td></td>
@@ -160,7 +158,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td> <input type="time" style="background-color: #ddf892;" [(ngModel)]="item.schdET" class="borderless-input"  ></td>
+                        <td> <input type="time" style="background-color: #ddf892;" [(ngModel)]="item.schdET" class="borderless-input"></td>
                         <td></td>
                         <td></td>
                     </tr>

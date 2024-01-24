@@ -123,7 +123,7 @@ getBillingAddress(){
   
   fetchTemplate() {
     this.regSv.getRapiditabledetails(this.RefID).subscribe((response: any) => {
-    
+      if (response) {
 
       this.billingAddress = response.billingAddress;
       this.VisionPrice = response.VisionPrice;
@@ -133,8 +133,13 @@ getBillingAddress(){
      
   this.TemplateName=response.TemplateName;
       // this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
 
   save(){
     this.TotalAmount = this.VisionPrice;

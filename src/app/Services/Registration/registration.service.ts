@@ -235,8 +235,14 @@ getCustomerBillingAddress(id:any)
 {
   return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/Getbillingaddress/'+ id);
 }
+postcontactdetailsqm(contactdata: any) {
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/postcontactdetailsqm', contactdata)
+}
 
 
+getCustomerContactDetailsqm(id:any){
+  return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetCustomerContactDetailsqm/'+id);
+}
 
 //quotation 2015 templates
 getCustomerBillingAddress1(id:any)

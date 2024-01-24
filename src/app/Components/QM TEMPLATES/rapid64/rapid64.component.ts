@@ -132,6 +132,7 @@ getBillingAddress(){
   //  }
   fetchTemplate() {
     this.regSv.getRapid64details(this.RefID).subscribe((response: any) => {
+      if (response) {
     
 
       this.billingAddress = response.billingAddress;
@@ -144,8 +145,14 @@ getBillingAddress(){
      
   this.TemplateName=response.TemplateName;
       // this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
+  
 
 
   save(){
