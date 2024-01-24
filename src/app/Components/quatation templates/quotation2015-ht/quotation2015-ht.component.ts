@@ -210,29 +210,37 @@ getBillingAddress(){
   }
 
   fetchTemplate() {
-    this.regSv.gettemplatedetails2015HT (this.RefID).subscribe((response: any) => {
-      this. BasicSystemQty=response.basicSystemQty,
-      this. BasicSystemPrice=response.basicSystemPrice,
-
-      this.OptionalQtyA = response.optionalQtyA;
-      this.OptionalPriceA = response.optionalPriceA;
+    if (!this.RefID || this.RefID === '') {
+      alert('Reference ID is required to fetch the template.');
+      return;
+    }
   
-      this.OptionalQtyB = response.optionalQtyB;
-      this.OptionalPriceB = response.optionalPriceB;
+    this.regSv.gettemplatedetails2015HT(this.RefID).subscribe(
+      (response: any) => {
+        if (response != null) {
+          this.BasicSystemQty = response.basicSystemQty;
+          this.BasicSystemPrice = response.basicSystemPrice;
   
-      this.OptionalQtyC = response.optionalQtyC;
-      this.OptionalPriceC = response.optionalPriceC;
+          this.OptionalQtyA = response.optionalQtyA;
+          this.OptionalPriceA = response.optionalPriceA;
   
-      this.OptionalQtyD = response.optionalQtyD;
-      this.OptionalPriceD = response.optionalPriceD;
+          this.OptionalQtyB = response.optionalQtyB;
+          this.OptionalPriceB = response.optionalPriceB;
   
-    
+          this.OptionalQtyC = response.optionalQtyC;
+          this.OptionalPriceC = response.optionalPriceC;
   
-      this.KindAttention = response.KindAttention;
-      
-    });
+          this.OptionalQtyD = response.optionalQtyD;
+          this.OptionalPriceD = response.optionalPriceD;
+  
+          this.KindAttention = response.KindAttention;
+        } else {
+          alert(`Reference ID not found for this template`);
+        }
+      }
+    );
   }
-
+  
 
   save(){
     var templateData = {
