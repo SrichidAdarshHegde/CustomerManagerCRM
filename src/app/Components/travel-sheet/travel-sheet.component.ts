@@ -118,8 +118,17 @@ tripSheetNumber: any;
       }
     );
   }
-  
-
+  // print() {
+  //   window.print();
+  //   }
+    print (printSectionId) {
+      var innerContents = document.getElementById(printSectionId).innerHTML;
+      var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=yes');
+      popupWinindow.document.open();
+      popupWinindow.document.write('<html><title>'+'TripSheet - '+this.tripSheetNo+'</title> <style> table{ margin-left:10%; }  </style><head></head><body onload="window.print()">' + innerContents + '</html>');
+      popupWinindow.document.close();
+      //window.print();
+  };
   getTripDetails(){
     this.regSv.getTripDetails(this.tripSheetNumber).subscribe((result:any) => {
       if(result.length != 0 ){
