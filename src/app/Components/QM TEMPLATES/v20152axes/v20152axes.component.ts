@@ -125,7 +125,7 @@ getBillingAddress(){
 
   fetchTemplate() {
     this.regSv.getV20152axesetails(this.RefID).subscribe((response: any) => {
-    
+      if (response) {
 
       this.billingAddress = response.billingAddress;
       this.AxesQty = response.AxesQty;
@@ -136,8 +136,13 @@ getBillingAddress(){
      
   this.TemplateName=response.TemplateName;
       // this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
   save(){
     this.TotalAmount = this.AxesPrice ;
    

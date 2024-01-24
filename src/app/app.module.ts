@@ -108,7 +108,8 @@ import { NumtowordsPipe } from 'src/numtowords.pipe';
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
-import { NumtowordsPipe } from './numtowords.pipe';
+import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
+
 
 
 @NgModule({
@@ -205,7 +206,7 @@ RapidIsparesComponent,
 Quotation2015indollorComponent,
 RapidIVMCComponent,
 NumtowordsPipe,
-
+PurposeJobTimeMasterComponent,
   ],
   imports: [
     BrowserModule,

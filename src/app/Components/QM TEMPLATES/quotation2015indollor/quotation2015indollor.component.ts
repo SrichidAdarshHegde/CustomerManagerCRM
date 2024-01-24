@@ -260,6 +260,7 @@ getBillingAddress(){
 
   fetchTemplate() {
     this.regSv.get2015indollordetails(this.RefID).subscribe((response: any) => {
+      if (response) {
       this. BasicSystemQty=response.basicSystemQty,
       this. BasicSystemPrice=response.basicSystemPrice,
 
@@ -288,8 +289,13 @@ getBillingAddress(){
       this.OptionalPriceH = response.optionalPriceH;
   this.TemplateName=response.TemplateName;
       this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
 
   save(){
     this.TotalAmount = this.BasicSystemPrice;

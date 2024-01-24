@@ -202,6 +202,7 @@ getBillingAddress(){
 
   fetchTemplate() {
     this.regSv.getQ4020HTdetails(this.RefID).subscribe((response: any) => {
+      if (response) {
       this. BasicSystemQty=response.basicSystemQty,
       this. BasicSystemPrice=response.basicSystemPrice,
 
@@ -220,8 +221,13 @@ getBillingAddress(){
       this.TemplateName=response.TemplateName;
   
       this.KindAttention = response.KindAttention;
-    });
-  }
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
   
 
 
