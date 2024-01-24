@@ -1,3 +1,9 @@
+/* table,
+th,
+td {
+    border: solid;
+} */
+
 .table-with-bold-lines {
     border-collapse: collapse;
 }
@@ -31,4 +37,10 @@
 .borderless-input {
     border: none;
     background-color: transparent;
+}
+
+@media print {
+    @page {
+        size: landscape;
+    }
 }

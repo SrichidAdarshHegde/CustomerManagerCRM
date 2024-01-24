@@ -257,7 +257,7 @@ GetRefNo1(){
 }
 
 // save templates
-postSavequotationtemplate(data:any)
+postSavequotationtemplate4020(data:any)
 {
   return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Savequotationtemplate/', data)
 }
