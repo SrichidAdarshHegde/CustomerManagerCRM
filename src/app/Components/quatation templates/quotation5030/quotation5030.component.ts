@@ -358,7 +358,7 @@ KindAttention: any;
    CustomerName:this.CustomerName,
    KindAttention:this.KindAttention,
     
-TotalAmount :this.BasicSystemPrice
+   TotalAmount :this.BasicSystemPrice
  
  
        

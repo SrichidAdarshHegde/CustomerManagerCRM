@@ -57,7 +57,7 @@ import { ConsumablesComponent } from './Components/Masters/consumables/consumabl
 import { TripSheetComponent } from './Components/trip-sheet/trip-sheet.component';
 import { LocationdetailsComponent } from './Components/locationdetails/locationdetails.component';
 import { LocationdetailslistComponent } from './Components/locationdetailslist/locationdetailslist.component';
-//import { SearchPipe } from './search.pipe';
+// import { SearchPipe } from './search.pipe';
 import { DocumentmanagerComponent } from './Components/document manager/documentmanager/documentmanager.component';
 import { DocumentTypeMasterComponent } from './Components/Masters/document-type-master/document-type-master.component';
 import { ModeofTransportMasterComponent } from './Components/Masters/modeof-transport-master/modeof-transport-master.component';
@@ -104,7 +104,7 @@ import { RapidtableComponent } from './Components/QM TEMPLATES/rapidtable/rapidt
 import { Q4020Component } from './Components/QM TEMPLATES/q4020/q4020.component';
 import { Q4020HTComponent } from './Components/QM TEMPLATES/q4020-ht/q4020-ht.component';
 import { QMComponent } from './Components/QUOTATIONMANAGER/qm/qm.component';
-//import { NumtowordsPipe } from 'src/numtowords.pipe';
+// import { NumtowordsPipe } from 'src/numtowords.pipe';
 
 import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.component';
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
