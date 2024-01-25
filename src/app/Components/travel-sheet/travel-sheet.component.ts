@@ -58,6 +58,8 @@ totalEstDistKms: number = 0;
   tripSheetNo: any;
 tripSheetNumber: any;
   tripDetails: any;
+  estimatedTravelTime: any;
+  estimatedJobTime: any;
 
   constructor( private router: ActivatedRoute,
      private route: Router,
@@ -215,6 +217,8 @@ tripSheetNumber: any;
     for (let i = 0; i < this.selectedData.length; i++) {
       const item = this.selectedData[i];
       // Update cumulative time
+      this.estimatedTravelTime = item.estTravelTime;
+      this.estimatedJobTime = item.estJobTime;
         const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
         const foodFuelMinutes = this.getMinutesFromTime(item.foodFuelOthers);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
@@ -274,11 +278,17 @@ formatMinutesToHHMM(minutes: number): string {
     }
 
     const [hours, oldMinutes] = time.split(':').map(Number);
-    const newMinutes = oldMinutes + minutes;
-    const newHours = Math.floor(newMinutes / 60);
-    const adjustedMinutes = newMinutes % 60;
+    if(this.estimatedTravelTime  != undefined || this.estimatedJobTime != undefined || this.estimatedTravelTime  != "" || this.estimatedJobTime != ""){
+      // const newMinutes = oldMinutes + minutes;
+      const newMinutes =  minutes;
 
+      const newHours = Math.floor(newMinutes / 60);
+      const adjustedMinutes = newMinutes % 60;
+      
     return `${this.padZero(newHours)}:${this.padZero(adjustedMinutes)}`;
+    }
+   else return this.initialTime
+
   }
 
   padZero(num: number): string {
