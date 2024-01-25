@@ -144,3 +144,6 @@ margin: 0 auto; /* Center the modal */
 .element.style {
 width: 228%;
 }
+.table td{
+  padding: 0.25rem;
+}
