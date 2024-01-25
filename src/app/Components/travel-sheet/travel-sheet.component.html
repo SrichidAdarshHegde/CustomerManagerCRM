@@ -1,9 +1,12 @@
 <br>
-
+<div class="col-md-12 row">
 <div class="col-md-2">
     <label for="tripSheetNumber">Enter Trip Sheet Number</label>
     <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
     <button class="btn btn-primary" (click)="getTripDetails()">Fetch Data</button>
+</div>
+<div class="col-md-3"></div><br>
+<div class="col-md-2"><h2><b>TRIP SHEET</b></h2></div>
 </div>
 <div #table id="printSectionId">
     <!-- first division -->
@@ -52,20 +55,20 @@
         </div>
         <div class="col-md-3"></div>
         <div class="col-md-2">
-            <table>
+            <table class="table">
                 <tr>
                     <!-- <td style="border: 2px solid black;">
                         TRIP SHEET
                     </td> -->
                     <td style="border: 2px solid black;">
-                        <b>TRIP SHEET No. {{tripSheetNo}}</b>
+                       TRIP SHEET No.  <b>{{tripSheetNo}}</b>
                     </td>
                 </tr>
                 <tr>
                     <!-- <th style="border: 2px solid black;" style="width: 50%;">
                         Engineer
                     </th> -->
-                    <td style="border: 2px solid black;"><b>Engineer :{{userName}}</b></td>
+                    <td style="border: 2px solid black;">Engineer :&nbsp;&nbsp;&nbsp;&nbsp;<b>{{userName}}</b></td>
                 </tr>
                 <tr>
                     <!-- <th style="border: 2px solid black;">
@@ -171,7 +174,7 @@
                     </tr>
                 </ng-container>
                 <tr>
-                    <td colspan="6"></td>
+                    <td colspan="5"></td>
                     <th style="border: 2px solid black;">Totals</th>
                     <td style="text-align: center;border: 2px solid black;"><strong>{{ totalEstDistKms }}</strong></td>
                     <td style="text-align: center;border: 2px solid black;"><strong>{{formattedTotalEstTravelTime }}</strong></td>
