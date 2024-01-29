@@ -38,6 +38,10 @@ export class ModeofTransportMasterComponent {
       })
     }
     saveModeofTransport(){
+      if (this.TransportName == null || this.TransportName == '') {
+        alert("Please enter the Transport Name");
+        return;
+      }
       var ModeofTransportData = {
         TransportName : this.TransportName,
         CreatedBy : this.userName

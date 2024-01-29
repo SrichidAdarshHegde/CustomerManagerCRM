@@ -59,6 +59,10 @@ export class RequestsMasterComponent {
     });
   }
   saveRequests() {
+    if (this.requestsname == null || this.requestsname == '') {
+      alert("Please enter the Requests Name");
+      return;
+    }
     var requestsData = {
       RequestsName: this.requestsname,
       CreatedBy: this.userName,

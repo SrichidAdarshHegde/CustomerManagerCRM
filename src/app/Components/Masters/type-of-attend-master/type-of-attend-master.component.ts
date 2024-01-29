@@ -42,6 +42,10 @@ export class TypeOfAttendMasterComponent {
     })
   }
   saveAttendType(){
+    if (this.attendtypename == null || this.attendtypename == '') {
+      alert("Please enter the AttendType Name");
+      return;
+    }
     var attendtypeData = {
       AttendTypeName : this.attendtypename,
       CreatedBy : this.userName

@@ -40,6 +40,11 @@ export class DocumentMailTemplateComponent {
         })
      }
      saveMailtemplate() {
+      
+      if (this.MailTemplateName == null || this.MailTemplateName == '') {
+        alert("Please enter the MailTemplate Name ");
+        return;
+      }
       const templateData = {
         MailTemplateName: this.MailTemplateName,
         CreatedBy : this.userName
