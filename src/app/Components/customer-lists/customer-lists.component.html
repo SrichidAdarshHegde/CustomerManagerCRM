@@ -2,7 +2,7 @@
 <div class="container">
     <h2 class="text-center">Registered Customers List</h2>
 </div><br>
-<div class="col-md-12 ">
+<div class="col-md-16 ">
     <div class="table-container">
         <div class="row">
             <div class="col-md-1"></div>
@@ -16,7 +16,8 @@
         margin-right: auto;" #table id="tableId">
             <tr class="sticky-header">
                 <th style="border: 1px solid black;text-align: center;">SNo.</th>
-                <th style="border: 1px solid black;text-align: center;">Customer Name</th>
+                <th style="border: 1px solid black; text-align: center; width: 300%;">Customer Name</th>
+
                 <th style="border: 1px solid black;text-align: center;">Unit</th>
                 <th style="border: 1px solid black;text-align: center;">Address One</th>
                 <th style="border: 1px solid black;text-align: center;">Address Two</th>
@@ -36,25 +37,25 @@
             </tr>
             <!-- | search: searchText -->
             <tr style="border: 1px solid black;height: 25px;"
-                *ngFor="let customer of customerList ; let i = index">
-                <td style="border: 1px solid black;text-align: right;">{{(i+1)}}</td>
-                <td style="border: 1px solid black;text-align: left;" data-toggle="modal" data-target="#exampleModal"
+                *ngFor="let customer of customerList ; let i = index  line-height: 1.2;">
+                <td style="border: 1px solid black;text-align: right;padding: 1px; ">{{(i+1)}}</td>
+                <td style="border: 1px solid black;text-align: left;padding: 1px;" data-toggle="modal" data-target="#exampleModal"
                     (click)="getPerticularCustomerContactDetails(customer)"><button
                         class="btn btn-clear">{{customer.companyName}}</button></td>
-                <td style="border: 1px solid black;">{{customer.unit}}</td>
-                <td style="border: 1px solid black;">{{customer.addressOne}}</td>
-                <td style="border: 1px solid black;">{{customer.addressTwo}}</td>
-                <td style="border: 1px solid black;">{{customer.addressThree}}</td>
-                <td style="border: 1px solid black;">{{customer.billingAddress}}</td>
-                <td style="border: 1px solid black;">{{customer.city}}</td>
-                <td style="border: 1px solid black;">{{customer.state}}</td>
-                <td style="border: 1px solid black;text-align: right;">{{customer.pincode}}</td>
-                <td style="border: 1px solid black;">{{customer.gstin}}</td>
-                <td style="border: 1px solid black;">{{customer.cluster}}</td>
-                <td style="border: 1px solid black;">{{customer.routeNumber}}</td>
+                <td style="border: 1px solid black; padding: 1px;">{{customer.unit}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.addressOne}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.addressTwo}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.addressThree}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.billingAddress}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.city}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.state}}</td>
+                <td style="border: 1px solid black;text-align: right;padding: 1px;">{{customer.pincode}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.gstin}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.cluster}}</td>
+                <td style="border: 1px solid black;padding: 1px;">{{customer.routeNumber}}</td>
                 <!-- <td style="border: 1px solid black;">{{customer.region}}</td> -->
-                <td style="border: 1px solid black;">{{customer.zone}}</td>
-                <td style="border: 1px solid black;">
+                <td style="border: 1px solid black;padding: 1px;">{{customer.zone}}</td>
+                <td style="border: 1px solid black;padding: 1px;">
                     <button class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdit"
                         (click)="editCustomer(customer)"></button>
                 </td>

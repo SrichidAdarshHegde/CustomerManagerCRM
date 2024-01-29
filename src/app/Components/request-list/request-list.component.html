@@ -49,7 +49,7 @@
                 style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                 <thead>
 
-                    <tr style="border-width:1px; border-color:black;font-size:15px;">
+                    <tr style="border-width:1px; border-color:black; font-size:12px;">
                         <th style="border-width:1px; border-color:rgb(253, 253, 253);color: antiquewhite;background-color: black;text-align: center;">SlNo.</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">Customer Name</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">Machine Number</th>
@@ -65,12 +65,12 @@
                 </thead>
                 <tbody>
                     <tr
-                        *ngFor="let request of requestlist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px">{{1 * (p-1)+(i+1)}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px">{{request.companyName}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px">{{request.machineNumber}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px">{{request.modelName}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px">
+                        *ngFor="let request of requestlist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index"  style="font-size: 12px; line-height: 1.1;">
+                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px; padding: 2px;">{{1 * (p-1)+(i+1)}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;  padding: 2px;">{{request.companyName}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;  padding: 2px;">{{request.machineNumber}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;  padding: 2px;">{{request.modelName}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;  padding: 2px;">
                             <p *ngFor="let contact of contactData">
                                 {{contact.salute}} {{contact.contactName}}<br> {{contact.mobile}}, {{contact.email}}
                                 <br>{{contact.designation}}
