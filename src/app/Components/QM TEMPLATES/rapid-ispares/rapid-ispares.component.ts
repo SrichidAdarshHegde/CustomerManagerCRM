@@ -120,35 +120,46 @@ getBillingAddress(){
     };
 
 
-    this.VisionQtyA = this.VisionQtyA;
+    this.VisionQtyA = this.editableVisionQtyA;
 
-    this.VisionPriceA = this.VisionPriceA;
-    this.VisionQtyB = this.VisionQtyB;
-    this.VisionPriceB = this.VisionPriceB;
+    this.VisionPriceA = this.editableVisionPriceA;
+    this.VisionQtyB = this.editableVisionQtyB;
+    this.VisionPriceB = this.editableVisionPriceB;
    
 
+
     const changesMade = Object.keys(previousValues).some(key => previousValues[key] !== this[key]);
- if (changesMade) {
-    alert('Changes made successfully.');
-  } else {
-    alert('No changes made or something went wrong.');
-  }
+    if (changesMade) {
+       alert('Changes made successfully.');
+     } else {
+       alert('No changes made or something went wrong.');
+     }
+   
+     // Reset the editable values
+    //  this.resetEditableValues();
+   }
+//    resetEditableValues() {
+  
+//     this.editableVisionQtyA = null;
+//     this.editableVisionPriceA = null;
+//     this.editableVisionQtyB = null;
+//     this.editableVisionPriceB = null;
+    
 
-  // Reset the editable values
+// }
 
-}
 
 
   fetchTemplate() {
     this.regSv.getRapidisparesdetails(this.RefID).subscribe((response: any) => {
       if (response) {
      this.billingAddress = response.billingAddress;
-      this.VisionPriceA = response.VisionPriceA;
+      this.VisionPriceA = response.visionPriceA;
   
-      this.VisionQtyA = response.VisionQtyA;
-      this.VisionQtyB = response.VisionQtyB;
+      this.VisionQtyA = response.visionQtyA;
+      this.VisionQtyB = response.visionQtyB;
   
-      this.VisionPriceB = response.VisionPriceB;
+      this.VisionPriceB = response.visionPriceB;
      
   this.TemplateName=response.TemplateName;
       // this.KindAttention = response.KindAttention;

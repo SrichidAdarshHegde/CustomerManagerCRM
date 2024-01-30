@@ -169,7 +169,12 @@ ngOnInit(): void {
         this.regSv.deleteContactDeatils(id).subscribe((response:any)=>{
           if(response == "success"){
             alert("Contact Deleted")
-            window.location.reload()
+            // window.location.reload()
+            this.regSv.getCustomerContactDetails(this.selectedPerticularCustomer).subscribe((result: any) => {
+              this.contactDetails = result;
+              console.log(this.contactDetails);
+              this.EditContact = false;
+          });
           }else{
             alert("Somthing Went Wrong!!")
             window.location.reload()

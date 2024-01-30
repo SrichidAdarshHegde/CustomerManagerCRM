@@ -233,8 +233,8 @@ getBillingAddress(){
 
   save(){
     this.TotalAmount = this.BasicSystemPrice;
-    this.cdr.detectChanges();
-    // Create the templateData object
+ 
+
     const templateData = {
   RefID : this.RefID,
   billingAddress:this.billingAddress,

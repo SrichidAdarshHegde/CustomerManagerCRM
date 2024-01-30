@@ -178,30 +178,30 @@ export class Rapidi2015JLXComponent {
   }
 
   // Reset the editable values
-  this.resetEditableValues();
+  // this.resetEditableValues();
 }
-resetEditableValues() {
+// resetEditableValues() {
   
-    this.editableQty = null;
-    this.editablePrice = null;
-    this.editableQtyA = null;
-    this.editablePriceA = null;
-    this.editableQtyB = null;
-    this.editablePriceB = null;
-    this.editableQtyC = null;
-    this.editablePriceC = null;
-    this.editableQtyD = null;
-    this.editablePriceD = null;
-    this.editableQtyE = null;
-    this.editablePriceE = null;
-    this.editableQtyF = null;
-    this.editablePriceF = null;
-    this.editableQtyG = null;
-    this.editablePriceG = null;
-    this.editableQtyH = null;
-    this.editablePriceH = null;
+//     this.editableQty = null;
+//     this.editablePrice = null;
+//     this.editableQtyA = null;
+//     this.editablePriceA = null;
+//     this.editableQtyB = null;
+//     this.editablePriceB = null;
+//     this.editableQtyC = null;
+//     this.editablePriceC = null;
+//     this.editableQtyD = null;
+//     this.editablePriceD = null;
+//     this.editableQtyE = null;
+//     this.editablePriceE = null;
+//     this.editableQtyF = null;
+//     this.editablePriceF = null;
+//     this.editableQtyG = null;
+//     this.editablePriceG = null;
+//     this.editableQtyH = null;
+//     this.editablePriceH = null;
 
-}
+// }
 
   logCompleteQuotation() {
     const quotationDiv = document.getElementById('RefID');
