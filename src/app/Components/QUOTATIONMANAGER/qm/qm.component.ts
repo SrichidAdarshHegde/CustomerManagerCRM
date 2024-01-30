@@ -293,6 +293,7 @@ export class QMComponent {
               
       default:
         alert("No Template available for this");
+       
     }
   }
   

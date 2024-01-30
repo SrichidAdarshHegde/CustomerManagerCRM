@@ -304,6 +304,7 @@ getBillingAddress(){
        
         alert("Saved Successfully")
      //   window.location.reload()
+     this.route.navigate(['/qm', this.editcustomerID]);
       }
       else
       {
@@ -312,7 +313,7 @@ getBillingAddress(){
       } 
     })
 
-    
+
    
   }
 

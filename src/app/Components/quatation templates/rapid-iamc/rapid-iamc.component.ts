@@ -51,8 +51,8 @@ KindAttention: any;
 
 
   ngOnInit(): void {
-    this.getRefNo1(); 
-    this.getBillingAddress1();
+    this.getRefNo(); 
+    this.getCustomerBillingAddress();
    
   }
 
@@ -90,31 +90,44 @@ KindAttention: any;
 
   
   save(){
+    
     var templateData = {
-      RefID : this.RefID,
-      billingAddress:this.billingAddress,
+  RefID : this.RefID,
+  billingAddress:this.billingAddress,
 
-    
-      TemplateID:this.TemplateID,
-      TemplateName:this.TemplateName,
-      CustomerName:this.CustomerName,
-    
+
+  CreatedBy :this.userName,
+
+
+  TemplateID:this.TemplateID,
+  TemplateName:this.TemplateName,
+  CustomerName:this.CustomerName,
+  KindAttention:this.KindAttention,
+
+     
+
+
+      
     }
     this.regSv.postSavequotationtemplateRapidIAMC(templateData).subscribe((response:any )=>
+    {
+      if(response !=null){
+
+        
+        this.billingAddress=this.billingAddress,
+       
+        alert("Saved Successfully")
+     //   window.location.reload()
+      }
+      else
       {
-        if(response == "success"){
-          alert("Saved Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
+        alert("Somthing Went Wrong!!")
+      //  window.location.reload()
+      } 
+    })
+
     
    
   }
-
 
 }

@@ -56,31 +56,31 @@ export class Quotation4030indollorComponent {
    //editable
 
    editableQty: string = '1 Set';
-   editablePrice:number=267000;
+   editablePrice:number=17040;
  
    editableQtyA:number=1;
-   editablePriceA:number=267000;
+   editablePriceA:number=5480;
  
    editableQtyB:number=1;
-   editablePriceB:number=17600;
+   editablePriceB:number=270;
  
     editableQtyC:number=1;
-   editablePriceC:number=124700;
+   editablePriceC:number=1850;
  
    editableQtyD:number=1;
-   editablePriceD:number=219000;
+   editablePriceD:number=190;
  
    editableQtyE:number=1;
-   editablePriceE:number=258000;
+   editablePriceE:number=4750;
  
   editableQtyF:number=1;
-   editablePriceF:number=297000;
+   editablePriceF:number=4200;
  
    editableQtyG:number=1;
-   editablePriceG:number=96000;
+   editablePriceG:number=1349;
  
    editableQtyH:number=1;
-   editablePriceH:number=14715;
+   editablePriceH:number=96000;
  // OptionalPriceH: number;
    TemplateID: any;
   
@@ -265,32 +265,26 @@ export class Quotation4030indollorComponent {
      console.log('Selected Template:', this.selectedTemplate);
    }
  
- 
-  fetchTemplate() {
-    if (!this.RefID || this.RefID === '') {
-      alert('Reference ID is required to fetch the template.');
-      return;
-    }
+   
+   fetchTemplate() {
+    this.regSv.gettemplatedetails4030indollor(this.RefID).subscribe((response: any) => {
+      if (response) {
+      this. BasicSystemQty=response.basicSystemQty,
+      this. BasicSystemPrice=response.basicSystemPrice,
+
+      this.OptionalQtyA = response.optionalQtyA;
+      this.OptionalPriceA = response.optionalPriceA;
   
-    this.regSv.gettemplatedetails4030indollor(this.RefID).subscribe(
-      (response: any) => {
-        if (response != null) {
-          this.BasicSystemQty = response.basicSystemQty;
-          this.BasicSystemPrice = response.basicSystemPrice;
+      this.OptionalQtyB = response.optionalQtyB;
+      this.OptionalPriceB = response.optionalPriceB;
   
-          this.OptionalQtyA = response.optionalQtyA;
-          this.OptionalPriceA = response.optionalPriceA;
+      this.OptionalQtyC = response.optionalQtyC;
+      this.OptionalPriceC = response.optionalPriceC;
   
-          this.OptionalQtyB = response.optionalQtyB;
-          this.OptionalPriceB = response.optionalPriceB;
+      this.OptionalQtyD = response.optionalQtyD;
+      this.OptionalPriceD = response.optionalPriceD;
   
-          this.OptionalQtyC = response.optionalQtyC;
-          this.OptionalPriceC = response.optionalPriceC;
-  
-          this.OptionalQtyD = response.optionalQtyD;
-          this.OptionalPriceD = response.optionalPriceD;
-          
-          this.OptionalQtyE = response.optionalQtyE;
+      this.OptionalQtyE = response.optionalQtyE;
       this.OptionalPriceE = response.optionalPriceE;
   
       this.OptionalQtyF = response.optionalQtyF;
@@ -302,15 +296,16 @@ export class Quotation4030indollorComponent {
       this.OptionalQtyH = response.optionalQtyH;
       this.OptionalPriceH = response.optionalPriceH;
   
-  
-          this.KindAttention = response.KindAttention;
-          alert("Details for RefID present");
-        } else {
-          alert(`Reference ID not found for this template`);
-        }
-      }
-    );
-  }
+      this.KindAttention = response.KindAttention;
+      alert("Details for RefID present");
+    }
+    else {
+      alert("RefID not present. Please enter a valid RefID.");
+    }
+  });
+}
+
+
   
  
    save(){

@@ -49,16 +49,18 @@ export class Quotation4020z25Component {
   OptionalQtyF:number=1;
   OptionalPriceF: number =258000; 
 
-  OptionalQtyG:number=1;
-  OptionalPriceG: number =297000; 
+  
 
   OptionalQtyH:number=1;
-  OptionalPriceH: number =96000; 
+  OptionalPriceH: number =960001; 
+
+  OptionalQtyG:number=1;
+  OptionalPriceG: number =2970001; 
  
   //editable
 
   editableQty: string = '1 Set';
-  editablePrice:number=267000;
+  editablePrice:number=940000     ; 
 
   editableQtyA:number=1;
   editablePriceA:number=267000;
@@ -70,19 +72,19 @@ export class Quotation4020z25Component {
   editablePriceC:number=124700;
 
   editableQtyD:number=1;
-  editablePriceD:number=219000;
+  editablePriceD:number=19500; 
 
   editableQtyE:number=1;
-  editablePriceE:number=258000;
+  editablePriceE:number=219000;
 
  editableQtyF:number=1;
-  editablePriceF:number=297000;
+  editablePriceF:number=258000;
 
   editableQtyG:number=1;
-  editablePriceG:number=96000;
+  editablePriceG:number=297000;
 
   editableQtyH:number=1;
-  editablePriceH:number=14715;
+  editablePriceH:number=96000;
 // OptionalPriceH: number;
   TemplateID: any;
 
@@ -266,6 +268,7 @@ getBillingAddress(){
     this.selectedTemplate = data.target.value;
     console.log('Selected Template:', this.selectedTemplate);
   }
+
   fetchTemplate() {
     if (!this.RefID || this.RefID === '') {
       alert('Reference ID is required to fetch the template.');
@@ -274,7 +277,7 @@ getBillingAddress(){
   
     this.regSv.gettemplatedetails4020z25(this.RefID).subscribe(
       (response: any) => {
-        if (response != null) {
+        if (response) {
           this.BasicSystemQty = response.basicSystemQty;
           this.BasicSystemPrice = response.basicSystemPrice;
   
