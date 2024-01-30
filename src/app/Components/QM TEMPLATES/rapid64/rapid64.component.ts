@@ -136,14 +136,14 @@ getBillingAddress(){
     
 
       this.billingAddress = response.billingAddress;
-      this.UpgradeQtyA = response.UpgradeQtyA;
+      this.UpgradeQtyA = response.upgradeQtyA;
   
-      this.UpgradeQtyB = response.UpgradeQtyB;
-      this.UpgradeQtyC = response.UpgradeQtyC;
+      this.UpgradeQtyB = response.upgradeQtyB;
+      this.UpgradeQtyC = response.upgradeQtyC;
   
-      this.UpgradePrice = response.UpgradePrice;
+      this.UpgradePrice = response.upgradePrice;
      
-  this.TemplateName=response.TemplateName;
+  this.TemplateName=response.templateName;
       // this.KindAttention = response.KindAttention;
       alert("Details for RefID present");
     }
