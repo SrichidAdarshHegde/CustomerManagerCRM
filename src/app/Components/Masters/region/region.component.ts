@@ -41,6 +41,10 @@ export class RegionComponent{
     })
   }
   saveRegion(){
+    if (this.regionname == null || this.regionname == '') {
+    alert("Please enter the Region Name");
+    return;
+  }
     var regionData = {
       RegionName : this.regionname,
       CreatedBy : this.userName

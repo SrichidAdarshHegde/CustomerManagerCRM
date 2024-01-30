@@ -95,6 +95,7 @@ KindAttentionlist: any;
   templateId: any;
   selectedTemplate: any;
   editcustomerID: any;
+  TotalAmount: number;
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
       this.userName = localStorage.getItem('UserName');
@@ -303,6 +304,7 @@ getBillingAddress(){
   
   
           this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
         } else {
           alert(`Reference ID not found for this template`);
         }
@@ -313,6 +315,7 @@ getBillingAddress(){
  
 
   save(){
+    this.TotalAmount = this.BasicSystemPrice;
     var templateData = {
   RefID : this.RefID,
   billingAddress:this.billingAddress,
@@ -351,7 +354,7 @@ getBillingAddress(){
   TemplateName:this.TemplateName,
   CustomerName:this.CustomerName,
   KindAttention:this.KindAttention,
-   
+ TotalAmount : this.BasicSystemPrice, 
      
 
 

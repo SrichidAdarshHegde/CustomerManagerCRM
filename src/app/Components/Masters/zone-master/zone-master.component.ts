@@ -41,6 +41,10 @@ export class ZoneMasterComponent {
     })
   }
   saveZone(){
+    if (this.zonename == null || this.zonename == '') {
+      alert("Please enter the Zone Name");
+      return;
+    }
     var zoneData = {
       ZoneName : this.zonename,
       CreatedBy : this.userName

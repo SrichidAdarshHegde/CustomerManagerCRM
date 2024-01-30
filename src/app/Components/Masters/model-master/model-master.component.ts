@@ -42,6 +42,10 @@ export class ModelMasterComponent {
     })
   }
   saveModel(){
+    if (this.modelname == null || this.modelname == '') {
+      alert("Please enter the Model Name");
+      return;
+    }
     var modelData = {
       ModelName : this.modelname,
       CreatedBy : this.userName

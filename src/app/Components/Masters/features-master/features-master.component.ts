@@ -41,6 +41,11 @@ export class FeaturesMasterComponent {
     })
   }
   saveFeatures(){
+    if (this.featuresname == null || this.featuresname == '') {
+    alert("Please enter the Features  Name");
+    return;
+  }
+   
     var featuresData = {
       FeaturesName : this.featuresname,
       CreatedBy : this.userName

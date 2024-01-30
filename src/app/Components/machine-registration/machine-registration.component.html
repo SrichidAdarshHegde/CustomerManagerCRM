@@ -197,7 +197,7 @@
     <p style="text-align: center;"><b>Add Contact Details</b></p>
     <div class="col-md-12 row">
         <div class="col-md-1"></div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <label for="machineNumber">Salute:</label>
             <input class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required>
         </div>
@@ -221,38 +221,36 @@
             <br> <button class="form-control" type="submit" class="btn btn-primary" (click)="addContactDetails()">Add</button>
         </div>
     </div><br>
-    <div class="col-md-12">
+    <div class="col-md-11">
         <div class="table-responsive">
-            <table class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
+            <table class="table table-bordered" style="border-width:1px; border-color:black;font-size:16px;padding: 5px;margin: 0 auto; ">
                 <thead>
-                    <tr style="border-width:1px; border-color:black;font-size:15px;">
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">SlNo.</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Salute</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Contact Name</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Designation</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Email</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center;">Mobile</th>
+                    <tr style="border-width:1px; border-color:black;font-size:10px;">
+                        <th class="custom-col" style="border-width:1px; border-color:rgb(248, 244, 244); color: rgb(231, 172, 94); background-color:rgb(27, 9, 129); text-align: center; width: 1%;">SlNo.</th>
+                        <th class="custom-col" style="border-width:1px; border-color:rgb(248, 244, 244); color: rgb(231, 172, 94); background-color:rgb(27, 9, 129); text-align: center; width: 2%;">Salute</th>
+                        <th class="col-2" style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center; width: 8%;">Contact Name</th>
+                        <th class="col-2" style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center; width: 8%;">Designation</th>
+                        <th class="col-2" style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center; width: 8%;">Email</th>
+                        <th class="col-2" style="border-width:1px; border-color:rgb(248, 244, 244);color: rgb(231, 172, 94);background-color:rgb(27, 9, 129);text-align: center; width: 8%;">Mobile</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let details of contactdetailslist; let i = index">
-                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{(i+1)}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{details.salute}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{details.contactName}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{details.designation}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{details.email}}</td>
-                        <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{details.mobile}}</td>
-                        <!-- <td>
-                            <button>
-                                <i class="fa fa-delete"></i>
-                            </button>
-                        </td> -->
+                        <td style="border-width:1px; border-color:black;text-align: right; font-size: 14px;">{{(i+1)}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: left; font-size: 14px;">{{details.salute}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: left; font-size: 14px;">{{details.contactName}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: left; font-size: 14px;">{{details.designation}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: left; font-size: 14px;">{{details.email}}</td>
+                        <td style="border-width:1px; border-color:black;text-align: right; font-size: 14px;">{{details.mobile}}</td>
                     </tr>
                 </tbody>
             </table>
-            <!-- <pagination-controls (pageChange)="p = $event" style="float: right"></pagination-controls> -->
         </div>
-    </div><br><br>
+    </div>
+    
+            <!-- <pagination-controls (pageChange)="p = $event" style="float: right"></pagination-controls> -->
+    
+    <br><br>
     <div class="col-md-12 row">
         <div class="col-md-6 row"></div>
         <div class="register-button">

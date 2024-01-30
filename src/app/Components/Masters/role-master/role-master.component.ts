@@ -42,6 +42,10 @@ export class RoleMasterComponent implements OnInit{
     })
   }
   saveRole(){
+    if (this.rolename == null || this.rolename == '') {
+      alert("Please enter the Role Name");
+      return;
+    }
     var roleData = {
       RoleName : this.rolename,
       CreatedBy : this.username

@@ -40,9 +40,13 @@ export class InvoicePerticularComponent {
       }
     })
   }
-  saveInvoicePerticular(){
+  saveInvoicePerticular(){  
+    if (this.invoiceperticularname == null || this.invoiceperticularname == '') {
+    alert("Please enter the Invoiceperticular Name");
+    return;
+  }
     var invoiceperticularData = {
-      InvoicePerticularName : this.invoiceperticularname,
+      invoiceperticularname : this.invoiceperticularname,
       CreatedBy : this.userName
     }
     this.masterSv.saveInvoicePerticular(invoiceperticularData).subscribe((response:any)=>{

@@ -23,6 +23,12 @@ export class CountryComponent implements OnInit{
     })
   }
   saveCountry(){
+    
+
+      if (this.countryname == null || this.countryname == '') {
+        alert("Please enter the Country Name");
+        return;
+      }
     var countryData = {
       CountryName : this.countryname,
       CreatedBy : this.username

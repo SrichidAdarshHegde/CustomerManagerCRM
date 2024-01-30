@@ -130,6 +130,10 @@ export class TemplateComponent {
       });
   }
   saveTemplate() {
+    if (this.TemplateName == null || this.TemplateName == '') {
+      alert("Please enter the Template Name");
+      return;
+    }
     var templateData = {
       TemplateName: this.TemplateName,
       CreatedBy: this.userName,
