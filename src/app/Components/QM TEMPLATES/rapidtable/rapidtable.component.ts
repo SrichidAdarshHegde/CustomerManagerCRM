@@ -126,9 +126,9 @@ getBillingAddress(){
       if (response) {
 
       this.billingAddress = response.billingAddress;
-      this.VisionPrice = response.VisionPrice;
+      this.VisionPrice = response.visionPrice;
   
-      this.VisionQty = response.VisionQty;
+      this.VisionQty = response.visionQty;
     
      
   this.TemplateName=response.TemplateName;
