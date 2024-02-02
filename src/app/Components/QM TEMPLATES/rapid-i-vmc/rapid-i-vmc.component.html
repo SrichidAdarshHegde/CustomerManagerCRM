@@ -1,58 +1,272 @@
-
 <div class="col-md-12 row">
     <div class="col-md-1"></div>
     <div class="col-md-11">
 
+
+
         <div class="container" style="border: 0cap;">
 
+           <br> <div>
+                <label for="refIDInput">Enter Reference ID:</label>
+                <input type="text" id="refIDInput" [(ngModel)]="RefID" placeholder="Enter Reference ID">&nbsp;
+                <button (click)="fetchTemplate()">Fetch</button>
+              </div>
+
+
+           <br> <div class="col-md-8">
+                <p style="text-align: center; font-size: 20px;"><strong> <u> Quotation 4020 Editabel </u></strong></p>
+
+                </div> 
             <div class="col-md-12 row">
+                
+                 
+    <table style="width: 67%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditablebasicQty:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editablebasicQty" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablebasicPrice:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablebasicPrice" style="width: 100px; border: none;" />
+            </td>
+        </tr>
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditablebasicQtyA:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editablebasicQtyA" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablebasicPriceA:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablebasicPriceA" style="width: 100px; border: none;" />
+            </td>
+        </tr>
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditablebasicQtyB:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editablebasicQtyB" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablebasicPriceB:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablebasicPriceB" style="width: 100px; border: none;" />
+            </td>
+        </tr>
+
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditablebasicQtyC:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editablebasicQtyC" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablebasicPriceC:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablebasicPriceC" style="width: 100px; border: none;" />
+            </td>
+        </tr>
+
+
+        <tr style="border: 1px solid black; height: 1px;">
+        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyA:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input type="string" id="editableQty" [(ngModel)]="editableQtyA" style="width: 100px; border: none;" />
+        </td>
+        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceA:</label>
+        </td>
+        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+            <input  type="text" id="editablePrice" [(ngModel)]="editablePriceA" style="width: 100px; border: none;" />
+        </td>
+        </tr>
+
+        <tr style="border: 1px solid black; height: 1px;">
+            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyB:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input type="text" id="editableQty" [(ngModel)]="editableQtyB" style="width: 100px; border: none;" />
+            </td>
+            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceB:</label>
+            </td>
+            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                <input  type="text" id="editablePrice" [(ngModel)]="editablePriceB" style="width: 100px; border: none;" />
+            </td>
+            </tr>
+
+            <tr style="border: 1px solid black; height: 1px;">
+                <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                    <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyC:</label>
+                </td>
+                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                    <input type="text" id="editableQty" [(ngModel)]="editableQtyC" style="width: 100px; border: none;" />
+                </td>
+                <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                    <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceC:</label>
+                </td>
+                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                    <input  type="text" id="editablePrice" [(ngModel)]="editablePriceC" style="width: 100px; border: none;" />
+                </td>
+                </tr>
+
+                <tr style="border: 1px solid black; height: 1px;">
+                    <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                        <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyD:</label>
+                    </td>
+                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                        <input type="text" id="editableQty" [(ngModel)]="editableQtyD" style="width: 100px; border: none;" />
+                    </td>
+                    <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                        <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceD:</label>
+                    </td>
+                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                        <input  type="text" id="editablePrice" [(ngModel)]="editablePriceD" style="width: 100px; border: none;" />
+                    </td>
+                    </tr>
+
+                    
+                    <tr style="border: 1px solid black; height: 1px;">
+                        <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                            <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyE:</label>
+                        </td>
+                        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                            <input type="text" id="editableQty" [(ngModel)]="editableQtyE" style="width: 100px; border: none;" />
+                        </td>
+                        <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                            <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceE:</label>
+                        </td>
+                        <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                            <input  type="text" id="editablePrice" [(ngModel)]="editablePriceE" style="width: 100px; border: none;" />
+                        </td>
+                        </tr>
+
+                        <tr style="border: 1px solid black; height: 1px;">
+                            <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyF:</label>
+                            </td>
+                            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                <input type="text" id="editableQty" [(ngModel)]="editableQtyF" style="width: 100px; border: none;" />
+                            </td>
+                            <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceF:</label>
+                            </td>
+                            <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                <input  type="text" id="editablePrice" [(ngModel)]="editablePriceF" style="width: 100px; border: none;" />
+                            </td>
+                            </tr>
+
+                            <tr style="border: 1px solid black; height: 1px;">
+                                <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                    <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyG:</label>
+                                </td>
+                                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                    <input type="text" id="editableQty" [(ngModel)]="editableQtyG" style="width: 100px; border: none;" />
+                                </td>
+                                <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                    <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceG:</label>
+                                </td>
+                                <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                    <input  type="text" id="editablePrice" [(ngModel)]="editablePriceG" style="width: 100px; border: none;" />
+                                </td>
+                                </tr>
+
+                                <tr style="border: 1px solid black; height: 1px;">
+                                    <td style="width: 5px; vertical-align: top; border: 1px solid black; text-align: left;">
+                                        <label for="editableQty" style="display: inline-block; margin-right: 70px;">EditableQtyH:</label>
+                                    </td>
+                                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                        <input type="text" id="editableQty" [(ngModel)]="editableQtyH" style="width: 100px; border: none;" />
+                                    </td>
+                                    <td style=" vertical-align: top; border: 1px solid black; text-align: left;">
+                                        <label for="editablePrice" style="display: inline-block; margin-right: 70px;">EditablePriceH:</label>
+                                    </td>
+                                    <td style=" vertical-align: top; border: 0px solid black; text-align: left;">
+                                        <input  type="text" id="editablePrice" [(ngModel)]="editablePriceH" style="width: 100px; border: none;" />
+                                    </td>
+                                    </tr>
+                            
+
+
+
+    </table> 
+    <div class="col-md-8 d-flex justify-content-center align-items-center"><br> <br> <br> 
+        <button class="btn btn-primary text-center" (click)="updateTemplate()">Save Changes</button>
+    </div>
+
+        <div class="container" style="border: 0cap;">
+
+         
                 <div class="col-md-1"></div>
                 <div id="printsection" class="col-md-8 table-bordered"
-                    style="background-color:white;border-color:forestgreen;border-width:5%">
+                    style="background-color:white;border-color:forestgreen;border-width:2px">
 
                     <div class="col-md-12 row">
                         <div class="col-md-8">
                           
                         </div>
-                        <div class="col-md-4 logo">
-                           <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
-                        </div>
-                      
-                    </div>
-                    <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
-                        <tr style="border: 1px solid black; height: 25px;">
+                        <div class="col-md-2 logo">
+                           
+                          
+               
+               <img class="logo" style="width: 50%;" src="assets/Group 2CRMlogo2.png" alt="logo"> 
+            </div>
+            <div class="col-md-2">
+                <p style="text-align: center; font-size: 30px;">
+                    <strong>Rapid-I-VMC</strong>
+                </p>
+                
+                
+                <!-- Hidden input field to save the static name using ngModel -->
+                <input type="hidden" [(ngModel)]="TemplateName" value="Rapid-I-VMC" />
+            </div>
+        </div>
+        <table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;">
+            <tr style="border: 1px solid black; height: 25px;">
 
 
-                            <td style="width: 19%; vertical-align: top; border: 1px solid black; text-align: left;">
-                                <p style="border-bottom: 1px solid black; text-align: left;">Billing Address:</p>
-                                <p style="text-align: left;">{{billingAddress}}</p>
-                              </td>
-                          <!-- First Column -->
-                          <td style="width: 10%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
-                            <!-- Centered content -->
-                            <p style="border-bottom: 1px solid black; text-align: left;">Ref.No: </p>
-                            <p style="border-bottom: 1px solid black; text-align: left;">Date:</p>
-                            <p style="border-bottom: 1px solid black; text-align: left;">Your Enquiry: </p>
-                            <p style="border-bottom: 0px solid black; text-align: left;">Kind Attention:</p>
-                          </td>
-                      
-                          <!-- Second Column -->
-                          <td class="abc" style="width: 10%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
-                            <!-- Right-aligned content -->
-                            <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
-                            <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
-                            <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
-                            <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
-                          </td>
-                      
-                          <!-- Third Column for Billing Address -->
-                         
-                        </tr>
-                      </table>
-                      
-                  
-                   
-                    <div style="text-align: left;">
+                <td style="width: 19%; vertical-align: top; border: 1px solid black; text-align: left;">
+                    <p style="border-bottom: 1px solid black; text-align: left;">Billing Address:</p>
+                    <p style="text-align: left;">{{billingAddress}}</p>
+                  </td>
+              <!-- First Column -->
+              <td style="width: 10%; vertical-align: top; border: 1px solid black; text-align: center; background-color: rgb(212, 212, 212);">
+                <!-- Centered content -->
+                <p style="border-bottom: 1px solid black; text-align: left;">Ref.No: </p>
+                <p style="border-bottom: 1px solid black; text-align: left;">Date:</p>
+                <p style="border-bottom: 1px solid black; text-align: left;">Your Enquiry: </p>
+                <p style="border-bottom: 0px solid black; text-align: left;">Kind Attention:</p>
+              </td>
+          
+            
+              <td class="abc" style="width: 10%; vertical-align: top; border: 1px solid black; text-align: right; background-color:none">
+               
+                <p style="border-bottom: 1px solid black; text-align: left;">{{RefID}}</p>
+                <p style="border-bottom: 1px solid black; text-align: left;">{{value | date}} </p>
+                <p style="border-bottom: 1px solid black; text-align: left;">Email/Telephonic </p>
+                <p style="border-bottom: 0px solid black; text-align: left;"> Mr. M. Sundaram </p>
+               </td>
+             </tr>
+          </table>
+          
+          
+
+        <div style="text-align: left;">
                         <br>
                         Dear Sir/Madam,<br><br>
                         <p><strong>Sub: <u>Offer for Vision Measuring system – “Rapid-I” </u></strong></p>
@@ -80,7 +294,7 @@
                   <strong>   Shivaputra B Dinni  </strong> <br />
                   <strong>      (Sr. Application Engg)  </strong> <br /><br />
 
-                  P.S: All prices quoted are in <strong> US Dollar.</strong>
+                  P.S: All prices quoted are in <strong> Indian Rupees.</strong>
                     </div>
                
 <br><br><br><br><br><br><br><br><br>
@@ -160,22 +374,25 @@
         </td>
         
 
+     
         <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1 Set
+            <p  style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicQty}}</p>
+          </td>
+          <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black; text-align: right;">
+            <p   style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicPrice}}</p>
         </td>
-        <td rowspan="4" style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
-            14,715
-        </td>
+
 
 
     </tr>
 
     <tr>
 
-        <td style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
+        
+        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
             <br>
             a<br>
-            b <br>c <br>
+            b <br>c <br> 
             d<br> e<br> <br><br> f<br> g
 
 
@@ -241,8 +458,8 @@
     <tr>
         <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
             <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
-                    system : USD 14,715 <br>
-                    (US Dollar Fourteen Thousand Seven Hundred and Fifteen Only)
+                    system : USD {{ TotalAmount | number }} <br>
+                    (Rupees {{ TotalAmount | numtowords  }} Only)
 
                 </strong>
 
@@ -284,10 +501,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalQtyA}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            5,480
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalPriceA}}</p>
         </td>
     </tr>
 
@@ -307,10 +524,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            270
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
         </td>
     </tr>
 
@@ -328,10 +545,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
         </td>
     </tr>
 
@@ -349,10 +566,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyD}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceD}}</p>
         </td>
     </tr>
 
@@ -370,10 +587,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyE}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            190
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceE}}</p>
         </td>
     </tr>
 
@@ -393,10 +610,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            4,750
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
         </td>
     </tr>
 
@@ -415,10 +632,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            3,500
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
         </td>
     </tr>
 
@@ -439,10 +656,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyH}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,349
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceH}}</p>
         </td>
     </tr>
 
@@ -558,10 +775,10 @@
         
 
         <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1 Set
-        </td>
-        <td rowspan="4" style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
-            14,715
+            <p  style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicQtyA}}</p>
+          </td>
+          <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black; text-align: right;">
+            <p   style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicPriceA}}</p>
         </td>
 
 
@@ -569,10 +786,11 @@
 
     <tr>
 
-        <td style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
+      
+        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
             <br>
             a<br>
-            b <br>c <br>
+            b <br>c <br> 
             d<br> e<br> <br><br> f<br> g
 
 
@@ -638,8 +856,8 @@
     <tr>
         <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
             <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
-                    system : USD 14,715 <br>
-                    (US Dollar Fourteen Thousand Seven Hundred and Fifteen Only)
+                    system :USD {{ TotalAmount | number }} <br>
+                    (Rupees {{ TotalAmount | numtowords  }} Only)
 
                 </strong>
 
@@ -681,10 +899,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalQtyA}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            5,480
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalPriceA}}</p>
         </td>
     </tr>
 
@@ -704,10 +922,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            270
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
         </td>
     </tr>
 
@@ -725,10 +943,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
         </td>
     </tr>
 
@@ -746,10 +964,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyD}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceD}}</p>
         </td>
     </tr>
 
@@ -767,10 +985,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyE}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            190
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceE}}</p>
         </td>
     </tr>
 
@@ -790,10 +1008,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            4,750
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
         </td>
     </tr>
 
@@ -812,10 +1030,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            3,500
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
         </td>
     </tr>
 
@@ -836,10 +1054,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyH}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,349
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceH}}</p>
         </td>
     </tr>
 
@@ -949,10 +1167,10 @@
         
 
         <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1 Set
-        </td>
-        <td rowspan="4" style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
-            14,715
+            <p  style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicQtyB}}</p>
+          </td>
+          <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black; text-align: right;">
+            <p   style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicPriceB}}</p>
         </td>
 
 
@@ -960,10 +1178,11 @@
 
     <tr>
 
-        <td style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
+        
+        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
             <br>
             a<br>
-            b <br>c <br>
+            b <br>c <br> 
             d<br> e<br> <br><br> f<br> g
 
 
@@ -1029,8 +1248,8 @@
     <tr>
         <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
             <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
-                    system : USD 14,715 <br>
-                    (US Dollar Fourteen Thousand Seven Hundred and Fifteen Only)
+                    system :USD {{ TotalAmount | number }} <br>
+                    (Rupees {{ TotalAmount | numtowords  }} Only)
 
                 </strong>
 
@@ -1072,10 +1291,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalQtyA}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            5,480
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalPriceA}}</p>
         </td>
     </tr>
 
@@ -1095,10 +1314,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            270
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
         </td>
     </tr>
 
@@ -1116,10 +1335,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
         </td>
     </tr>
 
@@ -1137,10 +1356,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyD}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceD}}</p>
         </td>
     </tr>
 
@@ -1158,10 +1377,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyE}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            190
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceE}}</p>
         </td>
     </tr>
 
@@ -1181,10 +1400,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            4,750
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
         </td>
     </tr>
 
@@ -1203,10 +1422,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            3,500
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
         </td>
     </tr>
 
@@ -1227,10 +1446,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyH}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,349
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceH}}</p>
         </td>
     </tr>
 
@@ -1336,10 +1555,10 @@
         
 
         <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1 Set
-        </td>
-        <td rowspan="4" style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
-            14,715
+            <p  style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicQtyC}}</p>
+          </td>
+          <td rowspan="4" style="width: 5%; vertical-align: top; border: 1px solid black; text-align: right;">
+            <p   style="width: 100%; border: none; outline: none;"><br><br><br><br><br><br><br><br>{{BasicPriceC}}</p>
         </td>
 
 
@@ -1347,10 +1566,12 @@
 
     <tr>
 
-        <td style="width: 5%; vertical-align: top; text-align: right; border: 1px solid black;">
+    
+       
+        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
             <br>
             a<br>
-            b <br>c <br>
+            b <br>c <br> 
             d<br> e<br> <br><br> f<br> g
 
 
@@ -1416,8 +1637,8 @@
     <tr>
         <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
             <h5 style="text-align: center;"> <strong>Basic Machine package price excluding Computer
-                    system : USD 14,715 <br>
-                    (US Dollar Fourteen Thousand Seven Hundred and Fifteen Only)
+                    system :USD {{ TotalAmount | number }} <br>
+                    (Rupees {{ TotalAmount | numtowords  }} Only)
 
                 </strong>
 
@@ -1459,10 +1680,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalQtyA}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            5,480
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;" >{{OptionalPriceA}}</p>
         </td>
     </tr>
 
@@ -1482,10 +1703,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            270
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
         </td>
     </tr>
 
@@ -1503,10 +1724,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
         </td>
     </tr>
 
@@ -1524,10 +1745,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyD}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,850
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceD}}</p>
         </td>
     </tr>
 
@@ -1545,10 +1766,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyE}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            190
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceE}}</p>
         </td>
     </tr>
 
@@ -1568,10 +1789,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            4,750
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
         </td>
     </tr>
 
@@ -1590,10 +1811,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            3,500
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
         </td>
     </tr>
 
@@ -1614,10 +1835,10 @@
             <br>
         </td>
         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-            1
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyH}}</p>
         </td>
-        <td style="width: 5%; vertical-align: top;text-align: right; border: 1px solid black;">
-            1,349
+        <td style="width: 5%; vertical-align: top; border: 1px solid black;text-align: right;">
+            <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceH}}</p>
         </td>
     </tr>
 
@@ -2039,25 +2260,28 @@
                      
                     </div> </div>
 
-              
+          
 
+                </div><br><br>
 
-            </div><br>
-
-            <div>&nbsp;</div>
-                    </div>    </div></div>
-
-        <!-- <button type="button" class="btn btn-success" data-dismiss="modal"
-            style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button>  -->
-
-            <div class="col-md-12 row"><br />
-                <div class="col-md-4">&nbsp;</div>
-                <div class="col-md-2">
-                    <input type="button" (click)="print('printsection')" value="PRINT"
-                        class="form-control btn-warning" />
+                </div><br>
+</div></div></div></div></div></div></div>
+                <div>&nbsp;</div>
+        
+               <br> <br><br>
+                <div class="col-md-12 row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-1">
+                        
+            <button style="width: 50%;" type="button" class="btn btn-success" data-dismiss="modal"
+            style="background-color: rgb(27, 9, 129);" (click)="save()">SAVE</button> 
+                    </div>
+                    <div class="col-md-1">
+                        <input style="width: 50%;" type="button" (click)="print('printsection')" value="PRINT"
+                            class="form-control btn-warning" />
+                    </div>
+                    <br><br> <br><br> <br><br> <br><br><br> <br><br>
+                    <div class="col-md-4">&nbsp;</div>
                 </div>
-                <br><br> <br><br> <br><br> <br><br>
-                <div class="col-md-4">&nbsp;</div>
-            </div>
-        </div>
-    </div>
+
+      

@@ -418,7 +418,10 @@ getV20152axesetails(id:any)
 return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetV20152axesetails/'+ id);
 }
 
-
+getVMCdetails(id:any)
+{
+return this.http.get(this.globalurl.weburl + 'QuotationManagerTemplates/GetVMCdetails/'+ id);
+}
 //Quotation4020HT
 
 postSavequotation4020HT(data:any)
@@ -486,6 +489,11 @@ postSaverapid64(data:any)
 return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/Saverapid64', data)
 }
 
+
+postSavequotationtemplateRapidIVMC(data:any)
+{
+  return this.http.post(this.globalurl.weburl + 'QuotationManagerTemplates/SaveRapidIVMC', data)
+}
 
 //location details List
 getAlldetails(id:any){

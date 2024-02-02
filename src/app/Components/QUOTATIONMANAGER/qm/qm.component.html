@@ -276,48 +276,33 @@
 </div>
 
 
-<table >
-<thead>
-<tr>
-    <th>Ref No</th>
-    <th>Rev No</th>
-    <th>Sender</th>
-    <th> Company Name</th>
-    <th>Date</th>
-</tr>
-</thead>
-<tbody>
+<table style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid black;" >
 
-<tr>
-  <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<!-- Add more rows as needed -->
-</tbody>
+  <tr style="border: 1px solid black; height: 25px;">
+   
+      <td style="width: 2px; vertical-align: top; border: 1px solid black;">
+        <label for="editableQty" style="display: inline-block; margin-right: 70px;">Ref No:</label>
+       
+    </td>
+    <td style="width: 2px; vertical-align: top; border: 1px solid black;">
+      <label for="editableQty" style="display: inline-block; margin-right: 70px;">Rev No:</label>
+     
+  </td>
+  <td style="width: 2px; vertical-align: top; border: 1px solid black;">
+    <label for="editableQty" style="display: inline-block; margin-right: 70px;">Sender:</label>
+   
+  </td>
+  <td style="width: 2px; vertical-align: top; border: 1px solid black;">
+    <label for="editableQty" style="display: inline-block; margin-right: 70px;">Company Name:</label>
+   
+  </td>
+
+  <td style="width: 2px; vertical-align: top; border: 1px solid black;">
+    <label for="editableQty" style="display: inline-block; margin-right: 70px;">Date:</label>
+   
+  </td>
+ 
+
 </table>
 
 <div class="row mt-3">
@@ -325,7 +310,7 @@
 <button type="button" class="btn btn-primary">Open</button>
 </div>
 <div class="col-md-4 d-flex justify-content-center align-items-center">
-<label for="searchTemplate" style="margin-bottom: 0; margin-right: 10px;">Brochure:</label>
+<label for="searchTemplate" style="margin-bottom: 0; margin-right: 10px;">Brochure:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 <select (change)="onSelectBrochure($event)" class="form-control" style="width: 315px;">
   <option value="">Select brochure</option>
   <option *ngFor="let brochure of brochurelist" value={{brochure.brochureID}}>
