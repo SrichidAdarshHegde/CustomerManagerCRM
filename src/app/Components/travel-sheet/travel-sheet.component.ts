@@ -181,7 +181,7 @@ tripSheetNumber: any;
   reSequence(){
     this.route.navigate(['/workFront']);
   }
-  private apiUrl = 'http://localhost:44303/api';
+  private apiUrl = 'https://blockchainmatrimony.com/customermanagerapi/api';
   recalculateFuel() {
     // Ensure totalEstDistKms is greater than zero to avoid division by zero
     if (this.totalEstDistKms > 0) {
@@ -366,7 +366,7 @@ formatMinutesToHHMM(minutes: number): string {
       // Add other properties specific to TripSheetDataVM
     };
   
-    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
         this.route.navigate(['/'])
