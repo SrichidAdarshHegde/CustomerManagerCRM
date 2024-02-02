@@ -302,6 +302,7 @@ getBillingAddress(){
   
   
           this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
         } else {
           alert(`Reference ID not found for this template`);
         }
@@ -350,7 +351,7 @@ getBillingAddress(){
   TemplateName:this.TemplateName,
   CustomerName:this.CustomerName,
   KindAttention:this.KindAttention,
-TotalAmount : this.BasicSystemPrice,
+  TotalAmount : this.BasicSystemPrice,
      
 
 

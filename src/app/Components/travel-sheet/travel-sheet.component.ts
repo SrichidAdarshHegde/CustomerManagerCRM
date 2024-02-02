@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
-import { ElementRef, ViewChild } from '@angular/core';
+import {  ViewChild } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -58,8 +58,10 @@ totalEstDistKms: number = 0;
   tripSheetNo: any;
 tripSheetNumber: any;
   tripDetails: any;
+  estimatedTravelTime: any;
+  estimatedJobTime: any;
 
-  constructor( private router: ActivatedRoute,
+  constructor(private el: ElementRef, private renderer: Renderer2,  private router: ActivatedRoute,
      private route: Router,
       private regSv: RegistrationService,
     private httpService: HttpClient){
@@ -118,17 +120,32 @@ tripSheetNumber: any;
       }
     );
   }
-  // print() {
-  //   window.print();
-  //   }
-    print (printSectionId) {
-      var innerContents = document.getElementById(printSectionId).innerHTML;
-      var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=yes');
-      popupWinindow.document.open();
-      popupWinindow.document.write('<html><title>'+'TripSheet - '+this.tripSheetNo+'</title> <style> table{ margin-left:10%; }  </style><head></head><body onload="window.print()">' + innerContents + '</html>');
-      popupWinindow.document.close();
-      //window.print();
-  };
+  print(printSectionId) {
+    // Get the native element
+    const printContent = this.el.nativeElement.querySelector('#' + printSectionId);
+
+    // Clone the element with dynamic content
+    const clonedContent = printContent.cloneNode(true);
+
+    // Create a new window and open it
+    const popupWindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=yes');
+
+    // Write the HTML content to the new window
+    popupWindow.document.open();
+    popupWindow.document.write('<html><title>' + 'TripSheet - ' + this.tripSheetNo + '</title><style>table{ margin-left:10%; border-collapse: collapse; } table, th, td { border: 1px solid black; }</style><head></head><body onload="window.print()">');
+    popupWindow.document.body.appendChild(clonedContent);
+    popupWindow.document.write('</body></html>');
+    popupWindow.document.close();
+  }
+
+  //   print (printSectionId) {
+  //     var innerContents = document.getElementById(printSectionId).innerHTML;
+  //     var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=yes');
+  //     popupWinindow.document.open();
+  //     popupWinindow.document.write('<html><title>'+'TripSheet - '+this.tripSheetNo+'</title> <style> table{ margin-left:10%; }  </style><head></head><body onload="window.print()">' + innerContents + '</html>');
+  //     popupWinindow.document.close();
+  //     //window.print();
+  // };
   getTripDetails(){
     this.regSv.getTripDetails(this.tripSheetNumber).subscribe((result:any) => {
       if(result.length != 0 ){
@@ -215,6 +232,8 @@ tripSheetNumber: any;
     for (let i = 0; i < this.selectedData.length; i++) {
       const item = this.selectedData[i];
       // Update cumulative time
+      this.estimatedTravelTime = item.estTravelTime;
+      this.estimatedJobTime = item.estJobTime;
         const estTravelTimeMinutes = this.getMinutesFromTime(item.estTravelTime);
         const foodFuelMinutes = this.getMinutesFromTime(item.foodFuelOthers);
         const estJobTimeMinutes = this.getMinutesFromTime(item.estJobTime);
@@ -274,11 +293,17 @@ formatMinutesToHHMM(minutes: number): string {
     }
 
     const [hours, oldMinutes] = time.split(':').map(Number);
-    const newMinutes = oldMinutes + minutes;
-    const newHours = Math.floor(newMinutes / 60);
-    const adjustedMinutes = newMinutes % 60;
+    if(this.estimatedTravelTime  != undefined || this.estimatedJobTime != undefined || this.estimatedTravelTime  != "" || this.estimatedJobTime != ""){
+      // const newMinutes = oldMinutes + minutes;
+      const newMinutes =  minutes;
 
+      const newHours = Math.floor(newMinutes / 60);
+      const adjustedMinutes = newMinutes % 60;
+      
     return `${this.padZero(newHours)}:${this.padZero(adjustedMinutes)}`;
+    }
+   else return this.initialTime
+
   }
 
   padZero(num: number): string {

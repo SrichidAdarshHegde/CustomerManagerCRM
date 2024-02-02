@@ -128,8 +128,8 @@ getBillingAddress(){
       if (response) {
 
       this.billingAddress = response.billingAddress;
-      this.AxesQty = response.AxesQty;
-      this.AxesPrice = response.AxesPrice;
+      this.AxesQty = response.axesQty;
+      this.AxesPrice = response.axesPrice;
     
     
     

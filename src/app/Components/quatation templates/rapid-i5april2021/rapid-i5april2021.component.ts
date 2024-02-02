@@ -26,11 +26,7 @@ export class RapidI5april2021Component {
   EditBillingAddress: boolean;
   selectedcustID: any;
   customerdata: any;
- 
-  getBillingAddress1: any;
-  TemplateID: any;
-  TemplateName: any;
-  CustomerName: any;
+  TemplateName:string="RapidI TRAINING CHARGES";
 KindAttention: any;
   constructor(private regSv:RegistrationService , private router: ActivatedRoute, private route: Router){
     if (localStorage.getItem('IsLoggedIn') == 'true'){
@@ -52,7 +48,7 @@ KindAttention: any;
 
   ngOnInit(): void {
     this.getRefNo(); 
-    this.getBillingAddress1();
+    this.getBillingAddress();
    
   }
 
@@ -90,34 +86,30 @@ getBillingAddress(){
 
   
   save(){
+    
     var templateData = {
-  RefID : this.RefID,
-  billingAddress:this.billingAddress,
-
-  TemplateID:this.TemplateID,
-  TemplateName:this.TemplateName,
-  CustomerName:this.CustomerName,
+      RefID : this.RefID,
+      billingAddress:this.billingAddress,
 
       
     }
     this.regSv.postSavequotationtemplateRapidI5APRIL2015(templateData).subscribe((response:any )=>
-      {
-        if(response == "success"){
-          alert("Saved Successfully")
-          window.location.reload()
-        }
-        else
-        {
-          alert("Somthing Went Wrong!!")
-          window.location.reload()
-        } 
-      })
+    {
+      if(response !=null){
+        this.billingAddress=this.billingAddress,
  
+
+
+        alert("Saved Successfully")
+       // window.location.reload()
+      }
+      else
+      {
+        alert("Somthing Went Wrong!!")
+        //window.location.reload()
+      } 
+    })
   
-   
-  }
-
-
-
-
+ 
+}
 }

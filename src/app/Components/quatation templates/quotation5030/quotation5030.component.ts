@@ -60,31 +60,31 @@ KindAttention: any;
    //editable
 
    editableQty: string = '1 Set';
-   editablePrice:number=267000;
+   editablePrice:number=17040;
  
    editableQtyA:number=1;
-   editablePriceA:number=267000;
+   editablePriceA:number=5480;
  
    editableQtyB:number=1;
-   editablePriceB:number=17600;
+   editablePriceB:number=270;
  
     editableQtyC:number=1;
-   editablePriceC:number=124700;
+   editablePriceC:number=1850;
  
    editableQtyD:number=1;
-   editablePriceD:number=219000;
+   editablePriceD:number=190;
  
    editableQtyE:number=1;
-   editablePriceE:number=258000;
+   editablePriceE:number=4750;
  
   editableQtyF:number=1;
-   editablePriceF:number=297000;
+   editablePriceF:number=4200;
  
    editableQtyG:number=1;
-   editablePriceG:number=96000;
+   editablePriceG:number=1349;
  
    editableQtyH:number=1;
-   editablePriceH:number=14715;
+   editablePriceH:number=96000;
  // OptionalPriceH: number;
  
  companyoldName: any;
@@ -306,6 +306,7 @@ KindAttention: any;
   
   
           this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
         } else {
           alert(`Reference ID not found for this template`);
         }
@@ -357,7 +358,7 @@ KindAttention: any;
    CustomerName:this.CustomerName,
    KindAttention:this.KindAttention,
     
-TotalAmount :this.BasicSystemPrice
+   TotalAmount :this.BasicSystemPrice
  
  
        

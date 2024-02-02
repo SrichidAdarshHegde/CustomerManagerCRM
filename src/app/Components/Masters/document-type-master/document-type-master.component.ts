@@ -40,6 +40,11 @@ export class DocumentTypeMasterComponent implements OnInit {
       })
     }
     saveDocumentType(){
+       
+      if (this.DocumentName == null || this.DocumentName == '') {
+        alert("Please enter the Document Name");
+        return;
+      }
       var documentTypeData = {
         DocumentName : this.DocumentName,
         CreatedBy : this.userName

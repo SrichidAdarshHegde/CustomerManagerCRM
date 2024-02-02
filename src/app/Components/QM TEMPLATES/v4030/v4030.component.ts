@@ -138,10 +138,10 @@ getBillingAddress(){
       if (response) {
 
       this.billingAddress = response.billingAddress;
-      this.BasicQty = response.BasicQty;
-      this.BasicPrice = response.BasicPrice;
-      this.AuxQty = response.AuxQty;
-      this.AuxPrice = response.AuxPrice;
+      this.BasicQty = response.basicQty;
+      this.BasicPrice = response.basicPrice;
+      this.AuxQty = response.auxQty;
+      this.AuxPrice = response.auxPrice;
     
     
      

@@ -235,6 +235,7 @@ getBillingAddress(){
           this.OptionalPriceD = response.optionalPriceD;
   
           this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
         } else {
           alert(`Reference ID not found for this template`);
         }
@@ -303,6 +304,7 @@ getBillingAddress(){
        
         alert("Saved Successfully")
      //   window.location.reload()
+     this.route.navigate(['/qm', this.editcustomerID]);
       }
       else
       {
@@ -311,7 +313,7 @@ getBillingAddress(){
       } 
     })
 
-    
+
    
   }
 

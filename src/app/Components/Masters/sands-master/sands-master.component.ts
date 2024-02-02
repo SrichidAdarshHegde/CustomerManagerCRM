@@ -32,6 +32,10 @@ export class SandsMasterComponent  {
     });
   }
   saveSands() {
+    if (this.sandsname == null || this.sandsname == '') {
+      alert("Please enter the Sands Name");
+      return;
+    }
     var sandsData = {
       SandsName: this.sandsname,
       CreatedBy: this.userName,

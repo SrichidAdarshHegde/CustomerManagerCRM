@@ -316,7 +316,7 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                   <strong>   Shivaputra B Dinni  </strong> <br />
                   <strong>      (Sr. Application Engg)  </strong> <br /><br />
 
-                  P.S: All prices quoted are in <strong> US Dollar.</strong>
+                  P.S: All prices quoted are in <strong> Indian Rupees.</strong>
                     </div>
 
                     <br><br><br><br><br><br><br><br><br><br><br>
@@ -478,8 +478,8 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                         <tr>
                             <td   colspan="4"  style="width: 5%; vertical-align: top; border: 1px solid black;">
                                 <h5 style="text-align: center;">
-                                    <strong>Basic Machine package price excluding Computer system: USD {{ TotalAmount | number }} <br>
-                                        (US Dollar {{ TotalAmount | numtowords }} Only) 
+                                    <strong>Basic Machine package price excluding Computer system: Rupees {{ TotalAmount | number }} <br>
+                                        (Rupees {{ TotalAmount | numtowords }} Only) 
                                     </strong>
                                 </h5>
                             </td>
@@ -542,11 +542,11 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 
                                 <br>
                             </td>
-                            <td style="width:10%; vertical-align: top; border: 1px solid black;">
-                                <input type="text" [(ngModel)]=" OptionalQtyB" style="width: 100%; border: none; outline: none;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyB}}</p>
                             </td>
-                            <td style="width: 10%; vertical-align: top; border: 1px solid black;">
-                                <input type="text" [(ngModel)]=" OptionalPriceB" style="width: 100%; border: none; outline: none;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceB}}</p>
                             </td>
                         </tr>
 
@@ -563,11 +563,11 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 
                                 <br>
                             </td>
-                            <td style="width: 10%; vertical-align: top; border: 1px solid black;">
-                                <input type="text" [(ngModel)]="OptionalQtyC" style="width: 100%; border: none; outline: none;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyC}}</p>
                             </td>
-                            <td style="width: 10%; vertical-align: top; border: 1px solid black;">
-                                <input type="text" [(ngModel)]="OptionalPriceC" style="width: 100%; border: none; outline: none;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceC}}</p>
                             </td>
                         </tr>
 
@@ -628,11 +628,11 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
 
                                 <br>
                             </td>
-                            <td style="width: 10%; vertical-align: top; border: 1px solid black;">
-                                <input type="text" [(ngModel)]="OptionalQtyF" style="width: 100%; border: none; outline: none;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
                             </td>
-                            <td style="width: 10%; vertical-align: top; border: 1px solid black;">
-                                <input type="text" [(ngModel)]="OptionalPriceF" style="width: 100%; border: none; outline: none;">
+                            <td style="width: 5%; vertical-align: top; border: 1px solid black;">
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
                             </td>
                         </tr>
 
@@ -651,10 +651,10 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyF}}</p>
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceF}}</p>
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
                             </td>
                         </tr>
 
@@ -675,10 +675,10 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                                 <br>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyG}}</p>
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalQtyH}}</p>
                             </td>
                             <td style="width: 5%; vertical-align: top; border: 1px solid black;">
-                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceG}}</p>
+                                <p  style="width: 100%; border: none; outline: none;">{{OptionalPriceH}}</p>
                             </td>
                         </tr>
 
@@ -869,6 +869,7 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                         </td>
                     </tr>
                     <tr>
+                        
                         <td style="width: 5%; vertical-align: top; border: 1px solid black;">
                             <p >7.</p>
 
@@ -1046,14 +1047,12 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
                 </div>
             </div>
 
-          
-
-
         </div>
-
+<br>
         <div>&nbsp;</div>
+        <br>
         <div class="col-md-12 row"><br />
-            <div class="col-md-4">&nbsp;</div> 
+            <div class="col-md-3">&nbsp;</div> 
             <button type="button" class="btn btn-success btn-md" data-dismiss="modal" style="background-color: rgb(27, 9, 129); height: 40px;" (click)="save()">SAVE</button>
 
             <div class="col-md-2">
@@ -1065,10 +1064,6 @@ For commercial details, kindly be guided by the attached Terms and Conditions sh
         </div>
     </div>
 </div>
-
-
-
-
 
 </div>
 

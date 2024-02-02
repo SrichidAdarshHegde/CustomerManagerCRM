@@ -305,6 +305,7 @@ getBillingAddress(){
   
   
           this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
         } else {
           alert(`Reference ID not found for this template`);
         }

@@ -40,21 +40,30 @@ export class ClusterComponent {
       }
     })
   }
-  saveCluster(){
-    var clusterData = {
-      ClusterName : this.clustername,
-      CreatedBy : this.userName
+
+
+  saveCluster() {
+    if (this.clustername == null || this.clustername == '') {
+      alert("Please enter the cluster Name");
+      return;
     }
-    this.masterSv.saveCluster(clusterData).subscribe((response:any)=>{
-      if(response == "success"){
-        alert("Cluster Saved")
-        window.location.reload()
-      }else{
-        alert("Somthing Went Wrong!!")
-        window.location.reload()
+  
+    var clusterData = {
+      ClusterName: this.clustername,
+      CreatedBy: this.userName
+    };
+  
+    this.masterSv.saveCluster(clusterData).subscribe((response: any) => {
+      if (response == "success") {
+        alert("Cluster Saved");
+        window.location.reload();
+      } else {
+        alert("Something Went Wrong!!");
+        window.location.reload();
       }
-    })
+    });
   }
+  
   deleteCluster(clusterid:any){
 this.masterSv.deleteCluster(clusterid).subscribe((response:any)=>{
   if(response == "success"){

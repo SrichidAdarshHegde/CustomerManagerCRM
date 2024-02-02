@@ -274,40 +274,51 @@ getBillingAddress(){
     console.log('Selected Template:', this.selectedTemplate);
   }
 
+  
   fetchTemplate() {
-    this.regSv.gettemplatedetails2015(this.RefID).subscribe((response: any) => {
-      this. BasicSystemQty=response.basicSystemQty,
-      this. BasicSystemPrice=response.basicSystemPrice,
-
-      this.OptionalQtyA = response.optionalQtyA;
-      this.OptionalPriceA = response.optionalPriceA;
+    if (!this.RefID || this.RefID === '') {
+      alert('Reference ID is required to fetch the template.');
+      return;
+    }
   
-      this.OptionalQtyB = response.optionalQtyB;
-      this.OptionalPriceB = response.optionalPriceB;
+    this.regSv.gettemplatedetails2015(this.RefID).subscribe(
+      (response: any) => {
+        if (response != null) {
+          this.BasicSystemQty = response.basicSystemQty;
+          this.BasicSystemPrice = response.basicSystemPrice;
   
-      this.OptionalQtyC = response.optionalQtyC;
-      this.OptionalPriceC = response.optionalPriceC;
+          this.OptionalQtyA = response.optionalQtyA;
+          this.OptionalPriceA = response.optionalPriceA;
   
-      this.OptionalQtyD = response.optionalQtyD;
-      this.OptionalPriceD = response.optionalPriceD;
+          this.OptionalQtyB = response.optionalQtyB;
+          this.OptionalPriceB = response.optionalPriceB;
   
-      this.OptionalQtyE = response.optionalQtyE;
-      this.OptionalPriceE = response.optionalPriceE;
+          this.OptionalQtyC = response.optionalQtyC;
+          this.OptionalPriceC = response.optionalPriceC;
   
-      this.OptionalQtyF = response.optionalQtyF;
-      this.OptionalPriceF = response.optionalPriceF;
-  
-      this.OptionalQtyG = response.optionalQtyG;
-      this.OptionalPriceG = response.optionalPriceG;
-  
-      this.OptionalQtyH = response.optionalQtyH;
-      this.OptionalPriceH = response.optionalPriceH;
-  
-      this.KindAttention = response.KindAttention;
+          this.OptionalQtyD = response.optionalQtyD;
+          this.OptionalPriceD = response.optionalPriceD;
+          this.OptionalQtyE = response.optionalQtyE;
+          this.OptionalPriceE = response.optionalPriceE;
       
-    });
-  }
+          this.OptionalQtyF = response.optionalQtyF;
+          this.OptionalPriceF = response.optionalPriceF;
+      
+          this.OptionalQtyG = response.optionalQtyG;
+          this.OptionalPriceG = response.optionalPriceG;
+      
+          this.OptionalQtyH = response.optionalQtyH;
+          this.OptionalPriceH = response.optionalPriceH;
+      
   
+          this.KindAttention = response.KindAttention;
+          alert("Details for RefID present");
+        } else {
+          alert(`Reference ID not found for this template`);
+        }
+      }
+    );
+  }
 
   save(){
     this.TotalAmount = this.BasicSystemPrice;

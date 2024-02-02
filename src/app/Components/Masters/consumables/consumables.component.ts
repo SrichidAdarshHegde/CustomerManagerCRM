@@ -41,6 +41,11 @@ export class ConsumablesComponent {
     })
   }
   saveConsumables(){
+
+    if (this.consumablesname == null || this.consumablesname == '') {
+      alert("Please enter the Consumables Name");
+      return;
+    }
     var consumablesData = {
       ConsumablesName : this.consumablesname,
       CreatedBy : this.userName

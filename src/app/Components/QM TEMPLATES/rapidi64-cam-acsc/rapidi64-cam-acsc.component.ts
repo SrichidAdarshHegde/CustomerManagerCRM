@@ -135,14 +135,14 @@ getBillingAddress(){
       if (response) {
 
       this.billingAddress = response.billingAddress;
-      this.ACSCPrice = response.ACSCPrice;
+      this.ACSCPrice = response.acscPrice;
   
-      this.ACSCQty = response.ACSCQty;
-      this.DesPrice = response.DesPrice;
+      this.ACSCQty = response.acscQty;
+      this.DesPrice = response.desPrice;
   
-      this.DesQty = response.DesQty;
+      this.DesQty = response.desQty;
      
-  this.TemplateName=response.TemplateName;
+  this.TemplateName=response.templateName ;
        this.KindAttention = response.KindAttention;
        alert("Details for RefID present");
       }

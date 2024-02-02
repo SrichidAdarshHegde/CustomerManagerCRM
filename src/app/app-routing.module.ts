@@ -150,9 +150,6 @@ const routes: Routes = [
 //QM TEMPLATES
 
 
-
-
-
 {path:'quotation2015HT/:id',component:Quotation2015HTComponent},
 
 {path:'quotation2015indollor/:id',component:Quotation2015indollorComponent},

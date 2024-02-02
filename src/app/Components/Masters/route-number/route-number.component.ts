@@ -41,6 +41,10 @@ export class RouteNumberComponent {
     });
   }
   saveRoute() {
+    if (this.routename == null || this.routename == '') {
+      alert("Please enter the Route Name");
+      return;
+    }
     var routeData = {
       RouteName: this.routename,
       CreatedBy: this.userName,

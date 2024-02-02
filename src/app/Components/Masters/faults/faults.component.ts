@@ -41,6 +41,10 @@ export class FaultsComponent {
     })
   }
   saveFaults(){
+    if (this.faultsname == null || this.faultsname == '') {
+    alert("Please enter the Faults Name");
+    return;
+  }
     var faultsData = {
       FaultsName : this.faultsname,
       CreatedBy : this.userName
