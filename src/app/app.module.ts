@@ -111,6 +111,7 @@ import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotat
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
 import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
 import { NumtowordsPipe } from './numtowords.pipe';
+import { SearchPipe } from './search.pipe';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -162,7 +163,7 @@ import { NumtowordsPipe } from './numtowords.pipe';
     TripSheetComponent,
     LocationdetailsComponent,
     LocationdetailslistComponent,
-    //SearchPipe,
+    SearchPipe,
     QuotationmanagerComponent,
     MailquotationtemplateComponent,
     BrochureComponent,
