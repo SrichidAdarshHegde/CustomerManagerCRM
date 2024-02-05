@@ -127,203 +127,7 @@ export class WorkFrontComponent implements OnInit {
     });
   }
 
-  // onCheckboxClick(request: any) {
-  //   const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
-  
-  //   // Create an empty row
-  //   const emptyRow = {
-  //     addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'',
-  //     clusterId
-  //       :
-  //       '',
-  //     companyName
-  //       :
-  //       '',
-  //     contactData
-  //       :
-  //       '',
-  //     contactDatastring
-  //       :
-  //       '',
-  //     country
-  //       :
-  //       '',
-  //     createdBy
-  //       :
-  //       '',
-  //     createdOn
-  //       :
-  //       '',
-  //     customerID
-  //       :
-  //       '',
-  //     customerId
-  //       :
-  //       '',
-  //     customerName
-  //       :
-  //       '',
-  //     date
-  //       :
-  //       '',
-  //     dateString
-  //       :
-  //       '',
-  //     features
-  //       :
-  //       '',
-  //     featuresId
-  //       :
-  //       '',
-  //     gstin
-  //       :
-  //       '',
-  //     invoiceAmount
-  //       :
-  //       '',
-  //     invoiceDate
-  //       :
-  //       '',
-  //     invoiceFileBlob
-  //       :
-  //       '',
-  //     invoiceNumber
-  //       :
-  //       '',
-  //     invoicePerticular
-  //       :
-  //       '',
-  //     invoicePerticularId
-  //       :
-  //       '',
-  //     isDone
-  //       :
-  //       '',
-  //     machineId
-  //       :
-  //       '',
-  //     machineNumber
-  //       :
-  //       '',
-  //     modelId
-  //       :
-  //       '',
-  //     modelName
-  //       :
-  //       '',
-  //     pincode
-  //       :
-  //       '',
-  //     priority
-  //       :
-  //       '',
-  //     region
-  //       :
-  //       '',
-  //     regionId
-  //       :
-  //       '',
-  //     remarks
-  //       :
-  //       '',
-  //     requestFor
-  //       :
-  //       '',
-  //     requestForId
-  //       :
-  //       '',
-  //     requestId
-  //       :
-  //       '',
-  //     routeId
-  //       :
-  //       '',
-  //     routeNumber
-  //       :
-  //       '',
-  //     sandS
-  //       :
-  //       '',
-  //     sandSId
-  //       :
-  //       '',
-  //     securityFormalities
-  //       :
-  //       '',
-  //     state:'',tokenID:'',unit :'', warrantyFrom :'', warrantyTill: '',weeklyOff:'', workingEnd :'', workingStart :'',zone :'', zoneId:''
-  //   };
-  
-  //   if (index !== -1) {
-  //     // Remove the checked row if it already exists
-  //     this.selectedRows.splice(index, 1);
-  //   }
-  
-  //   // Push the empty row
-  //   this.selectedRows.push(emptyRow);
-  
-  //   // Push the checked row
-  //   this.selectedRows.push(request);
-  //   // Filter out only the checked rows
-  // this.checkedRows = this.selectedRows.filter(row => row.tokenID !== '');
-  //   console.log(this.checkedRows);
-  //   console.log(this.selectedRows);
 
-  // }
-
-//   onCheckboxClick(request: any) {
-   
-//     const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
-// const index1 = this.workpriority.indexOf(request);
-
-// if (index1 !== -1) {
-//     if (this.sequence[index1]) {
-//         // If checked, remove the index from the checkedIndexes array
-//         const checkedIndex = this.checkedIndexes.indexOf(index1);
-//         if (checkedIndex !== -1) {
-//             this.checkedIndexes.splice(checkedIndex, 1);
-//         }
-//     } else {
-//         // If unchecked, add the index to the checkedIndexes array
-//         this.checkedIndexes.push(index1);
-//     }
-// }
-  
-
-//     // Remove any existing empty rows
-//     this.selectedRows = this.selectedRows.filter(row => row.tokenID !== '');
-  
-//     if (index !== -1) {
-//       // Row is in selectedRows, remove it and any preceding empty row
-//       this.selectedRows.splice(index - 1, 2);
-//     } else {
-//       // Row is not in selectedRows, add an empty row and then the checked row
-//       const emptyRow = {
-//       addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
-//       country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
-//       gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
-//       machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-//       requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
-//       warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
-//     };
-//     this.selectedRows.push(emptyRow, request);
-//   }
-//   // Add an empty row after the last checked row
-//   const lastCheckedIndex = this.checkedIndexes.length > 0 ? this.checkedIndexes[this.checkedIndexes.length - 1] : -1;
-//   if (lastCheckedIndex !== -1 && lastCheckedIndex < this.selectedRows.length - 1) {
-//       const emptyRowAfterLastChecked = { addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
-//       country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
-//       gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
-//       machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-//       requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
-//       warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:'' };
-//       this.selectedRows.splice(lastCheckedIndex + 2, 0, emptyRowAfterLastChecked);
-//   }
-//   // Update checkedRows with only the checked rows
-//   this.checkedRows = this.selectedRows.filter(row => row.tokenId !== "");
-
-//   console.log(this.checkedRows);
-//   console.log(this.selectedRows);
-//   }
 
 onCheckboxClick(request: any) {
   const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
@@ -379,52 +183,40 @@ generateTS() {
   }
   this.route.navigate(['/TravelSheet'], { state: { selectedData: this.selectedRows } });
 }
-// addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
-//       country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
-//      gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
-//        machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-//       requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
-//       warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
 
 onCheckboxClick1(request: any) {
-    const index = this.selectedRows1.findIndex(row => row.tokenID === request.tokenID);
-    const index1 = this.workpriority45.indexOf(request);
+  const index = this.selectedRows1.findIndex(row => row.tokenID === request.tokenID);
+  const index2 = this.workpriority45.indexOf(request);
 
-if (index1 !== -1) {
-    if (this.sequenceTwo[index1]) {
-        // If checked, remove the index from the checkedIndexes array
-        const checkedIndex1 = this.checkedIndexes1.indexOf(index1);
-        if (checkedIndex1 !== -1) {
-            this.checkedIndexes1.splice(checkedIndex1, 1);
-        }
+  if (index2 !== -1) {
+    if (this.sequenceTwo[index2]) {
+      // If checked, remove the index from the checkedIndexes array
+      const checkedIndex = this.checkedIndexes1.indexOf(index2);
+      if (checkedIndex !== -1) {
+        this.checkedIndexes1.splice(checkedIndex, 1);
+      }
     } else {
-        // If unchecked, add the index to the checkedIndexes array
-        this.checkedIndexes1.push(index1);
+      // If unchecked, add the index to the checkedIndexes array
+      this.checkedIndexes1.push(index2);
     }
-}
-    // Remove any existing empty rows
-    this.selectedRows1 = this.selectedRows1.filter(row => row.tokenID !== '');
-  
-    if (index !== -1) {
-      // Row is in selectedRows, remove it and any preceding empty row
-      this.selectedRows1.splice(index - 1, 2);
-    } else {
-      // Row is not in selectedRows, add an empty row and then the checked row
-      const emptyRow = {
-      addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
-      country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
-      gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
-      machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-      requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
-      warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
-    };
-    this.selectedRows1.push(emptyRow, request);
   }
 
-  // Update checkedRows with only the checked rows
-  this.checkedRows1 = this.selectedRows1.filter(row => row.tokenId !== "");
+  this.selectedRows1 = [];
 
-  console.log(this.checkedRows1);
+  for (let i = 0; i < this.checkedIndexes1.length; i++) {
+    const checkedIndex = this.checkedIndexes1[i];
+    // Add an empty row before each checked row
+    const emptyRow = this.createEmptyRow();
+    this.selectedRows1.push(emptyRow);
+    
+    // Add the checked row
+    this.selectedRows1.push(this.workpriority[checkedIndex]);
+  }
+
+  // Add an extra empty row at the end
+  const extraEmptyRow = this.createEmptyRow();
+  this.selectedRows1.push(extraEmptyRow);
+
   console.log(this.selectedRows1);
   }
   

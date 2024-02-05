@@ -1,11 +1,10 @@
 <br>
 <div class="col-md-12 row">
-<div *ngIf="this.tripSheetNumber == null" class="col-md-2">
+<div class="col-md-2">
     <label for="tripSheetNumber">Enter Trip Sheet Number</label>
     <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
     <button class="btn btn-primary" (click)="getTripDetailsbyTripSheetNo()">Fetch Data</button>
 </div>
-<div *ngIf="this.tripSheetNumber != null" class="col-md-2"></div>
 <div class="col-md-3"></div><br>
 <div class="col-md-2"><h2><b>TRIP SHEET</b></h2></div>
 </div>
