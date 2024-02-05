@@ -207,9 +207,16 @@ getTripSheetNo(){
   return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNo')
 }
 
-getTripDetails(number :any){
-  return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripDetails/'+ number);
+getTripDetailsbyTripSheetNo(number :any){
+  return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripDetailsbyTripSheetNo/'+ number);
 }
+
+// Trip Sheet component
+GetTripSheetNos(){
+  return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNos');
+}
+
+
 // Travel Budget Component
 saveTravelBudget(budgetdata: any) {
   return this.http.post(this.globalurl.weburl + 'TravelBudget/saveTravelBudget', budgetdata)
@@ -217,9 +224,7 @@ saveTravelBudget(budgetdata: any) {
 GetTravelBudget() {
   return this.http.get(this.globalurl.weburl + 'TravelBudget/GetAllTravelBudget');
 }
-GetTravelBudgetbyUser(userid:any){
-  return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyUser/'+ userid);
-}
+
 GetTravelBudgetbyTravelId(travelId:any){
   return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTravelBudgetbyTravelId/'+ travelId);
 }

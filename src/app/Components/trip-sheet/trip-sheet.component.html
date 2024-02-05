@@ -4,7 +4,7 @@
     <h2><strong>Your Trips</strong></h2>
     
 </div>
-<div class="col-md-2"><button class="btn btn-primary" (click)="newEntry()">New Entry</button></div>
+<div class="col-md-2"></div>
 </div><br>
 <div class="col-md-12 row">
     <div class="col-md-2"></div>
@@ -13,17 +13,17 @@
             <thead>
               <tr>
                 <th scope="col">Sl</th>
-                <th scope="col">Trip ID</th>
+                <th scope="col">Trip Sheet No</th>
                 <th scope="col">Created On</th>
-                <th scope="col">Feed</th>
+                <th scope="col">Fetch</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let abc of tripList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
                 <td>{{10 * (p-1)+(i+1)}}</td>
-                <td>{{abc.travelId}}</td>
+                <td>{{abc.tripSheetNo}}</td>
                 <td>{{abc.createdOn | date }}</td>
-                <td><button class="btn btn-primary" (click)="openTravelBudget(abc)">Feed</button></td>
+                <td><button class="btn btn-primary" (click)="openTripSheet(abc)">Fetch</button></td>
               </tr>
                             
             </tbody>

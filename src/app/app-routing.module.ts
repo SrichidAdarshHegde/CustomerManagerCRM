@@ -127,6 +127,7 @@ const routes: Routes = [
 {path : 'travelBudget/:id', component: TravelBudgetComponent}, 
 {path : 'travelBudget', component: TravelBudgetComponent},
 {path : 'TravelSheet', component: TravelSheetComponent},
+{path : 'TravelSheet/:id', component: TravelSheetComponent},
 {path : 'tripsheet', component: TripSheetComponent},
 {path : 'locationDetails', component: LocationdetailsComponent},
 {path : 'locationDetailslist', component: LocationdetailslistComponent},

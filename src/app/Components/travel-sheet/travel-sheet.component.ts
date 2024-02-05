@@ -75,16 +75,22 @@ finalTime: any;
       this.IsLoggedIn = true;
     }
 
+    this.router.params.subscribe(params => {
+      if (params["id"]) {
+        this.tripSheetNumber = params["id"];
+      }
+    });
+
     this.router.paramMap.subscribe(params => {
       const state = window.history.state;
       this.selectedData = state.selectedData || [];
 
       console.log('Selected Data:', this.selectedData);
-      
     });
   }
   ngOnInit(): void {
     this.getTripSheetNo();
+    this.getTripDetailsbyTripSheetNo();
   }
   exportTableToPDF1(): void {
     // Set A4 dimensions in landscape mode
@@ -149,11 +155,8 @@ finalTime: any;
   //     popupWinindow.document.close();
   //     //window.print();
   // };
-  getTripDetails(){
-    if(this.tripSheetNumber == null){
-      alert("Please enter trip sheet number");
-    } else{
-    this.regSv.getTripDetails(this.tripSheetNumber).subscribe((result:any) => {
+  getTripDetailsbyTripSheetNo(){
+    this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result:any) => {
       if(result.length != 0 ){
       this.selectedData = result;
       console.log('Trip Sheet Details', this.selectedData);
@@ -183,7 +186,7 @@ finalTime: any;
       alert("Invalid Trip Sheet Number");
     }
     })
-  }
+  
   }
 
   public value = new Date();
