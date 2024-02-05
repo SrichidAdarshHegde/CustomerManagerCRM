@@ -270,54 +270,123 @@ export class WorkFrontComponent implements OnInit {
 
   // }
 
-  onCheckboxClick(request: any) {
+//   onCheckboxClick(request: any) {
    
-    const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
-const index1 = this.workpriority.indexOf(request);
+//     const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
+// const index1 = this.workpriority.indexOf(request);
 
-if (index1 !== -1) {
+// if (index1 !== -1) {
+//     if (this.sequence[index1]) {
+//         // If checked, remove the index from the checkedIndexes array
+//         const checkedIndex = this.checkedIndexes.indexOf(index1);
+//         if (checkedIndex !== -1) {
+//             this.checkedIndexes.splice(checkedIndex, 1);
+//         }
+//     } else {
+//         // If unchecked, add the index to the checkedIndexes array
+//         this.checkedIndexes.push(index1);
+//     }
+// }
+  
+
+//     // Remove any existing empty rows
+//     this.selectedRows = this.selectedRows.filter(row => row.tokenID !== '');
+  
+//     if (index !== -1) {
+//       // Row is in selectedRows, remove it and any preceding empty row
+//       this.selectedRows.splice(index - 1, 2);
+//     } else {
+//       // Row is not in selectedRows, add an empty row and then the checked row
+//       const emptyRow = {
+//       addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
+//       country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
+//       gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
+//       machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
+//       requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
+//       warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
+//     };
+//     this.selectedRows.push(emptyRow, request);
+//   }
+//   // Add an empty row after the last checked row
+//   const lastCheckedIndex = this.checkedIndexes.length > 0 ? this.checkedIndexes[this.checkedIndexes.length - 1] : -1;
+//   if (lastCheckedIndex !== -1 && lastCheckedIndex < this.selectedRows.length - 1) {
+//       const emptyRowAfterLastChecked = { addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
+//       country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
+//       gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
+//       machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
+//       requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
+//       warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:'' };
+//       this.selectedRows.splice(lastCheckedIndex + 2, 0, emptyRowAfterLastChecked);
+//   }
+//   // Update checkedRows with only the checked rows
+//   this.checkedRows = this.selectedRows.filter(row => row.tokenId !== "");
+
+//   console.log(this.checkedRows);
+//   console.log(this.selectedRows);
+//   }
+
+onCheckboxClick(request: any) {
+  const index = this.selectedRows.findIndex(row => row.tokenID === request.tokenID);
+  const index1 = this.workpriority.indexOf(request);
+
+  if (index1 !== -1) {
     if (this.sequence[index1]) {
-        // If checked, remove the index from the checkedIndexes array
-        const checkedIndex = this.checkedIndexes.indexOf(index1);
-        if (checkedIndex !== -1) {
-            this.checkedIndexes.splice(checkedIndex, 1);
-        }
+      // If checked, remove the index from the checkedIndexes array
+      const checkedIndex = this.checkedIndexes.indexOf(index1);
+      if (checkedIndex !== -1) {
+        this.checkedIndexes.splice(checkedIndex, 1);
+      }
     } else {
-        // If unchecked, add the index to the checkedIndexes array
-        this.checkedIndexes.push(index1);
+      // If unchecked, add the index to the checkedIndexes array
+      this.checkedIndexes.push(index1);
     }
-}
-  
-
-
-    // Remove any existing empty rows
-    this.selectedRows = this.selectedRows.filter(row => row.tokenID !== '');
-  
-    if (index !== -1) {
-      // Row is in selectedRows, remove it and any preceding empty row
-      this.selectedRows.splice(index - 1, 2);
-    } else {
-      // Row is not in selectedRows, add an empty row and then the checked row
-      const emptyRow = {
-      addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
-      country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
-      gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
-      machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-      requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
-      warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
-    };
-    this.selectedRows.push(emptyRow, request);
   }
 
-  // Update checkedRows with only the checked rows
-  this.checkedRows = this.selectedRows.filter(row => row.tokenId !== "");
+  this.selectedRows = [];
 
-  console.log(this.checkedRows);
+  for (let i = 0; i < this.checkedIndexes.length; i++) {
+    const checkedIndex = this.checkedIndexes[i];
+    // Add an empty row before each checked row
+    const emptyRow = this.createEmptyRow();
+    this.selectedRows.push(emptyRow);
+    
+    // Add the checked row
+    this.selectedRows.push(this.workpriority[checkedIndex]);
+  }
+
+  // Add an extra empty row at the end
+  const extraEmptyRow = this.createEmptyRow();
+  this.selectedRows.push(extraEmptyRow);
+
   console.log(this.selectedRows);
+}
+
+createEmptyRow(): any {
+  return {
+    addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
+    country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
+    gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
+    machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
+    requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'', tokenID: 'extraEmptyRow',unit:'',
+    warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
+  };
+}
+
+generateTS() {
+  if (this.selectedZone == null || this.selectedZone == "") {
+    alert("Please select zone");
+    return;
   }
+  this.route.navigate(['/TravelSheet'], { state: { selectedData: this.selectedRows } });
+}
+// addressOne: '', addressThree: '', addressTwo: '', city:'', cluster:'', clusterId: '', companyName: '', contactData: '', contactDatastring: '',
+//       country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
+//      gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
+//        machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
+//       requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'',tokenId:'',unit:'',
+//       warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
 
-
-  onCheckboxClick1(request: any) {
+onCheckboxClick1(request: any) {
     const index = this.selectedRows1.findIndex(row => row.tokenID === request.tokenID);
     const index1 = this.workpriority45.indexOf(request);
 
@@ -359,13 +428,6 @@ if (index1 !== -1) {
   console.log(this.selectedRows1);
   }
   
-generateTS() {
-  if (this.selectedZone == null || this.selectedZone == "") {
-    alert("Please select zone");
-    return;
-  }
-  this.route.navigate(['/TravelSheet'], { state: { selectedData: this.selectedRows } });
-}
 
 generateTStwo() {
   if (this.selectedZone == null || this.selectedZone == "") {
