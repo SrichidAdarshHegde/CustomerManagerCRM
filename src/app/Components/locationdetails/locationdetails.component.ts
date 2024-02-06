@@ -147,7 +147,7 @@ export class LocationdetailsComponent {
   this.httpService.post('http://localhost:44303/api/MachineRegistration/LocationDetails/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Saved Successfully");
-              this.route.navigate(['/locationDetailslist'])
+            //  this.route.navigate(['/locationDetailslist'])
             }else{
               alert("Somthing Went Wrong!!")
               window.location.reload()
