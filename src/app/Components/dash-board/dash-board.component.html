@@ -41,30 +41,65 @@
 <br><br>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-xl-3 mx-auto">
-            <div class="card bg-c-blue order-card">
-                <div class="card-block text-center" [routerLink]="['/CallTicketScreen']">
-                    <div>Call Ticket Screen</div>
+        <div class="col-md-4 mb-2">
+            <div class="animated-card" [routerLink]="['/CallTicketScreen']">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Call Ticket Screen</h5>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 col-xl-3 mx-auto">
-            <div class="card bg-c-green order-card">
-                <div class="card-block text-center" [routerLink]="['/TravelSheet']">
-                    <h6 class="m-b-20">Trip sheets</h6>
+        <div class="col-md-4 mb-2">
+            <div class="animated-card" [routerLink]="['/TravelSheet']">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Travel Sheet</h5>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="col-md-4 col-xl-3 mx-auto">
-            <div class="card bg-c-green order-card">
-                <div class="card-block text-center" [routerLink]="['/locationDetailslist']">
-                    <h6 class="m-b-20">Location details</h6>
+
+        <div class="col-md-4 mb-2">
+            <div class="animated-card" [routerLink]="['/locationDetailslist']">
+                <div class="card bg-c-green order-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title m-b-20">Location Details</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br>
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-2">
+            <div class="animated-card" [routerLink]="['/qm']">
+                <div class="card bg-c-green order-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title m-b-20">Quotation Manager</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <div class="animated-card" [routerLink]="['/documentmanager']">
+                <div class="card bg-c-green order-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title m-b-10">Document Manager</h5>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
 
 <br><br><br><br><br><br><br>
