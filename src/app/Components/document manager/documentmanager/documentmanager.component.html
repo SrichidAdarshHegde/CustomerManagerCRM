@@ -1,4 +1,8 @@
-<!-- <div style="width: 1497px; height: 1009px; background: white; margin: 0 auto; position: relative;"> -->
+<br><div class="container">
+  <h3 style="text-align: center;">Document Manager</h3>
+
+</div>
+
   <div style="width: 625.12px; height: 834.51px; left: 100.01px; top: 120.50px; position: absolute; background: white">
     <div class="col-md-12 row">
       <div class="col-md-1"></div>
@@ -135,16 +139,31 @@
       <td>{{details.contactName}}</td>
       <td>{{details.mobile}}</td>
       <td>{{details.email}}</td>
+      <td>{{details.designation}}</td>
 
     </tr>
   </table>
- 
+  <table class="table table-bordered table-with-bold-lines">
+    <tr class="sticky-header" style="text-align: center;">
+      <td style="width: 10%;"><input placeholder="Sal" class="form-control" type="text" id="salute" name="salute" [(ngModel)]="salute" required></td>
+      <td style="width: 20%;"><input placeholder="Name" class="form-control" type="text" id="contactname" name="contactname" [(ngModel)]="contactname" required></td>
+      <td style="width: 20%;"><input placeholder="Mobile" class="form-control" id="mobile" type="text" name="mobile" [(ngModel)]="mobile" required></td>
+      <td style="width:20%;"><input placeholder="Email" class="form-control" type="text" id="email" name="email" [(ngModel)]="email" required></td>
+      <td style="width: 20%;"><input placeholder="Designation" type="text" class="form-control" id="designation" name="designation" [(ngModel)]="designation" required></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;"  colspan="5" >
+        <button class="form-control btn btn-primary" type="button" style="width: 30%;" (click)="addContactDetails()">Add</button>
+      </td>
+    </tr>
+  </table>
+  
 </div>
 <div style="margin-top: 25px; align-self: flex-end;">
   <!-- <button class="btn btn-danger mx-2">Delete</button> -->
 </div>
 </div>
-<div style="width: 373px; height: 22px; left: 674px; top: 9px; position: absolute; color: black; font-size: 32px; font-family: Inter; font-weight: 400; word-wrap: break-word">Document manager</div>
+
 <div style="width: 775px; height: 842px; left: 797px; top: 50px; position: absolute; background: white">
 <br>
 <div style="width: 723px; height: 200px; left: 50px; top: 54px; position: absolute; background: white; border: 1px #DFD7D7 solid">
@@ -282,27 +301,39 @@
       <button class="btn btn-danger mx-2">Delete</button>
     </div>
 
-      <div class="container12">
-        <div style="left: 300px; top: 50px; position: absolute; color: black; font-size: 12px; font-family: Inter; font-weight: 500; word-wrap: break-word">
-          <label for="status">Ref</label>
-          <input type="text" id="status" name="status">
-        </div>
-      
-        <div style="left: 66px; top: 50px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-          <label for="ref">Doc No</label>
-          <input type="text" id="ref" name="ref">
+    <div class="container12">
+      <div class="row">
+        <div class="col-md-4">
+          <label style="display: inline-block; margin-bottom: 5px;" for="date">Date:</label>
+          <div>
+            <input type="date" class="form-control" [(ngModel)]="value" placeholder="dd-MMM-yyyy">
+          </div>
         </div>
         
-        <div style="left: 66px; top: 20px; position: absolute; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">
-          <label for="docNo">Date</label>
-          <input type="text" id="docNo" name="docNo">
-        </div>
-      
-        
-      
-        <div class="position-absolute" style="left: 66px; top: 100px; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">
-          <button class="btn btn-primary" onclick="generateDocument()">Generate Document</button>
+        <div class="col-md-4">
+          <label style="display: inline-block; margin-bottom: 5px;" for="status">Ref:</label>
+          <div>
+            <input type="text" id="status" name="status" class="form-control">
+          </div>
         </div>
     
+        <div class="col-md-4">
+          <label style="display: inline-block; margin-bottom: 5px;" for="ref">Doc No:</label>
+          <div>
+            <input type="text" id="ref" name="ref" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      
+        
+      
+    <div class="text-center">
+      <div class="position-absolute" style="left: 66px; top: 100px; color: black; font-size: 13px; font-family: Inter; font-weight: 500; word-wrap: break-word">
+        <button class="btn btn-primary" onclick="generateDocument()">Generate Document</button>
+      </div>
+    </div>
+  </div>
 
   
