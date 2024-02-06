@@ -31,7 +31,7 @@ export class Quotation2015HTComponent {
   BasicSystemPrice: number =800000  ; 
  
   OptionalQtyA:number=1;
-  OptionalPriceA:number=	5480;
+  OptionalPriceA:number=	267200;
 
   OptionalQtyB:number=1;
   OptionalPriceB:number=38500;
@@ -54,7 +54,7 @@ KindAttention: any;
   editablePrice:number=800000;
 
   editableQtyA:number=1;
-  editablePriceA:number=5480;
+  editablePriceA:number=267200;
 
   editableQtyB:number=1;
   editablePriceB:number=38500;
