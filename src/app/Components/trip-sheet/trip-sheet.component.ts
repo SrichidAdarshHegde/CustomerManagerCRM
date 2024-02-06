@@ -22,6 +22,7 @@ userName: any;
   editTripId: any;
   userId: any;
 uniqueTripList: any;
+  tripId: any;
 constructor(private regSv:RegistrationService, private route:Router){
   if (localStorage.getItem('IsLoggedIn') == 'true') {
     this.userName = localStorage.getItem('UserName');
@@ -31,11 +32,11 @@ constructor(private regSv:RegistrationService, private route:Router){
   }
 }
 ngOnInit(): void {
-  this.getTravelBudget();
+  this.getTripSheetNos();
 }
 
-getTravelBudget() {
-  this.regSv.GetTravelBudgetbyUser(this.userId).subscribe((response: any) => {
+getTripSheetNos() {
+  this.regSv.GetTripSheetNos().subscribe((response: any) => {
     this.tripList = response;
     console.log(this.tripList);
   });
@@ -54,9 +55,9 @@ getTravelBudget() {
 //   return uniqueTripList;
 // }
 
-openTravelBudget(data:any){
-  this.editTripId = data.travelId;
-  this.route.navigate(['/travelBudget',this.editTripId]);
+openTripSheet(data:any){
+  this.tripId = data.tripSheetNo;
+  this.route.navigate(['/TravelSheet',this.tripId]);
 }
 
 newEntry(){

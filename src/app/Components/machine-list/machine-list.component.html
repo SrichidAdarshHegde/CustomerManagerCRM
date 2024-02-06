@@ -52,8 +52,8 @@
 
 
             </tr>
-            <!-- | search: searchText -->
-            <tr *ngFor="let machine of machineCustomerList ; let i = index">
+            
+            <tr *ngFor="let machine of machineCustomerList | search: searchText ; let i = index">
                 <td style="border-width:1px; border-color:black;text-align: right;">{{
                     (p-1)+(i+1)}}</td>
                 <td style="border-width:1px; border-color:black;text-align: right;">
