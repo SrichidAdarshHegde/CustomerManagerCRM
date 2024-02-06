@@ -60,6 +60,9 @@ tripSheetNumber: any;
   tripDetails: any;
   estimatedTravelTime: any;
   estimatedJobTime: any;
+endPlace: any;
+endCluster: any;
+finalTime: any;
 
   constructor(private el: ElementRef, private renderer: Renderer2,  private router: ActivatedRoute,
      private route: Router,
@@ -72,16 +75,22 @@ tripSheetNumber: any;
       this.IsLoggedIn = true;
     }
 
+    this.router.params.subscribe(params => {
+      if (params["id"]) {
+        this.tripSheetNumber = params["id"];
+      }
+    });
+
     this.router.paramMap.subscribe(params => {
       const state = window.history.state;
       this.selectedData = state.selectedData || [];
 
       console.log('Selected Data:', this.selectedData);
-      
     });
   }
   ngOnInit(): void {
     this.getTripSheetNo();
+    this.getTripDetailsbyTripSheetNo();
   }
   exportTableToPDF1(): void {
     // Set A4 dimensions in landscape mode
@@ -146,8 +155,8 @@ tripSheetNumber: any;
   //     popupWinindow.document.close();
   //     //window.print();
   // };
-  getTripDetails(){
-    this.regSv.getTripDetails(this.tripSheetNumber).subscribe((result:any) => {
+  getTripDetailsbyTripSheetNo(){
+    this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result:any) => {
       if(result.length != 0 ){
       this.selectedData = result;
       console.log('Trip Sheet Details', this.selectedData);
@@ -164,6 +173,8 @@ tripSheetNumber: any;
       this.sparesReqd = this.selectedData[1].sparesReqd;
       this.startCluster = this.selectedData[1].startCluster;
       this.startPlace = this.selectedData[1].startPlace;
+      this.endCluster = this.selectedData[1].endCluster;
+      this.endPlace = this.selectedData[1].endPlace;
       this.vehicle = this.selectedData[1].vehicle;
       this.totalEstDistKms = this.selectedData[1].totalEstDistKms;
       this.formattedTotalEstJobTime = this.selectedData[1].totalEstJobTime;
@@ -175,6 +186,7 @@ tripSheetNumber: any;
       alert("Invalid Trip Sheet Number");
     }
     })
+  
   }
 
   public value = new Date();
@@ -361,6 +373,8 @@ formatMinutesToHHMM(minutes: number): string {
       Vehicle: this.vehicle,
       StartPlace: this.startPlace,
       StartCluster: this.startCluster,
+      EndPlace: this.endPlace,
+      EndCluster: this.endCluster,
       InitialTime: this.initialTime,
       UserId: this.userId,
       // Add other properties specific to TripSheetDataVM
