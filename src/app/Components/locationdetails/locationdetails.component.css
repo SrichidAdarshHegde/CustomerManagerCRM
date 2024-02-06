@@ -79,3 +79,7 @@
     display: block;
     margin: 0 auto; /* Center the button horizontally */
   }
+
+  .btn-narrow {
+    width: 150px; /* Adjust the width as needed */
+}
