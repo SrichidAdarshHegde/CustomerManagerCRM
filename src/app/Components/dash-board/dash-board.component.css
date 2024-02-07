@@ -86,7 +86,7 @@ body {
     margin-top:20px;
     background:#FAFAFA;
 }
-.order-card {
+/* .order-card {
     color: #000000;
 }
 
@@ -99,71 +99,36 @@ body {
 }
 .bg-c-green {
     background: rgb(206, 207, 200);
-}
-
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    border: none;
-    margin-bottom: 30px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.card .card-block {
-    padding: 63px;
-}
-
-.order-card i {
-    font-size: 26px;
-}
-
-.f-left {
-    float: left;
-    
-
-}
-
-.f-right {
-    float: right;
-}
+} */
 
 .animated-card {
+    background-color: #f2f2f2; /* Light grey background color */
+    border-radius: 15px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .animated-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.dashboard-buttons {
-    display: flex;
-    flex-wrap: wrap;
+.card {
+    background-color: transparent;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.animated-button {
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+.animated-card:hover .card {
+    background-color: #e0e0e0; /* Lighter grey background color on hover */
 }
 
-.animated-button:hover {
-    box-shadow: 0 8px 16px rgba(169, 169, 169, 0.2); 
-    transform: translateY(-4px);
-    width: 200px;
+.card-title {
+    margin-bottom: 0;
+    color: black; /* Set text color to black */
 }
 
-.features {
-    display: flex;
-    justify-content: center;
-}
-
-.feature {
-    text-align: center;
-}
 
 
