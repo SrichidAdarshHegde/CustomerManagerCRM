@@ -88,6 +88,9 @@ DocumentType: any;
   selectedTemplate: any;
   ModeofTransportList: any;
   selectedmodeoftransport: any;
+  value: string;
+RefID: any;
+  tableLength: any;
   constructor(
     private regSv: RegistrationService,
     private masterSv: MasterService,
@@ -99,6 +102,8 @@ DocumentType: any;
       this.roleId = localStorage.getItem('Role');
       this.IsLoggedIn = true;
     }
+    this.value = new Date().toISOString().substring(0, 10);
+
   }
   ngOnInit(): void {
     this.getCustomer();
@@ -164,89 +169,82 @@ DocumentType: any;
       console.log(this.customerList);
     });
   }
-  onSelectCompany(data: any) {
-    this.customerID = data.companyName;
-    this.regSv.getMachineInLocation(this.customerID)
-      .subscribe((response: any) => {
-        if (response == null) {
-          alert("No Machine Found!!!");
+  
+  // getRefNo() {
+  //   this.regSv.GetRefNo().subscribe((result: any) => {
+  //     if (this.RefID == null || this.RefID == '') {
+  //       this.tableLength = result.length + 1;
+  //       this.RefID = this.tableLength.toString().padStart(3, '0');
+  
+       
+  //       this.updateRefIDInTemplate();
+
+    
+  //     }
+  //   });
+  // }
+  updateRefIDInTemplate() {
+    throw new Error('Method not implemented.');
+  }
+  addContactDetails() {
+    if (this.contactname == null || this.contactname == "") {
+      alert('Please enter Contact name');
+    } else if (this.mobile == null || this.mobile == "") {
+      alert('Please enter Mobile number');
+    } else {
+      var contactdata = {
+        Salute: this.salute,
+        ContactName: this.contactname,
+        Designation: this.designation,
+        Email: this.email,
+        Mobile: this.mobile,
+        MachineId: this.selectedMachine,
+        MachineNumber: this.selectedMachine,
+        CustomerId: this.custID,
+        CreatedBy: this.userName,
+      };
+
+      this.regSv.postcontactdetailsqm(contactdata).subscribe((response: any) => {
+        if (response != null) {
+          alert('Contact added successfully!');
+
+          this.regSv.getCustomerContactDetails(this.custID).subscribe((result: any) => {
+            this.contactDetails = result;
+            console.log(this.contactDetails);
+          });
+
+
+          this.salute = '';
+          this.contactname = '';
+          this.designation = '';
+          this.email = '';
+          this.mobile = '';
         } else {
-          this.perticularMachineData = [];
-          this.perticularMachineData = response;
-          console.log(this.perticularMachineData);
-          this.machineList = [];
-          for (const machine of this.perticularMachineData) {
-            this.machineList.push({
-              machineNumber: machine.machineNumber,
-              machineInLocation: machine.machineInLocation,
-              modelName: machine.modelName
-            });
-          }
+          alert('Something Went Wrong!!!');
         }
       });
-    if (this.perticularMachineData != 0) {
-      this.regSv
-        .getPerticularCust(this.customerID)
-        .subscribe((response: any) => {
-          if (response != null) {
-            this.perticularCustomerData = response;
-            this.companyName = this.perticularCustomerData[0].companyName;
-            this.custID = this.perticularCustomerData[0].customerID;
-            // this.getPerticularCustomerContactDetailss(this.perticularCustomerData[0].customerID);
-            console.log(this.perticularCustomerData[0].customerID);
-            console.log(this.perticularCustomerData);
-            this.unit = this.perticularCustomerData[0].unit;
-            this.addressOne = this.perticularCustomerData[0].addressOne;
-            this.addressTwo = this.perticularCustomerData[0].addressTwo;
-            this.addressThree = this.perticularCustomerData[0].addressThree;
-            this.city = this.perticularCustomerData[0].city;
-            this.pincode = this.perticularCustomerData[0].pincode;
-            this.state = this.perticularCustomerData[0].state;
-            this.country = this.perticularCustomerData[0].country;
-            this.gstin = this.perticularCustomerData[0].gstin;
-            this.cluster = this.perticularCustomerData[0].cluster;
-            this.routeNo = this.perticularCustomerData[0].routeNumber;
-            this.region = this.perticularCustomerData[0].region;
-            this.zone = this.perticularCustomerData[0].zone;
-            this.weeklyOff = this.perticularCustomerData[0].weeklyOff;
-            this.workingStart = this.perticularCustomerData[0].workingStart;
-            this.workingEnd = this.perticularCustomerData[0].workingEnd;
-            this.warrantyFrom = this.perticularCustomerData[0].warrantyFrom;
-            this.warrantyTill = this.perticularCustomerData[0].warrantyTill;
-            this.features = this.perticularCustomerData[0].features;
-            this.invoicePerticular = this.perticularCustomerData[0].invoicePerticular;
-            this.securityFormalities =
-              this.perticularCustomerData[0].securityFormalities;
-             
-          } else {
-            alert("Something went wrong!!!")
-          }
-        });
-        this.machineSelected = true;
-    }
-
-    else {
-      this.regSv.getMachineInLocation(this.customerID)
-        .subscribe((response: any) => {
-          if (response == null) {
-            alert("No Machine Found!!!");
-          } else {
-            this.perticularMachineData = response;
-            console.log(this.perticularMachineData);
-            this.machineList = [];
-
-            for (const machine of this.perticularMachineData) {
-              this.machineList.push({
-                machineNumber: machine.machineNumber,
-                machineInLocation: machine.machineInLocation,
-                modelName: machine.modelName
-              });
-            }
-          }
-        });
     }
   }
-
+ 
+  onSelectCompany(data: any) {
+    this.customerID = data.customerID;
+    this.regSv
+      .getPerticularCustomer(this.customerID)
+      .subscribe((response: any) => {
+        this.perticularCustomerData = response;
+    this.custID = this.perticularCustomerData[0].customerID;
+        this.addressOne = this.perticularCustomerData[0].addressOne;
+        this.getPerticularCustomerContactDetailss(this.perticularCustomerData[0].customerID);
+        this.addressTwo = this.perticularCustomerData[0].addressTwo;
+        this.addressThree = this.perticularCustomerData[0].addressThree;
+        this.city = this.perticularCustomerData[0].city;
+        this.pincode = this.perticularCustomerData[0].pincode;
+        this.state = this.perticularCustomerData[0].state;
+        this.country = this.perticularCustomerData[0].country;
+      
+      });
+      
+  }
   clear() {
     window.location.reload();
   }
@@ -267,37 +265,7 @@ DocumentType: any;
   onSelectFeature(): void {
     console.log(this.selectedFeatures);
   }
-  addContactDetails() {
-    if (this.machineNumber != null && this.customerID != null) {
-      var contactdata = {
-        Salute: this.salute,
-        ContactName: this.contactname,
-        Designation: this.designation,
-        Email: this.email,
-        Mobile: this.mobile,
-        MachineId: this.machineNumber,
-        MachineNumber: this.machineNumber,
-        CustomerId: this.selectedCustomer.customerID,
-        CreatedBy: this.userName,
-        ModelID:this.selectedModel
-      };
-      this.regSv.postcontactdetails(contactdata).subscribe((response: any) => {
-        if (response != null) {
-          this.contactdetailslist = response;
-          console.log(this.contactdetailslist)
-        } else {
-          alert('Something Went Wrong!!!');
-        }
-      });
-      this.salute = '';
-      this.contactname = '';
-      this.designation = '';
-      this.email = '';
-      this.mobile = '';
-    } else {
-      alert('Please select Customer/ Enter Machine Number');
-    }
-  }
+ 
 
 onselectdoc(event: any) {
   var fileslist2 = "";
@@ -315,7 +283,7 @@ uploadInvoice(){
     frmData.append("document", this.docs);
     frmData.append("InvoiceAmount",this.invoiceamount);
     frmData.append("DueAmount",this.dueamount);
-this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
+this.httpService.post('http://localhost:44303/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
           if(data == "success"){
             alert("Document Uploaded Successfully!!")
           }else{
@@ -324,12 +292,12 @@ this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvo
         })
 }
 
-// getPerticularCustomerContactDetailss(id: any) {
-//   this.regSv.getCustomerContactDetailss(id).subscribe((result: any) => {
-//     this.contactDetails = result;
-//     console.log(this.contactDetails);
-//   });
-// }
+ getPerticularCustomerContactDetailss(id: any) {
+  this.regSv.getCustomerContactDetailss(id).subscribe((result: any) => {
+    this.contactDetails = result;
+     console.log(this.contactDetails);
+  });
+ }
   registerMachine() {
     const frmData = new FormData();
     frmData.append("MachineNumber", this.machineNumber);
@@ -353,7 +321,7 @@ this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvo
       frmData.append("WarrantyFrom", this.warrantyFrom);
       frmData.append("WarrantyTill", this.warrantyTill);
       frmData.append("CreatedBy", this.userName);
-  this.httpService.post('http://localhost:44303/api/MachineRegistration/PostMachineRegistration/',frmData).subscribe((data:any) => {
+  this.httpService.post('http://localhost:44303/MachineRegistration/PostMachineRegistration/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Machine Registartion Successfull");
               this.route.navigate(['/machineLists'])
