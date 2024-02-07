@@ -383,7 +383,7 @@ formatMinutesToHHMM(minutes: number): string {
     this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
-        this.route.navigate(['/'])
+        this.route.navigate(['/tripsheet'])
       }else{
         alert("Somthing Went Wrong!!");
       }  

@@ -16,6 +16,7 @@
                 <th scope="col" style="text-align: right;">Trip Sheet No</th>
                 <th scope="col">Created On</th>
                 <th scope="col" style="width: 10%;">Fetch</th>
+                <!-- <th scope="col" style="width: 10%;">Delete</th> -->
               </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                 <td style="text-align: right;">{{abc.tripSheetNo}}</td>
                 <td>{{abc.createdOn | date }}</td>
                 <td><button class="btn btn-primary" (click)="openTripSheet(abc)">Fetch</button></td>
+                <!-- <td><button class="btn btn-danger" (click)="deleteTripData(abc.tripSheetNo)">Delete</button></td> -->
               </tr>
                             
             </tbody>
