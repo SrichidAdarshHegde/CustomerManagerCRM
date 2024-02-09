@@ -171,7 +171,7 @@ createEmptyRow(): any {
     country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
     gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
     machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-    requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'', tokenID: 'extraEmptyRow',unit:'',
+    requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'', tokenID: '',unit:'',
     warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
   };
 }

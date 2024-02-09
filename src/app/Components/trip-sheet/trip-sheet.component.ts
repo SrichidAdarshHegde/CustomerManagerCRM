@@ -59,6 +59,7 @@ openTripSheet(data:any){
   this.tripId = data.tripSheetNo;
   this.route.navigate(['/TravelSheet',this.tripId]);
 }
+
 deleteTripData(id:any){
   this.regSv.deleteTripData(id).subscribe((response:any)=>{
     if(response == "success"){
@@ -69,6 +70,7 @@ deleteTripData(id:any){
     }
   })
 }
+
 newEntry(){
   this.route.navigate(['/travelBudget']);
 }
