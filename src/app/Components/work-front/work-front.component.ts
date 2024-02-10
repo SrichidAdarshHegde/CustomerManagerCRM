@@ -210,7 +210,7 @@ onCheckboxClick1(request: any) {
     this.selectedRows1.push(emptyRow);
     
     // Add the checked row
-    this.selectedRows1.push(this.workpriority[checkedIndex]);
+    this.selectedRows1.push(this.workpriority45[checkedIndex]);
   }
 
   // Add an extra empty row at the end
