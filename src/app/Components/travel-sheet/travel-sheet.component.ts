@@ -377,11 +377,10 @@ formatMinutesToHHMM(minutes: number): string {
       EndCluster: this.endCluster,
       InitialTime: this.initialTime,
       UserId: this.userId,
-      // Add other properties specific to TripSheetDataVM
     };
   
-    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
-      if(data == "success"){
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((response:any) => {
+      if(response == "success"){
         alert("Saved Successfully");
         this.route.navigate(['/tripsheet'])
       }else{
