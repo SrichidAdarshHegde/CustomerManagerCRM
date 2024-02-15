@@ -60,6 +60,17 @@ openTripSheet(data:any){
   this.route.navigate(['/TravelSheet',this.tripId]);
 }
 
+deleteTripData(id:any){
+  this.regSv.deleteTripData(id).subscribe((response:any)=>{
+    if(response == "success"){
+      alert("Trip Data Deleted")
+      window.location.reload()
+    }else{
+      alert("Somthing Went Wrong!!")
+    }
+  })
+}
+
 newEntry(){
   this.route.navigate(['/travelBudget']);
 }

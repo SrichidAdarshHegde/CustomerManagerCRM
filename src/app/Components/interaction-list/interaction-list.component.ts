@@ -51,6 +51,7 @@ export class InteractionListComponent {
   contact:any;
   request:any;
   contactData:any;
+  tokenID: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private route : Router){
       if (localStorage.getItem('IsLoggedIn') == 'true'){
@@ -104,6 +105,7 @@ export class InteractionListComponent {
     this.requestFor = request.requestFor
     this.zone = request.zone
     this.requestId = request.requestForId
+    this.tokenID = request.tokenID
   }
 
   saveInteraction(){
@@ -122,6 +124,7 @@ export class InteractionListComponent {
       AttendedByUserId : this.selectedAttendedBy,
       //AttendedByUserName : this.selectedAttendedBy,
       AttendedHowId : this.selectedAttendedHow,
+      TicketNo : this.tokenID,
       //AttendedHowName : this.selectedAttendedHow,
       CreatedBy : this.userName,
       RequestId : this.requestId,
