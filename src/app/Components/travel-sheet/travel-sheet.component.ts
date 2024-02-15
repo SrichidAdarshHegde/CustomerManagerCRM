@@ -377,13 +377,12 @@ formatMinutesToHHMM(minutes: number): string {
       EndCluster: this.endCluster,
       InitialTime: this.initialTime,
       UserId: this.userId,
-      // Add other properties specific to TripSheetDataVM
     };
   
-    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
-        this.route.navigate(['/'])
+        this.route.navigate(['/tripsheet'])
       }else{
         alert("Somthing Went Wrong!!");
       }  

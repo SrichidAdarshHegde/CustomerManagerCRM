@@ -215,7 +215,9 @@ getTripDetailsbyTripSheetNo(number :any){
 GetTripSheetNos(){
   return this.http.get(this.globalurl.weburl + 'TravelBudget/GetTripSheetNos');
 }
-
+deleteTripData(id:any){
+  return this.http.get(this.globalurl.weburl + 'TravelBudget/DeleteTripData/' + id);
+}
 
 // Travel Budget Component
 saveTravelBudget(budgetdata: any) {

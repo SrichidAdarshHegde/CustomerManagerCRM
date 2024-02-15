@@ -171,7 +171,7 @@ createEmptyRow(): any {
     country: '', createdBy: '', createdOn: '', customerID: '', customerId: '', customerName: '', date: '', dateString: '', features: '', featuresId: '',
     gstin: '', invoiceAmount: '', invoiceDate: '', invoiceFileBlob: '', invoiceNumber: '', invoicePerticular: '', invoicePerticularId: '', isDone: '',
     machineId: '', machineNumber: '', modelId: '', modelName: '', pincode: '', priority: '', region: '', regionId: '', remarks: '', requestFor: '',
-    requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'', tokenID: 'extraEmptyRow',unit:'',
+    requestForId: '', requestId: '', routeId: '', routeNumber: '', sandS: '', sandSId: '', securityFormalities: '', state:'', tokenID: '',unit:'',
     warrantyFrom:'', warrantyTill: '', weeklyOff:'', workingEnd:'', workingStart:'', zone:'', zoneId:''
   };
 }
@@ -210,7 +210,7 @@ onCheckboxClick1(request: any) {
     this.selectedRows1.push(emptyRow);
     
     // Add the checked row
-    this.selectedRows1.push(this.workpriority[checkedIndex]);
+    this.selectedRows1.push(this.workpriority45[checkedIndex]);
   }
 
   // Add an extra empty row at the end
