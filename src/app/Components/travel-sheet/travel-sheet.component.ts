@@ -119,13 +119,11 @@ finalTime: any;
     });
   }
   
-  
-
   getTripSheetNo() {
     this.regSv.getTripSheetNo().subscribe(
       (result: any) => {
         // Increment the received TripSheetNumber by 1 or set to '001' if it's 0
-        this.tripSheetNo = (parseInt(result, 10) + 1 || 1).toString().padStart(3, '0');
+        this.tripSheetNo = (parseInt(result) + 1 || 1).toString().padStart(3, '0');
       }
     );
   }
@@ -379,7 +377,7 @@ formatMinutesToHHMM(minutes: number): string {
       UserId: this.userId,
     };
   
-    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
         this.route.navigate(['/tripsheet'])
