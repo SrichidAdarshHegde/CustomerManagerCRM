@@ -194,7 +194,7 @@ export class MachineRegistrationComponent implements OnInit {
 //       frmData.append("CreatedBy", this.userName);
 //       frmData.append("InvoiceNumber", this.invoiceNumber);
 //       frmData.append("document", this.docs);
-//   this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
+//   this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
 //             {
 //               alert("Uploaded Successfully!!")
 //             }  
@@ -217,7 +217,7 @@ uploadInvoice(){
     frmData.append("document", this.docs);
     frmData.append("InvoiceAmount",this.invoiceamount);
     frmData.append("DueAmount",this.dueamount);
-this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
+this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
           if(data == "success"){
             alert("Document Uploaded Successfully!!")
           }else{
@@ -248,7 +248,7 @@ this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvo
       frmData.append("WarrantyFrom", this.warrantyFrom);
       frmData.append("WarrantyTill", this.warrantyTill);
       frmData.append("CreatedBy", this.userName);
-  this.httpService.post('http://localhost:44303/api/MachineRegistration/PostMachineRegistration/',frmData).subscribe((data:any) => {
+  this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/MachineRegistration/PostMachineRegistration/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Machine Registartion Successfull");
               this.route.navigate(['/machineLists'])
