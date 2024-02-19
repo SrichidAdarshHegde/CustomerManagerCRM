@@ -229,7 +229,10 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td style="width: 5%;">Date:</td>
-                    <td style="text-align: center;width: 10%;"><b>{{value | date:'dd MMM yyyy'}}</b></td>
+                    <td style="text-align: center;width: 10%;"><b>
+                        <!-- {{value | date:'dd MMM yyyy'}} -->
+                    <input type="date" [(ngModel)]="value">
+                    </b></td>
                     <td style="width: 5%;">Time:</td>
                     <td style="text-align: center;width: 10%;"><b>{{ systemTime | async | date: 'HH:mm:ss' }}</b></td>
                 </tr>

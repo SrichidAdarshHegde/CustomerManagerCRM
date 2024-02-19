@@ -186,108 +186,108 @@ export class QMComponent {
     this.templateId = this.selectedTemplate;
   
     switch (this.templateId) {
-      case "2004":
+      case "1":
         this.route.navigate(['/quotation2015HT', this.editcustomerID]);
         break;
    
-        case "2005":
+        case "2":
                 this.route.navigate(['/quotation2015indollor', this.editcustomerID]);
                 break;
             
-              case "2006":
+              case "3":
                 this.route.navigate(['/quotation2015', this.editcustomerID]);
                 break;
           
           
-              case "2008":
+              case "4":
                 this.route.navigate(['/quotation2015z25', this.editcustomerID]);
                 break;
         
         
-                case "2009":
+                case "5":
                   this.route.navigate(['/quotation4020', this.editcustomerID]);
                   break;
-                case "2010":
+                case "6":
                   this.route.navigate(['/quotation4020HT', this.editcustomerID]);
                   break;
               
-                case "2011":
+                case "7":
                   this.route.navigate(['/quotation4020z25', this.editcustomerID]);
                   break;
             
             
-                case "2012":
+                case "8":
                   this.route.navigate(['/quotation4030', this.editcustomerID]);
                   break;
         
-                  case "2013":
+                  case "9":
                 this.route.navigate(['/quotation4030indollor', this.editcustomerID]);
                 break;
-              case "2014":
+              case "10":
                 this.route.navigate(['/quotation4030z25', this.editcustomerID]);
                 break;
             
-              case "2015":
+              case "11":
                 this.route.navigate(['/quotation5030', this.editcustomerID]);
                 break;
           
           
-              case "2016":
+              case "12":
                 this.route.navigate(['/quotation5030z25jlx', this.editcustomerID]);
                 break;
         
-                case "2017":
+                case "13":
                 this.route.navigate(['/rapiditable', this.editcustomerID]);
                 break;
-              case "2018":
+              case "14":
                 this.route.navigate(['/rapid64-cam-acsc', this.editcustomerID]);
                 break;
             
-              case "2019":
+              case "15":
                 this.route.navigate(['/rapid64', this.editcustomerID]);
                 break;
           
           
-              case "2020":
+              case "16":
                 this.route.navigate(['/rapidi2015Iv2015JLX', this.editcustomerID]);
                 break;
         
         
-                case "2021":
+                case "17":
                 this.route.navigate(['/rapidI5april2021', this.editcustomerID]);
                 break;
-              case "2022":
+              case "18":
                 this.route.navigate(['/RapidIAMC', this.editcustomerID]);
                 break;
             
-              case "2023":
+              case "19":
                 this.route.navigate(['/rapidispares', this.editcustomerID]);
                 break;
           
           
-              case "2024":
+              case "20":
                 this.route.navigate(['/rapiditrainings', this.editcustomerID]);
                 break;
         
         
-                case "2026":
+                case "22":
                 this.route.navigate(['/v4020', this.editcustomerID]);
                 break;
-              case "2027":
+              case "23":
                 this.route.navigate(['/v4030', this.editcustomerID]);
                 break;
             
-              case "2025":
+              case "21":
                 this.route.navigate(['/v2015-jlx', this.editcustomerID]);
                 break;
           
           
-              case "2028":
+              case "24":
                 this.route.navigate(['/quotation4020indollor', this.editcustomerID]);
                 break;
         
         
-                case "2029":
+                case "25":
                 this.route.navigate(['/rapidIVMC', this.editcustomerID]);
                 break;
               

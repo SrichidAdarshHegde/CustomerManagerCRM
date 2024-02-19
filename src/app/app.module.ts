@@ -112,6 +112,7 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
 import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
 import { NumtowordsPipe } from './numtowords.pipe';
 import { SearchPipe } from './search.pipe';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -214,6 +215,8 @@ PurposeJobTimeMasterComponent,
 NumtowordsPipe,
   ],
   imports: [
+    NgHttpLoaderModule.forRoot(),
+
     BrowserModule,
     AppRoutingModule,
     NgxDocViewerModule,
