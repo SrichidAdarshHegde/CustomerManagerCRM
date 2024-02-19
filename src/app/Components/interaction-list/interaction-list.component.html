@@ -167,7 +167,8 @@
     </div><br>
 </div>
 <div *ngIf="compInteractions" class="col-md-12 row">
-    <div class="table-responsive">
+
+    <div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
         <input class="form-control" type="text" id="searchInput" placeholder="Search here..."
         [(ngModel)]="searchText">
         <table #table id="tableIdint" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
@@ -186,8 +187,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let interact of interactlist | search: searchText | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
-                    <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">{{10 * (p-1)+(i+1)}}</td>
+                <tr style="border: 1px solid black;height: 25px;"
+                *ngFor="let interact of interactlist  | search: searchText ; let i = index  line-height: 1.2;">
+                <td style="border: 1px solid black;text-align: right;padding: 1px; ">{{(i+1)}}</td>
+                
+                
+               
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">{{interact.cutomerName}}</td>
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">{{interact.machineNumber}}</td>
                     <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;">{{interact.modelName}}</td>

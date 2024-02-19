@@ -39,7 +39,8 @@
     </div> -->
 
 <div class="col-md-12" *ngIf="CustumerDetails">
-    <div class="table-responsive">
+
+    <div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
         <table class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
             <thead>
                 <tr style="border-width:1px; border-color:black;font-size:15px;">
@@ -58,7 +59,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let aa of perticularCustomerData | paginate: { itemsPerPage: 15, currentPage: p };let i = index" style="border-width:1px; border-color:black;font-size:20px;">
+                <tr *ngFor="let aa of perticularCustomerData let i = index" style="border-width:1px; border-color:black;font-size:20px;">
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{aa.companyName}}</td>
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{aa.unit}}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{aa.addressOne}}</td>
@@ -77,7 +78,7 @@
         </table>
     </div>
     <br />
-        <pagination-controls (pageChange)="p = $event" class="custom-pagination"   style="float: right"></pagination-controls>
+       
         <br /><br />
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -85,7 +86,8 @@
 
 
 <div class="col-md-12" *ngIf="CustumerInvoiceDetails">
-    <div class="table-responsive">
+    
+    <div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
         <table #table id ="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
             <thead>
                 <tr style="border-width:1px; border-color:black;font-size:15px;">
@@ -100,7 +102,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let abd of perticularCustomerInvoiceData | paginate: { itemsPerPage: 10, currentPage: p };let i = index" style="border-width:1px; border-color:black;font-size:20px;">
+                <tr *ngFor="let abd of perticularCustomerInvoiceData let i = index" style="border-width:1px; border-color:black;font-size:20px;">
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{ 10 * (p - 1) + (i+1)}}</td>
                     <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">{{abd.invoiceName}}</td>
                   <td style="border-width:1px; border-color:black;text-align: center;font-size:18px;"><i class="fas fa-eye action-icon"  data-toggle="modal" data-target="#myModalImage" (click)="ViewImage(abd)"></i></td>
@@ -117,7 +119,7 @@
             <button style="margin: 0 auto; margin: 15px;" class="btn btn-info" (click)="exportTableToPDF()">Export to PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>    </div>
     </div>
     <br>
-        <pagination-controls (pageChange)="p = $event" class="custom-pagination" style="float: right"></pagination-controls>
+      
         <br /><br />
         <div>&nbsp;</div>
         <div>&nbsp;</div>

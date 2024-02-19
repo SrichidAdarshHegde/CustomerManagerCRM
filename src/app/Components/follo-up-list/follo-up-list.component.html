@@ -45,7 +45,8 @@
 
 
 <div class="col-md-12" *ngIf="invoicedetails">
-    <div class="table-responsive">
+    
+    <div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
         <table #table id="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:15px;padding: 5px;margin: 10px auto; width: 70%; ">
             <thead>
                 <tr style="border-width:1px; border-color:black;font-size:12px;">
@@ -78,7 +79,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let abd of FollowUpList | paginate: { itemsPerPage: 10, currentPage: p };let i = index" style="border-width:1px; border-color:black;font-size:20px;">
+                <tr *ngFor="let abd of FollowUpList let i = index" style="border-width:1px; border-color:black;font-size:20px;">
                     <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">{{ 5 * (p - 1) +
                         (i+1)}}</td> -->
                     <td style="border-width:1px; border-color:black;text-align: right;font-size:14px;">
@@ -109,7 +110,7 @@
 
     </div>
     <br />
-    <pagination-controls (pageChange)="p = $event" class="custom-pagination" style="float: right"></pagination-controls>
+   
     <br /><br />
     <div>&nbsp;</div>
     <div>&nbsp;</div>
