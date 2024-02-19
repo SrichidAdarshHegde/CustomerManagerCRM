@@ -6,6 +6,8 @@
 </div>
 <div class="col-md-2"></div>
 </div><br>
+
+<div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
 <div class="col-md-12 row">
     <div class="col-md-3"></div>
     <div class="table col-md-6">
@@ -20,7 +22,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let abc of tripList | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+              <tr *ngFor="let abc of tripList let i = index">
                 <td style="text-align: right;">{{10 * (p-1)+(i+1)}}</td>
                 <td style="text-align: right;">{{abc.tripSheetNo}}</td>
                 <td>{{abc.createdOn | date }}</td>
@@ -34,7 +36,7 @@
     <div class="row">
       <div class="col-md-8"></div>
       <div class="col-md-3">
-    <pagination-controls (pageChange)="p = $event" class="custom-pagination" style="float: right"></pagination-controls> 
+    
   </div>
   </div>
   <div style="text-align: center;" >
