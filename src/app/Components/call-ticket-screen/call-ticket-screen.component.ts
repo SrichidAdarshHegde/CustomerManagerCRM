@@ -105,6 +105,8 @@ export class CallTicketScreenComponent {
   requestForId: any;
   reqForId: any;
   requestForName: any;
+  
+  valuetime: Date;
   value: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
@@ -127,25 +129,69 @@ export class CallTicketScreenComponent {
       startWith(0),
       map(() => new Date())
     );
+    this.value = new Date();
     // this.getAttendedBybyid(this.customerID);
   }
-  //public value = new Date();
-
-  // startTimer() {
-  //   if(this.value == null){
-  //     this.value = new Date();
-  //   }else{
-  //     alert("Already started");
-  //   }
-    
-  // }
-
-  // endTimer() {
-  //   this.endTime = new Date();
-  //   const timeDifference = this.endTime.getTime() - this.startTime.getTime();
-  //   console.log('Time difference: ' + timeDifference + ' milliseconds');
-  // }
  
+ 
+  saveRequest() {
+    this.endTime = new Date();
+    //const timeDifference = this.endTime.getTime() - this.startTime.getTime();
+    //console.log('Time difference: ' + timeDifference + ' milliseconds')
+    if (this.selectedrequest == null || this.selectedrequest == "") {
+      alert('Please select request type');
+    }else if(this.contactId == null || this.contactId == ""){
+      alert('Please select Contact Person');
+    }else if(this.fault == null || this.fault == ""){
+      alert('Please enter Fault');
+    }else if(this.Resolution == null || this.Resolution == ""){
+      alert('Please enter Resolution');
+    }else if(this.valuetime == null || this.valuetime == undefined){
+      alert('Please enter Start Time');
+    }else if(this.endTime == null || this.endTime == undefined){
+      alert('Please enter End Time');
+    }
+    else {
+      const frmData = new FormData();
+      frmData.append("MachineNumber", this.selectedMachine);
+      frmData.append("CustomerId", this.custID);
+      frmData.append("CustomerName", this.companyName);
+      if(this.ticketNo == null){
+        this.ticketNumber = this.newTicketNo;
+      }else{
+        this.ticketNumber = this.ticketNo;
+      }
+        frmData.append("TokenNo", this.ticketNumber);
+      
+      frmData.append("ContactId", this.contactId);
+      
+      frmData.append("StartTime", this.valuetime.toISOString());
+      frmData.append("EndTime", this.endTime.toISOString());   
+      frmData.append("CallFrom", this.contactName);
+
+      frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
+
+      this.selectedrequest.forEach((requestfor: string, index: number) => {
+        frmData.append(`RequestFor[${index}]`, requestfor);
+      });
+
+      frmData.append("SandS", JSON.stringify(this.selectedsands));
+
+      frmData.append("Remarks", this.fault);
+      frmData.append("Resolution", this.Resolution);
+      frmData.append("CreatedOn", this.value);   
+      frmData.append("CreatedBy", this.userName);
+      this.httpService.post('http://localhost:44303/api/RequestAndInteractions/PostSaveRequestForm/', frmData).subscribe((data: any) => {
+        if (data == "success") {
+          alert("Request Saved");
+          this.route.navigate(['/dashboard'])
+        } else {
+          alert("Somthing Went Wrong!!")
+        }
+      })
+    }
+  }
+
   getRequests() {
     this.masterSv.getRequests().subscribe((response: any) => {
       this.combinedList = response;
@@ -277,7 +323,7 @@ export class CallTicketScreenComponent {
 
 
   onSelectCustomer(data: any){
-    this.value = new Date();
+    this.valuetime = new Date();
 
     this.customerID = data.companyName;
     this.regSv.getMachineTicketDetails(this.customerID).subscribe((response: any) => {
@@ -451,63 +497,7 @@ export class CallTicketScreenComponent {
     });
   }
   }
-  saveRequest() {
-    this.endTime = new Date();
-    //const timeDifference = this.endTime.getTime() - this.startTime.getTime();
-    //console.log('Time difference: ' + timeDifference + ' milliseconds')
-    if (this.selectedrequest == null || this.selectedrequest == "") {
-      alert('Please select request type');
-    }else if(this.contactId == null || this.contactId == ""){
-      alert('Please select Contact Person');
-    }else if(this.fault == null || this.fault == ""){
-      alert('Please enter Fault');
-    }else if(this.Resolution == null || this.Resolution == ""){
-      alert('Please enter Resolution');
-    }else if(this.value == null || this.value == undefined){
-      alert('Please enter Start Time');
-    }else if(this.endTime == null || this.endTime == undefined){
-      alert('Please enter End Time');
-    }
-    else {
-      const frmData = new FormData();
-      frmData.append("MachineNumber", this.selectedMachine);
-      frmData.append("CustomerId", this.custID);
-      frmData.append("CustomerName", this.companyName);
-      if(this.ticketNo == null){
-        this.ticketNumber = this.newTicketNo;
-      }else{
-        this.ticketNumber = this.ticketNo;
-      }
-        frmData.append("TokenNo", this.ticketNumber);
-      
-      frmData.append("ContactId", this.contactId);
-      
-      frmData.append("StartTime", this.value.toISOString());
-      frmData.append("EndTime", this.endTime.toISOString());   
-      frmData.append("CallFrom", this.contactName);
-
-      frmData.append("RequestFor", JSON.stringify(this.selectedrequest));
-
-      this.selectedrequest.forEach((requestfor: string, index: number) => {
-        frmData.append(`RequestFor[${index}]`, requestfor);
-      });
-
-      frmData.append("SandS", JSON.stringify(this.selectedsands));
-
-      frmData.append("Remarks", this.fault);
-      frmData.append("Resolution", this.Resolution);
-      frmData.append("CreatedBy", this.userName);
-      this.httpService.post('http://localhost:44303/api/RequestAndInteractions/PostSaveRequestForm/', frmData).subscribe((data: any) => {
-        if (data == "success") {
-          alert("Request Saved");
-          this.route.navigate(['/dashboard'])
-        } else {
-          alert("Somthing Went Wrong!!")
-        }
-      })
-    }
-  }
-
+ 
   onSelectCallEntry() {
     if (this.selectedCallEntry) {
       const selectedRequest = this.requestslist.find((requestslist: any) => requestslist.requestsId === this.selectedCallEntry);
