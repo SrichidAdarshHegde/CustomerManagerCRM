@@ -21,6 +21,8 @@ export class InteractionListComponent {
   allrequest:boolean=true;
   p: number = 1;
   isClicked :boolean=false;
+  searchText: any;
+
   companyName: any;
   customerID: any;
   isDone: any;

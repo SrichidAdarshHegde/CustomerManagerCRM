@@ -206,7 +206,6 @@ export class CallTicketScreenComponent {
 }
 
   onRowClick(data: any) {
-    this.value = new Date();
     this.selectedMachine = data.machineNumber;
     this.ticketNo = data.tokenNo;
     this.modelName = data.modelName;
@@ -278,6 +277,8 @@ export class CallTicketScreenComponent {
 
 
   onSelectCustomer(data: any){
+    this.value = new Date();
+
     this.customerID = data.companyName;
     this.regSv.getMachineTicketDetails(this.customerID).subscribe((response: any) => {
       if (response != null || response.length != 0) {
