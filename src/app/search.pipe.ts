@@ -14,7 +14,8 @@ export class SearchPipe implements PipeTransform {
 
       return value.filter(item => 
         (item.companyName && item.companyName.toLowerCase().includes(searchText)) ||
-        (item.machineNumber && item.machineNumber.toString().toLowerCase().includes(searchText)) 
+        (item.machineNumber && item.machineNumber.toString().toLowerCase().includes(searchText)) ||
+        (item.cutomerName && item.cutomerName.toString().toLowerCase().includes(searchText))
       );
     }
 
