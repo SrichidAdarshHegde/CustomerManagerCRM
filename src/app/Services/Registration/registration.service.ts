@@ -34,6 +34,9 @@ UpdateUserRegister(userRegData: any) {
 getUsers() {
   return this.http.get(this.globalurl.weburl + 'Registration/GetAllUsers');
 }
+
+
+
 deleteUser(userid: any) {
   return this.http.get(
     this.globalurl.weburl + 'Registration/DeleteUserData/' + userid
@@ -129,6 +132,12 @@ getCustomerContactDetails(id:any){
 GetCustomerContactDetailsForQM(id:any){
   return this.http.get(this.globalurl.weburl + 'MachineRegistration/getCustomerContactDetailsForQM/'+id);
 }
+
+GetCustomerContactDetails(id:any){
+  return this.http.get(this.globalurl.weburl + 'MachineRegistration/getCustomerContactDetails/'+id);
+}
+
+
 getCustomerTickets(id:any){
   return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerTickets/'+id);
 }

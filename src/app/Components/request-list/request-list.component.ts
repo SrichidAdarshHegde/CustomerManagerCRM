@@ -40,6 +40,10 @@ export class RequestListComponent implements OnInit{
   accsv: any;
 
   Datewiserequest: string="";
+  selectedPerticularCustomer: any;
+  contactDetails: any;
+  EditContact: boolean;
+  usersList: any;
 
   
   constructor(private regSv: RegistrationService){
@@ -53,8 +57,11 @@ export class RequestListComponent implements OnInit{
   ngOnInit(): void {
     this.getrequest();
     this.getCustomer();
-    this.GetDatewiserequest();
-    
+    // this.GetDatewiserequest();
+  
+    // this.getPerticularCustomerContactDetailsForrequest(this.contactData);
+  // this.getUsers();
+  //  this.getrequests();
   }
 
   getCustomer() {
@@ -65,20 +72,49 @@ export class RequestListComponent implements OnInit{
     });
   }
 
+
+  getPerticularCustomerContactDetailsForrequest(id: any) {
+    this.regSv.GetCustomerContactDetails(id).subscribe((result: any) => {
+      this.contactData = result;
+      console.log(this.contactData);
+    });
+  }
+
+getUsers() {
+  this.regSv.getUsers().subscribe((response: any) => {
+    this.usersList = response;
+    console.log(this.usersList);
+  });
+}
+// getrequests() {
+//   this.regSv.getPendingrequest().subscribe((response: any) => {
+//     this.requestlist = response;
+//     console.log(this.requestlist);
+//     if(this.requestlist.length!=0){
+//       this.exporting=true;
+//     }
+//   });
+// }
   getrequest() {
     this.regSv.getAllrequest().subscribe((response: any) => {
-      this.requestlist = response.array1;;
+      this.requestlist = response;
       this.contactData=response.array2;
-      console.log(this.requestlist);
+      console.log(response);
+      // console.log('Response Array1', response.array1);
+      // console.log('Response Array2', response.array2);
       if(this.requestlist.length!=0){
         this.exporting=true;
       }
        
       else {
-        alert("No Requests Found For this Machine Number!!!")
+        alert("No Requests Found")
       }
     });
   }
+ 
+  
+
+  
   onChangeMachineNumber(){
    
     //this.requestlist.splice(0, this.requestlist.length);
@@ -98,6 +134,7 @@ export class RequestListComponent implements OnInit{
   }
   onSelectCompany(data: any){
     this.selectedCustomerid = data.customerID;
+   
     this.regSv
       .getPerticularCustomerRequests(this.selectedCustomerid)
       .subscribe((response: any) => {

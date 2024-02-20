@@ -64,17 +64,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr
-                        *ngFor="let request of requestlist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index"  style="font-size: 12px; line-height: 1.1;">
+                    <tr *ngFor="let request of requestlist  | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index"  style="font-size: 12px; line-height: 1.1;">
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px; padding: 2px;">{{1 * (p-1)+(i+1)}}</td>
                         <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;  padding: 2px;">{{request.companyName}}</td>
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;  padding: 2px;">{{request.machineNumber}}</td>
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;  padding: 2px;">{{request.modelName}}</td>
                         <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;  padding: 2px;">
-                            <p *ngFor="let contact of contactData">
+                            <p *ngFor="let contact of request.contactData">
                                 {{contact.salute}} {{contact.contactName}}<br> {{contact.mobile}}, {{contact.email}}
                                 <br>{{contact.designation}}
-                            </p>
+                          
                         </td>
                         <td style="border-width:1px; border-color:black;text-align: left;font-size:18px">{{request.requestFor}}</td>
                         <td style="border-width:1px; border-color:black;text-align: left;font-size:18px">{{request.sandS}}</td>

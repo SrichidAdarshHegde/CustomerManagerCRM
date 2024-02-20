@@ -215,8 +215,11 @@ finalTime: any;
       }
   
       if (mileage !== null && mileage !== undefined && mileage !== 0) {
-        this.fuelReqd = this.totalEstDistKms / mileage;
-        this.fuelPriceReqd = this.fuelReqd * (fuelPrice || 0);
+        const fuelReqd = parseFloat((this.totalEstDistKms / mileage).toFixed(2));
+        const fuelPriceReqd = parseFloat((fuelReqd * (fuelPrice || 0)).toFixed(2));
+      
+        this.fuelReqd = isNaN(fuelReqd) ? null : fuelReqd;
+        this.fuelPriceReqd = isNaN(fuelPriceReqd) ? null : fuelPriceReqd;
       } else {
         // Handle the case where mileage is zero or undefined
         this.fuelReqd = null;
@@ -321,15 +324,48 @@ formatMinutesToHHMM(minutes: number): string {
   }
 
   save() {  
-    if(this.selectedData.length == 0){
-      alert("Atleast One Record Should Be Added.");
-    } else if(this.initialTime == null || this.initialTime == ''){
+    if (this.selectedData.length === 0) {
+      alert("At least One Record Should Be Added.");
+    } else if (this.initialTime == null || this.initialTime.toString().trim() === '') {
       alert("Please enter starting time");
-    }else if(this.startCluster == null || this.startCluster == ''){
-      alert("Starting Cluster value can't be left blank.");
-    }else if(this.startPlace == null || this.startPlace == ''){
+    } 
+    else if (this.startPlace == null || this.startPlace.toString().trim() === '') {
       alert("Starting Place value can't be left blank.");
-    }else{
+    }
+    else if (this.startCluster == null || this.startCluster.toString().trim() === '') {
+      alert("Starting Cluster value can't be left blank.");
+    } 
+    else if (this.endPlace == null || this.endPlace.toString().trim() === '') {
+      alert("Ending Place value can't be left blank.");
+    }
+    else if (this.endCluster == null || this.endCluster.toString().trim() === '') {
+      alert("Ending Cluster value can't be left blank.");
+    }  else if (this.vehicle == null || this.vehicle.toString().trim() === '') {
+      alert("Please enter vehicle Name");
+    } else if (this.sparesReqd == null || this.sparesReqd.toString().trim() === '') {
+      alert("Please enter spares required."); 
+    }else if (
+      // For CNG
+      (
+        (this.FuelPriceCNG == null || this.FuelPriceCNG.toString().trim() === '') ||
+        (this.mileageCng == null || this.mileageCng.toString().trim() === '')
+      ) &&
+      // For Petrol
+      (
+        (this.FuelPricePetrol == null || this.FuelPricePetrol.toString().trim() === '') ||
+        (this.mileagePetrol == null || this.mileagePetrol.toString().trim() === '')
+      ) &&
+      // For Diesel
+      (
+        (this.FuelPriceDiesel == null || this.FuelPriceDiesel.toString().trim() === '') ||
+        (this.mileageDiesel == null || this.mileageDiesel.toString().trim() === '')
+      )
+    ) {
+      console.log("Debugging - Fuel price and mileage issue");
+      alert("Both Fuel Price and Mileage should be filled for each case.");
+    }
+          
+          else{
     var data = {
       TripSheetNo: this.tripSheetNo,
       TripSheetValues: this.selectedData.map(item => {
@@ -377,7 +413,7 @@ formatMinutesToHHMM(minutes: number): string {
       UserId: this.userId,
     };
   
-    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
         this.route.navigate(['/tripsheet'])
