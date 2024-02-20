@@ -33,6 +33,7 @@ constructor(private regSv:RegistrationService, private route:Router){
 }
 ngOnInit(): void {
   this.getTripSheetNos();
+  console.log(this.roleId);
 }
 
 getTripSheetNos() {
