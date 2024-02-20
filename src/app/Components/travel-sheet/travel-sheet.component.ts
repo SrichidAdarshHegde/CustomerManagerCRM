@@ -191,7 +191,7 @@ finalTime: any;
   reSequence(){
     this.route.navigate(['/workFront']);
   }
-  private apiUrl = 'https://blockchainmatrimony.com/customermanagerapi/api';
+  private apiUrl = 'http://localhost:44303/api';
   recalculateFuel() {
     // Ensure totalEstDistKms is greater than zero to avoid division by zero
     if (this.totalEstDistKms > 0) {

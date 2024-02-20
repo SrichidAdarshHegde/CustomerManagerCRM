@@ -139,6 +139,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     RegionComponent,
     ZoneComponent,
     UserListComponent,
+SearchPipe,
     
     CustomerListsComponent,
     ModelMasterComponent,
@@ -213,10 +214,10 @@ RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
+
   ],
   imports: [
     NgHttpLoaderModule.forRoot(),
-
     BrowserModule,
     AppRoutingModule,
     NgxDocViewerModule,
@@ -232,6 +233,8 @@ NumtowordsPipe,
     NgSelectModule,
     FontAwesomeModule,
     DocumentEditorContainerModule,
+
+    
   ],
   providers: [AppGlobals, NgbActiveModal, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

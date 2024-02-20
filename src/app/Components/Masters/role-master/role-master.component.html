@@ -18,7 +18,7 @@
 <div class="col-md-12 row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <div class="table-responsive">
+        <div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
             <table #table id="tableId" class="table table-bordered"
                 style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                 <thead>
@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let role of rolelist | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index">
+                    <tr *ngFor="let role of rolelist let i = index">
                         <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">{{10 *
                             (p-1)+(i+1)}}</td>
                         <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
@@ -76,8 +76,6 @@
 </div>
 <br>
 
-  
-  <pagination-controls (pageChange)="p = $event" class="custom-pagination" style="float: right;"></pagination-controls>
 
 <br><br><br><br><br>
 <!-- Bootstrap JavaScript -->

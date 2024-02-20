@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import { Router } from '@angular/router';
 import { MasterService } from 'src/app/Services/MasterService/master.service';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
@@ -54,6 +54,11 @@ export class InteractionListComponent {
   request:any;
   contactData:any;
   tokenID: any;
+customerList: number|any[];
+  selectedPerticularCustomer: any;
+  contactDetails: any;
+  EditContact: boolean;
+
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private route : Router){
       if (localStorage.getItem('IsLoggedIn') == 'true'){
@@ -62,6 +67,8 @@ export class InteractionListComponent {
         this.IsLoggedIn = true;
       }
   }
+  
+
   ngOnInit(): void {
     this.getrequest();
     this.getAttendType();
@@ -79,6 +86,14 @@ export class InteractionListComponent {
       console.log(this.usersList);
     });
   }
+  getPerticularCustomerContactDetails(data:any){
+    this.selectedPerticularCustomer= data.customerID;
+    this.regSv.getCustomerContactDetails(this.selectedPerticularCustomer).subscribe((result: any) => {
+      this.contactDetails = result;
+      console.log(this.contactDetails);
+      this.EditContact = false;
+  });
+}
   getrequest() {
     this.regSv.getPendingrequest().subscribe((response: any) => {
       this.requestlist = response;
@@ -88,6 +103,7 @@ export class InteractionListComponent {
       }
     });
   }
+
   onSelectAttendedBy(data:any){
     this.selectedAttendedBy = data.target.value
   }

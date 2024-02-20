@@ -6,10 +6,16 @@
             <table class="table table-bordered table-with-bold-lines">
                 <tr>
                     <td colspan="4">
+                        <div class="row">
+                            <div class="col-md-8">
                         <ng-select [items]="customerList" [bindLabel]="'companyName'" [(ngModel)]="selectedCustomer"
                             (change)="onSelectCustomer($event)">
                         <ng-option value="" disabled>Select Customer</ng-option>
                         </ng-select>
+                    </div><div class="col-md-4">
+                        <input class="form-control" type="number" name="machineNumber" [(ngModel)]="machineNumber" placeholder="Machine No" (change)="onChangeMachineNo()">
+                    </div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +46,7 @@
                     <td>
                         <p>Pin</p>
                     </td>
-                    <td style="text-align: right;">
+                    <td>
                         <p><b>{{pincode}}</b></p>
                     </td>
                 </tr>
@@ -311,7 +317,7 @@
             <tr>
                 <td style="width: 2%;"></td>
                 <td style="width: 5%;">{{value | date:'dd MMM yyyy'}}</td>
-                <td style="width: 5%;">{{value | date:'HH:mm:ss' }}</td>
+                <td style="width: 5%;">{{valuetime | date:'HH:mm:ss' }}</td>
                 <td style="width: 5%;">{{endTime | date:'HH:mm:ss' }}</td>
                 <td style="width: 5%;">{{userName}}</td>
                 <td style="width: 12%;">{{contactName}}</td>
