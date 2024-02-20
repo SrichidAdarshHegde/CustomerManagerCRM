@@ -108,6 +108,8 @@ export class CallTicketScreenComponent {
   
   valuetime: Date;
   value: any;
+  ClusterId: any;
+  selectedCustomerid: any;
   constructor(private regSv: RegistrationService,
     private masterSv: MasterService, private httpService: HttpClient,
     private route: Router) {
@@ -190,6 +192,21 @@ export class CallTicketScreenComponent {
         }
       })
     }
+  }
+
+  onChangeMachineNo() {
+    this.regSv.getMachineFromMachineNumber(this.machineNumber).subscribe((response: any) => {
+      if (response == null) {
+        alert("No Machine Found!!!")
+      } else {
+        this.perticularCustomerData = response;
+        console.log(this.perticularCustomerData);
+        this.selectedCustomer = this.perticularCustomerData[0].companyName;
+        this.onSelectCustomer(this.perticularCustomerData[0]);
+        this.ClusterId = this.perticularCustomerData[0].clusterId;
+      this.selectedCustomerid= this.perticularCustomerData[0].customerId;
+      }
+    })
   }
 
   getRequests() {
@@ -443,7 +460,6 @@ export class CallTicketScreenComponent {
     });
   }
 
-  
   isSelectedRow(id: any): boolean {
     return this.contactId === id;
 }
