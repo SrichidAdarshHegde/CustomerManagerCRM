@@ -127,16 +127,12 @@ finalTime: any;
       }
     );
   }
+
   print(printSectionId) {
-    // Get the native element
     const printContent = this.el.nativeElement.querySelector('#' + printSectionId);
-
-    // Clone the element with dynamic content
     const clonedContent = printContent.cloneNode(true);
-
-    // Create a new window and open it
+   // Create a new window and open it
     const popupWindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=yes');
-
     // Write the HTML content to the new window
     popupWindow.document.open();
     popupWindow.document.write('<html><title>' + 'TripSheet - ' + this.tripSheetNo + '</title><style>table{ margin-left:10%; border-collapse: collapse; } table, th, td { border: 1px solid black; }</style><head></head><body onload="window.print()">');
@@ -144,41 +140,34 @@ finalTime: any;
     popupWindow.document.write('</body></html>');
     popupWindow.document.close();
   }
-
-  //   print (printSectionId) {
-  //     var innerContents = document.getElementById(printSectionId).innerHTML;
-  //     var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=yes');
-  //     popupWinindow.document.open();
-  //     popupWinindow.document.write('<html><title>'+'TripSheet - '+this.tripSheetNo+'</title> <style> table{ margin-left:10%; }  </style><head></head><body onload="window.print()">' + innerContents + '</html>');
-  //     popupWinindow.document.close();
-  //     //window.print();
-  // };
-  getTripDetailsbyTripSheetNo(){
-    this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result:any) => {
-      if(result.length != 0 ){
-      this.selectedData = result;
-      console.log('Trip Sheet Details', this.selectedData);
-      this.tripSheetNo = this.selectedData[1].tripSheetNo;
-      this.FuelPriceCNG = this.selectedData[1].fuelPriceCNG;
-      this.FuelPricePetrol = this.selectedData[1].fuelPricePetrol;
-      this.FuelPriceDiesel = this.selectedData[1].fuelPriceDiesel;
-      this.fuelPriceReqd = this.selectedData[1].fuelPriceReqd;
-      this.fuelReqd = this.selectedData[1].fuelReqd;
-      this.initialTime = this.selectedData[1].initialTime;
-      this.mileageCng = this.selectedData[1].mileageCNG;
-      this.mileagePetrol = this.selectedData[1].mileagePetrol;
-      this.mileageDiesel = this.selectedData[1].mileageDiesel;
-      this.sparesReqd = this.selectedData[1].sparesReqd;
-      this.startCluster = this.selectedData[1].startCluster;
-      this.startPlace = this.selectedData[1].startPlace;
-      this.endCluster = this.selectedData[1].endCluster;
-      this.endPlace = this.selectedData[1].endPlace;
-      this.vehicle = this.selectedData[1].vehicle;
-      this.totalEstDistKms = this.selectedData[1].totalEstDistKms;
-      this.formattedTotalEstJobTime = this.selectedData[1].totalEstJobTime;
-      this.formattedTotalEstTravelTime = this.selectedData[1].totalEstTravelTime;
-      this.formattedTotalFoodFuel = this.selectedData[1].totalFoodFuel;
-      this.timeDifference = this.selectedData[1].totalSchdET;
+  getTripDetailsbyTripSheetNo() {
+    this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result: any) => {
+      if (result.length != 0) {
+        this.selectedData = result;
+        console.log('Trip Sheet Details', this.selectedData);
+        const firstTripDetails = result[0]; // Assuming the first element holds trip details
+        this.tripSheetNo = firstTripDetails.tripSheetNo;
+        this.FuelPriceCNG = firstTripDetails.fuelPriceCNG;
+     
+      this.FuelPricePetrol = firstTripDetails.fuelPricePetrol;
+      this.FuelPriceDiesel = firstTripDetails.fuelPriceDiesel;
+      this.fuelPriceReqd = firstTripDetails.fuelPriceReqd;
+      this.fuelReqd = firstTripDetails.fuelReqd;
+      this.initialTime = firstTripDetails.initialTime;
+      this.mileageCng =firstTripDetails.mileageCNG;
+      this.mileagePetrol =firstTripDetails.mileagePetrol;
+      this.mileageDiesel =firstTripDetails.mileageDiesel;
+      this.sparesReqd = firstTripDetails.sparesReqd;
+      this.startCluster = firstTripDetails.startCluster;
+      this.startPlace = firstTripDetails.startPlace;
+      this.endCluster = firstTripDetails.endCluster;
+      this.endPlace = firstTripDetails.endPlace;
+      this.vehicle = firstTripDetails.vehicle;
+      this.totalEstDistKms = firstTripDetails.totalEstDistKms;
+      this.formattedTotalEstJobTime = firstTripDetails.totalEstJobTime;
+      this.formattedTotalEstTravelTime = firstTripDetails.totalEstTravelTime;
+      this.formattedTotalFoodFuel = firstTripDetails.totalFoodFuel;
+      this.timeDifference = firstTripDetails.totalSchdET;
     }
     else{
       alert("Invalid Trip Sheet Number");
@@ -188,10 +177,13 @@ finalTime: any;
   }
 
   public value = new Date();
+
   reSequence(){
     this.route.navigate(['/workFront']);
   }
+  
   private apiUrl = 'http://localhost:44303/api';
+
   recalculateFuel() {
     // Ensure totalEstDistKms is greater than zero to avoid division by zero
     if (this.totalEstDistKms > 0) {
