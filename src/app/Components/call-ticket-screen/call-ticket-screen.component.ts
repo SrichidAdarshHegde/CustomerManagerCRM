@@ -203,8 +203,8 @@ export class CallTicketScreenComponent {
         console.log(this.perticularCustomerData);
         this.selectedCustomer = this.perticularCustomerData[0].companyName;
         this.onSelectCustomer(this.perticularCustomerData[0]);
-        this.ClusterId = this.perticularCustomerData[0].clusterId;
-      this.selectedCustomerid= this.perticularCustomerData[0].customerId;
+      //   this.ClusterId = this.perticularCustomerData[0].clusterId;
+      // this.selectedCustomerid= this.perticularCustomerData[0].customerId;
       }
     })
   }
