@@ -73,12 +73,6 @@ export class RequestListComponent implements OnInit{
   }
 
 
-  getPerticularCustomerContactDetailsForrequest(id: any) {
-    this.regSv.GetCustomerContactDetails(id).subscribe((result: any) => {
-      this.contactData = result;
-      console.log(this.contactData);
-    });
-  }
 
 getUsers() {
   this.regSv.getUsers().subscribe((response: any) => {
