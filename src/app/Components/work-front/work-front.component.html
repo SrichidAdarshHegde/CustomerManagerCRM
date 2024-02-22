@@ -20,13 +20,15 @@
 <div class="col-md-12 row">
     <div class="table-responsive">
         <div class="col-md-12 row" *ngIf="zoneSelected">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
             <table #table id="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
        
                 <table #table id="tableId" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                     <tr style="border-width:1px; border-color:black;font-size:12px;">
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 2%;">
                             Sl No</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 3%;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 1%;">
                             Ticket No</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 3%;">
                             Date</th>
@@ -34,7 +36,7 @@
                             M/c No</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 10%;">
                             Company</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 3%; ">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 2%; ">
                             Priority </th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 5%;">
                             Schedule</th>
@@ -42,10 +44,8 @@
                             Purpose</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 5%;">
                             Remarks {{formattedDateRemarks}}</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
-                            <div class="btn-group">
-                                <button class="btn btn-secondary" style=width:2% (click)="sortWorklist()"> Route No </button>
-                            </div>
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 1%;">
+                            Route No 
                         </th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 5%;">
                             Cluster</th>
@@ -102,10 +102,13 @@
                 </div>
             </table>
             <br><br>
+            </div>
         </div>
     </div>
     <div class="table-responsive">
         <div class="col-md-12 row"  style="text-align: center;" *ngIf="zoneSelected">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
             <table class="table table-bordered">
                 <table #table1 id="tableId1" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px; margin: 0 auto;">
                     <thead>
@@ -113,7 +116,7 @@
                         <tr style="border-width:1px; border-color:black;font-size:12px;">
                             <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 2%;">
                                 Sl No</th>
-                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 3%;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 1%;">
                                 Ticket No</th>
                             <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
                                 Date</th>
@@ -121,7 +124,7 @@
                                 M/c No</th>
                             <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 8%;">
                                 Company</th>
-                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 2%;">
                                 Priority </th>
                             <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;" >
                                 Schedule</th>
@@ -129,11 +132,8 @@
                                 Purpose</th>
                             <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 7%;">
                                 Remarks {{formattedDateRemarks}}</th>
-                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary" (click)="sortWorklist()"> Route No
-                                    </button>
-                                </div>
+                            <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 1%;">
+                                Route No
                             </th>
                             <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;  width: 5%;">
                                 Cluster</th>
@@ -222,16 +222,19 @@
                         PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
                 </div>
             </table>
+            </div>
         </div>
     </div>
     <div class="table-responsive">
         <div class="col-md-12 row" *ngIf="zoneSelected">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
             <table class="table table-bordered">
                 <table #table2 id="tableId2" class="table table-bordered" style="border-width:1px; border-color:black;font-size:20px;padding: 5px;margin: 0 auto; ">
                     <tr style="border-width:1px; border-color:black;font-size:12px;">
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 2%;">
                             Sl No</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 3%;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 1%;">
                             Ticket No</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
                             Date</th>
@@ -239,7 +242,7 @@
                             M/c No</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 8%;">
                             Company</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 3%;">
                             Priority </th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;" >
                             Schedule</th>
@@ -247,11 +250,8 @@
                             Purpose</th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 7%;">
                             Remarks {{formattedDateRemarks}}</th>
-                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 5%;">
-                            <div class="btn-group">
-                                <button class="btn btn-secondary" (click)="sortWorklist()"> Route No
-                                </button>
-                            </div>
+                        <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center; width: 1%;">
+                            Route No
                         </th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;  width: 5%;">
                             Cluster</th>
@@ -340,6 +340,7 @@
                         PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></button>
                 </div>
             </table>
+        </div>
         </div>
     </div>
 </div><br><br><br>

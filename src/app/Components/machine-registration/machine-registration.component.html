@@ -175,7 +175,7 @@
         <div class="col-md-3">
             <label for="unit">Invoice Particular:</label>
             <select (change)="onSelectInvoiceperticular($event)" class="form-control">
-                <option value="">Select Invoice Perticular</option>
+                <option value="">Select Invoice Particular</option>
                 <option *ngFor="let perticular of invoiceperticularlist" value={{perticular.invoicePerticularId}} >
                   {{perticular.invoicePerticularName}}
                 </option>
