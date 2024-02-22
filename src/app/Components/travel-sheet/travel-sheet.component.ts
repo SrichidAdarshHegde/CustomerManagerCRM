@@ -322,7 +322,118 @@ formatMinutesToHHMM(minutes: number): string {
   padZero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
+  updateTripDetails() {
+    // Update the selectedData array or make a call to the API to update the details
+  
+    // Example: Update the first item in the selectedData array
+    if (this.selectedData.length > 0) {
+      this.selectedData[0].fuelPriceCNG = this.FuelPriceCNG;
+      this.selectedData[0].fuelPricePetrol = this.FuelPricePetrol;
+      this.selectedData[0].fuelPriceDiesel = this.FuelPriceDiesel;
+      this.selectedData[0].fuelPriceReqd = this.fuelPriceReqd;
+      this.selectedData[0].fuelReqd = this.fuelReqd;
+      this.selectedData[0].initialTime = this.initialTime;
+      this.selectedData[0].mileageCNG = this.mileageCng;
+      this.selectedData[0].mileagePetrol = this.mileagePetrol;
+      this.selectedData[0].mileageDiesel = this.mileageDiesel;
+      this.selectedData[0].sparesReqd = this.sparesReqd;
+      this.selectedData[0].startCluster = this.startCluster;
+      this.selectedData[0].startPlace = this.startPlace;
+      this.selectedData[0].endCluster = this.endCluster;
+      this.selectedData[0].endPlace = this.endPlace;
+      this.selectedData[0].vehicle = this.vehicle;
+      this.selectedData[0].totalEstDistKms = this.totalEstDistKms;
+      this.selectedData[0].totalEstJobTime = this.formattedTotalEstJobTime;
+      this.selectedData[0].totalEstTravelTime = this.formattedTotalEstTravelTime;
+      this.selectedData[0].totalFoodFuel = this.formattedTotalFoodFuel;
+      this.selectedData[0].totalSchdET = this.timeDifference;
+  
+      // Make a call to update the data on the server
+      this.httpService.put('http://localhost:44303/api/TravelBudget/PutUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
+        if (data == "success") {
+          alert("Updated Successfully");
+          // Optionally, navigate to the tripsheet page or handle other logic
+        } else {
+          alert("Something Went Wrong!!");
+        }
+      });
+    } else {
+      alert("No data to update");
+    }
+  }
+// Method to load trip details by trip sheet number
+loadTripDetailsByTripSheetNo() {
+  this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result: any) => {
+    if (result.length !== 0) {
+      this.selectedData = result;
+      console.log('Trip Sheet Details', this.selectedData);
+      // Populate form fields with trip details
+      this.tripSheetNo = this.selectedData[1].tripSheetNo;
+      this.FuelPriceCNG = this.selectedData[1].fuelPriceCNG;
+      this.FuelPricePetrol = this.selectedData[1].fuelPricePetrol;
+      this.FuelPriceDiesel = this.selectedData[1].fuelPriceDiesel;
+      this.fuelPriceReqd = this.selectedData[1].fuelPriceReqd;
+      this.fuelReqd = this.selectedData[1].fuelReqd;
+      this.initialTime = this.selectedData[1].initialTime;
+      this.mileageCng = this.selectedData[1].mileageCNG;
+      this.mileagePetrol = this.selectedData[1].mileagePetrol;
+      this.mileageDiesel = this.selectedData[1].mileageDiesel;
+      this.sparesReqd = this.selectedData[1].sparesReqd;
+      this.startCluster = this.selectedData[1].startCluster;
+      this.startPlace = this.selectedData[1].startPlace;
+      this.endCluster = this.selectedData[1].endCluster;
+      this.endPlace = this.selectedData[1].endPlace;
+      this.vehicle = this.selectedData[1].vehicle;
+      this.totalEstDistKms = this.selectedData[1].totalEstDistKms;
+      this.formattedTotalEstJobTime = this.selectedData[1].totalEstJobTime;
+      this.formattedTotalEstTravelTime = this.selectedData[1].totalEstTravelTime;
+      this.formattedTotalFoodFuel = this.selectedData[1].totalFoodFuel;
+      this.timeDifference = this.selectedData[1].totalSchdET;
+    } else {
+      alert("Invalid Trip Sheet Number");
+    }
+  });
+}
 
+// Method to save edited trip details
+saveEditedTripDetails() {
+  // Construct the data object with edited details
+  var editedData = {
+    TripSheetNo: this.tripSheetNo,
+    FuelPriceCNG: this.FuelPriceCNG,
+    FuelPricePetrol: this.FuelPricePetrol,
+    FuelPriceDiesel: this.FuelPriceDiesel,
+    fuelPriceReqd: this.fuelPriceReqd,
+    fuelReqd: this.fuelReqd,
+    initialTime: this.initialTime,
+    mileageCNG: this.mileageCng,
+    mileagePetrol: this.mileagePetrol,
+    mileageDiesel: this.mileageDiesel,
+    sparesReqd: this.sparesReqd,
+    startCluster: this.startCluster,
+    startPlace: this.startPlace,
+    endCluster: this.endCluster,
+    endPlace: this.endPlace,
+    vehicle: this.vehicle,
+    totalEstDistKms: this.totalEstDistKms,
+    totalEstJobTime: this.formattedTotalEstJobTime,
+    totalEstTravelTime: this.formattedTotalEstTravelTime,
+    totalFoodFuel: this.formattedTotalFoodFuel,
+    totalSchdET: this.timeDifference,
+    UserId: this.userId,
+  };
+
+  // Send a request to update trip details
+  this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', editedData).subscribe((data: any) => {
+    if (data === "success") {
+      alert("Trip details updated successfully");
+      this.route.navigate(['/tripsheet']);
+    } else {
+      alert("Something went wrong!!");
+    }
+  });
+}
+  
   save() {  
     if (this.selectedData.length === 0) {
       alert("At least One Record Should Be Added.");
