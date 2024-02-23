@@ -3,7 +3,7 @@
 <div class="col-md-2">
     <label for="tripSheetNumber">Enter Trip Sheet Number</label>
     <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
-    <button class="btn btn-primary" (click)="getTripDetailsbyTripSheetNo()">Fetch Data</button>
+    <button class="btn btn-primary" (click)="loadTripDetailsByTripSheetNo()">Fetch Data</button>
 </div>
 <div class="col-md-3"></div><br>
 <div class="col-md-2" style="text-align: center;"><h2><b>TRIP SHEET</b></h2></div>
@@ -176,7 +176,7 @@
                     <td style="text-align: center;border: 2px solid black;"><strong>{{timeDifference }}</strong></td>
                     <td></td>
                     <td></td>
-                    <td><button class="btn btn-primary" (click)="updateTripDetails()">Update</button></td>
+                    <td><button class="btn btn-primary" (click)="saveEditedTripDetails()">Update</button></td>
                     <td><button class="btn btn-primary" (click)="save()">Save</button></td>
                     <td><button class="btn btn-secondary">Resequence</button></td>
                 </tr>

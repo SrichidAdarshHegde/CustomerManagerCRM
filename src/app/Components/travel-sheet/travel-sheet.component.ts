@@ -90,7 +90,7 @@ finalTime: any;
   }
   ngOnInit(): void {
     this.getTripSheetNo();
-    this.getTripDetailsbyTripSheetNo();
+    this.loadTripDetailsByTripSheetNo();
   }
   exportTableToPDF1(): void {
     // Set A4 dimensions in landscape mode
@@ -141,40 +141,40 @@ finalTime: any;
     popupWindow.document.close();
   }
 
-  getTripDetailsbyTripSheetNo() {
-    this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result: any) => {
-      if (result.length != 0) {
-        this.selectedData = result;
-        console.log('Trip Sheet Details', this.selectedData);
-        const firstTripDetails = result[0]; // Assuming the first element holds trip details
-        this.tripSheetNo = firstTripDetails.tripSheetNo;
-        this.FuelPriceCNG = firstTripDetails.fuelPriceCNG;
-        this.FuelPricePetrol = firstTripDetails.fuelPricePetrol;
-        this.FuelPriceDiesel = firstTripDetails.fuelPriceDiesel;
-        this.fuelPriceReqd = firstTripDetails.fuelPriceReqd;
-        this.fuelReqd = firstTripDetails.fuelReqd;
-        this.initialTime = firstTripDetails.initialTime;
-        this.mileageCng = firstTripDetails.mileageCNG;
-        this.mileagePetrol = firstTripDetails.mileagePetrol;
-        this.mileageDiesel = firstTripDetails.mileageDiesel;
-        this.sparesReqd = firstTripDetails.sparesReqd;
-        this.startCluster = firstTripDetails.startCluster;
-        this.startPlace = firstTripDetails.startPlace;
-        this.endCluster = firstTripDetails.endCluster;
-        this.endPlace = firstTripDetails.endPlace;
-        this.vehicle = firstTripDetails.vehicle;
-        this.totalEstDistKms = firstTripDetails.totalEstDistKms;
-        this.formattedTotalEstJobTime = firstTripDetails.totalEstJobTime;
-        this.formattedTotalEstTravelTime = firstTripDetails.totalEstTravelTime;
-        this.formattedTotalFoodFuel = firstTripDetails.totalFoodFuel;
-        this.timeDifference = firstTripDetails.totalSchdET;
-      }
-      else {
-        alert("Invalid Trip Sheet Number");
-      }
-    })
+  // getTripDetailsbyTripSheetNo() {
+  //   this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result: any) => {
+  //     if (result.length != 0) {
+  //       this.selectedData = result;
+  //       console.log('Trip Sheet Details', this.selectedData);
+  //       const firstTripDetails = result[0]; // Assuming the first element holds trip details
+  //       this.tripSheetNo = firstTripDetails.tripSheetNo;
+  //       this.FuelPriceCNG = firstTripDetails.fuelPriceCNG;
+  //       this.FuelPricePetrol = firstTripDetails.fuelPricePetrol;
+  //       this.FuelPriceDiesel = firstTripDetails.fuelPriceDiesel;
+  //       this.fuelPriceReqd = firstTripDetails.fuelPriceReqd;
+  //       this.fuelReqd = firstTripDetails.fuelReqd;
+  //       this.initialTime = firstTripDetails.initialTime;
+  //       this.mileageCng = firstTripDetails.mileageCNG;
+  //       this.mileagePetrol = firstTripDetails.mileagePetrol;
+  //       this.mileageDiesel = firstTripDetails.mileageDiesel;
+  //       this.sparesReqd = firstTripDetails.sparesReqd;
+  //       this.startCluster = firstTripDetails.startCluster;
+  //       this.startPlace = firstTripDetails.startPlace;
+  //       this.endCluster = firstTripDetails.endCluster;
+  //       this.endPlace = firstTripDetails.endPlace;
+  //       this.vehicle = firstTripDetails.vehicle;
+  //       this.totalEstDistKms = firstTripDetails.totalEstDistKms;
+  //       this.formattedTotalEstJobTime = firstTripDetails.totalEstJobTime;
+  //       this.formattedTotalEstTravelTime = firstTripDetails.totalEstTravelTime;
+  //       this.formattedTotalFoodFuel = firstTripDetails.totalFoodFuel;
+  //       this.timeDifference = firstTripDetails.totalSchdET;
+  //     }
+  //     else {
+  //       alert("Invalid Trip Sheet Number");
+  //     }
+  //   })
 
-  }
+  // }
 
   public value = new Date();
 
@@ -314,45 +314,47 @@ formatMinutesToHHMM(minutes: number): string {
   padZero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
-  updateTripDetails() {
-    // Update the selectedData array or make a call to the API to update the details
+  // updateTripDetails() {
+  //   // Update the selectedData array or make a call to the API to update the details
   
-    // Example: Update the first item in the selectedData array
-    if (this.selectedData.length > 0) {
-      this.selectedData[0].fuelPriceCNG = this.FuelPriceCNG;
-      this.selectedData[0].fuelPricePetrol = this.FuelPricePetrol;
-      this.selectedData[0].fuelPriceDiesel = this.FuelPriceDiesel;
-      this.selectedData[0].fuelPriceReqd = this.fuelPriceReqd;
-      this.selectedData[0].fuelReqd = this.fuelReqd;
-      this.selectedData[0].initialTime = this.initialTime;
-      this.selectedData[0].mileageCNG = this.mileageCng;
-      this.selectedData[0].mileagePetrol = this.mileagePetrol;
-      this.selectedData[0].mileageDiesel = this.mileageDiesel;
-      this.selectedData[0].sparesReqd = this.sparesReqd;
-      this.selectedData[0].startCluster = this.startCluster;
-      this.selectedData[0].startPlace = this.startPlace;
-      this.selectedData[0].endCluster = this.endCluster;
-      this.selectedData[0].endPlace = this.endPlace;
-      this.selectedData[0].vehicle = this.vehicle;
-      this.selectedData[0].totalEstDistKms = this.totalEstDistKms;
-      this.selectedData[0].totalEstJobTime = this.formattedTotalEstJobTime;
-      this.selectedData[0].totalEstTravelTime = this.formattedTotalEstTravelTime;
-      this.selectedData[0].totalFoodFuel = this.formattedTotalFoodFuel;
-      this.selectedData[0].totalSchdET = this.timeDifference;
+  //   // Example: Update the first item in the selectedData array
+  //   if (this.selectedData.length > 0) {
+  //     this.selectedData[0].fuelPriceCNG = this.FuelPriceCNG;
+  //     this.selectedData[0].fuelPricePetrol = this.FuelPricePetrol;
+  //     this.selectedData[0].fuelPriceDiesel = this.FuelPriceDiesel;
+  //     this.selectedData[0].fuelPriceReqd = this.fuelPriceReqd;
+  //     this.selectedData[0].fuelReqd = this.fuelReqd;
+  //     this.selectedData[0].initialTime = this.initialTime;
+  //     this.selectedData[0].mileageCNG = this.mileageCng;
+  //     this.selectedData[0].mileagePetrol = this.mileagePetrol;
+  //     this.selectedData[0].mileageDiesel = this.mileageDiesel;
+  //     this.selectedData[0].sparesReqd = this.sparesReqd;
+  //     this.selectedData[0].startCluster = this.startCluster;
+  //     this.selectedData[0].startPlace = this.startPlace;
+  //     this.selectedData[0].endCluster = this.endCluster;
+  //     this.selectedData[0].endPlace = this.endPlace;
+  //     this.selectedData[0].vehicle = this.vehicle;
+
+  //     this.selectedData[0].totalEstDistKms = this.totalEstDistKms;
+  //     this.selectedData[0].totalEstJobTime = this.formattedTotalEstJobTime;
+  //     this.selectedData[0].totalEstTravelTime = this.formattedTotalEstTravelTime;
+  //     this.selectedData[0].totalFoodFuel = this.formattedTotalFoodFuel;
+  //     this.selectedData[0].totalSchdET = this.timeDifference;
   
-      // Make a call to update the data on the server
-      this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
-        if (data == "success") {
-          alert("Updated Successfully");
-          // Optionally, navigate to the tripsheet page or handle other logic
-        } else {
-          alert("Something Went Wrong!!");
-        }
-      });
-    } else {
-      alert("No data to update");
-    }
-  }
+
+  //     // Make a call to update the data on the server
+  //     this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
+  //       if (data == "success") {
+  //         alert("Updated Successfully");
+  //         // Optionally, navigate to the tripsheet page or handle other logic
+  //       } else {
+  //         alert("Something Went Wrong!!");
+  //       }
+  //     });
+  //   } else {
+  //     alert("No data to update");
+  //   }
+  // }
 // Method to load trip details by trip sheet number
 loadTripDetailsByTripSheetNo() {
   this.regSv.getTripDetailsbyTripSheetNo(this.tripSheetNumber).subscribe((result: any) => {
@@ -389,43 +391,70 @@ loadTripDetailsByTripSheetNo() {
 
 // Method to save edited trip details
 saveEditedTripDetails() {
-  // Construct the data object with edited details
-  var editedData = {
-    TripSheetNo: this.tripSheetNo,
-    FuelPriceCNG: this.FuelPriceCNG,
-    FuelPricePetrol: this.FuelPricePetrol,
-    FuelPriceDiesel: this.FuelPriceDiesel,
-    fuelPriceReqd: this.fuelPriceReqd,
-    fuelReqd: this.fuelReqd,
-    initialTime: this.initialTime,
-    mileageCNG: this.mileageCng,
-    mileagePetrol: this.mileagePetrol,
-    mileageDiesel: this.mileageDiesel,
-    sparesReqd: this.sparesReqd,
-    startCluster: this.startCluster,
-    startPlace: this.startPlace,
-    endCluster: this.endCluster,
-    endPlace: this.endPlace,
-    vehicle: this.vehicle,
-    totalEstDistKms: this.totalEstDistKms,
-    totalEstJobTime: this.formattedTotalEstJobTime,
-    totalEstTravelTime: this.formattedTotalEstTravelTime,
-    totalFoodFuel: this.formattedTotalFoodFuel,
-    totalSchdET: this.timeDifference,
-    UserId: this.userId,
-  };
+  // Check if the condition is true (replace the condition with your actual check)
+   {
+    var editedData = {
+      TripSheetNo: this.tripSheetNo,
+      TripSheetValues: this.selectedData.map(item => {
+        return {
+          MachineNumber: item.machineNumber,
+          CompanyName: item.companyName,
+          CustomerId: item.customerID,
+          Purpose: item.purpose,
+          Cluster: item.cluster,
+          ModelId: item.modelId,
+          ModelName: item.modelName,
+          Remarks: item.remarks,
+          RequestForId: item.requestForId,
+          TicketId: item.tokenID,
+          Id:item.id,
+          Zone: item.zone,
+          EstDistanceKms: item.estDistanceKms,
+          EstTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
+          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.foodFuelOthers),
+          EstJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
+          SchdET: this.convertTimeStringToTimeSpan(item.schdET),
+          // Add other properties specific to ArrayDataVM
+        };
+      }),
+      TotalEstDistKms: this.totalEstDistKms,
+      TotalEstTravelTime: this.formattedTotalEstTravelTime,
+      TotalFoodFuel: this.formattedTotalFoodFuel,
+      TotalEstJobTime: this.formattedTotalEstJobTime,
+      TotalSchdET: this.timeDifference,
+      CreatedBy: this.userName,
+      MileageCNG: this.mileageCng,
+      MileagePetrol: this.mileagePetrol,
+      MileageDiesel: this.mileageDiesel,
+      FuelReqd: this.fuelReqd,
+      FuelPriceCNG: this.FuelPriceCNG,
+      FuelPricePetrol: this.FuelPricePetrol,
+      FuelPriceDiesel: this.FuelPriceDiesel,
+      FuelPriceReqd: this.fuelPriceReqd,
+      SparesReqd: this.sparesReqd,
+      Vehicle: this.vehicle,
+      StartPlace: this.startPlace,
+      StartCluster: this.startCluster,
+      EndPlace: this.endPlace,
+      EndCluster: this.endCluster,
+      InitialTime: this.initialTime,
+      UserId: this.userId,
 
-  // Send a request to update trip details
-  this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', editedData).subscribe((data: any) => {
-    if (data === "success") {
-      alert("Trip details updated successfully");
-      this.route.navigate(['/tripsheet']);
-    } else {
-      alert("Something went wrong!!");
-    }
-  });
+    };
+
+    // Send a request to update trip details
+    this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', editedData).subscribe((data: any) => {
+      if (data === "success") {
+        alert("Trip details updated successfully");
+        this.route.navigate(['/tripsheet']);
+      } else {
+        alert("Something went wrong!!");
+      }
+    });
+  }
 }
-  
+
+
   save() {  
     if (this.selectedData.length === 0) {
       alert("At least One Record Should Be Added.");
