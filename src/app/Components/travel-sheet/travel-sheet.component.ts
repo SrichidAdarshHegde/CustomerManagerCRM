@@ -341,7 +341,7 @@ formatMinutesToHHMM(minutes: number): string {
       this.selectedData[0].totalSchdET = this.timeDifference;
   
       // Make a call to update the data on the server
-      this.httpService.put('http://localhost:44303/api/TravelBudget/PutUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
+      this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
         if (data == "success") {
           alert("Updated Successfully");
           // Optionally, navigate to the tripsheet page or handle other logic
