@@ -126,7 +126,7 @@
                         <td rowspan="2" style="border: 2px solid black;"><strong>{{item.companyName}}</strong></td>
                         <td rowspan="2" style="text-align: right; border: 2px solid black;"><strong>{{item.machineNumber}}</strong></td>
                         <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName != ''"><strong>{{item.remarks}}</strong></td>
-                        <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;" [(ngModel)]="item.purpose" class="borderless-input" placeholder="Enter purpose"></td>
+                        <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;height: 50px;" [(ngModel)]="item.purpose" class="borderless-input" placeholder="Enter purpose"></td>
                         <td rowspan="2" style="border: 2px solid black;"></td>
                         <td rowspan="2" style="border: 2px solid black;"><strong>{{item.cluster}}</strong></td>
                         <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName != ''"></td>
@@ -178,7 +178,7 @@
                     <td></td>
                     <td><button class="btn btn-primary" (click)="saveEditedTripDetails()">Update</button></td>
                     <td><button class="btn btn-primary" (click)="save()">Save</button></td>
-                    <td><button class="btn btn-secondary">Resequence</button></td>
+                    <td><button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
                 </tr>
             </table>
         </div>
