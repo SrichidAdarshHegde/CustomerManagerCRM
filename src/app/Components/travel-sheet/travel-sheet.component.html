@@ -3,7 +3,7 @@
 <div class="col-md-2">
     <label for="tripSheetNumber">Enter Trip Sheet Number</label>
     <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
-    <button class="btn btn-primary" (click)="getTripDetailsbyTripSheetNo()">Fetch Data</button>
+    <button class="btn btn-primary" (click)="loadTripDetailsByTripSheetNo()">Fetch Data</button>
 </div>
 <div class="col-md-3"></div><br>
 <div class="col-md-2" style="text-align: center;"><h2><b>TRIP SHEET</b></h2></div>
@@ -11,20 +11,21 @@
 <div #table id="printSectionId">
     <!-- first division -->
     <!-- <div class="container"></div> -->
-    <div class="col-md-12 row">
+<div class="container-fluid">
+    <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <table>
                 <tr style="border: 2px solid black;">
-                    <th style="border: 2px solid black;width: 20%;">Vehicle</th>
-                    <td style="border: 2px solid black;width: 20%;"><input type="text" [(ngModel)]="vehicle" class="borderless-input" placeholder="enter"></td>
-                    <td style="border: 2px solid black;width: 20%;">
+                    <th style="border: 2px solid black;">Vehicle</th>
+                    <td style="border: 2px solid black;"><input type="text" [(ngModel)]="vehicle" class="borderless-input" placeholder="enter"></td>
+                    <td style="border: 2px solid black;">
                         <h6>Mileage CNG Kgs</h6>
                     </td>
-                    <td style="border: 2px solid black;width: 15%;">
+                    <td style="border: 2px solid black;">
                         <h6>M Petrol L</h6>
                     </td>
-                    <td style="border: 2px solid black;width: 15%;">
+                    <td style="border: 2px solid black;">
                         <h6>M Diesel L</h6>
                     </td>
                     <td style="border: 2px solid black;">
@@ -57,21 +58,16 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
         <div class="col-md-2">
+            <div class="d-md-none d-lg-block">
             <table class="table">
                 <tr>
-                    <!-- <td style="border: 2px solid black;">
-                        TRIP SHEET
-                    </td> -->
                     <td style="border: 2px solid black;">
                        TRIP SHEET No.  <b>{{tripSheetNo}}</b>
                     </td>
                 </tr>
                 <tr>
-                    <!-- <th style="border: 2px solid black;" style="width: 50%;">
-                        Engineer
-                    </th> -->
                     <td style="border: 2px solid black;">Engineer :&nbsp;&nbsp;&nbsp;&nbsp;<b>{{userName}}</b></td>
                 </tr>
                 <tr>
@@ -81,32 +77,10 @@
                     <td style="border: 2px solid black;"><strong>{{value | date:'dd MMM yyyy'}}</strong></td>
                 </tr>
             </table>
-        </div>
-
-        <!-- <div class="col-md-2" style="margin-top: 25px;">
-            <table class="table table-bordered table-with-bold-lines">
-                <tr>
-                    <th style="width: 50%;">
-                        <h6>Engineer</h6>
-                    </th>
-                    <td><b>{{userName}}</b></td>
-                </tr>
-                <tr>
-                    <th>
-                        <h6>Date</h6>
-                    </th>
-                    <td><strong>{{value | date:'dd MMM yyyy'}}</strong></td>
-                </tr>
-            </table>
-        </div> -->
-
-
-        <!-- <div class="col-md-2">
-            <label for="tripSheetNumber">Enter Trip Sheet Number</label>
-            <input style="width: 65%;" type="number" [(ngModel)]="tripSheetNumber"><br><br>
-            <button class="btn btn-primary" (click)="getTripDetails()">Fetch Data</button>
-        </div> -->
+            </div>
+        </div><div class="col-md-1"></div>
     </div>
+</div>
     <br>
     <!-- second division -->
     <div class="col-md-12 row">
@@ -152,7 +126,7 @@
                         <td rowspan="2" style="border: 2px solid black;"><strong>{{item.companyName}}</strong></td>
                         <td rowspan="2" style="text-align: right; border: 2px solid black;"><strong>{{item.machineNumber}}</strong></td>
                         <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName != ''"><strong>{{item.remarks}}</strong></td>
-                        <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;" [(ngModel)]="item.purpose" class="borderless-input" placeholder="Enter purpose"></td>
+                        <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName == ''"><input type="text" style="width: 100%;height: 50px;" [(ngModel)]="item.purpose" class="borderless-input" placeholder="Enter purpose"></td>
                         <td rowspan="2" style="border: 2px solid black;"></td>
                         <td rowspan="2" style="border: 2px solid black;"><strong>{{item.cluster}}</strong></td>
                         <td rowspan="2" style="border: 2px solid black;" *ngIf="item.companyName != ''"></td>
@@ -202,8 +176,9 @@
                     <td style="text-align: center;border: 2px solid black;"><strong>{{timeDifference }}</strong></td>
                     <td></td>
                     <td></td>
+                    <td><button class="btn btn-primary" (click)="saveEditedTripDetails()">Update</button></td>
                     <td><button class="btn btn-primary" (click)="save()">Save</button></td>
-                    <td><button class="btn btn-secondary">Resequence</button></td>
+                    <td><button class="btn btn-secondary" (click)="reSequence()">Resequence</button></td>
                 </tr>
             </table>
         </div>

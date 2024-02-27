@@ -44,6 +44,8 @@ export class RequestListComponent implements OnInit{
   contactDetails: any;
   EditContact: boolean;
   usersList: any;
+  request: any;
+  perticularCustomerData: any;
 
   
   constructor(private regSv: RegistrationService){
@@ -59,7 +61,7 @@ export class RequestListComponent implements OnInit{
     this.getCustomer();
     // this.GetDatewiserequest();
   
-    // this.getPerticularCustomerContactDetailsForrequest(this.contactData);
+    // this.getPerticularCustomerContactDetails(this.request.contactData);
   // this.getUsers();
   //  this.getrequests();
   }
@@ -107,14 +109,19 @@ getUsers() {
   }
  
   
-
+  // getPerticularCustomerContactDetails(id: any) {
+  //   this.regSv.GetCustomerContactDetails(id).subscribe((result: any) => {
+  //     this.request.contactData = result;
+  //     console.log(this.request.contactData);
+  //   });
+  // }
   
   onChangeMachineNumber(){
    
     //this.requestlist.splice(0, this.requestlist.length);
     this.regSv.getMachineRequestsFromMachineNumber(this.machineNumber).subscribe((response: any) => {
       if (response!= null) {
-        this.requestlist = response.array1;
+        this.requestlist = response;
       this.contactData=response.array2;
       console.log(this.requestlist);
       if(this.requestlist.length!=0){
@@ -133,8 +140,9 @@ getUsers() {
       .getPerticularCustomerRequests(this.selectedCustomerid)
       .subscribe((response: any) => {
         if (response!= null) {
-          this.requestlist = response.array1;
+          this.requestlist = response;
         this.contactData=response.array2;
+        // this.getPerticularCustomerContactDetails(this.perticularCustomerData[0].machineNumber);
         console.log(this.requestlist);
          
         } else {

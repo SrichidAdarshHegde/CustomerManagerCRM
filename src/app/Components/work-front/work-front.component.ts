@@ -254,10 +254,12 @@ generateTStwo() {
         for (var i = 0; i < this.worklist.length; i++) {
           if (this.worklist[i].priority === "T0" || this.worklist[i].priority === "T1" || this.worklist[i].priority === "T2" || this.worklist[i].priority === "T3" || this.worklist[i].priority === "T4" || this.worklist[i].priority === "T5" || this.worklist[i].priority === "T6") {
             this.otherWorklist.push(this.worklist[i]);
-          } else if (this.worklist[i].priority === "F4" || this.worklist[i].priority === "F5" || this.worklist[i].priority === "F6") {
-            this.workpriority45.push(this.worklist[i]);
-            // console.log(this.workpriority45)
-          } else {
+          } else 
+          // if (this.worklist[i].priority === "F4" || this.worklist[i].priority === "F5" || this.worklist[i].priority === "F6") {
+          //   this.workpriority45.push(this.worklist[i]);
+          //   // console.log(this.workpriority45)
+          // } else 
+          {
             this.workpriority.push(this.worklist[i]);
           }
         }
@@ -265,7 +267,7 @@ generateTStwo() {
     this.zoneSelected = true;
     console.log(this.otherWorklist)
     console.log(this.workpriority)
-    console.log(this.workpriority45)
+    // console.log(this.workpriority45)
 
   }
 

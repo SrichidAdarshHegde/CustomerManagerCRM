@@ -134,7 +134,9 @@ GetCustomerContactDetailsForQM(id:any){
 }
 
 
-
+GetCustomerContactDetails(id:any){
+  return this.http.get(this.globalurl.weburl + 'MachineRegistration/getCustomerContactDetails/'+id);
+}
 
 getCustomerTickets(id:any){
   return this.http.get(this.globalurl.weburl + 'MachineRegistration/GetCustomerTickets/'+id);
