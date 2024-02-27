@@ -410,10 +410,10 @@ saveEditedTripDetails() {
           Id:item.id,
           Zone: item.zone,
           EstDistanceKms: item.estDistanceKms,
-          EstTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
-          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.foodFuelOthers),
-          EstJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
-          SchdET: this.convertTimeStringToTimeSpan(item.schdET),
+          EstTravelTime: item.estTravelTime,
+          FoodFuelOthers:item.foodFuelOthers,
+          EstJobTime:item.estJobTime,
+          SchdET: item.schdET,
           // Add other properties specific to ArrayDataVM
         };
       }),
