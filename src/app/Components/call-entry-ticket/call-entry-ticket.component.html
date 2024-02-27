@@ -104,7 +104,7 @@
             </div><span class="v125_7246">To Workfront</span>
         </div><span class="v124_7091">Date:</span><span class="v144_20">Time</span><span class="v144_65">Ticket
             No.</span><span class="v124_7094"><input style="width: 100%;" type="date" [(ngModel)]="value"></span>
-            <span class="v144_21">{{ systemTime | async | date: 'HH:mm:ss' }}</span><span
+            <span class="v144_21">{{ systemTime | async | date: 'HH:mm' }}</span><span
             class="v144_66">
             <p *ngIf="ticketNo != null"><b>{{ticketNo}}</b></p>
             <p *ngIf="ticketNo == null"><b>{{newTicketNo}}</b></p> </span>
