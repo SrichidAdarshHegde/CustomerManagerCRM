@@ -113,6 +113,7 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 import { NumtowordsPipe } from './numtowords.pipe';
 import { SearchPipe } from './search.pipe';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { DeclarationFEMAComponent } from './documentmanagertemplates/declaration-fema/declaration-fema.component';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -214,6 +215,7 @@ RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
+DeclarationFEMAComponent,
 
   ],
   imports: [
