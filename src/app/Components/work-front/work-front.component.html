@@ -190,23 +190,7 @@
                                 {{ checkedIndexes.indexOf(i) !== -1 ? checkedIndexes.indexOf(i) + 1 : '' }}
                             </td>
                         </tr>
-                        <!-- <tr>
-                            <td colspan="12"><h4>Selected rows:</h4></td>
-                        </tr> -->
-                        <!-- <tr *ngFor="let selectedRow of checkedRows; let i = index">
-                                <td>{{ i + 1 }}</td>
-                                <td>{{ selectedRow.tokenID }}</td>
-                                <td>{{ selectedRow.date | date }}</td>
-                                <td>{{ selectedRow.machineNumber }}</td>
-                                <td>{{ selectedRow.companyName }}</td>
-                                <td>{{ selectedRow.priority }}</td>
-                                <td></td>
-                                <td>{{ selectedRow.requestFor }}</td>
-                                <td>{{ selectedRow.remarks }}</td>
-                                <td>{{ selectedRow.routeId }}</td>
-                                <td>{{ selectedRow.cluster }}</td>
-                            </tr> -->
-
+                      
                         <tr>
                             <td colspan="12"> </td>
                             <td><button style=" border-width:1px; height: 76px;width: 108px;margin-right: -40px;font-size: 20px;" class="btn btn-primary" (click)="generateTS()">Generate Tripsheet</button></td>
@@ -226,7 +210,7 @@
         </div>
     </div>
     <div class="table-responsive">
-        <div class="col-md-12 row" *ngIf="zoneSelected">
+        <div class="col-md-12 row" *ngIf="zoneSelected && !zoneSelected">
             <div class="col-md-1"></div>
             <div class="col-md-11">
             <table class="table table-bordered">
@@ -255,8 +239,7 @@
                         </th>
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;  width: 5%;">
                             Cluster</th>
-                        <!-- <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;">
-                            Done</th> -->
+                       
                         <th style="border-width:1px; border-color:rgb(248, 244, 244);color: antiquewhite;background-color: black;text-align: center;width: 3%;">
                             Sequence
                         </th>
@@ -281,7 +264,7 @@
                                 {{requests.priority}}
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
-                                <!-- {{request.requestFor}} -->
+                               
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
                                 {{requests.requestFor}}</td>
@@ -292,40 +275,17 @@
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: right;font-size:18px;">
                                 {{requests.cluster}}</td>
-                            <!-- <td style="border-width:1px; border-color:black;text-align: center;font-size:14px;">
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModalFollowup" (click)="Done(requests)">Done
-                                    <i class='fas fa-arrow-alt-circle-right'></i>
-                                </button>
-                            </td> -->
+                           
                             <td style=" border-width:1px; border-color:black;text-align: center;font-size:18px;">
                                 <input class="form-control" type="checkbox" [(ngModel)]="sequenceTwo[i]" (click)="onCheckboxClick1(requests)" style="width: 50px;">
 
-                                <!-- <span *ngIf="sequence[i]">{{checkedIndexes.indexOf(i) + 1}}</span>
-                                {{request.len}} -->
+                               
                             </td>
                             <td style="border-width:1px; border-color:black;text-align: left;font-size:18px;">
                                 {{ checkedIndexes1.indexOf(i) !== -1 ? checkedIndexes1.indexOf(i) + 1 : '' }}
                             </td>
                         </tr>
-                        <!-- <tr>
-                            <td colspan="12">
-                                <h4>Selected rows:</h4>
-                            </td>
-                        </tr> -->
-                        <!-- <tr *ngFor="let selectedRow of checkedRows1; let i = index">
-                            <td>{{ i + 1 }}</td>
-                            <td>{{ selectedRow.tokenID }}</td>
-                            <td>{{ selectedRow.date | date }}</td>
-                            <td>{{ selectedRow.machineNumber }}</td>
-                            <td>{{ selectedRow.companyName }}</td>
-                            <td>{{ selectedRow.priority }}</td>
-                            <td></td>
-                            <td>{{ selectedRow.requestFor }}</td>
-                            <td>{{ selectedRow.remarks }}</td>
-                            <td>{{ selectedRow.routeId }}</td>
-                            <td>{{ selectedRow.cluster }}</td>
-                        </tr> -->
-
+                       
                         <tr>
                             <td colspan="12"> </td>
                             <td><button style="border-width:1px; height: 76px;width: 108px;margin-right: -40px;font-size: 20px;" class="btn btn-primary" (click)="generateTStwo()">Generate Tripsheet</button></td>
