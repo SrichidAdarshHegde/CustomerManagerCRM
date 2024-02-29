@@ -63,6 +63,7 @@ tripSheetNumber: any;
 endPlace: any;
 endCluster: any;
 finalTime: any;
+isUpdate: any;
 
   constructor(private el: ElementRef, private renderer: Renderer2,  private router: ActivatedRoute,
      private route: Router,
