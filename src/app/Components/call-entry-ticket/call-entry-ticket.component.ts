@@ -6,11 +6,11 @@ import { MasterService } from 'src/app/Services/MasterService/master.service';
 import { RegistrationService } from 'src/app/Services/Registration/registration.service';
 
 @Component({
-  selector: 'app-call-ticket-screen',
-  templateUrl: './call-ticket-screen.component.html',
-  styleUrls: ['./call-ticket-screen.component.css']
+  selector: 'app-call-entry-ticket',
+  templateUrl: './call-entry-ticket.component.html',
+  styleUrls: ['./call-entry-ticket.component.css']
 })
-export class CallTicketScreenComponent {
+export class CallEntryTicketComponent {
   machineNumber: any;
   requestlist: any;
   contactData: any;
@@ -135,7 +135,15 @@ export class CallTicketScreenComponent {
     // this.getAttendedBybyid(this.customerID);
   }
  
- 
+  goToCustomerList(){
+    this.route.navigate(['/customerLists']);
+  }
+  goToTripSheet(){
+    this.route.navigate(['/tripsheet']);
+  }
+  goToWorkFront(){
+    this.route.navigate(['/workFront']);
+  }
   saveRequest() {
     this.endTime = new Date();
     //const timeDifference = this.endTime.getTime() - this.startTime.getTime();

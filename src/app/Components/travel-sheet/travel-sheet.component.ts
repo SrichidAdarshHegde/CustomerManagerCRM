@@ -63,6 +63,7 @@ tripSheetNumber: any;
 endPlace: any;
 endCluster: any;
 finalTime: any;
+isUpdate: any;
 
   constructor(private el: ElementRef, private renderer: Renderer2,  private router: ActivatedRoute,
      private route: Router,
@@ -181,7 +182,7 @@ finalTime: any;
   reSequence(){
     this.route.navigate(['/workFront']);
   }
-  private apiUrl = 'http://localhost:44303/customermanagerapi/api';
+  private apiUrl = 'https://blockchainmatrimony.com/customermanagerapi/api';
   recalculateFuel() {
     // Ensure totalEstDistKms is greater than zero to avoid division by zero
     if (this.totalEstDistKms > 0) {
@@ -408,10 +409,10 @@ saveEditedTripDetails() {
           Id:item.id,
           Zone: item.zone,
           EstDistanceKms: item.estDistanceKms,
-          EstTravelTime: item.estTravelTime,
-          FoodFuelOthers:item.foodFuelOthers,
-          EstJobTime:item.estJobTime,
-          SchdET: item.schdET,
+          EstTravelTime: this.convertTimeStringToTimeSpan(item.estTravelTime),
+          FoodFuelOthers: this.convertTimeStringToTimeSpan(item.foodFuelOthers),
+          EstJobTime: this.convertTimeStringToTimeSpan(item.estJobTime),
+          SchdET: this.convertTimeStringToTimeSpan(item.schdET),
           // Add other properties specific to ArrayDataVM
         };
       }),
@@ -543,7 +544,7 @@ saveEditedTripDetails() {
       UserId: this.userId,
     };
   
-    this.httpService.post('http://localhost:44303/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
+    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostSaveTripSheetData',data).subscribe((data:any) => {
       if(data == "success"){
         alert("Saved Successfully");
         this.route.navigate(['/tripsheet'])

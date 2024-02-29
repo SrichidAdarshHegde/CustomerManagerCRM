@@ -87,6 +87,8 @@ import { TravelSheetComponent } from './Components/travel-sheet/travel-sheet.com
 import { Quotation2015indollorComponent } from './Components/QM TEMPLATES/quotation2015indollor/quotation2015indollor.component';
 import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-i-vmc.component';
 import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
+import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
+import { DeclarationFEMAComponent } from './documentmanagertemplates/declaration-fema/declaration-fema.component';
 import { DocumentManagerTemplateComponent } from './document-manager-template/document-manager-template.component';
 
 const routes: Routes = [
@@ -143,10 +145,12 @@ const routes: Routes = [
 {path:'DocumentMailTemplate',component:DocumentMailTemplateComponent},
 
 {path:'CallTicketScreen',component:CallTicketScreenComponent},
+{path:'CallEntryTicket',component:CallEntryTicketComponent},
 
 {path : 'test', component: TestComponent},
 
 {path:'quotaiontemplate',component:QuotationtemplateComponent},
+
 
 
 //QM TEMPLATES
@@ -222,6 +226,18 @@ const routes: Routes = [
     path: 'editcustomer/:id',
     component: EditCustomerListsComponent
   },
+
+
+
+//Document Manager templates
+
+{path:'declarationFEMA',component:DeclarationFEMAComponent},
+
+
+
+
+
+
 ];
 
 @NgModule({
