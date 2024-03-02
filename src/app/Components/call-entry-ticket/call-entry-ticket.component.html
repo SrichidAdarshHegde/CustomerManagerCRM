@@ -97,10 +97,49 @@
             <p *ngIf="ticketNo == null"><b>{{newTicketNo}}</b></p> </span>
         <div class="v1_4"></div><span class="v1_35">{{userName}}</span>
         <div class="v204_485" style="background-image: url('assets/images/v204_485.png');">
-            <div class="v124_7083"></div>
+            <div class="v124_7083">
+                <div class="col-md-12" style="margin-top: 175px;">
+                    <table class="table table-bordered table-with-bold-lines">
+                        <tr>
+                            
+                            <td style="width: 9%;">{{value | date:'dd MMM yyyy'}}</td>
+                            <td style="width: 5%;">{{valuetime | date:'HH:mm:ss' }}</td>
+                            <td style="width: 5%;">{{endTime | date:'HH:mm:ss' }}</td>
+                            <td style="width: 5%;">{{userName}}</td>
+                            <td style="width: 11%;">{{contactName}}</td>
+                            <td style="width: 20%;">
+                                <h6>Fault/Issue</h6><textarea style="height: 30px;" type="text" name="fault" [(ngModel)]="fault"
+                                    class="form-control"></textarea>
+                            </td>
+                            <td style="width: 19%;">
+                                <h6>Resolution</h6><textarea style="height: 30px;" type="text" name="resolution" [(ngModel)]="Resolution"
+                                    class="form-control"></textarea>
+                            </td>
+                            <td style="z-index:9999;">
+                                <div class="col-md-12 row">
+                                    <div class="col-md-6">
+                                        <label for="unit"><strong>Tele Support:</strong></label>
+                                        <ng-select [items]="teleSupportrequestslist" name="requestsName"
+                                            [(ngModel)]="selectedrequestt" [multiple]="true" placeholder="Select Options"
+                                            (change)="onSelectRequest()">
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="unit"><strong>Field Visit:</strong></label>
+                                        <ng-select [items]="fieldVisitRequestslist" name="requestsName"
+                                            [(ngModel)]="selectedrequestf" [multiple]="true" placeholder="Select Options"
+                                            (change)="onSelectRequest()">
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <div class="v124_7084"></div>
             <div class="v125_7211"></div>
-            <div class="v171_39"></div>
+            <!-- <div class="v171_39"></div> -->
             <!-- <table class="table table-bordered table-with-bold-lines">
                 <tr class="sticky-header" style="text-align: center;">
                     <th style="width: 2%;">SN</th>
@@ -137,21 +176,43 @@
                 </span><span class="v125_7207">Fault / Issue</span><span class="v125_7215">
                 <div *ngFor="let ticket of ticketDetailsList; let i = index">{{ticket.remarks}}</div>
 
+               </span><span class="v125_7208">Resolution</span><span class="v125_7216">
+                <div *ngFor="let ticket of ticketDetailsList; let i = index">{{ticket.resolution}}</div>
+
                </span><span class="v124_7195">Start Time</span><span class="v124_7196">
                 <div *ngFor="let ticket of ticketDetailsList; let i = index">{{ticket.startTime | date:'HH:mm:ss' }}</div>
                
         </span><span class="v124_7197">End Time</span><span class="v124_7198">
                 <div *ngFor="let ticket of ticketDetailsList; let i = index">{{ticket.endTime | date:'HH:mm:ss' }}</div>
         </span>
-        <div class="v144_69"></div>
-        <div class="v144_71"></div>
-        <div class="v144_97" style="background-image: url('assets/images/v144_97.png');">
-            <div class="v144_98" style="background-image: url('assets/images/v144_98.png');">
-                <div class="v144_99" style="background-image: url('assets/images/v144_99.png');">
-                    <div class="v144_100"></div>
-                </div>
-            </div><span class="v144_101">New Contact</span>
+        <div class="v144_69">
+            <div *ngIf="machineSelected" class="col-md-12" style="overflow: auto; margin-top: 171px;">
+                <table class="table table-bordered table-with-bold-lines">
+                    <!-- <tr>
+                        <td style="text-align: center; padding: 0px;" colspan="6">
+                            <h5>Add Contact Persons</h5>
+                        </td>
+                    </tr> -->
+                    <tr class="sticky-header" style="text-align: center;">
+                        <!-- <th style="width: 5%;"><input placeholder="Sal" class="form-control" type="text"
+                                id="salute" name="salute" [(ngModel)]="salute" required></th> -->
+                        <th style="width: 20%;"><input placeholder="Name" class="form-control" type="text"
+                                id="contactname" name="contactname" [(ngModel)]="contactname" required></th>
+                        <th style="width: 13%;"><input placeholder="Mobile" class="form-control" id="mobile"
+                                name="mobile" [(ngModel)]="mobile" required></th>
+                        <th style="width: 40%;"><input placeholder="Email" class="form-control" id="email"
+                                name="email" [(ngModel)]="email" required></th>
+                        <th style="width: 30%;"> <input placeholder="Designation" class="form-control"
+                                id="designation" name="designation" [(ngModel)]="designation" required></th>
+                        <th style="width: 5%;"><button class="form-control" type="submit"
+                                class="btn btn-primary" (click)="addContactDetails()">Add</button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
         </div>
+        <div class="v144_71"></div>
+        
         <div class="v144_70"></div>
         <!-- <table class="table table-bordered table-with-bold-lines">
                 <tr>
@@ -193,8 +254,8 @@
             </span>
             <span class="v144_90"><div *ngFor="let details of contactDetails; let i = index">{{details.email}}</div></span>
             <span class="v125_7209">Priority</span><span
-            class="v125_7217">T1
-            F1</span><span class="v125_7199">Log by</span><span class="v125_7200">
+            class="v125_7217">
+            <div *ngFor="let ticket of ticketDetailsList; let i = index">{{ticket.requestFor}}</div></span><span class="v125_7199">Log by</span><span class="v125_7200">
                 <div *ngFor="let ticket of ticketDetailsList; let i = index">{{ticket.createdBy}}</div>
             </span><span class="v105_2">Call Entry - Ticket</span>
         <div class="v144_102" style="background-image: url('assets/images/v144_102.png');">
