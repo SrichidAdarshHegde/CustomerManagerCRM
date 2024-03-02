@@ -6,6 +6,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { UserRegistrationComponent } from './Components/user-registration/user-registration.component';
+
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -216,6 +217,7 @@ RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
+CallEntryTicketComponent
 
   ],
   imports: [
