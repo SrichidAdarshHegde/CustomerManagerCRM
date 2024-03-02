@@ -89,6 +89,7 @@ import { RapidIVMCComponent } from './Components/QM TEMPLATES/rapid-i-vmc/rapid-
 import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-time-master/purpose-job-time-master.component';
 import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
 import { DeclarationFEMAComponent } from './documentmanagertemplates/declaration-fema/declaration-fema.component';
+import { DocumentManagerTemplateComponent } from './document-manager-template/document-manager-template.component';
 
 const routes: Routes = [
 {path : '', component: HomeComponent},
@@ -211,7 +212,8 @@ const routes: Routes = [
 {path:'rapidIVMC',component:RapidIVMCComponent},
 {path:'rapidIVMC/:id',component:RapidIVMCComponent},
 
-
+//document manager template
+{path:'DocumentManagerTemplate',component:DocumentManagerTemplateComponent},
 
 
 //QUOTATION MANAGER 

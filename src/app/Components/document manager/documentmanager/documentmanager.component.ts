@@ -283,7 +283,7 @@ uploadInvoice(){
     frmData.append("document", this.docs);
     frmData.append("InvoiceAmount",this.invoiceamount);
     frmData.append("DueAmount",this.dueamount);
-this.httpService.post('http://localhost:44303/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
+this.httpService.post('http://localhost:44303/customermanagerapi/api/MachineRegistration/UploadInvoice/',frmData).subscribe((data:any) => {
           if(data == "success"){
             alert("Document Uploaded Successfully!!")
           }else{
