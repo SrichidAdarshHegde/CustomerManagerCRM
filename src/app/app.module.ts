@@ -113,6 +113,8 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 import { NumtowordsPipe } from './numtowords.pipe';
 import { SearchPipe } from './search.pipe';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { DocumentManagerTemplateComponent } from './document-manager-template/document-manager-template.component';
+import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -215,6 +217,7 @@ PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
 DocumentManagerTemplateComponent,
+CallEntryTicketComponent,
 
   ],
   imports: [
