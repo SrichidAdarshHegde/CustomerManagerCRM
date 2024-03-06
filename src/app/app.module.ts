@@ -115,6 +115,7 @@ import { NumtowordsPipe } from './numtowords.pipe';
 import { SearchPipe } from './search.pipe';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
+import { FttCoveringLetterComponent } from './documentmanagertemplates/ftt-covering-letter/ftt-covering-letter.component';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -216,7 +217,8 @@ RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
-CallEntryTicketComponent
+CallEntryTicketComponent,
+FttCoveringLetterComponent
   ],
   imports: [
     NgHttpLoaderModule.forRoot(),
