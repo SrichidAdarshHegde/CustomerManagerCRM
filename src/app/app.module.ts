@@ -6,6 +6,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { UserRegistrationComponent } from './Components/user-registration/user-registration.component';
+
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -113,6 +114,8 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 import { NumtowordsPipe } from './numtowords.pipe';
 import { SearchPipe } from './search.pipe';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
+import { FttCoveringLetterComponent } from './documentmanagertemplates/ftt-covering-letter/ftt-covering-letter.component';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -214,7 +217,8 @@ RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
-
+CallEntryTicketComponent,
+FttCoveringLetterComponent
   ],
   imports: [
     NgHttpLoaderModule.forRoot(),
