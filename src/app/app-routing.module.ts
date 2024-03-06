@@ -90,6 +90,7 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
 import { DeclarationFEMAComponent } from './documentmanagertemplates/declaration-fema/declaration-fema.component';
 import { DocumentManagerTemplateComponent } from './document-manager-template/document-manager-template.component';
+import { FttCoveringLetterComponent } from './documentmanagertemplates/ftt-covering-letter/ftt-covering-letter.component';
 
 const routes: Routes = [
 {path : '', component: HomeComponent},
@@ -207,31 +208,20 @@ const routes: Routes = [
 {path:'v2015-jlx/:id',component:V20152axesComponent},
 
 
-
-
 {path:'rapidIVMC',component:RapidIVMCComponent},
 {path:'rapidIVMC/:id',component:RapidIVMCComponent},
 
 //document manager template
 {path:'DocumentManagerTemplate',component:DocumentManagerTemplateComponent},
 
-
 //QUOTATION MANAGER 
-
 {path:'qm',component:QMComponent},
-
-
-  {
-
-    path: 'editcustomer/:id',
-    component: EditCustomerListsComponent
-  },
-
-
+{path: 'editcustomer/:id',component: EditCustomerListsComponent },
 
 //Document Manager templates
 
 {path:'declarationFEMA',component:DeclarationFEMAComponent},
+{path:'FttCoveringLetter',component:FttCoveringLetterComponent},
 
 
 
