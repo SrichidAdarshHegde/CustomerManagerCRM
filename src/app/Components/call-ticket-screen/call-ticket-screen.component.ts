@@ -181,7 +181,7 @@ export class CallTicketScreenComponent {
 
       frmData.append("Remarks", this.fault);
       frmData.append("Resolution", this.Resolution);
-      frmData.append("CreatedOn", this.value);   
+      frmData.append("CreatedOn", this.value.toISOString());   
       frmData.append("CreatedBy", this.userName);
       this.httpService.post('http://localhost:44303/api/RequestAndInteractions/PostSaveRequestForm/', frmData).subscribe((data: any) => {
         if (data == "success") {
