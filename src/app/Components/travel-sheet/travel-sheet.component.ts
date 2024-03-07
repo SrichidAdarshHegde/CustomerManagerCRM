@@ -342,7 +342,7 @@ formatMinutesToHHMM(minutes: number): string {
   
 
   //     // Make a call to update the data on the server
-  //     this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
+  //     this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostUpdateTripSheetData', this.selectedData[0]).subscribe((data: any) => {
   //       if (data == "success") {
   //         alert("Updated Successfully");
   //         // Optionally, navigate to the tripsheet page or handle other logic
@@ -442,7 +442,7 @@ saveEditedTripDetails() {
     };
 
     // Send a request to update trip details
-    this.httpService.post('http://localhost:44303/api/TravelBudget/PostUpdateTripSheetData', editedData).subscribe((data: any) => {
+    this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/api/TravelBudget/PostUpdateTripSheetData', editedData).subscribe((data: any) => {
       if (data === "success") {
         alert("Trip details updated successfully");
         this.route.navigate(['/tripsheet']);
