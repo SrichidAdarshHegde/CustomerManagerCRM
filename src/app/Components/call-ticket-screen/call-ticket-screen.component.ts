@@ -582,15 +582,15 @@ export class CallTicketScreenComponent {
   
   }
   savedoneDetails() {
-    if(this.selectedAttendedBy == null || this.selectedAttendedBy == ''){
+    if(this.ticketNo == null || this.ticketNo == ''){
+      alert("No Ticket are available to clear")
+    }else if(this.selectedAttendedBy == null || this.selectedAttendedBy == ''){
       alert("Please Enter Attended By");
     }else if(this.selectedAttendedHow == null || this.selectedAttendedHow == ''){
       alert("Please Enter Attended How");
     }else if(this.dateofinteraction == null || this.dateofinteraction == ''){
       alert('Please Enter Date of Interaction');
-    }else if(this.ticketNo == null || this.ticketNo == ''){
-      alert("No Ticket are available to clear")
-    }else {
+    }else  {
       if(this.ticketNo == null){
         this.ticketNumber = this.newTicketNo;
       }else{
