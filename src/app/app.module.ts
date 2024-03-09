@@ -114,8 +114,10 @@ import { PurposeJobTimeMasterComponent } from './Components/Masters/purpose-job-
 import { NumtowordsPipe } from './numtowords.pipe';
 import { SearchPipe } from './search.pipe';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
+import { DocumentManagerTemplateComponent } from './document-manager-template/document-manager-template.component';
 import { FttCoveringLetterComponent } from './documentmanagertemplates/ftt-covering-letter/ftt-covering-letter.component';
+import { DeclarationFEMAComponent } from './documentmanagertemplates/declaration-fema/declaration-fema.component';
+import { CallEntryTicketComponent } from './Components/call-entry-ticket/call-entry-ticket.component';
 //import { NumtowordsPipe } from './numtowords.pipe';
 
 
@@ -217,8 +219,13 @@ RapidIVMCComponent,
 PurposeJobTimeMasterComponent,
 PurposeJobTimeMasterComponent,
 NumtowordsPipe,
+DocumentManagerTemplateComponent,
+FttCoveringLetterComponent,
+DeclarationFEMAComponent,
 CallEntryTicketComponent,
-FttCoveringLetterComponent
+
+
+
   ],
   imports: [
     NgHttpLoaderModule.forRoot(),
@@ -237,6 +244,7 @@ FttCoveringLetterComponent
     NgSelectModule,
     FontAwesomeModule,
     DocumentEditorContainerModule,
+
 
     
   ],
