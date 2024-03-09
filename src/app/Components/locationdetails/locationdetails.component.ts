@@ -144,7 +144,7 @@ export class LocationdetailsComponent {
       frmData.append("TextArea", this.textarea);
       frmData.append("CreatedBy", this.userName);
 
-  this.httpService.post('http://localhost:44303/customermanagerapi/api/MachineRegistration/LocationDetails/',frmData).subscribe((data:any) => {
+  this.httpService.post('https://blockchainmatrimony.com/customermanagerapi/customermanagerapi/api/MachineRegistration/LocationDetails/',frmData).subscribe((data:any) => {
             if(data == "success"){
               alert("Saved Successfully");
             //  this.route.navigate(['/locationDetailslist'])
